@@ -1,6 +1,10 @@
 import type { RunnableToolFunctionWithParse } from "openai/lib/RunnableFunction.mjs"
+import { ConvexHttpClient } from "convex/browser"
+import { api } from "@/convex/_generated/api"
 
-// Tool definitions with product images and Tippsy URLs
+const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!)
+
+// Tool definitions that query the real Tippsy database
 export const tools: RunnableToolFunctionWithParse<any>[] = [
   {
     type: "function",
@@ -18,78 +22,34 @@ export const tools: RunnableToolFunctionWithParse<any>[] = [
         required: ["query"],
       },
       function: async ({ query, maxPrice, category }: { query: string; maxPrice?: number; category?: string }) => {
-        const products = [
-          { 
-            name: "Dassai 23", 
-            brewery: "Asahi Shuzo", 
-            price: 85, 
-            category: "Junmai Daiginjo", 
-            region: "Yamaguchi",
-            image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/dassai-23-junmai-daiginjo-720ml-702177.jpg",
-            url: "https://www.tippsy.com/products/dassai-23",
-            description: "Ultra-premium with 23% polishing ratio. Elegant, fruity, and refined."
-          },
-          { 
-            name: "Hakkaisan Tokubetsu Junmai", 
-            brewery: "Hakkaisan Brewery", 
-            price: 35, 
-            category: "Junmai", 
-            region: "Niigata",
-            image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/hakkaisan-tokubetsu-junmai-720ml-412883.jpg",
-            url: "https://www.tippsy.com/products/hakkaisan-tokubetsu-junmai",
-            description: "Clean, crisp Niigata style. Perfect for beginners."
-          },
-          { 
-            name: "Kubota Manju", 
-            brewery: "Asahi Shuzo", 
-            price: 65, 
-            category: "Junmai Daiginjo", 
-            region: "Niigata",
-            image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/kubota-manju-junmai-daiginjo-720ml-825991.jpg",
-            url: "https://www.tippsy.com/products/kubota-manju",
-            description: "Elegant and refined with delicate floral notes."
-          },
-          { 
-            name: "Tedorigawa Yamahai Junmai", 
-            brewery: "Yoshida Shuzo", 
-            price: 42, 
-            category: "Yamahai Junmai", 
-            region: "Ishikawa",
-            image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/tedorigawa-yamahai-junmai-720ml-178542.jpg",
-            url: "https://www.tippsy.com/products/tedorigawa-yamahai-junmai",
-            description: "Rich umami, traditional brewing method. Great warm."
-          },
-          { 
-            name: "Dewazakura Oka Ginjo", 
-            brewery: "Dewazakura Brewery", 
-            price: 28, 
-            category: "Ginjo", 
-            region: "Yamagata",
-            image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/dewazakura-oka-ginjo-720ml-702177.jpg",
-            url: "https://www.tippsy.com/products/dewazakura-oka-ginjo",
-            description: "Fruity and aromatic. Excellent value ginjo."
-          },
-          { 
-            name: "Born Tokusen Junmai Daiginjo", 
-            brewery: "Katoukichibee Shouten", 
-            price: 55, 
-            category: "Junmai Daiginjo", 
-            region: "Fukui",
-            image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/born-tokusen-junmai-daiginjo-720ml.jpg",
-            url: "https://www.tippsy.com/products/born-tokusen",
-            description: "Aged sake with complex, nutty flavors. Wine lovers' favorite."
-          },
-        ]
-        
-        let filtered = products
-        if (maxPrice) filtered = filtered.filter(p => p.price <= maxPrice)
-        if (category) filtered = filtered.filter(p => p.category.toLowerCase().includes(category.toLowerCase()))
-        
-        return JSON.stringify({ 
-          products: filtered.slice(0, 3), 
-          query,
-          displayInstructions: "Show each product as a card with image, name, brewery, price, description. Include TWO buttons: 'View on Tippsy' (links to URL) and 'Save to Library' (calls save_to_library)."
-        })
+        try {
+          const products = await convex.action(api.embeddings.semanticSearch, {
+            query,
+            limit: 5,
+            priceRange: maxPrice ? { min: 0, max: maxPrice } : undefined,
+            category,
+          })
+          
+          const formatted = products.map((p: any) => ({
+            name: p.productName,
+            brewery: p.brewery,
+            price: p.price,
+            category: p.category,
+            region: p.prefecture || p.region,
+            image: p.imageUrl,
+            url: p.productUrl,
+            description: p.tasteProfile || p.description,
+          }))
+          
+          return JSON.stringify({ 
+            products: formatted.slice(0, 3), 
+            query,
+            displayInstructions: "Show each product as a card with image, name, brewery, price, description. Include TWO buttons: 'View on Tippsy' (links to URL) and 'Save to Library' (calls save_to_library)."
+          })
+        } catch (error) {
+          console.error("Search error:", error)
+          return JSON.stringify({ products: [], query, error: "Search temporarily unavailable" })
+        }
       },
       strict: true,
     },
@@ -114,7 +74,6 @@ export const tools: RunnableToolFunctionWithParse<any>[] = [
         required: ["name", "brewery", "price", "category", "region", "image", "url"],
       },
       function: async (sake: any) => {
-        // This will be handled client-side via Convex
         return JSON.stringify({ 
           action: "save_to_library",
           sake,
@@ -136,7 +95,6 @@ export const tools: RunnableToolFunctionWithParse<any>[] = [
         required: [],
       },
       function: async () => {
-        // This will be handled client-side via Convex
         return JSON.stringify({ 
           action: "get_library",
           displayInstructions: "Display the user's saved sake as cards with images. If empty, suggest some sake to save."
@@ -149,7 +107,7 @@ export const tools: RunnableToolFunctionWithParse<any>[] = [
     type: "function",
     function: {
       name: "get_wine_to_sake_recommendation",
-      description: "Translate wine preferences to sake. Use when user mentions wine types like Pinot Noir, Chardonnay, Burgundy. Returns sake recommendations with images and links.",
+      description: "Translate wine preferences to sake. Use when user mentions wine types like Pinot Noir, Chardonnay, Burgundy.",
       parse: (input: string) => JSON.parse(input),
       parameters: {
         type: "object",
@@ -159,80 +117,47 @@ export const tools: RunnableToolFunctionWithParse<any>[] = [
         required: ["wineType"],
       },
       function: async ({ wineType }: { wineType: string }) => {
-        const mappings: Record<string, any> = {
-          "pinot noir": { 
-            recommendation: "Koshu (aged sake) or Yamahai Junmai", 
-            reasoning: "Earthy, savory notes similar to Burgundy Pinot", 
-            temperature: "Room temp or slightly warm (35-40°C)",
-            products: [
-              { name: "Tedorigawa Yamahai", price: 42, image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/tedorigawa-yamahai-junmai-720ml-178542.jpg", url: "https://www.tippsy.com/products/tedorigawa-yamahai-junmai" },
-              { name: "Born Tokusen", price: 55, image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/born-tokusen-junmai-daiginjo-720ml.jpg", url: "https://www.tippsy.com/products/born-tokusen" }
-            ]
-          },
-          "chardonnay": { 
-            recommendation: "Junmai or Kimoto/Yamahai", 
-            reasoning: "Fuller body, umami-rich like oaked Chardonnay", 
-            temperature: "Room temp or slightly chilled",
-            products: [
-              { name: "Hakkaisan Tokubetsu", price: 35, image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/hakkaisan-tokubetsu-junmai-720ml-412883.jpg", url: "https://www.tippsy.com/products/hakkaisan-tokubetsu-junmai" }
-            ]
-          },
-          "sauvignon blanc": { 
-            recommendation: "Junmai Ginjo or Daiginjo", 
-            reasoning: "Light, aromatic, crisp finish like SB", 
-            temperature: "Chilled (10-15°C)",
-            products: [
-              { name: "Dewazakura Oka", price: 28, image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/dewazakura-oka-ginjo-720ml-702177.jpg", url: "https://www.tippsy.com/products/dewazakura-oka-ginjo" },
-              { name: "Dassai 23", price: 85, image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/dassai-23-junmai-daiginjo-720ml-702177.jpg", url: "https://www.tippsy.com/products/dassai-23" }
-            ]
-          },
-          "cabernet": { 
-            recommendation: "Yamahai or Kimoto Junmai", 
-            reasoning: "Robust, full-bodied with structure", 
-            temperature: "Room temp or warm (40-45°C)",
-            products: [
-              { name: "Tedorigawa Yamahai", price: 42, image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/tedorigawa-yamahai-junmai-720ml-178542.jpg", url: "https://www.tippsy.com/products/tedorigawa-yamahai-junmai" }
-            ]
-          },
-          "burgundy": { 
-            recommendation: "Koshu or elegant Junmai Ginjo", 
-            reasoning: "Elegance and complexity like fine Burgundy", 
-            temperature: "Room temp",
-            products: [
-              { name: "Kubota Manju", price: 65, image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/kubota-manju-junmai-daiginjo-720ml-825991.jpg", url: "https://www.tippsy.com/products/kubota-manju" },
-              { name: "Born Tokusen", price: 55, image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/born-tokusen-junmai-daiginjo-720ml.jpg", url: "https://www.tippsy.com/products/born-tokusen" }
-            ]
-          },
-          "champagne": { 
-            recommendation: "Sparkling Sake", 
-            reasoning: "Celebratory, effervescent experience", 
-            temperature: "Well chilled (5-8°C)",
-            products: [
-              { name: "Hakkaisan Awa", price: 45, image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/hakkaisan-awa-sparkling-360ml.jpg", url: "https://www.tippsy.com/products/hakkaisan-awa" }
-            ]
-          },
-        }
-        
-        const key = wineType.toLowerCase()
-        for (const [wine, data] of Object.entries(mappings)) {
-          if (key.includes(wine)) {
-            return JSON.stringify({ 
-              wineType, 
-              ...data,
+        try {
+          // Query wine-to-sake knowledge from Convex
+          const results = await convex.action(api.wineToSake.searchWineToSake, { query: wineType, limit: 1 })
+          
+          if (results.length > 0) {
+            const match = results[0]
+            // Also get matching products from database
+            const products = await convex.action(api.embeddings.semanticSearch, {
+              query: `${match.sakeRecommendation} ${match.sakeCharacteristics}`,
+              limit: 2,
+            })
+            
+            const formatted = products.map((p: any) => ({
+              name: p.productName,
+              price: p.price,
+              image: p.imageUrl,
+              url: p.productUrl,
+            }))
+            
+            return JSON.stringify({
+              wineType,
+              recommendation: match.sakeRecommendation,
+              reasoning: match.whyItWorks,
+              temperature: match.servingTemperature,
+              products: formatted,
               displayInstructions: "Show the recommendation with reasoning, then display product cards with images and 'View on Tippsy' links."
             })
           }
+          
+          // Fallback for unknown wine types
+          return JSON.stringify({ 
+            wineType, 
+            recommendation: "Junmai Ginjo", 
+            reasoning: "Versatile choice for wine lovers - aromatic and balanced",
+            temperature: "Chilled to room temp",
+            products: []
+          })
+        } catch (error) {
+          console.error("Wine-to-sake error:", error)
+          return JSON.stringify({ wineType, recommendation: "Junmai Ginjo", reasoning: "Versatile choice for wine lovers" })
         }
-        
-        return JSON.stringify({ 
-          wineType, 
-          recommendation: "Junmai Ginjo", 
-          reasoning: "Versatile choice for wine lovers", 
-          temperature: "Chilled to room temp",
-          products: [
-            { name: "Dewazakura Oka", price: 28, image: "https://cdn.shopify.com/s/files/1/0274/5742/5270/products/dewazakura-oka-ginjo-720ml-702177.jpg", url: "https://www.tippsy.com/products/dewazakura-oka-ginjo" }
-          ]
-        })
       },
       strict: true,
     },
@@ -325,88 +250,46 @@ export const tools: RunnableToolFunctionWithParse<any>[] = [
         required: ["food"],
       },
       function: async ({ food }: { food: string }) => {
-        const pairings: Record<string, any> = {
-          "fried chicken": {
-            goal: "Cut through richness and complement savory flavors",
-            bestStyles: ["Kimoto/Yamahai (higher acidity, earthy)", "Honjozo (crisp palate cleanser)", "Sparkling Sake (carbonation lifts richness)"],
-            example: "Southern fried chicken → Yamahai Junmai; Japanese karaage → Crisp Honjozo",
-            products: [{ name: "Tedorigawa Yamahai", price: 42, url: "https://www.tippsy.com/products/tedorigawa-yamahai-junmai" }]
-          },
-          "steak": {
-            goal: "Match smoky, robust flavors of the meat",
-            bestStyles: ["Junmai (full-bodied, umami)", "Kimoto/Yamahai (robust, earthy)", "Genshu (intense, higher alcohol)"],
-            example: "Grilled ribeye with soy garlic → Room-temp Junmai",
-            products: [{ name: "Hakkaisan Tokubetsu", price: 35, url: "https://www.tippsy.com/products/hakkaisan-tokubetsu-junmai" }]
-          },
-          "bbq": {
-            goal: "Stand up to bold sauces and smoky flavors",
-            bestStyles: ["Yamahai (robust, earthy)", "Genshu (powerful)", "Junmai (savory)"],
-            example: "BBQ ribs → Bold Yamahai; Burgers → Genshu",
-            products: [{ name: "Tedorigawa Yamahai", price: 42, url: "https://www.tippsy.com/products/tedorigawa-yamahai-junmai" }]
-          },
-          "spicy": {
-            goal: "Tame heat and complement aromatic spices",
-            bestStyles: ["Nigori (creamy sweetness soothes heat)", "Fruity Ginjo (balances heat)", "Low-alcohol sake"],
-            example: "Thai curry → Sweet Nigori; Korean kimchi → Fruity Junmai Ginjo",
-            products: [{ name: "Dewazakura Oka", price: 28, url: "https://www.tippsy.com/products/dewazakura-oka-ginjo" }]
-          },
-          "cheese": {
-            goal: "Complement salty, creamy, funky flavors",
-            bestStyles: ["Junmai (savory, versatile)", "Koshu (nutty, for blue cheese)", "Kimoto/Yamahai (earthy)"],
-            example: "Aged cheddar → Junmai; Stilton/Roquefort → Koshu",
-            products: [{ name: "Born Tokusen", price: 55, url: "https://www.tippsy.com/products/born-tokusen" }]
-          },
-          "sushi": {
-            goal: "Enhance umami without overpowering delicate fish",
-            bestStyles: ["Daiginjo/Ginjo (elegant, fragrant)", "Dry Junmai (mineral, umami)", "Honjozo (clean)"],
-            example: "Sashimi → Junmai Daiginjo; Oysters → Mineral Junmai",
-            products: [{ name: "Dassai 23", price: 85, url: "https://www.tippsy.com/products/dassai-23" }]
-          },
-          "seafood": {
-            goal: "Enhance umami, no metallic off-notes",
-            bestStyles: ["Daiginjo (delicate raw fish)", "Dry Junmai (shellfish)", "Honjozo (cooked fish)"],
-            example: "Raw oysters → Crisp Junmai; Toro sashimi → Junmai Daiginjo",
-            products: [{ name: "Kubota Manju", price: 65, url: "https://www.tippsy.com/products/kubota-manju" }]
-          },
-          "pizza": {
-            goal: "Complement umami of cheese and tomatoes",
-            bestStyles: ["Junmai (umami matches tomato/cheese)", "Sparkling (refreshing contrast)", "Kimoto (for creamy toppings)"],
-            example: "Pepperoni pizza → Room-temp Junmai; Margherita → Sparkling Sake",
-            products: [{ name: "Hakkaisan Tokubetsu", price: 35, url: "https://www.tippsy.com/products/hakkaisan-tokubetsu-junmai" }]
-          },
-          "pasta": {
-            goal: "Balance richness of sauces",
-            bestStyles: ["Junmai (tomato-based)", "Kimoto/Yamahai (creamy sauces)", "Sparkling (light pasta)"],
-            example: "Carbonara → Kimoto; Mushroom pasta → Earthy Junmai",
-            products: [{ name: "Tedorigawa Yamahai", price: 42, url: "https://www.tippsy.com/products/tedorigawa-yamahai-junmai" }]
-          },
-          "chocolate": {
-            goal: "Match sweetness and richness",
-            bestStyles: ["Koshu (nutty, caramelized)", "Sweet Nigori"],
-            example: "Dark chocolate torte → Koshu (luxurious!)",
-            products: [{ name: "Born Tokusen", price: 55, url: "https://www.tippsy.com/products/born-tokusen" }]
-          },
-        }
-        
-        const foodLower = food.toLowerCase()
-        for (const [key, data] of Object.entries(pairings)) {
-          if (foodLower.includes(key)) {
+        try {
+          // Query food pairing knowledge from Convex
+          const results = await convex.action(api.foodPairing.searchFoodPairing, { query: food, limit: 1 })
+          
+          if (results.length > 0) {
+            const match = results[0]
+            // Get matching products
+            const products = await convex.action(api.embeddings.semanticSearch, {
+              query: match.bestStyles.join(" "),
+              limit: 2,
+            })
+            
+            const formatted = products.map((p: any) => ({
+              name: p.productName,
+              price: p.price,
+              url: p.productUrl,
+            }))
+            
             return JSON.stringify({
               food,
-              ...data,
+              goal: match.pairingGoal,
+              bestStyles: match.bestStyles,
+              example: match.examplePairings,
+              products: formatted,
               displayInstructions: "Show pairing goal, recommended sake styles as a list, and example pairings. Include product card if available."
             })
           }
+          
+          // Default response
+          return JSON.stringify({
+            food,
+            goal: "Match intensity and complement flavors",
+            bestStyles: ["Junmai (versatile, savory)", "Ginjo (aromatic, lighter dishes)", "Yamahai (rich, hearty dishes)"],
+            tip: "General rule: If it pairs well with steamed rice, it pairs well with sake!",
+            displayInstructions: "Provide general pairing guidance based on the food's characteristics."
+          })
+        } catch (error) {
+          console.error("Food pairing error:", error)
+          return JSON.stringify({ food, bestStyles: ["Junmai", "Ginjo"], tip: "Match intensity of food with sake body." })
         }
-        
-        // Default response for unknown foods
-        return JSON.stringify({
-          food,
-          goal: "Match intensity and complement flavors",
-          bestStyles: ["Junmai (versatile, savory)", "Ginjo (aromatic, lighter dishes)", "Yamahai (rich, hearty dishes)"],
-          tip: "General rule: If it pairs well with steamed rice, it pairs well with sake!",
-          displayInstructions: "Provide general pairing guidance based on the food's characteristics."
-        })
       },
       strict: true,
     },

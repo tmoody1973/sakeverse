@@ -146,6 +146,7 @@ export function KikiChat() {
           <C1Chat 
             apiUrl="/api/c1/chat"
             agentName="Kiki"
+            logoUrl="/kiki-avatar.png"
             onAction={handleAction}
           />
         </ThemeProvider>

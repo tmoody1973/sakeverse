@@ -1,4 +1,6 @@
-import { mutation } from "./_generated/server"
+import { mutation, action, internalQuery } from "./_generated/server"
+import { internal } from "./_generated/api"
+import { v } from "convex/values"
 
 // Import food pairing knowledge chunks
 export const importFoodPairingKnowledge = mutation({
@@ -170,3 +172,121 @@ Green salad with citrus vinaigrette → Light fruity Junmai Ginjo (refreshing co
     return { success: true, imported, total: chunks.length }
   },
 })
+
+
+// Search food pairing knowledge
+export const searchFoodPairing = action({
+  args: { 
+    query: v.string(),
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, { query, limit = 3 }): Promise<any[]> => {
+    try {
+      // Generate embedding for query
+      const response = await fetch("https://api.openai.com/v1/embeddings", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "text-embedding-ada-002",
+          input: query,
+        }),
+      })
+      
+      if (!response.ok) throw new Error("Embedding API error")
+      
+      const data = await response.json()
+      const embedding = data.data[0].embedding
+      
+      // Vector search on knowledge chunks
+      const results = await ctx.vectorSearch("knowledgeChunks", "by_embedding", {
+        vector: embedding,
+        limit: limit * 2,
+        filter: (q: any) => q.eq("category", "food-pairing"),
+      })
+      
+      // Fetch full documents
+      const chunks: any[] = await ctx.runQuery(internal.foodPairing.fetchFoodPairingChunks, {
+        ids: results.map(r => r._id)
+      })
+      
+      // Parse content into structured format
+      return chunks.slice(0, limit).map((chunk: any) => ({
+        topic: chunk.topic,
+        pairingGoal: extractPairingGoal(chunk.content),
+        bestStyles: extractBestStyles(chunk.content),
+        examplePairings: extractExamples(chunk.content),
+        content: chunk.content,
+      }))
+      
+    } catch (error) {
+      console.error("Food pairing search error:", error)
+      // Fallback to keyword search
+      return await ctx.runQuery(internal.foodPairing.keywordSearchFoodPairing, { query, limit })
+    }
+  },
+})
+
+// Helper to fetch chunks by ID
+export const fetchFoodPairingChunks = internalQuery({
+  args: { ids: v.array(v.id("knowledgeChunks")) },
+  handler: async (ctx, { ids }) => {
+    const results = []
+    for (const id of ids) {
+      const chunk = await ctx.db.get(id)
+      if (chunk) results.push(chunk)
+    }
+    return results
+  },
+})
+
+// Keyword fallback search
+export const keywordSearchFoodPairing = internalQuery({
+  args: { query: v.string(), limit: v.number() },
+  handler: async (ctx, { query, limit }) => {
+    const chunks = await ctx.db
+      .query("knowledgeChunks")
+      .filter((q) => q.eq(q.field("category"), "food-pairing"))
+      .collect()
+    
+    const queryLower = query.toLowerCase()
+    const matches = chunks.filter(chunk => 
+      chunk.keywords.some((k: string) => k.toLowerCase().includes(queryLower)) ||
+      chunk.topic.toLowerCase().includes(queryLower) ||
+      chunk.content.toLowerCase().includes(queryLower)
+    )
+    
+    return matches.slice(0, limit).map(chunk => ({
+      topic: chunk.topic,
+      pairingGoal: extractPairingGoal(chunk.content),
+      bestStyles: extractBestStyles(chunk.content),
+      examplePairings: extractExamples(chunk.content),
+      content: chunk.content,
+    }))
+  },
+})
+
+// Helper functions to parse content
+function extractPairingGoal(content: string): string {
+  const match = content.match(/Pairing Goal:\s*([^\n]+)/i)
+  return match ? match[1].trim() : "Match intensity and complement flavors"
+}
+
+function extractBestStyles(content: string): string[] {
+  const styles: string[] = []
+  const lines = content.split('\n')
+  for (const line of lines) {
+    if (line.match(/^-\s*(JUNMAI|GINJO|DAIGINJO|HONJOZO|NIGORI|KIMOTO|YAMAHAI|KOSHU|SPARKLING)/i)) {
+      const match = line.match(/^-\s*([^:]+)/)
+      if (match) styles.push(match[1].trim())
+    }
+  }
+  return styles.length > 0 ? styles : ["Junmai", "Ginjo"]
+}
+
+function extractExamples(content: string): string {
+  const match = content.match(/Example:\s*([^\n]+)/i)
+  return match ? match[1].trim() : ""
+}

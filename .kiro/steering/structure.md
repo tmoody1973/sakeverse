@@ -2,96 +2,80 @@
 
 ## Directory Layout
 ```
-sakéverse/
-├── app/                          # Next.js App Router pages and layouts
-│   ├── (auth)/                   # Authentication routes
-│   ├── api/                      # API routes and webhooks
-│   ├── dashboard/                # Main application dashboard
-│   ├── map/                      # Interactive brewery map
-│   ├── learning/                 # Badge system and certifications
-│   └── voice/                    # Voice chat interface
-├── components/                   # Reusable React components
-│   ├── ui/                       # Base UI components (shadcn/ui)
-│   ├── voice/                    # Voice interaction components
-│   ├── map/                      # Map-related components
-│   └── learning/                 # Learning system components
-├── lib/                          # Utility functions and configurations
-│   ├── convex.ts                 # Convex client configuration
-│   ├── clerk.ts                  # Clerk authentication setup
-│   ├── openai.ts                 # OpenAI Realtime API client
-│   ├── thesys.ts                 # Thesys C1 integration
-│   └── utils.ts                  # General utilities
-├── convex/                       # Convex backend functions
-│   ├── schema.ts                 # Database schema definitions
-│   ├── users.ts                  # User management functions
-│   ├── sake.ts                   # Sake catalog functions
-│   ├── voice.ts                  # Voice interaction handlers
-│   ├── podcasts.ts               # Podcast generation functions
-│   ├── crons.ts                  # Scheduled data sync jobs
-│   └── _generated/               # Auto-generated Convex files
-├── public/                       # Static assets
-│   ├── sake-images/              # Sake bottle images
-│   ├── brewery-logos/            # Brewery logos and assets
-│   └── audio/                    # Generated podcast files
-├── types/                        # TypeScript type definitions
-│   ├── sake.ts                   # Sake-related types
-│   ├── voice.ts                  # Voice interaction types
-│   └── user.ts                   # User profile types
-├── hooks/                        # Custom React hooks
-│   ├── useVoiceChat.ts           # Voice interaction hook
-│   ├── useConvex.ts              # Convex data hooks
-│   └── useAuth.ts                # Authentication hooks
-└── .kiro/                        # Kiro CLI configuration
+sakeverse/
+├── app/                          # Next.js App Router
+│   ├── page.tsx                  # Home dashboard
+│   ├── layout.tsx                # Root layout with providers
+│   ├── globals.css               # RetroUI styles
+│   ├── kiki/                     # Voice chat interface
+│   │   └── page.tsx
+│   ├── library/                  # Saved sake library
+│   │   ├── page.tsx
+│   │   └── LibraryContent.tsx
+│   └── api/c1/chat/              # C1 API route
+│       ├── route.ts              # Streaming handler with tools
+│       ├── tools.ts              # Tool definitions
+│       ├── systemPrompt.ts       # Kiki personality
+│       └── messageStore.ts       # Conversation history
+├── components/
+│   ├── ui/                       # RetroUI base components
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   ├── Badge.tsx
+│   │   └── Input.tsx
+│   ├── voice/                    # Voice/chat components
+│   │   ├── KikiChat.tsx          # C1Chat + voice overlay
+│   │   ├── VoiceChat.tsx         # Legacy voice component
+│   │   ├── VoiceControls.tsx     # Mic button, status
+│   │   ├── ChatBubble.tsx        # Message display
+│   │   └── C1Message.tsx         # Dynamic UI renderer
+│   └── layout/
+│       ├── Header.tsx            # Navigation header
+│       └── BottomNav.tsx         # Mobile navigation
+├── convex/                       # Backend functions
+│   ├── schema.ts                 # Database schema
+│   ├── sake.ts                   # Product queries
+│   ├── embeddings.ts             # Vector search
+│   ├── wineToSake.ts             # Wine preference RAG
+│   ├── foodPairing.ts            # Food pairing RAG
+│   ├── geminiRAG.ts              # PDF knowledge search
+│   ├── perplexityAPI.ts          # Live web search
+│   ├── userLibrary.ts            # Save/remove sake
+│   ├── users.ts                  # User management
+│   └── importTippsy.ts           # Data import
+├── hooks/
+│   ├── useVoiceChat.ts           # OpenAI Realtime integration
+│   └── useVoiceToC1.ts           # Voice-to-C1 bridge
+├── lib/
+│   ├── convex.tsx                # Convex provider
+│   ├── utils.ts                  # Utility functions
+│   └── thesys/
+│       ├── client.ts             # C1 API client
+│       └── prompts.ts            # System prompts
+└── .kiro/
     ├── steering/                 # Project documentation
-    └── prompts/                  # Custom development prompts
+    │   ├── product.md
+    │   ├── tech.md
+    │   └── structure.md
+    └── prompts/                  # 18 custom prompts
 ```
 
 ## File Naming Conventions
-**Components**: PascalCase (e.g., `VoiceChat.tsx`, `SakeCard.tsx`)
-**Pages**: kebab-case (e.g., `sake-discovery.tsx`, `brewery-map.tsx`)
-**Utilities**: camelCase (e.g., `formatSakeName.ts`, `calculateTastingNotes.ts`)
-**Types**: PascalCase interfaces (e.g., `SakeProfile`, `VoiceSession`)
-**Hooks**: camelCase with "use" prefix (e.g., `useVoiceChat`, `useSakeRecommendations`)
+- **Components**: PascalCase (`KikiChat.tsx`, `VoiceControls.tsx`)
+- **Hooks**: camelCase with "use" prefix (`useVoiceChat.ts`)
+- **Convex functions**: camelCase (`wineToSake.ts`, `foodPairing.ts`)
+- **API routes**: `route.ts` in directory structure
 
-## Module Organization
-**Feature-Based Structure**: Each major feature (voice, map, learning) has its own component directory
-**Shared Components**: Common UI elements in `/components/ui`
-**Business Logic**: Custom hooks for complex state management
-**API Layer**: Convex functions organized by domain (users, sake, voice, podcasts)
-**Type Safety**: Centralized type definitions with domain-specific files
+## Key Files
+- `app/api/c1/chat/route.ts`: Main C1 endpoint with tool calling
+- `hooks/useVoiceChat.ts`: OpenAI Realtime WebRTC integration
+- `components/voice/KikiChat.tsx`: Primary chat interface
+- `convex/schema.ts`: All database table definitions
+- `convex/embeddings.ts`: Vector search implementation
 
 ## Configuration Files
-**Next.js**: `next.config.js` - App Router configuration, API routes, image optimization
-**Convex**: `convex.json` - Backend configuration, environment variables
-**TypeScript**: `tsconfig.json` - Strict mode, path aliases, Next.js integration
-**Tailwind**: `tailwind.config.js` - Custom theme, component classes
-**ESLint**: `.eslintrc.json` - Code quality rules, Next.js and React hooks
-**Clerk**: Environment variables for authentication configuration
-**OpenAI**: API keys and Realtime API configuration
-**Mapbox**: GL configuration and style customization
-
-## Documentation Structure
-**README.md**: Project overview, setup instructions, architecture summary
-**DEVLOG.md**: Development timeline, decisions, challenges, and learnings
-**API Documentation**: Convex function documentation with JSDoc comments
-**Component Documentation**: Storybook stories for UI components
-**Voice API Documentation**: OpenAI Realtime API integration patterns
-
-## Asset Organization
-**Images**: Organized by type (sake bottles, brewery logos, UI assets)
-**Audio**: Generated podcasts stored in Convex file storage
-**Fonts**: Custom Japanese typography for sake names and descriptions
-**Icons**: SVG icons for sake types, temperature recommendations, and UI elements
-**Maps**: Mapbox style configurations and custom brewery markers
-
-## Build Artifacts
-**Next.js Build**: `.next/` directory with optimized production assets
-**TypeScript Compilation**: Type checking and compilation artifacts
-**Convex Deployment**: Backend functions deployed to Convex cloud
-**Static Assets**: Optimized images and compressed audio files
-
-## Environment-Specific Files
-**Development**: Local Convex development server, hot reload, debug logging
-**Staging**: Preview deployments with test data and limited API quotas
-**Production**: Optimized builds, CDN assets, production API keys, monitoring
-**Environment Variables**: Secure API key management for all third-party services
+- `next.config.js`: Next.js 15 with `serverExternalPackages: ['convex']`
+- `tailwind.config.js`: RetroUI theme with cherry blossom colors
+- `convex.json`: Convex deployment configuration
+- `.env.local`: API keys (OpenAI, Thesys, Clerk)
+- Convex env vars: OPENAI_API_KEY, GEMINI_API_KEY, PERPLEXITY_API_KEY
