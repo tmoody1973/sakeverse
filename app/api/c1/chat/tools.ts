@@ -36,15 +36,15 @@ export const tools: RunnableToolFunctionWithParse<any>[] = [
             price: p.price,
             category: p.category,
             region: p.prefecture || p.region,
-            image: p.imageUrl,
-            url: p.productUrl,
+            image: p.images?.[0] || '',
+            url: p.url,
             description: p.tasteProfile || p.description,
           }))
           
           return JSON.stringify({ 
             products: formatted.slice(0, 3), 
             query,
-            displayInstructions: "Show each product as a card with image, name, brewery, price, description. Include TWO buttons: 'View on Tippsy' (links to URL) and 'Save to Library' (calls save_to_library)."
+            displayInstructions: "Show each product as a card with image, name, brewery, price, description. Include THREE buttons: 'View on Tippsy' (links to URL), 'Save to Library' (save_to_library action), and 'More Details' (get_sake_details action)."
           })
         } catch (error) {
           console.error("Search error:", error)
@@ -132,8 +132,8 @@ export const tools: RunnableToolFunctionWithParse<any>[] = [
             const formatted = products.map((p: any) => ({
               name: p.productName,
               price: p.price,
-              image: p.imageUrl,
-              url: p.productUrl,
+              image: p.images?.[0] || '',
+              url: p.url,
             }))
             
             return JSON.stringify({
@@ -289,6 +289,67 @@ export const tools: RunnableToolFunctionWithParse<any>[] = [
         } catch (error) {
           console.error("Food pairing error:", error)
           return JSON.stringify({ food, bestStyles: ["Junmai", "Ginjo"], tip: "Match intensity of food with sake body." })
+        }
+      },
+      strict: true,
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_sake_details",
+      description: "Get detailed information about a specific sake. Use when user clicks 'More Details' on a product card or asks for more info about a sake.",
+      parse: (input: string) => JSON.parse(input),
+      parameters: {
+        type: "object",
+        properties: {
+          sakeName: { type: "string", description: "Name of the sake to get details for" },
+        },
+        required: ["sakeName"],
+      },
+      function: async ({ sakeName }: { sakeName: string }) => {
+        try {
+          const products = await convex.action(api.embeddings.semanticSearch, {
+            query: sakeName,
+            limit: 1,
+          })
+          
+          if (products.length > 0) {
+            const p = products[0]
+            return JSON.stringify({
+              name: p.productName,
+              brewery: p.brewery,
+              category: p.category,
+              subcategory: p.subcategory,
+              region: p.region,
+              prefecture: p.prefecture,
+              price: p.price,
+              size: p.size,
+              alcohol: p.alcohol,
+              smv: p.smv,
+              acidity: p.acidity,
+              ricePolishRatio: p.rpr,
+              riceVariety: p.riceVariety,
+              yeastVariety: p.yeastVariety,
+              tasteProfile: p.tasteProfile,
+              description: p.description,
+              tastingNotes: p.tastingNotes,
+              foodPairings: p.foodPairings,
+              servingTemperature: p.servingTemperature,
+              image: p.images?.[0] || '',
+              url: p.url,
+              displayInstructions: "Display comprehensive sake details in a well-formatted layout: Show image, then organized sections for Basics (brewery, region, price), Technical Specs (SMV, acidity, polish ratio, alcohol), Tasting Notes, Food Pairings, and Serving Temperature. Include 'View on Tippsy' and 'Save to Library' buttons."
+            })
+          }
+          
+          return JSON.stringify({ 
+            error: "Sake not found", 
+            sakeName,
+            suggestion: "Try searching for this sake or ask me about similar options."
+          })
+        } catch (error) {
+          console.error("Get sake details error:", error)
+          return JSON.stringify({ error: "Could not fetch details", sakeName })
         }
       },
       strict: true,

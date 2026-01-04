@@ -751,3 +751,114 @@ Each sake card now shows:
 6. **Product Integration**: Images + Tippsy purchase links
 
 ---
+
+
+## January 4, 2026 (Continued) - Voice Agent with Function Tools
+
+### 🎤 **OpenAI Realtime API GA Integration**
+
+**Time**: 11:10 AM - 11:40 AM  
+**Focus**: Voice agent with direct tool calling for sake search
+
+#### **✅ Realtime API GA Migration**
+- **Challenge**: API structure changed significantly from beta to GA
+- **Solution**: Used Context7 MCP to verify correct session.update format
+- **Key Changes**:
+  - `modalities` → `output_modalities` (only `['audio']` or `['text']` allowed)
+  - `voice` moved to `audio.output.voice`
+  - `turn_detection` moved to `audio.input.turn_detection`
+  - `session.type: 'realtime'` now required
+  - Event names: `response.audio.delta` → `response.output_audio.delta`
+
+#### **✅ Voice Function Tools**
+Implemented direct tool calling in Realtime API:
+```typescript
+const voiceTools = [
+  { name: 'search_sake', description: 'Search for sake products' },
+  { name: 'get_food_pairing', description: 'Get sake pairing for food' },
+  { name: 'wine_to_sake', description: 'Translate wine preferences' },
+]
+```
+
+#### **✅ Voice API Routes**
+Created lightweight API routes for voice tool calls:
+- `/api/voice/search` - Semantic search via Convex
+- `/api/voice/pairing` - Food pairing RAG
+- `/api/voice/wine-to-sake` - Wine preference translation
+
+#### **✅ Product Cards from Voice**
+- Voice search results now display as visual cards
+- Cards include: image, name, brewery, price, description
+- Action buttons: "Tippsy" (purchase link), "Save" (library)
+- Kiki says "I'm showing you the details on screen"
+
+#### **✅ Audio Playback Fixes**
+- Fixed overlapping audio with proper queuing
+- `nextPlayTimeRef` tracks scheduled playback time
+- Audio stops when user starts speaking
+- Audio queue clears on new response
+
+### **🏗️ Architecture: Option 1 (Direct Tools)**
+
+```
+User speaks → OpenAI Realtime API
+                    ↓
+            Voice transcription
+                    ↓
+            Tool call detected?
+            ├── Yes → Execute tool
+            │         ├── search_sake → /api/voice/search → Convex
+            │         ├── get_food_pairing → /api/voice/pairing → RAG
+            │         └── wine_to_sake → /api/voice/wine-to-sake → RAG
+            │         ↓
+            │   Return result to Realtime API
+            │         ↓
+            │   Kiki speaks response + UI cards appear
+            │
+            └── No → Direct voice response
+```
+
+### **📊 Technical Details**
+
+**Session Configuration (GA Format)**:
+```typescript
+{
+  type: 'session.update',
+  session: {
+    type: 'realtime',
+    model: 'gpt-realtime',
+    output_modalities: ['audio'],
+    instructions: 'You are Kiki...',
+    tools: voiceTools,
+    tool_choice: 'auto',
+    audio: {
+      input: {
+        format: { type: 'audio/pcm', rate: 24000 },
+        turn_detection: { type: 'semantic_vad' }
+      },
+      output: {
+        format: { type: 'audio/pcm', rate: 24000 },
+        voice: 'alloy'
+      }
+    }
+  }
+}
+```
+
+**Tool Call Handling**:
+```typescript
+case 'response.function_call_arguments.done':
+  handleToolCall(data.name, JSON.parse(data.arguments), data.call_id)
+  // → Fetch from API → setVoiceProducts() → Send result back
+```
+
+### **⏱️ Session Stats**
+- **Duration**: 30 minutes
+- **Context7 Usage**: Verified Realtime API GA format
+- **Errors Resolved**: 
+  - `session.type` required
+  - `modalities` → `output_modalities`
+  - Audio format rate required
+  - Invalid modality combinations
+
+**Status**: Voice agent with function tools working ✅

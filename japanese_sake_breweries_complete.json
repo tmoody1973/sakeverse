@@ -1,0 +1,1308 @@
+{
+  "metadata": {
+    "title": "Japanese Sake Breweries Database",
+    "description": "Comprehensive database of sake breweries across Japan",
+    "total_breweries_in_japan": "Approximately 1,168-1,400 active breweries as of 2019-2024",
+    "compilation_date": "2026-01-04",
+    "data_sources": [
+      "Japan Sake and Shochu Makers Association (JSS)",
+      "Tokyo Sake Brewers Association",
+      "Regional Sake Associations",
+      "Individual Brewery Websites",
+      "Tippsy Sake Product Database"
+    ],
+    "notes": "This database contains verified information from multiple sources including detailed product information from Tippsy."
+  },
+  "breweries": [
+    {
+      "brewery_name": "Otokoyama Sake Brewery",
+      "japanese_name": "男山酒造",
+      "prefecture": "Hokkaido",
+      "address": "1 Migi, 17 Miyashitadori, Asahikawa city, Hokkaido 070-0030",
+      "phone": "+81-166-23-2251",
+      "region": "Hokkaido",
+      "main_brands": [
+        "Otokoyama"
+      ],
+      "products_count": 2,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Hiraizumi Honpo Co., Ltd.",
+      "japanese_name": "飛良泉本舗",
+      "prefecture": "Akita",
+      "address": "59 Nakamachi, Hirasawa, Nikaho City, Akita",
+      "phone": "+81-184-35-2031",
+      "foundation_year": 1487,
+      "region": "Tohoku",
+      "main_brands": [
+        "Hiraizumi"
+      ],
+      "website": "http://www.hiraizumi.co.jp"
+    },
+    {
+      "brewery_name": "Kodama Brewing",
+      "japanese_name": "小玉醸造",
+      "prefecture": "Akita",
+      "address": "6-37 Aramachi, Noshiro city, Akita 016-0804",
+      "phone": "+81-185-52-2271",
+      "foundation_year": 1879,
+      "region": "Tohoku",
+      "main_brands": [
+        "Tenko"
+      ],
+      "website": "https://www.kodamajozo.co.jp",
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Daishichi Sake Brewery",
+      "japanese_name": "大七酒造",
+      "prefecture": "Fukushima",
+      "address": "1-66, Takeda, Nihonmatsu, Fukushima",
+      "phone": "+81-243-23-0007",
+      "foundation_year": 1752,
+      "region": "Tohoku",
+      "main_brands": [
+        "Daishichi"
+      ],
+      "website": "http://www.daishichi.com",
+      "products_count": 2,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Asahi Shuzo",
+      "japanese_name": "旭酒造",
+      "prefecture": "Yamaguchi",
+      "address": "3-18-9 Imazu, Iwakuni city, Yamaguchi 740-0017",
+      "phone": "+81-827-21-3185",
+      "website": "https://www.asahishuzo.ne.jp",
+      "region": "Chugoku",
+      "main_brands": [
+        "Dassai"
+      ]
+    },
+    {
+      "brewery_name": "Amabuki Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Saga prefecture",
+      "region": "Kyushu region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Amabuki"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Asamai Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Akita prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Amanoto"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Asabiraki",
+      "japanese_name": null,
+      "prefecture": "Iwate prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Asabiraki"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Katoukichibee Shouten",
+      "japanese_name": null,
+      "prefecture": "Fukui prefecture",
+      "region": "Hokuriku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Born"
+      ],
+      "history": null,
+      "products_count": 2,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Chiyomusubi Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Tottori",
+      "region": "Chugoku",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Chiyomusubi"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Kikunosato Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Tochigi prefecture",
+      "region": "Kanto region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Daina"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "DASSAI Inc.",
+      "japanese_name": null,
+      "prefecture": "Yamaguchi prefecture",
+      "region": "Chugoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "DASSAI",
+        "DASSAI Blue"
+      ],
+      "history": null,
+      "products_count": 7,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Niizawa Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Miyagi prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Date Seven",
+        "Reikyo",
+        "Zankyo"
+      ],
+      "history": null,
+      "products_count": 3,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Ippongi Kubohonten",
+      "japanese_name": null,
+      "prefecture": "Fukui prefecture",
+      "region": "Hokuriku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Denshin"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Fuji Brewing Company (Eiko)",
+      "japanese_name": null,
+      "prefecture": "Yamagata",
+      "region": "Tohoku",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Eiko Fuji"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Imada Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Hiroshima",
+      "region": "Chugoku",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Fukucho"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Tsuji Honten",
+      "japanese_name": null,
+      "prefecture": "Okayama prefecture",
+      "region": "Chugoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Gozenshu"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Hakkaisan Brewery Company",
+      "japanese_name": null,
+      "prefecture": "Niigata prefecture",
+      "region": "Hokuriku",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Hakkaisan"
+      ],
+      "history": null,
+      "products_count": 4,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Hakutsuru Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Hyogo prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Hakutsuru"
+      ],
+      "history": null,
+      "products_count": 5,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Nanbu Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Fukui",
+      "region": "Hokuriku",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Hanagaki"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Imanishi Seibee Shoten",
+      "japanese_name": null,
+      "prefecture": "Nara prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Harushika"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Konishi Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Hyogo prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "HEAVENSAKE"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Homare Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Fukushima prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Homare"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Sekiya Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Aichi",
+      "region": "Chubu",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Horaisen"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Ichinokura",
+      "japanese_name": null,
+      "prefecture": "Miyagi prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Ichinokura"
+      ],
+      "history": null,
+      "products_count": 2,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Shiraiwa K. K.",
+      "japanese_name": null,
+      "prefecture": "Toyama prefecture",
+      "region": "Hokuriku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "IWA"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Izumibashi Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Kanagawa prefecture",
+      "region": "Kanto region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Izumibashi"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Kiyashou Sake Brewery",
+      "japanese_name": null,
+      "prefecture": "Mie prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Jikon"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Shirataki Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Niigata prefecture",
+      "region": "Hokuriku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Jozen"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Toshimaya Honten",
+      "japanese_name": null,
+      "prefecture": "Tokyo prefecture",
+      "region": "Kanto region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Juemon"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Takagi Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Yamagata prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Juyondai"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Fukumitsuya",
+      "japanese_name": null,
+      "prefecture": "Ishikawa prefecture",
+      "region": "Hokuriku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Kagatobi"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Kamikokoro Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Okayama prefecture",
+      "region": "Chugoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Kamikokoro"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Katsuyama Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Miyagi prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Katsuyama"
+      ],
+      "history": null,
+      "products_count": 2,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Kenbishi Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Hyogo prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Kenbishi"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Kikumasamune Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Hyogo prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Kikumasamune"
+      ],
+      "history": null,
+      "products_count": 2,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Kikusui Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Niigata prefecture",
+      "region": "Hokuriku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Kikusui"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Kita Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Shiga prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Kirakucho"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Higashiyama Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Kyoto prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Konteki"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Asahi-Shuzo Sake Brewing Co., Ltd. (Kubota)",
+      "japanese_name": null,
+      "prefecture": "Niigata prefecture",
+      "region": "Hokuriku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Kubota"
+      ],
+      "history": null,
+      "products_count": 4,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Kamenoi Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Yamagata prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Kudoki Jozu"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Kurosawa Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Nagano prefecture",
+      "region": "Chubu region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Kurosawa"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Nakao Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Hiroshima prefecture",
+      "region": "Chugoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Maboroshi"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Hachinohe Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Aomori prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Mutsu Hassen"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Nanbu Bijin",
+      "japanese_name": null,
+      "prefecture": "Iwate prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Nanbu Bijin"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Ninki Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Fukushima prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Sake Godzilla"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Nishide Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Ishikawa prefecture",
+      "region": "Hokuriku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Nishide"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Okunomatsu Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Fukushima prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Okunomatsu"
+      ],
+      "history": null,
+      "products_count": 3,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Ozeki",
+      "japanese_name": null,
+      "prefecture": "Hyogo prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Ozeki"
+      ],
+      "history": null,
+      "products_count": 3,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Rihaku Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Shimane prefecture",
+      "region": "Chugoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Rihaku"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Nihonsakari",
+      "japanese_name": null,
+      "prefecture": "Hyogo prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Sakari"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Sawanotsuru",
+      "japanese_name": null,
+      "prefecture": "Hyogo prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Sawanotsuru"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Senkin Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Tochigi prefecture",
+      "region": "Kanto region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Senkin"
+      ],
+      "history": null,
+      "products_count": 2,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Tenzan Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Saga prefecture",
+      "region": "Kyushu region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Shichida"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Yamanashi Meijo",
+      "japanese_name": null,
+      "prefecture": "Yamanashi",
+      "region": "Chubu",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Shichiken"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Yamamoto Honke",
+      "japanese_name": null,
+      "prefecture": "Kyoto prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Shinsei"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Shirakabegura",
+      "japanese_name": null,
+      "prefecture": "Hyogo prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Shirakabegura"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Suigei Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Kochi prefecture",
+      "region": "Shikoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Suigei"
+      ],
+      "history": null,
+      "products_count": 3,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Tamanohikari Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Kyoto prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Tamanohikari"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Tatenokawa Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Yamagata prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Tatenokawa"
+      ],
+      "history": null,
+      "products_count": 2,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Yoshida Sake Brewery",
+      "japanese_name": null,
+      "prefecture": "Ishikawa prefecture",
+      "region": "Hokuriku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Tedorigawa"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Tentaka Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Tochigi",
+      "region": "Kanto",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Tentaka"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Kojima Sohonten",
+      "japanese_name": null,
+      "prefecture": "Yamagata prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Toko"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Rokka Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Aomori prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Torai"
+      ],
+      "history": null,
+      "products_count": 2,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Kizakura",
+      "japanese_name": null,
+      "prefecture": "Kyoto prefecture",
+      "region": "Kinki region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Tozai"
+      ],
+      "history": null,
+      "products_count": 2,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Tsukasabotan Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Kochi prefecture",
+      "region": "Shikoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Tsukasabotan"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Saura",
+      "japanese_name": null,
+      "prefecture": "Miyagi prefecture",
+      "region": "Tohoku region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Urakasumi"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Omuraya Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Shizuoka prefecture",
+      "region": "Chubu region",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Wakatake"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    },
+    {
+      "brewery_name": "Mioya Brewing Company",
+      "japanese_name": null,
+      "prefecture": "Ishikawa",
+      "region": "Hokuriku",
+      "address": null,
+      "phone": null,
+      "fax": null,
+      "email": null,
+      "website": null,
+      "foundation_year": null,
+      "main_brands": [
+        "Yuho"
+      ],
+      "history": null,
+      "products_count": 1,
+      "sake_types_produced": [],
+      "rice_varieties_used": []
+    }
+  ]
+}

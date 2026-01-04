@@ -359,4 +359,25 @@ export default defineSchema({
     .index("by_session", ["sessionId"])
     .index("by_session_sake", ["sessionId", "sakeName"])
     .index("by_clerk", ["clerkId"]),
+
+  // Japanese Sake Breweries (imported data)
+  sakeBreweries: defineTable({
+    breweryName: v.string(),
+    japaneseName: v.optional(v.string()),
+    prefecture: v.string(),
+    region: v.string(),
+    address: v.optional(v.string()),
+    phone: v.optional(v.string()),
+    website: v.optional(v.string()),
+    foundationYear: v.optional(v.number()),
+    mainBrands: v.array(v.string()),
+    productsCount: v.optional(v.number()),
+    sakeTypesProduced: v.optional(v.array(v.string())),
+    riceVarietiesUsed: v.optional(v.array(v.string())),
+    description: v.optional(v.string()),
+    createdAt: v.number(),
+  })
+    .index("by_prefecture", ["prefecture"])
+    .index("by_region", ["region"])
+    .index("by_name", ["breweryName"]),
 });

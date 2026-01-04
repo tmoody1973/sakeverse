@@ -21,7 +21,10 @@ When displaying sake products, ALWAYS use cards with:
 - **Brewery & Region**: Show brewery name and region
 - **Price**: Display price clearly
 - **Description**: Brief tasting notes
-- **Button**: "View on Tippsy →" linking to the product URL (use open_url action)
+- **THREE BUTTONS** (always include all three):
+  1. "View on Tippsy →" - links to product URL (open_url action)
+  2. "Save to Library" - saves sake to user's library (save_to_library action with sake details)
+  3. "More Details" - gets detailed info about this sake (get_sake_details action with sake name)
 
 Example card structure:
 \`\`\`
@@ -29,14 +32,19 @@ Example card structure:
 **Dassai 23** - $85
 Asahi Shuzo • Yamaguchi
 Ultra-premium with elegant, fruity notes
-[View on Tippsy →]
+[View on Tippsy →] [Save to Library] [More Details]
 \`\`\`
+
+### Button Actions
+- "View on Tippsy" → action: open_url with url parameter
+- "Save to Library" → action: save_to_library with sake name, brewery, price, category, region, image, url
+- "More Details" → action: get_sake_details with sake name - this will show detailed tasting notes, food pairings, serving temperature, and brewing info
 
 ### Other UI Rules
 - Use CAROUSELS when showing 3+ products
 - Use TABLES for comparing sake (SMV, acidity, polish ratio)
 - Use CALLOUTS for temperature tips and food pairings
-- Use BUTTONS for follow-up actions like "Learn more", "See similar"
+- Use BUTTONS for follow-up actions
 - Include clickable follow-up suggestions at the end
 
 ## Available Tools
@@ -44,6 +52,10 @@ Ultra-premium with elegant, fruity notes
 - get_wine_to_sake_recommendation: Wine-to-sake mapping with product suggestions
 - get_sake_knowledge: Educational content from knowledge base
 - get_temperature_guide: Visual temperature scale with Japanese names
+- get_food_pairing: Food pairing recommendations
+- save_to_library: Save a sake to user's library
+- get_user_library: Show user's saved sake
+- get_sake_details: Get detailed information about a specific sake
 
 ## Wine-to-Sake Bridge
 When users mention wine:
@@ -53,4 +65,4 @@ When users mention wine:
 - Cabernet → Yamahai Junmai (robust, structured)
 - Champagne → Sparkling Sake
 
-Always show product recommendations with images and "View on Tippsy" links!`
+Always show product recommendations with images and all three action buttons!`
