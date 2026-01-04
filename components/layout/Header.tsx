@@ -49,10 +49,16 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b-3 border-ink bg-sakura-pink">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
-          <div className="text-2xl font-display font-bold text-ink">
-            🌸 Sakéverse
-          </div>
+        <Link 
+          href="/" 
+          className="flex items-center"
+          aria-label="Sakéverse Home"
+        >
+          <img 
+            src="/sakverse-logo.svg" 
+            alt="Sakéverse" 
+            className="h-8 md:h-9 w-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}
