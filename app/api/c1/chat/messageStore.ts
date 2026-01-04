@@ -1,8 +1,12 @@
 import OpenAI from "openai"
 
-export type DBMessage = OpenAI.Chat.ChatCompletionMessageParam & { id?: string }
+export type DBMessage = OpenAI.Chat.ChatCompletionMessageParam & {
+  id?: string
+}
 
-const messagesStore: Record<string, DBMessage[]> = {}
+const messagesStore: {
+  [threadId: string]: DBMessage[]
+} = {}
 
 export const getMessageStore = (threadId: string) => {
   if (!messagesStore[threadId]) {
@@ -14,6 +18,7 @@ export const getMessageStore = (threadId: string) => {
     addMessage: (message: DBMessage) => {
       messageList.push(message)
     },
+    messageList,
     getOpenAICompatibleMessageList: () => {
       return messageList.map((m) => {
         const message = { ...m }
