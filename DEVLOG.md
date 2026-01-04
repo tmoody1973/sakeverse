@@ -617,3 +617,137 @@ User Query → Kiki Voice Chat
 - **New Dependencies**: 8 packages
 
 ---
+
+## January 4, 2026 (Continued) - C1Chat Integration & User Library
+
+### 🔄 **C1Chat Full Integration**
+
+**Time**: 8:30 AM - 9:00 AM  
+**Focus**: Replace custom VoiceChat with C1Chat + voice controls overlay
+
+#### **✅ Architecture Upgrade: C1Chat as Base**
+Following official Thesys docs, replaced custom chat implementation with `C1Chat`:
+
+**Before**: Custom VoiceChat with manual message management
+**After**: C1Chat (batteries-included) + voice controls overlay
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    KikiChat Component                    │
+├─────────────────────────────────────────────────────────┤
+│  ┌─────────────────────────────────────────────────┐    │
+│  │           Voice Controls Header                  │    │
+│  │  🎤 Kiki    [Library (3)] [Start/End Voice]     │    │
+│  └─────────────────────────────────────────────────┘    │
+│                                                         │
+│  ┌─────────────────────────────────────────────────┐    │
+│  │                   C1Chat                         │    │
+│  │  - Handles all chat UI automatically            │    │
+│  │  - Streaming responses                          │    │
+│  │  - Message history                              │    │
+│  │  - Dynamic UI rendering                         │    │
+│  └─────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────┘
+```
+
+#### **✅ Voice-to-C1 Integration**
+- Created `hooks/useVoiceToC1.ts` for voice-to-C1 bridge
+- OpenAI Realtime API with `generate_ui` function tool
+- When voice agent needs visual info → calls C1 to render UI
+
+```typescript
+// Voice agent function tool
+{
+  name: 'generate_ui',
+  description: 'Generate dynamic UI when user needs visual information',
+  parameters: {
+    ui_request: 'What UI to generate',
+    context: 'Data for the UI',
+    user_query: 'Original question'
+  }
+}
+```
+
+#### **✅ API Route Aligned with Official Template**
+- Updated `/api/c1/chat/route.ts` to match Thesys template
+- Message store with `threadId` and `responseId` support
+- System prompt injection on first message
+- `runTools` for automatic tool calling
+- `transformStream` for proper streaming
+
+**Model**: `c1/anthropic/claude-sonnet-4/v-20251130` (stable production)
+
+#### **✅ Tool Calling Implementation**
+Per C1 docs, tools use `RunnableToolFunctionWithParse` format:
+- `search_sake_products` - Product catalog with images & Tippsy URLs
+- `get_wine_to_sake_recommendation` - Wine preference translation
+- `get_sake_knowledge` - Educational content via Gemini
+- `get_temperature_guide` - Serving temperature recommendations
+- `save_to_library` - Save sake to user's library
+- `get_user_library` - Display user's saved sake
+
+### 📚 **User Sake Library Feature**
+
+**Time**: 8:55 AM - 9:02 AM  
+**Focus**: Save/bookmark sake for later
+
+#### **✅ Convex Backend**
+- Added `userLibrary` table to schema
+- Session-based storage (works without auth)
+- Functions: `saveSake`, `removeSake`, `getLibrary`, `isInLibrary`
+
+#### **✅ Library Page (`/library`)**
+- Grid display of saved sake with images
+- "View on Tippsy" and "Remove" buttons
+- Empty state with CTA to chat with Kiki
+- Shows count of saved bottles
+
+#### **✅ C1 Integration**
+- `save_to_library` tool for Kiki to save sake
+- `get_user_library` tool to display saved sake
+- Product cards show "Save to Library" button
+- Library count in KikiChat header
+
+#### **✅ Product Cards Enhanced**
+Each sake card now shows:
+- Product image from Tippsy CDN
+- Name, brewery, region, price
+- Description/tasting notes
+- "View on Tippsy →" button (opens product page)
+- "Save to Library" button (saves to Convex)
+
+### **📊 Session Summary**
+
+**Commits**: 5 major commits
+- C1 API route with tool calling
+- Streaming fixes per official docs
+- Stable model selection
+- C1Chat + voice controls integration
+- User library feature
+
+**Files Changed**: 15+
+**New Features**:
+- C1Chat as primary chat interface
+- Voice controls overlay
+- User sake library with persistence
+- Product cards with images & Tippsy links
+- Save to library functionality
+
+**SDK Versions Verified**:
+- `openai@6.15.0` → `client.chat.completions.runTools()` ✅
+- `@thesysai/genui-sdk@0.7.15` ✅
+- `@crayonai/react-ui@0.9.9` ✅
+
+### **🎯 Current Feature Set**
+
+1. **Voice Chat**: OpenAI Realtime API with function calling
+2. **Text Chat**: C1Chat with streaming and dynamic UI
+3. **RAG System**: 
+   - Vector search (Tippsy products)
+   - Wine-to-sake knowledge
+   - Gemini for educational content
+4. **Dynamic UI**: C1 generates cards, tables, guides
+5. **User Library**: Save/view favorite sake
+6. **Product Integration**: Images + Tippsy purchase links
+
+---
