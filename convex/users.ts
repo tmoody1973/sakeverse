@@ -176,3 +176,85 @@ export const getUserStats = query({
     };
   },
 });
+
+
+// Save user preferences from onboarding
+export const saveUserPreferences = mutation({
+  args: {
+    clerkId: v.string(),
+    preferences: v.object({
+      experienceLevel: v.string(),
+      tastePreferences: v.object({
+        sweetness: v.number(),
+        richness: v.number(),
+      }),
+      foodPreferences: v.array(v.string()),
+      winePreferences: v.array(v.string()),
+      onboardingComplete: v.boolean(),
+    }),
+  },
+  handler: async (ctx, args) => {
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", args.clerkId))
+      .unique();
+
+    if (user) {
+      await ctx.db.patch(user._id, {
+        preferences: {
+          ...user.preferences,
+          experienceLevel: args.preferences.experienceLevel,
+          tastePreferences: {
+            ...user.preferences.tastePreferences,
+            sweetness: args.preferences.tastePreferences.sweetness,
+            richness: args.preferences.tastePreferences.richness,
+          },
+          foodPreferences: args.preferences.foodPreferences,
+          winePreferences: args.preferences.winePreferences,
+          onboardingComplete: args.preferences.onboardingComplete,
+        },
+        updatedAt: Date.now(),
+      });
+      return user._id;
+    }
+
+    // Create user if doesn't exist
+    return await ctx.db.insert("users", {
+      clerkId: args.clerkId,
+      email: "",
+      name: "",
+      level: 1,
+      xp: 0,
+      streak: 0,
+      lastActive: Date.now(),
+      preferences: {
+        experienceLevel: args.preferences.experienceLevel,
+        tastePreferences: {
+          sweetness: args.preferences.tastePreferences.sweetness,
+          acidity: 3,
+          richness: args.preferences.tastePreferences.richness,
+          umami: 3,
+        },
+        foodPreferences: args.preferences.foodPreferences,
+        winePreferences: args.preferences.winePreferences,
+        temperaturePreference: "cold",
+        spiceLevel: "mild",
+        onboardingComplete: args.preferences.onboardingComplete,
+      },
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+    });
+  },
+});
+
+// Get user preferences
+export const getUserPreferences = query({
+  args: { clerkId: v.string() },
+  handler: async (ctx, args) => {
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", args.clerkId))
+      .unique();
+    return user?.preferences || null;
+  },
+});

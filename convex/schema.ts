@@ -13,15 +13,19 @@ export default defineSchema({
     streak: v.number(),
     lastActive: v.number(),
     preferences: v.object({
-      wineProfile: v.optional(v.array(v.string())), // ["Pinot Noir", "Burgundy", "Elegant"]
+      experienceLevel: v.optional(v.string()),
+      wineProfile: v.optional(v.array(v.string())),
+      winePreferences: v.optional(v.array(v.string())),
+      foodPreferences: v.optional(v.array(v.string())),
       tastePreferences: v.object({
-        sweetness: v.number(), // 1-5 scale
+        sweetness: v.number(),
         acidity: v.number(),
         richness: v.number(),
         umami: v.number(),
       }),
-      temperaturePreference: v.string(), // "cold", "room", "warm"
-      spiceLevel: v.string(), // "mild", "medium", "bold"
+      temperaturePreference: v.string(),
+      spiceLevel: v.string(),
+      onboardingComplete: v.optional(v.boolean()),
     }),
     createdAt: v.number(),
     updatedAt: v.number(),

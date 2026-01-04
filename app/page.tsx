@@ -1,11 +1,13 @@
 "use client"
 
+import { useUser } from "@clerk/nextjs"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
 import { Badge } from "@/components/ui/Badge"
 import { Mic, Play, MapPin, BookOpen, TrendingUp, Star } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
+import { LandingPage } from "@/components/landing/LandingPage"
 
 const DashboardContent = dynamic(
   () => import("@/components/dashboard/DashboardContent").then(mod => mod.DashboardContent),
@@ -13,6 +15,27 @@ const DashboardContent = dynamic(
 )
 
 export default function HomePage() {
+  const { isSignedIn, isLoaded } = useUser()
+
+  // Show loading state
+  if (!isLoaded) {
+    return <div className="min-h-screen flex items-center justify-center">
+      <div className="animate-pulse text-gray-500">Loading...</div>
+    </div>
+  }
+
+  // Show landing page for logged-out users
+  if (!isSignedIn) {
+    return <LandingPage />
+  }
+
+  // Show dashboard for logged-in users
+  return (
+    <Dashboard />
+  )
+}
+
+function Dashboard() {
   return (
     <div className="container-retro py-8 space-y-8">
       {/* Welcome Hero */}
