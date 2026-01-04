@@ -33,12 +33,14 @@ export function Header() {
   
   // Safe Clerk usage
   let isSignedIn = false
+  let isLoaded = false
   let user = null
   
   if (useUser) {
     try {
       const userData = useUser()
-      isSignedIn = userData.isSignedIn
+      isLoaded = userData.isLoaded
+      isSignedIn = userData.isSignedIn === true
       user = userData.user
     } catch (error) {
       // Handle Clerk errors gracefully
