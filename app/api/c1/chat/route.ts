@@ -9,9 +9,12 @@ const client = new OpenAI({
   apiKey: process.env.THESYS_API_KEY,
 })
 
+// Use stable production model per docs
+const C1_MODEL = "c1/anthropic/claude-sonnet-4/v-20251130"
+
 export async function POST(req: NextRequest) {
   try {
-    const { prompt, threadId = "default" } = await req.json()
+    const { prompt } = await req.json()
 
     if (!process.env.THESYS_API_KEY) {
       return NextResponse.json({ error: "THESYS_API_KEY not configured" }, { status: 500 })
@@ -24,7 +27,7 @@ export async function POST(req: NextRequest) {
 
     // First call - check for tool calls
     const initialResponse = await client.chat.completions.create({
-      model: "c1-nightly",
+      model: C1_MODEL,
       messages,
       tools,
     })
@@ -46,7 +49,7 @@ export async function POST(req: NextRequest) {
 
       // Stream final response with tool results
       const llmStream = await client.chat.completions.create({
-        model: "c1-nightly",
+        model: C1_MODEL,
         messages: [...messages, ...toolMessages],
         stream: true,
       })
@@ -67,7 +70,7 @@ export async function POST(req: NextRequest) {
 
     // No tool calls - stream directly
     const llmStream = await client.chat.completions.create({
-      model: "c1-nightly",
+      model: C1_MODEL,
       messages,
       stream: true,
     })
