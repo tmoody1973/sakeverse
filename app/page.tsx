@@ -1,8 +1,16 @@
+"use client"
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
 import { Badge } from "@/components/ui/Badge"
 import { Mic, Play, MapPin, BookOpen, TrendingUp, Star } from "lucide-react"
 import Link from "next/link"
+import dynamic from "next/dynamic"
+
+const DashboardContent = dynamic(
+  () => import("@/components/dashboard/DashboardContent").then(mod => mod.DashboardContent),
+  { ssr: false, loading: () => <div className="animate-pulse text-gray-500">Loading...</div> }
+)
 
 export default function HomePage() {
   return (
@@ -31,7 +39,7 @@ export default function HomePage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
               <div className="text-center">
                 <div className="text-2xl font-bold text-plum-dark">12</div>
                 <div className="text-sm text-gray-600">Sake Tried</div>
@@ -49,6 +57,9 @@ export default function HomePage() {
                 <div className="text-sm text-gray-600">Course Progress</div>
               </div>
             </div>
+            
+            {/* News + Featured Sake */}
+            <DashboardContent />
           </CardContent>
         </Card>
 

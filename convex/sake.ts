@@ -189,3 +189,23 @@ export const getFeaturedSake = query({
     return featured;
   },
 });
+
+
+// Get featured Tippsy products for dashboard
+export const getFeaturedTippsyProducts = query({
+  args: {},
+  handler: async (ctx) => {
+    const allProducts = await ctx.db.query("tippsyProducts").take(50)
+    
+    // Shuffle and take 3
+    const shuffled = [...allProducts].sort(() => Math.random() - 0.5)
+    return shuffled.slice(0, 3).map(p => ({
+      name: p.productName,
+      brewery: p.brewery,
+      price: p.price,
+      category: p.category,
+      image: (p as any).images?.[0] || '',
+      url: (p as any).url || '',
+    }))
+  },
+});
