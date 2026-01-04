@@ -172,10 +172,12 @@ These examples show the level of detail and professionalism expected for hackath
 - **Update your DEVLOG.md** continuously, not just at the end
 - **Customize your `.kiro/` configuration** as you learn your workflow
 - **Run `@code-review-hackathon`** periodically to compare your project against the judging rubric and before submitting
+- **Use Context7 MCP server** for accurate API/SDK documentation - always verify implementation patterns with official docs via Context7
 
 ## Getting Help
 
 - **Kiro CLI Documentation**: [kiro.dev/docs/cli](https://kiro.dev/docs/cli)
+- **Context7 MCP**: Use for instant access to API documentation and code examples
 - **Hackathon Community**: Join the Dynamous community for support
 - **Built-in Help**: Use `/help` in Kiro CLI for command assistance
 

@@ -26,7 +26,7 @@ const notoSansJP = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   title: "Sakéverse - AI-Powered Sake Discovery",
-  description: "Discover Japanese sake through AI-powered conversations with Yuki, your personal sake sommelier. Explore breweries, learn about regional styles, and find your perfect sake match.",
+  description: "Discover Japanese sake through AI-powered conversations with Kiki (利き酒), your personal sake sommelier. Explore breweries, learn about regional styles, and find your perfect sake match.",
   keywords: ["sake", "japanese", "alcohol", "sommelier", "AI", "discovery", "brewery", "tasting"],
   authors: [{ name: "Sakéverse Team" }],
   creator: "Sakéverse",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://sakeverse.app"),
   openGraph: {
     title: "Sakéverse - AI-Powered Sake Discovery",
-    description: "Discover Japanese sake through AI-powered conversations with Yuki, your personal sake sommelier.",
+    description: "Discover Japanese sake through AI-powered conversations with Kiki (利き酒), your personal sake sommelier.",
     url: "https://sakeverse.app",
     siteName: "Sakéverse",
     images: [
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Sakéverse - AI-Powered Sake Discovery",
-    description: "Discover Japanese sake through AI-powered conversations with Yuki, your personal sake sommelier.",
+    description: "Discover Japanese sake through AI-powered conversations with Kiki (利き酒), your personal sake sommelier.",
     images: ["/og-image.jpg"],
   },
   robots: {

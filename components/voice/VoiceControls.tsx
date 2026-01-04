@@ -42,7 +42,7 @@ export function VoiceControls({
         {isSpeaking && (
           <Badge variant="warm" className="text-xs">
             <div className="flex items-center space-x-1">
-              <span>Yuki speaking</span>
+              <span>Kiki speaking</span>
               <div className="soundwave">
                 <div className="soundwave-bar h-2"></div>
                 <div className="soundwave-bar h-3"></div>

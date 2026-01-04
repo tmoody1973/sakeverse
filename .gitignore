@@ -32,6 +32,9 @@ Thumbs.db
 *.key
 *.pem
 
+# Kiro CLI sensitive files
+.kiro/settings/mcp.json
+
 # Large files that shouldn't be in git
 *.pdf
 pdf/

@@ -35,32 +35,65 @@ async function uploadPDFsToGemini() {
       
       const filePath = path.join(pdfFolder, filename)
       const fileBuffer = fs.readFileSync(filePath)
+      const fileSize = fileBuffer.length
       
-      // First, upload the file content
-      const uploadResponse = await fetch("https://generativelanguage.googleapis.com/upload/v1beta/files", {
+      // Step 1: Initiate resumable upload
+      const initResponse = await fetch(`https://generativelanguage.googleapis.com/upload/v1beta/files?key=${geminiApiKey}`, {
         method: "POST",
         headers: {
-          "X-Goog-Upload-Protocol": "multipart",
-          "Authorization": `Bearer ${geminiApiKey}`,
+          "X-Goog-Upload-Protocol": "resumable",
+          "X-Goog-Upload-Command": "start",
+          "X-Goog-Upload-Header-Content-Length": fileSize.toString(),
+          "X-Goog-Upload-Header-Content-Type": "application/pdf",
+          "Content-Type": "application/json",
         },
-        body: createMultipartBody(fileBuffer, filename)
+        body: JSON.stringify({
+          file: {
+            display_name: filename
+          }
+        })
+      })
+
+      if (!initResponse.ok) {
+        const errorText = await initResponse.text()
+        console.error(`❌ Failed to initiate upload for ${filename}: ${initResponse.status} - ${errorText}`)
+        continue
+      }
+
+      // Extract upload URL from headers
+      const uploadUrl = initResponse.headers.get('x-goog-upload-url')
+      if (!uploadUrl) {
+        console.error(`❌ No upload URL received for ${filename}`)
+        continue
+      }
+
+      // Step 2: Upload file content
+      const uploadResponse = await fetch(uploadUrl, {
+        method: "POST",
+        headers: {
+          "Content-Length": fileSize.toString(),
+          "X-Goog-Upload-Offset": "0",
+          "X-Goog-Upload-Command": "upload, finalize",
+        },
+        body: fileBuffer
       })
 
       if (!uploadResponse.ok) {
         const errorText = await uploadResponse.text()
-        console.error(`❌ Failed to upload ${filename}: ${uploadResponse.status} - ${errorText}`)
+        console.error(`❌ Failed to upload file content for ${filename}: ${uploadResponse.status} - ${errorText}`)
         continue
       }
 
       const uploadResult = await uploadResponse.json()
       uploadedFiles.push({
         filename,
-        fileId: uploadResult.file.name,
-        displayName: uploadResult.file.display_name,
-        sizeBytes: uploadResult.file.size_bytes
+        fileUri: uploadResult.file.uri,
+        displayName: uploadResult.file.displayName,
+        mimeType: uploadResult.file.mimeType,
+        state: uploadResult.file.state
       })
       
-      console.log(`✅ Successfully uploaded: ${filename} (${Math.round(uploadResult.file.size_bytes / 1024)}KB)`)
+      console.log(`✅ Successfully uploaded: ${filename} (URI: ${uploadResult.file.uri})`)
       
     } catch (error) {
       console.error(`❌ Error uploading ${filename}:`, error.message)
@@ -72,7 +105,7 @@ async function uploadPDFsToGemini() {
   if (uploadedFiles.length > 0) {
     console.log("\n📖 Uploaded files:")
     uploadedFiles.forEach(file => {
-      console.log(`  ✅ ${file.filename} (ID: ${file.fileId})`)
+      console.log(`  ✅ ${file.filename} (URI: ${file.fileUri})`)
     })
     
     console.log("\n🤖 Yuki now has access to deep sake knowledge from these books!")
@@ -81,32 +114,6 @@ async function uploadPDFsToGemini() {
     console.log("  - 'What are the characteristics of Niigata sake?'")
     console.log("  - 'Explain the difference between Junmai and Ginjo'")
   }
-}
-
-function createMultipartBody(fileBuffer, filename) {
-  const boundary = '----formdata-boundary-' + Math.random().toString(36)
-  const delimiter = `\r\n--${boundary}\r\n`
-  const closeDelimiter = `\r\n--${boundary}--`
-
-  const metadata = {
-    file: {
-      display_name: filename
-    }
-  }
-
-  let body = delimiter
-  body += 'Content-Disposition: form-data; name="metadata"\r\n'
-  body += 'Content-Type: application/json\r\n\r\n'
-  body += JSON.stringify(metadata)
-  body += delimiter
-  body += `Content-Disposition: form-data; name="file"; filename="${filename}"\r\n`
-  body += 'Content-Type: application/pdf\r\n\r\n'
-
-  return Buffer.concat([
-    Buffer.from(body, 'utf8'),
-    fileBuffer,
-    Buffer.from(closeDelimiter, 'utf8')
-  ])
 }
 
 uploadPDFsToGemini()

@@ -323,4 +323,22 @@ export default defineSchema({
   })
     .index("by_user", ["userId"])
     .index("by_region", ["regionId"]),
+
+  // Knowledge Chunks for RAG
+  knowledgeChunks: defineTable({
+    topic: v.string(),
+    keywords: v.array(v.string()),
+    content: v.string(),
+    source: v.string(),
+    category: v.string(), // "wine-to-sake", "brewing", "regions", etc.
+    embedding: v.optional(v.array(v.float64())),
+    createdAt: v.number(),
+  })
+    .index("by_category", ["category"])
+    .index("by_topic", ["topic"])
+    .vectorIndex("by_embedding", {
+      vectorField: "embedding",
+      dimensions: 1536,
+      filterFields: ["category"]
+    }),
 });

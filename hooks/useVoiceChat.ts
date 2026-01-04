@@ -43,6 +43,8 @@ export function useVoiceChat() {
   const getSakeRecommendations = useMutation(api.importTippsy.getSakeRecommendations)
   const semanticSearch = useAction(api.embeddings.semanticSearch)
   const searchSakeKnowledge = useAction(api.geminiRAG.searchSakeKnowledge)
+  const searchWebContent = useAction(api.perplexityAPI.searchWebContent)
+  const searchWineToSake = useAction(api.wineToSake.searchWineToSake)
 
   const addMessage = useCallback((role: "user" | "assistant", content: string, products?: any[]) => {
     const message = {
@@ -100,22 +102,58 @@ export function useVoiceChat() {
       ws.onopen = () => {
         console.log('Connected to OpenAI Realtime API')
         
-        // Send session configuration
+        // Send session configuration with enhanced sommelier prompt
         ws.send(JSON.stringify({
           type: 'session.update',
           session: {
             modalities: ['text', 'audio'],
-            instructions: `You are Yuki, a knowledgeable and passionate AI sake sommelier with deep expertise in Japanese sake culture. You have a warm, patient personality and love helping people discover the perfect sake for their taste preferences.
+            instructions: `You are Kiki (from Kikizake 利き酒 - "sake tasting"), a certified sake sommelier and educator with deep knowledge of Japanese sake (nihonshu), its production, culture, and service. You combine technical expertise with approachable communication, making sake accessible to curious beginners while offering nuanced insights for enthusiasts.
 
-Your expertise includes:
-- Sake types: Junmai, Honjozo, Ginjo, Daiginjo and their characteristics
-- Regional styles: Niigata (clean/dry), Kyoto (elegant), Hiroshima (soft), etc.
-- Temperature serving: Chilled, room temp, warmed and flavor impacts
-- Food pairings: Traditional and modern cuisine matches
-- Wine-to-sake translations for wine enthusiasts
-- Brewing process and seasonal recommendations
+Your name reflects the art of evaluating and understanding sake - exactly what you help users do.
 
-Speak in a warm, conversational tone. Be enthusiastic about sake but approachable. Ask clarifying questions to understand preferences and provide specific recommendations with brands and regions when appropriate.`,
+## Core Expertise
+- **Classifications**: Junmai, Honjozo, Ginjo, Daiginjo, Nigori, Nama, Genshu, Koshu, Sparkling, Kimoto/Yamahai
+- **Key metrics**: Seimaibuai (polishing ratio), SMV/Nihonshudo (sweetness/dryness), Acidity
+- **Rice varieties**: Yamada Nishiki, Gohyakumangoku, Omachi, Miyama Nishiki
+- **Regional styles**: Niigata (tanrei karakuchi - clean/dry), Hiroshima (soft water, gentle), Fushimi/Kyoto (elegant), Nada/Hyogo (structured), Yamagata (fruit-forward)
+
+## Notable Breweries You Know
+- Dassai (Yamaguchi) - Daiginjo focus, data-driven
+- Kubota (Niigata) - tanrei karakuchi benchmark  
+- Juyondai (Yamagata) - cult status, fruit-forward
+- Aramasa (Akita) - wood tank revival, natural wine appeal
+- Tamagawa (Kyoto) - British toji Philip Harper, bold yamahai
+- Hakkaisan (Niigata) - clean, versatile, widely available
+
+## Wine-to-Sake Bridge
+When users mention wine preferences, translate:
+- Crisp Sauvignon Blanc → Light Junmai Ginjo, chilled
+- Oaky Chardonnay → Aged Junmai (Koshu), Yamahai, room temp
+- Pinot Noir → Junmai Kimoto, earthy Yamahai, Koshu
+- Bold Cabernet → Rich Junmai, Genshu, warm service
+- Champagne → Sparkling sake
+
+## Available Knowledge Tools
+You have access to specialized retrieval systems that provide you with:
+1. **Wine-to-Sake Knowledge** - Expert recommendations mapping wine preferences to sake styles
+2. **Product Catalog** - Real sake products with prices, breweries, tasting notes from Tippsy
+3. **Current Information** - Recent sake news, events, new releases
+4. **Sake Knowledge Base** - Brewing, history, regions, techniques
+
+## Communication Style
+- Warm, enthusiastic, never condescending
+- Lead with direct recommendations, then explain why
+- Use sensory language: aroma, texture, finish
+- Ask 1-2 clarifying questions when context would improve recommendations
+- Share brewery stories that bring sake to life
+
+## Temperature Guidance
+- Yukihie (5°C) - delicate Daiginjo
+- Hana-bie (10°C) - aromatic Ginjo  
+- Suzu-bie (15°C) - versatile Junmai
+- Jo-on (20°C) - room temp, aged sake
+- Nurukan (40°C) - warming Junmai
+- Atsukan (50°C) - robust Honjozo, Yamahai`,
             voice: 'alloy',
             input_audio_format: 'pcm16',
             output_audio_format: 'pcm16',
@@ -132,7 +170,7 @@ Speak in a warm, conversational tone. Be enthusiastic about sake but approachabl
         }))
 
         setState(prev => ({ ...prev, isConnected: true }))
-        addMessage("assistant", "Hello! I'm Yuki, your AI sake sommelier. I can hear you now - just start speaking!")
+        addMessage("assistant", "Hello! I'm Kiki, your sake sommelier. My name comes from Kikizake (利き酒) - the art of sake tasting. Whether you're new to sake or a seasoned enthusiast, I'm here to help you discover the perfect bottle. What brings you in today?")
       }
 
       ws.onmessage = (event) => {
@@ -342,16 +380,46 @@ Speak in a warm, conversational tone. Be enthusiastic about sake but approachabl
             
             console.log("Search preferences:", preferences)
             
-            // Check if this is a knowledge question vs product recommendation
+            // Enhanced query routing with knowledge detection
             const isKnowledgeQuery = input.includes("how") || input.includes("what") || input.includes("why") || 
                                     input.includes("explain") || input.includes("tell me about") || 
                                     input.includes("brewing") || input.includes("traditional") || 
                                     input.includes("history") || input.includes("culture")
             
+            const isCurrentQuery = input.includes("current") || input.includes("latest") || 
+                                  input.includes("news") || input.includes("recent") ||
+                                  input.includes("trending") || input.includes("events") ||
+                                  input.includes("2026") || input.includes("this year")
+            
+            // Detect wine-to-sake questions
+            const isWineQuery = input.includes("wine") || input.includes("pinot") || 
+                               input.includes("chardonnay") || input.includes("cabernet") ||
+                               input.includes("merlot") || input.includes("sauvignon") ||
+                               input.includes("riesling") || input.includes("burgundy") ||
+                               input.includes("champagne") || input.includes("prosecco") ||
+                               input.includes("rosé") || input.includes("rose") ||
+                               input.includes("syrah") || input.includes("shiraz")
+            
             let knowledgeAnswer = null
+            let currentAnswer = null
+            let wineToSakeAnswer = null
+            
+            // Get wine-to-sake recommendations first (highest priority for wine lovers)
+            if (isWineQuery) {
+              try {
+                console.log("Searching wine-to-sake knowledge for:", text)
+                const wineResults = await searchWineToSake({ query: text, limit: 2 })
+                if (wineResults.length > 0) {
+                  wineToSakeAnswer = wineResults.map((r: any) => r.content).join("\n\n")
+                  console.log("Wine-to-sake search returned:", wineResults.length, "results")
+                }
+              } catch (error) {
+                console.log("Wine-to-sake search failed:", error)
+              }
+            }
             
             // Get deep knowledge for educational questions
-            if (isKnowledgeQuery) {
+            if (isKnowledgeQuery && !wineToSakeAnswer) {
               try {
                 console.log("Searching sake knowledge base for:", text)
                 const knowledgeResult = await searchSakeKnowledge({ query: text })
@@ -359,6 +427,18 @@ Speak in a warm, conversational tone. Be enthusiastic about sake but approachabl
                 console.log("Knowledge search returned:", knowledgeAnswer ? "answer found" : "no answer")
               } catch (error) {
                 console.log("Knowledge search failed:", error)
+              }
+            }
+            
+            // Get current/live information for trending questions
+            if (isCurrentQuery) {
+              try {
+                console.log("Searching current web content for:", text)
+                const webResult = await searchWebContent({ query: text })
+                currentAnswer = webResult.answer
+                console.log("Web search returned:", currentAnswer ? "answer found" : "no answer")
+              } catch (error) {
+                console.log("Web search failed:", error)
               }
             }
             
@@ -396,7 +476,16 @@ Speak in a warm, conversational tone. Be enthusiastic about sake but approachabl
             
             // Generate varied responses based on input and knowledge
             if (text.toLowerCase().includes("hello") || text.toLowerCase().includes("hi")) {
-              response = "Hello! I'm Yuki, your sake sommelier. I'm excited to help you explore the wonderful world of Japanese sake! What brings you here today - are you new to sake, or do you have some experience?"
+              response = "Hello! I'm Kiki, your sake sommelier. My name comes from Kikizake (利き酒) - the art of sake tasting. I'm excited to help you explore the wonderful world of Japanese sake! What brings you here today - are you new to sake, or do you have some experience?"
+            } else if (wineToSakeAnswer) {
+              // Prioritize wine-to-sake recommendations for wine lovers
+              response = `Great question! Based on your wine preferences, here's what I recommend:\n\n${wineToSakeAnswer}`
+              if (products.length > 0) {
+                response += `\n\nLet me suggest some specific bottles: The ${products[0].productName} from ${products[0].brewery} would be perfect for you at $${products[0].price}.`
+              }
+            } else if (currentAnswer) {
+              // Prioritize current information for trending queries
+              response = `${currentAnswer}\n\n${products.length > 0 ? `Based on this, here are some sake recommendations I think you'd enjoy:` : ''}`
             } else if (knowledgeAnswer) {
               // Use deep knowledge from PDF books
               response = knowledgeAnswer

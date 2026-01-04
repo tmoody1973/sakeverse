@@ -44,7 +44,7 @@ export function ChatBubble({ role, content, timestamp, products, className }: Ch
             {isUser ? "👤" : "🎤"}
           </div>
           <span className="text-xs font-semibold text-gray-600">
-            {isUser ? "You" : "Yuki"}
+            {isUser ? "You" : "Kiki"}
           </span>
           <span className="text-xs text-gray-400 ml-2">{time}</span>
         </div>

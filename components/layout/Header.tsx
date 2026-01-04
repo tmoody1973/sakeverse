@@ -93,7 +93,7 @@ export function Header() {
             className="relative"
             asChild
           >
-            <Link href="/yuki">
+            <Link href="/kiki">
               <Mic className="h-4 w-4" />
               <Badge 
                 variant="success" 

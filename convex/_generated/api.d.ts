@@ -13,8 +13,10 @@ import type * as clearData from "../clearData.js";
 import type * as embeddings from "../embeddings.js";
 import type * as geminiRAG from "../geminiRAG.js";
 import type * as importTippsy from "../importTippsy.js";
+import type * as perplexityAPI from "../perplexityAPI.js";
 import type * as sake from "../sake.js";
 import type * as users from "../users.js";
+import type * as wineToSake from "../wineToSake.js";
 
 import type {
   ApiFromModules,
@@ -28,8 +30,10 @@ declare const fullApi: ApiFromModules<{
   embeddings: typeof embeddings;
   geminiRAG: typeof geminiRAG;
   importTippsy: typeof importTippsy;
+  perplexityAPI: typeof perplexityAPI;
   sake: typeof sake;
   users: typeof users;
+  wineToSake: typeof wineToSake;
 }>;
 
 /**

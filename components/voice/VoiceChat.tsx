@@ -50,9 +50,9 @@ export function VoiceChat() {
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center space-x-2">
             <span className="text-2xl">🎤</span>
-            <span>Chat with Yuki</span>
+            <span>Chat with Kiki</span>
             <span className="text-sm font-normal text-gray-600">
-              Your AI Sake Sommelier
+              Your AI Sake Sommelier (利き酒)
             </span>
           </CardTitle>
         </CardHeader>
@@ -93,7 +93,7 @@ export function VoiceChat() {
                   Welcome to Sakéverse!
                 </h3>
                 <p className="text-gray-600">
-                  I'm Yuki, your AI sake sommelier. Connect to start our conversation about Japanese sake, 
+                  I'm Kiki, your AI sake sommelier. Connect to start our conversation about Japanese sake, 
                   or type a message below to get started.
                 </p>
                 <div className="space-y-2 text-sm text-gray-500">

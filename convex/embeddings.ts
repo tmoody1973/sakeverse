@@ -95,7 +95,7 @@ export const updateProductEmbedding = internalMutation({
 })
 
 // Proper Convex vector search
-export const semanticSearch: any = action({
+export const semanticSearch = action({
   args: { 
     query: v.string(), 
     limit: v.optional(v.number()),
@@ -105,7 +105,7 @@ export const semanticSearch: any = action({
     })),
     category: v.optional(v.string()),
   },
-  handler: async (ctx, { query, limit = 5, priceRange, category }): Promise<any> => {
+  handler: async (ctx, { query, limit = 5, priceRange, category }): Promise<any[]> => {
     try {
       // Generate embedding for user query
       const response = await fetch("https://api.openai.com/v1/embeddings", {

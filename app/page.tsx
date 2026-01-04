@@ -62,9 +62,9 @@ export default function HomePage() {
             <CardContent>
               <div className="grid grid-cols-2 gap-3">
                 <Button variant="accent" className="h-16 flex-col" asChild>
-                  <Link href="/yuki">
+                  <Link href="/kiki">
                     <Mic className="h-6 w-6 mb-1" />
-                    <span className="text-xs">Ask Yuki</span>
+                    <span className="text-xs">Ask Kiki</span>
                   </Link>
                 </Button>
                 <Button variant="primary" className="h-16 flex-col" asChild>
@@ -140,7 +140,7 @@ export default function HomePage() {
         </CardContent>
       </Card>
 
-      {/* Yuki CTA */}
+      {/* Kiki CTA */}
       <Card className="bg-sake-mist">
         <CardContent className="p-6">
           <div className="flex items-center justify-between">
@@ -149,12 +149,12 @@ export default function HomePage() {
                 🎤
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-1">Chat with Yuki</h3>
-                <p className="text-gray-600">Your AI sake sommelier is ready to help you discover new flavors</p>
+                <h3 className="text-xl font-bold mb-1">Chat with Kiki</h3>
+                <p className="text-gray-600">Your AI sake sommelier (利き酒) is ready to help you discover new flavors</p>
               </div>
             </div>
             <Button variant="accent" size="lg" className="voice-pulse" asChild>
-              <Link href="/yuki">
+              <Link href="/kiki">
                 <Mic className="h-5 w-5 mr-2" />
                 Start Conversation
               </Link>
