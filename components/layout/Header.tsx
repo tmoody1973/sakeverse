@@ -7,18 +7,7 @@ import { Input } from "@/components/ui/Input"
 import { Badge } from "@/components/ui/Badge"
 import { Search, Mic, Menu } from "lucide-react"
 import { cn } from "@/lib/utils"
-
-// Conditional imports for Clerk
-let UserButton: any = null
-let useUser: any = null
-
-try {
-  const clerk = require("@clerk/nextjs")
-  UserButton = clerk.UserButton
-  useUser = clerk.useUser
-} catch (error) {
-  // Clerk not available
-}
+import { UserButton, useUser } from "@clerk/nextjs"
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -30,22 +19,7 @@ const navigation = [
 
 export function Header() {
   const pathname = usePathname()
-  
-  // Safe Clerk usage
-  let isSignedIn = false
-  let isLoaded = false
-  let user = null
-  
-  if (useUser) {
-    try {
-      const userData = useUser()
-      isLoaded = userData.isLoaded
-      isSignedIn = userData.isSignedIn === true
-      user = userData.user
-    } catch (error) {
-      // Handle Clerk errors gracefully
-    }
-  }
+  const { isSignedIn, isLoaded, user } = useUser()
 
   return (
     <header className="sticky top-0 z-50 w-full border-b-3 border-ink bg-sakura-pink">
@@ -120,7 +94,7 @@ export function Header() {
           )}
 
           {/* User Menu */}
-          {isSignedIn && UserButton ? (
+          {isSignedIn ? (
             <div className="flex items-center space-x-2">
               <div className="hidden sm:block text-right">
                 <div className="text-sm font-medium text-ink">
