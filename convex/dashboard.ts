@@ -23,7 +23,7 @@ export const fetchSakeNews = action({
           messages: [
             {
               role: "user",
-              content: "Give me 3 recent news headlines about Japanese sake industry, sake competitions, new sake releases, or sake trends in 2024-2026. Focus on interesting news for sake enthusiasts."
+              content: "Give me 3 recent news headlines about Japanese sake industry, sake competitions, new sake releases, or sake trends in 2024-2026. Focus on interesting news for sake enthusiasts. Include the source URL for each headline."
             }
           ],
           response_format: {
@@ -40,9 +40,10 @@ export const fetchSakeNews = action({
                       properties: {
                         title: { type: "string" },
                         snippet: { type: "string" },
-                        emoji: { type: "string" }
+                        emoji: { type: "string" },
+                        url: { type: "string" }
                       },
-                      required: ["title", "snippet", "emoji"]
+                      required: ["title", "snippet", "emoji", "url"]
                     }
                   }
                 },
