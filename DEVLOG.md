@@ -862,3 +862,107 @@ case 'response.function_call_arguments.done':
   - Invalid modality combinations
 
 **Status**: Voice agent with function tools working ✅
+
+
+---
+
+## January 4, 2026 (Continued) - Landing Page, Auth & Onboarding
+
+### 🏠 **Landing Page & Authentication Flow**
+
+**Time**: 2:00 PM - 3:00 PM  
+**Focus**: Marketing landing page, Clerk auth, onboarding flow, conditional navigation
+
+#### **✅ Landing Page for Logged-Out Users**
+- Created `components/landing/LandingPage.tsx`
+- Hero section with Kiki introduction and CTAs
+- Features grid: Voice Sommelier, Wine Bridge, Sake Library, Learning Path
+- How It Works: 3-step flow (Tell preferences → Get recommendations → Build library)
+- Final CTA section with sign-up button
+- RetroUI styling with sakura-pink theme
+
+#### **✅ Clerk Authentication Re-enabled**
+- Updated `.env.local` with real Clerk API keys
+- Re-enabled `ClerkProvider` in `app/layout.tsx`
+- Created sign-in page: `app/sign-in/[[...sign-in]]/page.tsx`
+- Created sign-up page: `app/sign-up/[[...sign-up]]/page.tsx`
+- RetroUI styled auth pages with centered cards
+
+#### **✅ 4-Step Onboarding Flow**
+Created `components/onboarding/OnboardingContent.tsx`:
+1. **Experience Level**: Beginner / Intermediate / Expert
+2. **Taste Preferences**: Sweetness & Richness sliders (1-5)
+3. **Food Preferences**: Multi-select chips (Sushi, Ramen, BBQ, etc.)
+4. **Wine Preferences** (Optional): Multi-select for wine-to-sake bridge
+
+**Schema Updates** (`convex/schema.ts`):
+```typescript
+users: {
+  experienceLevel: v.optional(v.string()),
+  tastePreferences: v.optional(v.object({
+    sweetness: v.number(),
+    richness: v.number(),
+  })),
+  foodPreferences: v.optional(v.array(v.string())),
+  winePreferences: v.optional(v.array(v.string())),
+  onboardingComplete: v.optional(v.boolean()),
+}
+```
+
+**Convex Functions** (`convex/users.ts`):
+- `saveUserPreferences` - Stores onboarding data
+- `getUserPreferences` - Retrieves for personalization
+
+#### **✅ Conditional Navigation**
+Updated `components/layout/Header.tsx`:
+- **Logged-out users see**: Logo only + Sign In/Sign Up buttons
+- **Logged-in users see**: Full nav (Home, Discover, Podcasts, Map, Learn) + Search + Voice button + User menu
+- Search bar (desktop & mobile) hidden for logged-out
+- Voice agent button hidden for logged-out
+
+#### **✅ Home Page Routing**
+Updated `app/page.tsx`:
+- Logged-out → `LandingPage` component
+- Logged-in → `DashboardContent` with news & featured sake
+
+### **📊 Technical Fixes**
+
+**Clerk SSR Issues**:
+- Used dynamic imports with `ssr: false` for auth-dependent components
+- `force-dynamic` export for onboarding page
+
+**Zod Version Conflict**:
+- Convex requires Zod v3, some deps wanted v4
+- Added `.npmrc` with `legacy-peer-deps=true`
+
+**Vercel Deployment**:
+- Added Clerk env vars to Vercel
+- Multiple deployments to verify auth flow
+
+### **🚀 Deployment**
+- **GitHub**: Pushed to `master` branch
+- **Vercel**: Deployed to https://dynamous-kiro-hackathon.vercel.app
+- **Status**: Landing page, auth, and conditional nav all working
+
+### **⏱️ Session Stats**
+- **Duration**: ~1 hour
+- **Files Created**: 6 new files
+- **Files Modified**: 8 files
+- **Commits**: 3 commits pushed
+
+**Status**: Landing page + Auth + Onboarding + Conditional nav complete ✅
+
+---
+
+**Last Updated**: January 4, 2026 - 3:10 PM  
+**Status**: 
+- ✅ Foundation Complete
+- ✅ RetroUI Styling Working
+- ✅ Voice Agent with Function Tools
+- ✅ Multi-Layer RAG (Vector + Wine + Food + Gemini + Perplexity)
+- ✅ Thesys C1 Dynamic UI
+- ✅ User Sake Library
+- ✅ Landing Page for Marketing
+- ✅ Clerk Authentication
+- ✅ 4-Step Onboarding Flow
+- ✅ Conditional Navigation (logged-in vs logged-out)
