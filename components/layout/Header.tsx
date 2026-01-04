@@ -61,55 +61,61 @@ export function Header() {
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center ml-10 space-x-8">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-plum-dark whitespace-nowrap",
-                pathname === item.href
-                  ? "text-plum-dark font-semibold"
-                  : "text-ink"
-              )}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
+        {/* Desktop Navigation - only show for logged-in users */}
+        {isSignedIn && (
+          <nav className="hidden md:flex items-center ml-10 space-x-8">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-plum-dark whitespace-nowrap",
+                  pathname === item.href
+                    ? "text-plum-dark font-semibold"
+                    : "text-ink"
+                )}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+        )}
 
-        {/* Search Bar (Desktop) */}
-        <div className="hidden lg:flex items-center flex-1 max-w-sm ml-12">
-          <div className="relative w-full">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-            <Input
-              placeholder="Search sake, breweries, regions..."
-              className="pl-10 bg-white"
-            />
+        {/* Search Bar (Desktop) - only for logged-in */}
+        {isSignedIn && (
+          <div className="hidden lg:flex items-center flex-1 max-w-sm ml-12">
+            <div className="relative w-full">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Input
+                placeholder="Search sake, breweries, regions..."
+                className="pl-10 bg-white"
+              />
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Actions */}
-        <div className="flex items-center space-x-3 ml-4">
-          {/* Voice Agent Button */}
-          <Button
-            variant="accent"
-            size="icon"
-            className="relative"
-            asChild
-          >
-            <Link href="/kiki">
-              <Mic className="h-4 w-4" />
-              <Badge 
-                variant="success" 
-                size="sm" 
-                className="absolute -top-1 -right-1 h-3 w-3 p-0 text-xs"
-              >
-                •
-              </Badge>
-            </Link>
-          </Button>
+        <div className="flex items-center space-x-3 ml-auto">
+          {/* Voice Agent Button - only for logged-in */}
+          {isSignedIn && (
+            <Button
+              variant="accent"
+              size="icon"
+              className="relative"
+              asChild
+            >
+              <Link href="/kiki">
+                <Mic className="h-4 w-4" />
+                <Badge 
+                  variant="success" 
+                  size="sm" 
+                  className="absolute -top-1 -right-1 h-3 w-3 p-0 text-xs"
+                >
+                  •
+                </Badge>
+              </Link>
+            </Button>
+          )}
 
           {/* User Menu */}
           {isSignedIn && UserButton ? (
@@ -146,16 +152,18 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Search Bar */}
-      <div className="lg:hidden border-t-2 border-ink bg-sakura-light p-4">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-          <Input
-            placeholder="Search sake..."
-            className="pl-10 bg-white"
-          />
+      {/* Mobile Search Bar - only for logged-in */}
+      {isSignedIn && (
+        <div className="lg:hidden border-t-2 border-ink bg-sakura-light p-4">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <Input
+              placeholder="Search sake..."
+              className="pl-10 bg-white"
+            />
+          </div>
         </div>
-      </div>
+      )}
     </header>
   )
 }
