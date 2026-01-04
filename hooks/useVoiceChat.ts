@@ -568,7 +568,7 @@ You have access to specialized retrieval systems that provide you with:
     }
   }, [addMessage, getSakeRecommendations])
 
-  // Send message to C1 for dynamic UI generation
+  // Send message to C1 for dynamic UI generation (streaming)
   const sendC1Message = useCallback(async (text: string): Promise<string | null> => {
     try {
       const response = await fetch("/api/c1/chat", {
@@ -577,10 +577,19 @@ You have access to specialized retrieval systems that provide you with:
         body: JSON.stringify({ prompt: text }),
       })
       
-      if (!response.ok) return null
+      if (!response.ok || !response.body) return null
       
-      const data = await response.json()
-      return data.content || null
+      const reader = response.body.getReader()
+      const decoder = new TextDecoder()
+      let accumulated = ""
+      
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+        accumulated += decoder.decode(value)
+      }
+      
+      return accumulated || null
     } catch (error) {
       console.error("C1 API error:", error)
       return null
