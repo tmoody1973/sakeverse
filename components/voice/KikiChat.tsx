@@ -180,7 +180,7 @@ export function KikiChat() {
     try {
       setVoiceError(null)
 
-      const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY
+      const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY?.trim()
       if (!apiKey) {
         setVoiceError("NEXT_PUBLIC_OPENAI_API_KEY not set")
         return
