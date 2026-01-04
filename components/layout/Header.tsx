@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Badge } from "@/components/ui/Badge"
-import { Search, Mic, ShoppingCart, Menu } from "lucide-react"
+import { Search, Mic, Menu } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 // Conditional imports for Clerk
@@ -80,7 +80,7 @@ export function Header() {
         </nav>
 
         {/* Search Bar (Desktop) */}
-        <div className="hidden lg:flex items-center flex-1 max-w-md ml-auto mr-4">
+        <div className="hidden lg:flex items-center flex-1 max-w-sm ml-12">
           <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
             <Input
@@ -91,7 +91,7 @@ export function Header() {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 ml-4">
           {/* Voice Agent Button */}
           <Button
             variant="accent"
@@ -109,18 +109,6 @@ export function Header() {
                 •
               </Badge>
             </Link>
-          </Button>
-
-          {/* Cart */}
-          <Button variant="ghost" size="icon" className="relative">
-            <ShoppingCart className="h-4 w-4" />
-            <Badge 
-              variant="primary" 
-              size="sm" 
-              className="absolute -top-1 -right-1 h-5 w-5 p-0 text-xs"
-            >
-              3
-            </Badge>
           </Button>
 
           {/* User Menu */}
@@ -141,7 +129,7 @@ export function Header() {
               />
             </div>
           ) : (
-            <div className="flex items-center space-x-2">
+            <div className="hidden sm:flex items-center space-x-2">
               <Button variant="ghost" size="sm" asChild>
                 <Link href="/sign-in">Sign In</Link>
               </Button>
