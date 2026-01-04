@@ -23,6 +23,7 @@ interface ChatBubbleProps {
   isC1?: boolean
   c1Content?: any
   onC1Action?: (action: { type: string; payload?: any }) => void
+  onContinueConversation?: (message: string) => void
   className?: string
 }
 
@@ -34,6 +35,7 @@ export function ChatBubble({
   isC1,
   c1Content,
   onC1Action,
+  onContinueConversation,
   className 
 }: ChatBubbleProps) {
   const isUser = role === "user"
@@ -70,7 +72,11 @@ export function ChatBubble({
 
         {/* C1 Dynamic UI Content */}
         {isC1 && c1Content && onC1Action ? (
-          <C1Message content={c1Content} onAction={onC1Action} />
+          <C1Message 
+            content={c1Content} 
+            onAction={onC1Action}
+            onContinueConversation={onContinueConversation}
+          />
         ) : (
           <>
             {/* Message Content */}

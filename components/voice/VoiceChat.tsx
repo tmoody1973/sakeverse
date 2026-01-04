@@ -35,27 +35,31 @@ export function VoiceChat() {
     
     switch (action.type) {
       case 'add_to_cart':
-        // Show toast or update cart state
         alert(`Added ${action.payload?.productName || 'item'} to cart!`)
         break
+      case 'continue_conversation':
+        // Already handled by onContinueConversation
+        break
       case 'explore_region':
-        // Navigate to region page
         if (action.payload?.regionId) {
           window.location.href = `/regions/${action.payload.regionId}`
         }
         break
       case 'learn_more':
-        // Open product details or external link
         if (action.payload?.url) {
           window.open(action.payload.url, '_blank')
         }
         break
       case 'set_temperature':
-        // Could update user preferences
-        console.log(`Temperature set to ${action.payload?.celsius}°C (${action.payload?.japaneseName})`)
+        console.log(`Temperature set to ${action.payload?.celsius}°C`)
         break
     }
   }, [])
+
+  // Handle C1 follow-up conversations
+  const handleContinueConversation = useCallback(async (message: string) => {
+    await sendMessage(message)
+  }, [sendMessage])
 
   const handleSendText = async () => {
     if (!textInput.trim()) return
@@ -149,6 +153,7 @@ export function VoiceChat() {
                   isC1={message.isC1}
                   c1Content={message.c1Content}
                   onC1Action={handleC1Action}
+                  onContinueConversation={handleContinueConversation}
                 />
               ))}
               <div ref={messagesEndRef} />
