@@ -123,14 +123,42 @@ export function KikiChat() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ food: args.food }),
         }).then(r => r.json())
-        result = pairings.recommendation || `For ${args.food}, I'd suggest a Junmai or Junmai Ginjo.`
+        
+        // Also search for recommended sake
+        const products = await fetch("/api/voice/search", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query: `sake for ${args.food}` }),
+        }).then(r => r.json())
+        
+        if (products.length > 0) {
+          setVoiceProducts(products)
+        }
+        
+        result = pairings.recommendation 
+          ? `${pairings.recommendation} I'm showing you some options on screen.`
+          : `For ${args.food}, I'd suggest a Junmai or Junmai Ginjo. Check out the options I'm showing you.`
       } else if (name === "wine_to_sake") {
         const rec = await fetch("/api/voice/wine-to-sake", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ wine: args.winePreference }),
         }).then(r => r.json())
-        result = rec.recommendation || `Based on your love of ${args.winePreference}, try a Junmai Daiginjo.`
+        
+        // Search for recommended sake style
+        const products = await fetch("/api/voice/search", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query: args.winePreference }),
+        }).then(r => r.json())
+        
+        if (products.length > 0) {
+          setVoiceProducts(products)
+        }
+        
+        result = rec.recommendation 
+          ? `${rec.recommendation} I'm showing you some bottles to try.`
+          : `Based on your love of ${args.winePreference}, try a Junmai Daiginjo. Check out the options on screen.`
       }
     } catch (e) {
       result = "Let me help you with that. Could you tell me more about what you're looking for?"
@@ -266,6 +294,12 @@ export function KikiChat() {
             console.error('Realtime error:', JSON.stringify(data, null, 2))
             setVoiceError(data.error?.message || data.message || 'Voice error')
             break
+            
+          default:
+            // Log unhandled events for debugging
+            if (data.type?.includes('error') || data.type?.includes('failed')) {
+              console.warn('Unhandled event:', data.type, data)
+            }
         }
       }
 

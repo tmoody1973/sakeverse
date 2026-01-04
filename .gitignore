@@ -42,3 +42,4 @@ pdf/
 # Cache
 .cache/
 .parcel-cache/
+.vercel
