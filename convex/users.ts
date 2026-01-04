@@ -258,3 +258,69 @@ export const getUserPreferences = query({
     return user?.preferences || null;
   },
 });
+
+
+// Upsert user from Clerk webhook
+export const upsertUser = mutation({
+  args: {
+    clerkId: v.string(),
+    email: v.string(),
+    firstName: v.string(),
+    lastName: v.string(),
+    imageUrl: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const existingUser = await ctx.db
+      .query("users")
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", args.clerkId))
+      .unique();
+
+    if (existingUser) {
+      await ctx.db.patch(existingUser._id, {
+        email: args.email,
+        name: `${args.firstName} ${args.lastName}`.trim() || args.email,
+        avatar: args.imageUrl,
+        updatedAt: Date.now(),
+      });
+      return existingUser._id;
+    }
+
+    return await ctx.db.insert("users", {
+      clerkId: args.clerkId,
+      email: args.email,
+      name: `${args.firstName} ${args.lastName}`.trim() || args.email,
+      avatar: args.imageUrl,
+      level: 1,
+      xp: 0,
+      streak: 0,
+      lastActive: Date.now(),
+      preferences: {
+        tastePreferences: {
+          sweetness: 3,
+          acidity: 3,
+          richness: 3,
+          umami: 3,
+        },
+        temperaturePreference: "cold",
+        spiceLevel: "mild",
+      },
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+    });
+  },
+});
+
+// Delete user from Clerk webhook
+export const deleteUser = mutation({
+  args: { clerkId: v.string() },
+  handler: async (ctx, args) => {
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", args.clerkId))
+      .unique();
+    
+    if (user) {
+      await ctx.db.delete(user._id);
+    }
+  },
+});

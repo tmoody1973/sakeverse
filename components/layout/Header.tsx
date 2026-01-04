@@ -103,6 +103,7 @@ export function Header() {
                 <div className="text-xs text-gray-600">Level 3 • 340 XP</div>
               </div>
               <UserButton 
+                afterSignOutUrl="/"
                 appearance={{
                   elements: {
                     avatarBox: "w-8 h-8 border-2 border-ink rounded-full shadow-retro-sm"
