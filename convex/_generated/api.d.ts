@@ -11,6 +11,7 @@
 import type * as checkData from "../checkData.js";
 import type * as clearData from "../clearData.js";
 import type * as embeddings from "../embeddings.js";
+import type * as foodPairing from "../foodPairing.js";
 import type * as geminiRAG from "../geminiRAG.js";
 import type * as importTippsy from "../importTippsy.js";
 import type * as perplexityAPI from "../perplexityAPI.js";
@@ -29,6 +30,7 @@ declare const fullApi: ApiFromModules<{
   checkData: typeof checkData;
   clearData: typeof clearData;
   embeddings: typeof embeddings;
+  foodPairing: typeof foodPairing;
   geminiRAG: typeof geminiRAG;
   importTippsy: typeof importTippsy;
   perplexityAPI: typeof perplexityAPI;

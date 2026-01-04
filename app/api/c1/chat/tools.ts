@@ -311,4 +311,104 @@ export const tools: RunnableToolFunctionWithParse<any>[] = [
       strict: true,
     },
   },
+  {
+    type: "function",
+    function: {
+      name: "get_food_pairing",
+      description: "Get sake pairing recommendations for specific foods or dishes. Use when user asks what sake goes with a food, or how to pair sake with a meal.",
+      parse: (input: string) => JSON.parse(input),
+      parameters: {
+        type: "object",
+        properties: {
+          food: { type: "string", description: "The food or dish to pair with sake" },
+        },
+        required: ["food"],
+      },
+      function: async ({ food }: { food: string }) => {
+        const pairings: Record<string, any> = {
+          "fried chicken": {
+            goal: "Cut through richness and complement savory flavors",
+            bestStyles: ["Kimoto/Yamahai (higher acidity, earthy)", "Honjozo (crisp palate cleanser)", "Sparkling Sake (carbonation lifts richness)"],
+            example: "Southern fried chicken → Yamahai Junmai; Japanese karaage → Crisp Honjozo",
+            products: [{ name: "Tedorigawa Yamahai", price: 42, url: "https://www.tippsy.com/products/tedorigawa-yamahai-junmai" }]
+          },
+          "steak": {
+            goal: "Match smoky, robust flavors of the meat",
+            bestStyles: ["Junmai (full-bodied, umami)", "Kimoto/Yamahai (robust, earthy)", "Genshu (intense, higher alcohol)"],
+            example: "Grilled ribeye with soy garlic → Room-temp Junmai",
+            products: [{ name: "Hakkaisan Tokubetsu", price: 35, url: "https://www.tippsy.com/products/hakkaisan-tokubetsu-junmai" }]
+          },
+          "bbq": {
+            goal: "Stand up to bold sauces and smoky flavors",
+            bestStyles: ["Yamahai (robust, earthy)", "Genshu (powerful)", "Junmai (savory)"],
+            example: "BBQ ribs → Bold Yamahai; Burgers → Genshu",
+            products: [{ name: "Tedorigawa Yamahai", price: 42, url: "https://www.tippsy.com/products/tedorigawa-yamahai-junmai" }]
+          },
+          "spicy": {
+            goal: "Tame heat and complement aromatic spices",
+            bestStyles: ["Nigori (creamy sweetness soothes heat)", "Fruity Ginjo (balances heat)", "Low-alcohol sake"],
+            example: "Thai curry → Sweet Nigori; Korean kimchi → Fruity Junmai Ginjo",
+            products: [{ name: "Dewazakura Oka", price: 28, url: "https://www.tippsy.com/products/dewazakura-oka-ginjo" }]
+          },
+          "cheese": {
+            goal: "Complement salty, creamy, funky flavors",
+            bestStyles: ["Junmai (savory, versatile)", "Koshu (nutty, for blue cheese)", "Kimoto/Yamahai (earthy)"],
+            example: "Aged cheddar → Junmai; Stilton/Roquefort → Koshu",
+            products: [{ name: "Born Tokusen", price: 55, url: "https://www.tippsy.com/products/born-tokusen" }]
+          },
+          "sushi": {
+            goal: "Enhance umami without overpowering delicate fish",
+            bestStyles: ["Daiginjo/Ginjo (elegant, fragrant)", "Dry Junmai (mineral, umami)", "Honjozo (clean)"],
+            example: "Sashimi → Junmai Daiginjo; Oysters → Mineral Junmai",
+            products: [{ name: "Dassai 23", price: 85, url: "https://www.tippsy.com/products/dassai-23" }]
+          },
+          "seafood": {
+            goal: "Enhance umami, no metallic off-notes",
+            bestStyles: ["Daiginjo (delicate raw fish)", "Dry Junmai (shellfish)", "Honjozo (cooked fish)"],
+            example: "Raw oysters → Crisp Junmai; Toro sashimi → Junmai Daiginjo",
+            products: [{ name: "Kubota Manju", price: 65, url: "https://www.tippsy.com/products/kubota-manju" }]
+          },
+          "pizza": {
+            goal: "Complement umami of cheese and tomatoes",
+            bestStyles: ["Junmai (umami matches tomato/cheese)", "Sparkling (refreshing contrast)", "Kimoto (for creamy toppings)"],
+            example: "Pepperoni pizza → Room-temp Junmai; Margherita → Sparkling Sake",
+            products: [{ name: "Hakkaisan Tokubetsu", price: 35, url: "https://www.tippsy.com/products/hakkaisan-tokubetsu-junmai" }]
+          },
+          "pasta": {
+            goal: "Balance richness of sauces",
+            bestStyles: ["Junmai (tomato-based)", "Kimoto/Yamahai (creamy sauces)", "Sparkling (light pasta)"],
+            example: "Carbonara → Kimoto; Mushroom pasta → Earthy Junmai",
+            products: [{ name: "Tedorigawa Yamahai", price: 42, url: "https://www.tippsy.com/products/tedorigawa-yamahai-junmai" }]
+          },
+          "chocolate": {
+            goal: "Match sweetness and richness",
+            bestStyles: ["Koshu (nutty, caramelized)", "Sweet Nigori"],
+            example: "Dark chocolate torte → Koshu (luxurious!)",
+            products: [{ name: "Born Tokusen", price: 55, url: "https://www.tippsy.com/products/born-tokusen" }]
+          },
+        }
+        
+        const foodLower = food.toLowerCase()
+        for (const [key, data] of Object.entries(pairings)) {
+          if (foodLower.includes(key)) {
+            return JSON.stringify({
+              food,
+              ...data,
+              displayInstructions: "Show pairing goal, recommended sake styles as a list, and example pairings. Include product card if available."
+            })
+          }
+        }
+        
+        // Default response for unknown foods
+        return JSON.stringify({
+          food,
+          goal: "Match intensity and complement flavors",
+          bestStyles: ["Junmai (versatile, savory)", "Ginjo (aromatic, lighter dishes)", "Yamahai (rich, hearty dishes)"],
+          tip: "General rule: If it pairs well with steamed rice, it pairs well with sake!",
+          displayInstructions: "Provide general pairing guidance based on the food's characteristics."
+        })
+      },
+      strict: true,
+    },
+  },
 ]
