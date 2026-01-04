@@ -1,6 +1,13 @@
 "use client"
 
 import { cn } from "@/lib/utils"
+import dynamic from "next/dynamic"
+
+// Dynamically import C1Message to avoid SSR issues
+const C1Message = dynamic(() => import("./C1Message").then(mod => ({ default: mod.C1Message })), {
+  ssr: false,
+  loading: () => <div className="animate-pulse bg-sake-mist/30 rounded-lg h-32" />
+})
 
 interface ChatBubbleProps {
   role: "user" | "assistant"
@@ -13,10 +20,22 @@ interface ChatBubbleProps {
     brewery: string
     category: string
   }>
+  isC1?: boolean
+  c1Content?: any
+  onC1Action?: (action: { type: string; payload?: any }) => void
   className?: string
 }
 
-export function ChatBubble({ role, content, timestamp, products, className }: ChatBubbleProps) {
+export function ChatBubble({ 
+  role, 
+  content, 
+  timestamp, 
+  products, 
+  isC1,
+  c1Content,
+  onC1Action,
+  className 
+}: ChatBubbleProps) {
   const isUser = role === "user"
   const time = new Date(timestamp).toLocaleTimeString([], { 
     hour: '2-digit', 
@@ -49,37 +68,44 @@ export function ChatBubble({ role, content, timestamp, products, className }: Ch
           <span className="text-xs text-gray-400 ml-2">{time}</span>
         </div>
 
-        {/* Message Content */}
-        <div className="text-sm leading-relaxed">
-          {content}
-        </div>
-
-        {/* Product Recommendations */}
-        {products && products.length > 0 && (
-          <div className="mt-3 space-y-2">
-            <div className="text-xs font-semibold text-gray-600 mb-2">
-              🍶 Recommended Sake:
+        {/* C1 Dynamic UI Content */}
+        {isC1 && c1Content && onC1Action ? (
+          <C1Message content={c1Content} onAction={onC1Action} />
+        ) : (
+          <>
+            {/* Message Content */}
+            <div className="text-sm leading-relaxed">
+              {content}
             </div>
-            {products.slice(0, 3).map((product, index) => (
-              <div key={index} className="bg-sake-mist/30 rounded-lg border border-ink/20 p-3">
-                <div className="flex justify-between items-start mb-1">
-                  <h4 className="font-semibold text-xs text-ink">{product.productName}</h4>
-                  <span className="text-xs font-bold text-sakura-dark">${product.price}</span>
+
+            {/* Product Recommendations */}
+            {products && products.length > 0 && (
+              <div className="mt-3 space-y-2">
+                <div className="text-xs font-semibold text-gray-600 mb-2">
+                  🍶 Recommended Sake:
                 </div>
-                <div className="text-xs text-gray-600 mb-2">
-                  {product.brewery} • {product.category}
-                </div>
-                <a 
-                  href={product.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-sakura-pink text-ink text-xs px-3 py-1 rounded border border-ink hover:bg-sakura-dark transition-colors"
-                >
-                  View on Tippsy →
-                </a>
+                {products.slice(0, 3).map((product, index) => (
+                  <div key={index} className="bg-sake-mist/30 rounded-lg border border-ink/20 p-3">
+                    <div className="flex justify-between items-start mb-1">
+                      <h4 className="font-semibold text-xs text-ink">{product.productName}</h4>
+                      <span className="text-xs font-bold text-sakura-dark">${product.price}</span>
+                    </div>
+                    <div className="text-xs text-gray-600 mb-2">
+                      {product.brewery} • {product.category}
+                    </div>
+                    <a 
+                      href={product.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-block bg-sakura-pink text-ink text-xs px-3 py-1 rounded border border-ink hover:bg-sakura-dark transition-colors"
+                    >
+                      View on Tippsy →
+                    </a>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            )}
+          </>
         )}
       </div>
     </div>

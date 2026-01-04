@@ -22,6 +22,8 @@ export interface VoiceChatState {
       brewery: string
       category: string
     }>
+    isC1?: boolean
+    c1Content?: any
   }>
 }
 

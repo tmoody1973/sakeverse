@@ -130,4 +130,26 @@
   .mobile-nav-offset {
     @apply pb-16 md:pb-0;
   }
+
+  /* Thesys C1 Theme Overrides */
+  .c1-message-wrapper {
+    @apply w-full;
+  }
+
+  .c1-message-wrapper [data-c1-card] {
+    @apply border-2 border-ink rounded-xl bg-white;
+    box-shadow: 4px 4px 0px rgb(var(--ink));
+  }
+
+  .c1-message-wrapper [data-c1-button-primary] {
+    @apply bg-sakura-pink text-ink border-2 border-ink rounded-lg font-semibold;
+  }
+
+  .c1-message-wrapper [data-c1-button-secondary] {
+    @apply bg-white text-ink border-2 border-ink rounded-lg;
+  }
+
+  .c1-message-wrapper [data-c1-badge] {
+    @apply inline-flex items-center rounded-full border-2 border-ink px-2.5 py-0.5 text-xs font-semibold;
+  }
 }
