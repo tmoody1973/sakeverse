@@ -9,26 +9,38 @@ export function LandingPage() {
     <div className="min-h-screen">
       {/* Hero */}
       <section className="container-retro py-16 md:py-24">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-display font-bold text-ink mb-6">
-            Discover Sake with Your
-            <span className="text-plum-dark"> AI Sommelier</span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Meet Kiki (利き酒) — your personal sake guide. Get recommendations based on your wine preferences, food pairings, and taste profile.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" size="lg" asChild>
-              <Link href="/sign-up">
-                Get Started Free
-              </Link>
-            </Button>
-            <Button variant="secondary" size="lg" asChild>
-              <Link href="/kiki">
-                <Mic className="w-5 h-5 mr-2" />
-                Try Voice Demo
-              </Link>
-            </Button>
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          {/* Left: Text Content */}
+          <div className="flex-1 text-center lg:text-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-ink mb-6">
+              Discover Sake with Your
+              <span className="text-plum-dark"> AI Sommelier</span>
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl">
+              Meet Kiki (利き酒) — your personal sake guide. Get recommendations based on your wine preferences, food pairings, and taste profile.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Button variant="primary" size="lg" asChild>
+                <Link href="/sign-up">
+                  Get Started Free
+                </Link>
+              </Button>
+              <Button variant="secondary" size="lg" asChild>
+                <Link href="/kiki">
+                  <Mic className="w-5 h-5 mr-2" />
+                  Try Voice Demo
+                </Link>
+              </Button>
+            </div>
+          </div>
+          
+          {/* Right: Kiki Mascot */}
+          <div className="flex-shrink-0">
+            <img 
+              src="/kiki-mascot.png" 
+              alt="Kiki the sake cat brewing sake" 
+              className="w-64 md:w-80 lg:w-96 h-auto drop-shadow-xl"
+            />
           </div>
         </div>
       </section>

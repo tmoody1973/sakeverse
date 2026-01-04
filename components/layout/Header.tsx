@@ -145,13 +145,6 @@ export function Header() {
             </div>
           )}
 
-          {/* Kiki Mascot */}
-          <img 
-            src="/kiki-mascot.png" 
-            alt="Kiki the sake cat" 
-            className="h-14 w-auto hidden sm:block -mb-2 drop-shadow-md"
-          />
-
           {/* Mobile Menu Button */}
           <Button variant="ghost" size="icon" className="md:hidden">
             <Menu className="h-4 w-4" />
