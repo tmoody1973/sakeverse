@@ -3,10 +3,35 @@
 import { C1Chat, ThemeProvider } from "@thesysai/genui-sdk"
 import "@crayonai/react-ui/styles/index.css"
 import { useVoiceToC1 } from "@/hooks/useVoiceToC1"
-import { useCallback } from "react"
-import { Mic, MicOff, Volume2 } from "lucide-react"
+import { useCallback, useEffect, useState } from "react"
+import { Mic, MicOff, Volume2, BookmarkPlus } from "lucide-react"
+import { useMutation, useQuery } from "convex/react"
+import { api } from "@/convex/_generated/api"
+import Link from "next/link"
+
+function getSessionId() {
+  if (typeof window === "undefined") return "server"
+  let id = localStorage.getItem("sakeverse_session")
+  if (!id) {
+    id = `session_${Date.now()}_${Math.random().toString(36).slice(2)}`
+    localStorage.setItem("sakeverse_session", id)
+  }
+  return id
+}
 
 export function KikiChat() {
+  const [sessionId, setSessionId] = useState<string>("")
+  
+  useEffect(() => {
+    setSessionId(getSessionId())
+  }, [])
+
+  const saveSake = useMutation(api.userLibrary.saveSake)
+  const library = useQuery(
+    api.userLibrary.getLibrary,
+    sessionId ? { sessionId } : "skip"
+  )
+
   const handleTranscript = useCallback((text: string) => {
     console.log("Voice transcript:", text)
   }, [])
@@ -19,6 +44,40 @@ export function KikiChat() {
     onTranscript: handleTranscript,
     onGenerateUI: handleGenerateUI,
   })
+
+  // Handle C1 actions including save_to_library
+  const handleAction = useCallback(async (event: any) => {
+    console.log("C1 Action:", event)
+    
+    if (event.type === "open_url" && event.params?.url) {
+      window.open(event.params.url, "_blank", "noopener,noreferrer")
+    }
+    
+    // Handle save_to_library from tool response
+    if (event.type === "save_to_library" || event.params?.action === "save_to_library") {
+      const sake = event.params?.sake || event.params
+      if (sake && sessionId) {
+        try {
+          const result = await saveSake({
+            sessionId,
+            sake: {
+              name: sake.name,
+              brewery: sake.brewery,
+              price: sake.price,
+              category: sake.category,
+              region: sake.region,
+              image: sake.image,
+              url: sake.url,
+              description: sake.description,
+            }
+          })
+          alert(result.message)
+        } catch (e) {
+          console.error("Failed to save:", e)
+        }
+      }
+    }
+  }, [sessionId, saveSake])
 
   return (
     <div className="flex flex-col h-full">
@@ -33,6 +92,15 @@ export function KikiChat() {
         </div>
         
         <div className="flex items-center gap-2">
+          {/* Library Link */}
+          <Link
+            href="/library"
+            className="flex items-center gap-1 px-3 py-2 bg-white border-2 border-ink rounded-lg text-sm font-medium hover:bg-sakura-light transition-colors"
+          >
+            <BookmarkPlus className="w-4 h-4" />
+            Library ({library?.length || 0})
+          </Link>
+
           {voice.isListening && (
             <span className="flex items-center gap-1 text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -72,13 +140,13 @@ export function KikiChat() {
         </div>
       )}
 
-      {/* C1Chat with ThemeProvider */}
+      {/* C1Chat */}
       <div className="flex-1 min-h-0">
         <ThemeProvider>
           <C1Chat 
             apiUrl="/api/c1/chat"
             agentName="Kiki"
-            logoUrl="/sake-icon.png"
+            onAction={handleAction}
           />
         </ThemeProvider>
       </div>

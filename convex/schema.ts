@@ -341,4 +341,22 @@ export default defineSchema({
       dimensions: 1536,
       filterFields: ["category"]
     }),
+
+  // User Sake Library (saved/wishlist)
+  userLibrary: defineTable({
+    clerkId: v.optional(v.string()),
+    sessionId: v.string(),
+    sakeName: v.string(),
+    brewery: v.string(),
+    price: v.number(),
+    category: v.string(),
+    region: v.string(),
+    image: v.string(),
+    url: v.string(),
+    description: v.optional(v.string()),
+    savedAt: v.number(),
+  })
+    .index("by_session", ["sessionId"])
+    .index("by_session_sake", ["sessionId", "sakeName"])
+    .index("by_clerk", ["clerkId"]),
 });

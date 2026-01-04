@@ -15,6 +15,7 @@ import type * as geminiRAG from "../geminiRAG.js";
 import type * as importTippsy from "../importTippsy.js";
 import type * as perplexityAPI from "../perplexityAPI.js";
 import type * as sake from "../sake.js";
+import type * as userLibrary from "../userLibrary.js";
 import type * as users from "../users.js";
 import type * as wineToSake from "../wineToSake.js";
 
@@ -32,6 +33,7 @@ declare const fullApi: ApiFromModules<{
   importTippsy: typeof importTippsy;
   perplexityAPI: typeof perplexityAPI;
   sake: typeof sake;
+  userLibrary: typeof userLibrary;
   users: typeof users;
   wineToSake: typeof wineToSake;
 }>;

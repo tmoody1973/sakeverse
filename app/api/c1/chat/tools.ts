@@ -88,7 +88,58 @@ export const tools: RunnableToolFunctionWithParse<any>[] = [
         return JSON.stringify({ 
           products: filtered.slice(0, 3), 
           query,
-          displayInstructions: "Show each product as a card with image, name, brewery, price, description, and a 'View on Tippsy' button linking to the URL."
+          displayInstructions: "Show each product as a card with image, name, brewery, price, description. Include TWO buttons: 'View on Tippsy' (links to URL) and 'Save to Library' (calls save_to_library)."
+        })
+      },
+      strict: true,
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "save_to_library",
+      description: "Save a sake to the user's personal library/wishlist. Use when user wants to save, bookmark, or remember a sake for later.",
+      parse: (input: string) => JSON.parse(input),
+      parameters: {
+        type: "object",
+        properties: {
+          name: { type: "string", description: "Sake name" },
+          brewery: { type: "string", description: "Brewery name" },
+          price: { type: "number", description: "Price in dollars" },
+          category: { type: "string", description: "Sake category" },
+          region: { type: "string", description: "Region/prefecture" },
+          image: { type: "string", description: "Image URL" },
+          url: { type: "string", description: "Tippsy product URL" },
+        },
+        required: ["name", "brewery", "price", "category", "region", "image", "url"],
+      },
+      function: async (sake: any) => {
+        // This will be handled client-side via Convex
+        return JSON.stringify({ 
+          action: "save_to_library",
+          sake,
+          message: `${sake.name} has been saved to your library! You can view your saved sake anytime by asking "show my library" or visiting the Library page.`
+        })
+      },
+      strict: true,
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_user_library",
+      description: "Get the user's saved sake library. Use when user asks to see their saved sake, library, wishlist, or bookmarks.",
+      parse: (input: string) => JSON.parse(input),
+      parameters: {
+        type: "object",
+        properties: {},
+        required: [],
+      },
+      function: async () => {
+        // This will be handled client-side via Convex
+        return JSON.stringify({ 
+          action: "get_library",
+          displayInstructions: "Display the user's saved sake as cards with images. If empty, suggest some sake to save."
         })
       },
       strict: true,
