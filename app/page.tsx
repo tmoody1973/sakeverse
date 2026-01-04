@@ -1,0 +1,261 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
+import { Button } from "@/components/ui/Button"
+import { Badge } from "@/components/ui/Badge"
+import { Mic, Play, MapPin, BookOpen, TrendingUp, Star } from "lucide-react"
+import Link from "next/link"
+
+export default function HomePage() {
+  return (
+    <div className="container-retro py-8 space-y-8">
+      {/* Welcome Hero */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <Card className="lg:col-span-8 bg-gradient-to-br from-sakura-pink to-petal-light">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="text-3xl mb-2">
+                  Welcome back! 🌸
+                </CardTitle>
+                <p className="text-gray-600">
+                  Ready to discover your next favorite sake?
+                </p>
+              </div>
+              <div className="text-right">
+                <div className="text-2xl font-bold text-plum-dark">Level 3</div>
+                <div className="text-sm text-gray-600">340 XP</div>
+                <div className="flex items-center mt-1">
+                  <div className="text-sm text-gray-600 mr-2">7 day streak</div>
+                  <div className="text-lg">🔥</div>
+                </div>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-plum-dark">12</div>
+                <div className="text-sm text-gray-600">Sake Tried</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-plum-dark">4</div>
+                <div className="text-sm text-gray-600">Badges</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-plum-dark">3</div>
+                <div className="text-sm text-gray-600">Regions</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-plum-dark">80%</div>
+                <div className="text-sm text-gray-600">Course Progress</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Sidebar */}
+        <div className="lg:col-span-4 space-y-4">
+          {/* Quick Actions */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Quick Actions</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 gap-3">
+                <Button variant="accent" className="h-16 flex-col" asChild>
+                  <Link href="/yuki">
+                    <Mic className="h-6 w-6 mb-1" />
+                    <span className="text-xs">Ask Yuki</span>
+                  </Link>
+                </Button>
+                <Button variant="primary" className="h-16 flex-col" asChild>
+                  <Link href="/discover">
+                    <Star className="h-6 w-6 mb-1" />
+                    <span className="text-xs">Discover</span>
+                  </Link>
+                </Button>
+                <Button variant="warm" className="h-16 flex-col" asChild>
+                  <Link href="/map">
+                    <MapPin className="h-6 w-6 mb-1" />
+                    <span className="text-xs">Explore Map</span>
+                  </Link>
+                </Button>
+                <Button variant="success" className="h-16 flex-col" asChild>
+                  <Link href="/learn">
+                    <BookOpen className="h-6 w-6 mb-1" />
+                    <span className="text-xs">Learn</span>
+                  </Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Current Course */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Current Course</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <div className="text-2xl">🌱</div>
+                  <div>
+                    <div className="font-semibold">Sake Fundamentals</div>
+                    <div className="text-sm text-gray-600">Lesson 8 of 10</div>
+                  </div>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill" style={{ width: "80%" }}></div>
+                </div>
+                <Button variant="primary" size="sm" className="w-full">
+                  Continue Learning
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Featured Podcast */}
+      <Card className="bg-plum-dark text-white">
+        <CardContent className="p-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 bg-sake-warm rounded-lg flex items-center justify-center text-2xl">
+                🍽️
+              </div>
+              <div>
+                <Badge variant="warm" className="mb-2">Now Playing</Badge>
+                <h3 className="text-xl font-bold mb-1">Pairing Lab</h3>
+                <p className="text-gray-300">Korean BBQ and Sake—Why It Works</p>
+                <div className="text-sm text-gray-400 mt-1">15 min • Episode 12</div>
+              </div>
+            </div>
+            <div className="flex items-center space-x-3">
+              <Button variant="secondary" size="icon">
+                <Play className="h-4 w-4" />
+              </Button>
+              <div className="text-sm text-gray-400">5:23 / 15:00</div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Yuki CTA */}
+      <Card className="bg-sake-mist">
+        <CardContent className="p-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-2xl border-2 border-ink shadow-retro">
+                🎤
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-1">Chat with Yuki</h3>
+                <p className="text-gray-600">Your AI sake sommelier is ready to help you discover new flavors</p>
+              </div>
+            </div>
+            <Button variant="accent" size="lg" className="voice-pulse" asChild>
+              <Link href="/yuki">
+                <Mic className="h-5 w-5 mr-2" />
+                Start Conversation
+              </Link>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Recommendations */}
+      <div>
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-display font-bold">Recommended for You</h2>
+          <Button variant="ghost" asChild>
+            <Link href="/discover">
+              View All
+              <TrendingUp className="h-4 w-4 ml-2" />
+            </Link>
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Sake Cards */}
+          {[
+            {
+              name: "Dassai 23",
+              brewery: "Asahi Shuzo",
+              region: "Yamaguchi",
+              type: "Junmai Daiginjo",
+              price: "$85",
+              image: "🍶",
+              rating: 4.8,
+              compatibility: 95,
+            },
+            {
+              name: "Hakkaisan",
+              brewery: "Hakkaisan Brewery",
+              region: "Niigata",
+              type: "Junmai Ginjo",
+              price: "$32",
+              image: "🍶",
+              rating: 4.6,
+              compatibility: 88,
+            },
+            {
+              name: "Kubota Manju",
+              brewery: "Asahi-shuzo",
+              region: "Niigata",
+              type: "Junmai Daiginjo",
+              price: "$45",
+              image: "🍶",
+              rating: 4.7,
+              compatibility: 92,
+            },
+            {
+              name: "Juyondai",
+              brewery: "Takagi Shuzo",
+              region: "Yamagata",
+              type: "Junmai",
+              price: "$120",
+              image: "🍶",
+              rating: 4.9,
+              compatibility: 89,
+            },
+          ].map((sake, index) => (
+            <Card key={index} className="group cursor-pointer">
+              <CardContent className="p-4">
+                <div className="aspect-square bg-sakura-light rounded-lg flex items-center justify-center text-4xl mb-3 group-hover:bg-petal-light transition-colors">
+                  {sake.image}
+                  <Badge 
+                    variant={sake.type.toLowerCase().includes('junmai') ? 'junmai' : 'ginjo'} 
+                    className="absolute top-2 left-2 text-xs"
+                  >
+                    {sake.type.split(' ')[0]}
+                  </Badge>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="font-semibold text-ink group-hover:text-plum-dark transition-colors">
+                    {sake.name}
+                  </h3>
+                  <p className="text-sm text-gray-600">{sake.region}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-plum-dark">{sake.price}</span>
+                    <div className="flex items-center space-x-1">
+                      <Star className="h-3 w-3 fill-current text-yellow-500" />
+                      <span className="text-xs text-gray-600">{sake.rating}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Badge variant="success" size="sm">
+                      {sake.compatibility}% match
+                    </Badge>
+                    <Button variant="primary" size="sm">
+                      Add to Cart
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}

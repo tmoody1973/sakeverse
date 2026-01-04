@@ -1,0 +1,3666 @@
+{
+  "source": "tippsysake.com",
+  "extractedAt": "2026-01-03",
+  "note": "Complete product catalog extracted from tippsysake.com. Merged from multiple extraction batches.",
+  "products": [
+    {
+      "productName": "Amabuki \"Strawberry\"",
+      "price": "$39.00",
+      "size": "720 ml",
+      "description": "A fresh creation from Amabuki brewery. Strawberry flower yeast is used to give this sake a refreshing sweetness and fruitiness that is reminiscent of plump, ripe strawberries. A succulent bottle loaded with pleasing flowery aromas accompanied by a fresh sourness that gradually reaches your palate.",
+      "brand": "Amabuki",
+      "brewery": "Amabuki Brewing Company",
+      "category": "Junmai Ginjo",
+      "subcategory": "Nama",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Omachi",
+      "yeastVariety": "Flower yeast (strawberry)",
+      "alcohol": "16.00%",
+      "rpr": "55%",
+      "smv": "+1.0",
+      "acidity": "1.8",
+      "servingTemperature": "Cold (40-60°F) or room temp (70°F)",
+      "region": "Kyushu region",
+      "prefecture": "Saga prefecture",
+      "tastingNotes": [
+        "Strawberry",
+        "Plum"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Cheese"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/amabuki-strawberry-1200.jpg?v=1733362808&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/amabuki-strawberry-front-label-720-2307.jpg?v=1711065546&width=1080"
+      ],
+      "reviewCount": 31,
+      "averageRating": 4.48,
+      "url": "https://www.tippsysake.com/products/amabuki-strawberry"
+    },
+    {
+      "productName": "Amanoto \"Heaven's Door\"",
+      "price": "$36.00",
+      "size": "720 ml",
+      "description": "The epitome of the 'local' farm-to-table movement, this sake is made only with rice, water, and labor from its own prefecture. Ama No To translates to 'Heaven's Door,' referring to the prefecture which is at the northernmost tip of Japan.",
+      "brand": "Amanoto",
+      "brewery": "Asamai Brewing Company",
+      "category": "Junmai",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Gin no Sei",
+      "yeastVariety": null,
+      "alcohol": "16.2%",
+      "rpr": "55%",
+      "smv": "4",
+      "acidity": "1.5",
+      "servingTemperature": "Cold to room temperature (50-70°F)",
+      "region": "Tohoku region",
+      "prefecture": "Akita prefecture",
+      "tastingNotes": [
+        "Melon",
+        "Flower"
+      ],
+      "foodPairings": [
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/amanoto-heavens-door-1200.jpg",
+        "https://www.tippsysake.com/cdn/shop/files/amanoto-heavens-door-front-label-720-2206.jpg"
+      ],
+      "reviewCount": 7,
+      "averageRating": 4.71,
+      "url": "https://www.tippsysake.com/products/amanoto-heavens-door"
+    },
+    {
+      "productName": "Asabiraki \"Kyokusen\"",
+      "price": "$260.00",
+      "size": "720 ml",
+      "description": "This sake is produced using a unique method in which the sake rice is hung from the ceiling to extract this Daiginjo drop by drop. The all natural method helps the sake retain its well rounded flavoring. Subtle brushes of sweet melon interplay with Umami, like old friends whose kind qualities enhance each other. Dry but smooth, with a crystal clearness when served chilled.",
+      "brand": "Asabiraki",
+      "brewery": "Asabiraki",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Ginginga",
+      "yeastVariety": null,
+      "alcohol": "16.50%",
+      "rpr": "40%",
+      "smv": "1",
+      "acidity": "1.3",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Iwate prefecture",
+      "tastingNotes": [
+        "Melon",
+        "Plum"
+      ],
+      "foodPairings": [
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/asabiraki-kyokusen-1200.jpg?v=1732314982&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/asabiraki-kyokusen-tps221104ym_100-1200.jpg?v=1732066632&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/asabiraki-kyokusen-tps221104ym_121-1200.jpg?v=1732066632&width=1200"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/asabiraki-kyokusen"
+    },
+    {
+      "productName": "Born \"Dreams Come True\"",
+      "price": "$315.00",
+      "size": "720 ml",
+      "description": "The handmade, pale golden bottle is made to look like a trophy to honor the victory of life.",
+      "brand": "Born",
+      "brewery": "Katoukichibee Shouten",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "In-house",
+      "alcohol": "16%",
+      "rpr": "35%",
+      "smv": "2",
+      "acidity": "1.8",
+      "servingTemperature": "Room temperature",
+      "region": "Hokuriku region",
+      "prefecture": "Fukui prefecture",
+      "tastingNotes": [
+        "Apricot",
+        "Pear",
+        "Peach"
+      ],
+      "foodPairings": [
+        "Cheese"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/born-dreams-come-true-1200.jpg"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/born-dreams-come-true"
+    },
+    {
+      "productName": "Born \"Gold\"",
+      "price": "$43.00",
+      "size": "720 ml",
+      "description": "Born \"Gold\" is a winner of countless accolades and a staple everyone should try, even amongst our vast portfolio. This is a \"muroka,\" which doesn't go through any refining treatments, keeping all the fine flavors and aroma intact. Extreme smoothness in texture is achieved by maturing at a temperature of 14 F for one year before blending. If you're looking for a smooth, full-bodied junmai daiginjo to impress your friends, this is the one.",
+      "brand": "Born",
+      "brewery": "Katoukichibee Shouten",
+      "category": "Junmai Daiginjo",
+      "subcategory": "Muroka",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": null,
+      "alcohol": "15.00%",
+      "rpr": "50%",
+      "smv": "1",
+      "acidity": "1.6",
+      "servingTemperature": "cold (40-60°F), room temp (70°F) or warm (85-115°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Fukui prefecture",
+      "tastingNotes": [
+        "Apple",
+        "Peach"
+      ],
+      "foodPairings": [
+        "Cheese",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-born-gold-muroka-tps220303yp_020.jpg?v=1702068850&width=1080",
+        "https://www.tippsysake.com/cdn/shop/files/born-gold-1200.jpg?v=1732737291&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/born-gold-front-label-720-2303.jpg?v=1711066540&width=1080"
+      ],
+      "reviewCount": 49,
+      "averageRating": 4.8,
+      "url": "https://www.tippsysake.com/products/born-gold"
+    },
+    {
+      "productName": "Brooklyn Kura \"Number Fourteen\"",
+      "price": "$33.00",
+      "size": "750 ml",
+      "description": "Not to be confused with Association No. 14 yeast, Brooklyn Kura \"Number Fourteen\" was born from their fourteenth batch of R&D — the perfect recipe for their staple \"nama\" (unpasteurized sake). You can enjoy this sake fresh from the tap if you're lucky enough to visit their taproom. And for all of us in other states and afar, thank goodness for our distributor for making it available to us.",
+      "brand": "Brooklyn Kura",
+      "brewery": "Brooklyn Kura",
+      "category": "Junmai Ginjo",
+      "subcategory": "Nama",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Calrose, Yamadanishiki (grown in Arkansas)",
+      "yeastVariety": null,
+      "alcohol": "15.0%",
+      "rpr": "60%",
+      "smv": "±0",
+      "acidity": "1.6",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "United States",
+      "prefecture": "New York",
+      "tastingNotes": [
+        "Flower",
+        "Apple",
+        "Mint",
+        "Melon",
+        "Vanilla",
+        "Powdered sugar"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Cheese",
+        "Light broth ramen",
+        "Salmon"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/brooklyn-kura-number-fourteen-1200.jpg?v=1733363369&width=1200",
+        "https://www.tippsysake.com/cdn/shop/products/brooklyn-kura-number-fourteen-front-label-750-2307.jpg?v=1689793887&width=1080"
+      ],
+      "reviewCount": 3,
+      "averageRating": 4,
+      "url": "https://www.tippsysake.com/products/brooklyn-kura-number-fourteen"
+    },
+    {
+      "productName": "Chiyomusubi \"Daiginjo\"",
+      "price": "$162.00",
+      "size": "720 ml",
+      "description": "This fragrant daiginjo is submitted to the Annual Japan Sake Awards every year, and has won accolades both nationally and internationally over the years. Made by just six brewers and using a drip method as opposed to squeezing the liquid from the mash, this sake has a flavor similar to mizuame, a Japanese candy with a spicy vibrancy. A great gift for the sake lover in your life.",
+      "brand": "Chiyomusubi",
+      "brewery": "Chiyomusubi Brewing Company",
+      "category": "Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "Association No. 1801",
+      "alcohol": "17.00%",
+      "rpr": "35%",
+      "smv": "6",
+      "acidity": "1.2",
+      "servingTemperature": "cold (40-60°F) or warm (85-115°F)",
+      "region": "Chugoku",
+      "prefecture": "Tottori",
+      "tastingNotes": [
+        "Apple",
+        "Mango",
+        "Violet"
+      ],
+      "foodPairings": [],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/chiyomusubi-daiginjo-tps221104ym_098-1200.jpg?v=1732067414&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/chiyomusubi-daiginjo-tps221104ym_119-1200.jpg?v=1732067414&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/chiyomusubi-daiginjo-1200.jpg?v=1732317198&width=1200"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/chiyomusubi-daiginjo"
+    },
+    {
+      "productName": "Daina \"Beyond the Wall\" Eren Label",
+      "price": "$60.00",
+      "size": "720 ml",
+      "description": "This is an official collaboration between the hit anime and manga series \"Attack on Titan,\" and Japanese sake brand Daina. The first of a series, this one features the show's main protagonist, Eren, because the sake's rich flavor is as pure and straightforward as Eren's heart. This full flavor leaves a crisp and light aftertaste, and pairs easily with a wide variety of meats, seafood and veggies.",
+      "brand": "Daina",
+      "brewery": "Kikunosato Brewing Company",
+      "category": "Junmai Ginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Gohyakumangoku",
+      "yeastVariety": "Association No. 10 lineage (Ogawa Yeast)",
+      "alcohol": "15%",
+      "rpr": "55%",
+      "smv": "3",
+      "acidity": "1.6",
+      "servingTemperature": "cold (40-60°F), room temp (70°F), warm (85-115°F) or hot (120°F-)",
+      "region": "Kanto region",
+      "prefecture": "Tochigi prefecture",
+      "tastingNotes": [
+        "Mango",
+        "Flower",
+        "Mint"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood",
+        "Veggies"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/daina-beyond-the-wall-eren-label-1200.jpg?v=1732317729&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/daina-beyond-the-wall-eren-label-tps221104ym_086-1200.jpg?v=1732067630&width=1200"
+      ],
+      "reviewCount": 2,
+      "averageRating": 5,
+      "url": "https://www.tippsysake.com/products/daina-beyond-the-wall-eren-label"
+    },
+    {
+      "productName": "Daishichi \"Myoka Rangyoku\" Grand Cuvée",
+      "price": "$920.00",
+      "size": "750 ml",
+      "description": "Aged blend of Daishichi's best sake. This highly respected brewery reached back to the last century to create a new version of 'Myoka Rangyoku.'",
+      "brand": "Daishichi",
+      "brewery": "Daishichi Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": "Genshu, Kimoto",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "In-house (Daishichi)",
+      "alcohol": "16%",
+      "rpr": "50%",
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Fukushima prefecture",
+      "tastingNotes": [
+        "Asian Pear",
+        "Chestnuts"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Cheese"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/daishichi-myoka-rangyoku-grand-cuvee-box-1200.jpg"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/daishichi-myoka-rangyoku-grand-cuvee"
+    },
+    {
+      "productName": "Daishichi \"Myoka Rangyoku\" Omega",
+      "price": "$920.00",
+      "size": "720 ml",
+      "description": "Daishichi's supreme junmai daiginjo. Fifteen years after releasing the original 'Myoka Rangyoku,' Daishichi sought to achieve the ultimate expression.",
+      "brand": "Daishichi",
+      "brewery": "Daishichi Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": "Genshu, Kimoto",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "In-house (Daishichi)",
+      "alcohol": "16%",
+      "rpr": "45%",
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Fukushima prefecture",
+      "tastingNotes": [
+        "Peach",
+        "Chestnuts"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Seafood",
+        "Meat",
+        "Lobster",
+        "Foie gras"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/daishichi-myoka-rangyoku-omega-1200.jpg"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/daishichi-myoka-rangyoku-omega"
+    },
+    {
+      "productName": "Dassai \"23\"",
+      "price": "$98.00",
+      "size": "720 ml",
+      "description": "Dassai challenged themselves to brew the ultimate junmai daiginjo as their flagship product. The result? Dassai \"23,\" a sake with Yamadanishiki rice polished down to 23%, which is a pretty high polish for a flagship product. Their hard work gives us a sake with an enticing aroma and a honey-esque sweetness that flows over the palate like a gentle waterfall. The aftertaste is clean, leaving you wishing for another sip.",
+      "brand": "DASSAI",
+      "brewery": "DASSAI Inc.",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "Undisclosed",
+      "alcohol": "16.00%",
+      "rpr": "23%",
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Chugoku region",
+      "prefecture": "Yamaguchi prefecture",
+      "tastingNotes": [
+        "Flower",
+        "Melon",
+        "Honey"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Fruits",
+        "Cheese"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/dassai-23-1200.jpg?v=1733524196&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/tps220303yp_011-dassai-23.jpg?v=1715109449&width=1200"
+      ],
+      "reviewCount": 49,
+      "averageRating": 4.84,
+      "url": "https://www.tippsysake.com/products/dassai-23"
+    },
+    {
+      "productName": "Dassai \"39\"",
+      "price": "$49.00",
+      "size": "720 ml",
+      "description": "If there ever were a role model for junmai daiginjo, this is it. Dassai \"39\" is a skillfully balanced sake that strikes a wonderful compromise between Dassai \"23\" and \"45.\" It borrows some of the best qualities from each and combines them into a sake with a more subtle aroma, higher acidity, and a creamy texture. The juicy melon note provides the bouquet that fades into a crisp aftertaste.",
+      "brand": "DASSAI",
+      "brewery": "DASSAI Inc.",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "Undisclosed",
+      "alcohol": "16.00%",
+      "rpr": "39%",
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Chugoku region",
+      "prefecture": "Yamaguchi prefecture",
+      "tastingNotes": [
+        "Flower",
+        "Melon"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/dassai-39-1200.jpg?v=1733524229&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/tps211223yp_022-dassai-39.jpg?v=1715109449&width=1200"
+      ],
+      "reviewCount": 58,
+      "averageRating": 4.84,
+      "url": "https://www.tippsysake.com/products/dassai-39"
+    },
+    {
+      "productName": "Dassai \"45\"",
+      "price": "$33.00",
+      "size": "720 ml",
+      "description": "The popular Dassai \"50\" was replaced by Dassai \"45\" in 2019 by polishing the rice a bit more. And even though it is the most affordable of their lineup, it belongs to the highest premium sake category with no brewer's alcohol added. They continue to update their recipe to provide exceptional aroma, delicate mouthfeel and flavor year after year — simply a must-try staple for yourself and your friends.",
+      "brand": "DASSAI",
+      "brewery": "DASSAI Inc.",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "Undisclosed",
+      "alcohol": "16.00%",
+      "rpr": "45%",
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Chugoku region",
+      "prefecture": "Yamaguchi prefecture",
+      "tastingNotes": [
+        "Flower",
+        "Melon",
+        "Apple"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Fruits",
+        "Cheese"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/dassai-45-1200.jpg?v=1733524257&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/ft-dassai-45-tps211223yp_012.jpg?v=1702068850&width=1080"
+      ],
+      "reviewCount": 192,
+      "averageRating": 4.81,
+      "url": "https://www.tippsysake.com/products/dassai-45"
+    },
+    {
+      "productName": "Dassai \"45\" Nigori",
+      "price": "$35.00",
+      "size": "720 ml",
+      "description": "High-end junmai daiginjo nigori. This is a nigori that reflects Dassai's ever-present elegance. Being a junmai daiginjo, this one is slightly less saturated with sake lees (the rice solids in the bottle) compared to other nigori. On the nose you'll find the faintest hint of muscat, but where this sake shines is its texture and flavor. Its light, fine grain texture accompanies bright and juicy balanced flavors, resulting in a slight sweetness.",
+      "brand": "DASSAI",
+      "brewery": "DASSAI Inc.",
+      "category": "Junmai Daiginjo",
+      "subcategory": "Nigori",
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "Undisclosed",
+      "alcohol": "16.00%",
+      "rpr": "45%",
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Chugoku",
+      "prefecture": "Yamaguchi prefecture",
+      "tastingNotes": [
+        "Cream",
+        "Muscat Grape",
+        "Melon"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Fruits",
+        "Cheese"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/dassai-45-nigori-1200.jpg?v=1733524285&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/ft-dassai-45-nigori-ext01-tps230729elp_091.jpg?v=1715290985&width=1200"
+      ],
+      "reviewCount": 46,
+      "averageRating": 4.74,
+      "url": "https://www.tippsysake.com/products/dassai-45-nigori"
+    },
+    {
+      "productName": "Dassai \"Beyond\"",
+      "price": "$620.00",
+      "size": "720 ml",
+      "description": "DASSAI Inc. embarked on a quest over a decade ago to craft sake that surpassed the excellence of even their finest sake. Driven by deep passion, they brewed batch after batch, until the fateful trial that ended up being Dassai Beyond. If you're lucky enough to get your hands on a bottle, know that you are drinking sake beyond your wildest dreams. The flavor spreads through you like warm sunlight, enlightening every sense, and transcends what words can describe. The rarity of such a sake makes every bottle a work of art to be enjoyed with awe.",
+      "brand": "DASSAI",
+      "brewery": "DASSAI Inc.",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "Undisclosed",
+      "alcohol": "16.00%",
+      "rpr": null,
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Chugoku region",
+      "prefecture": "Yamaguchi prefecture",
+      "tastingNotes": [
+        "Mango",
+        "Strawberry",
+        "White Pepper"
+      ],
+      "foodPairings": [
+        "Aperitif"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/dassai-beyond-1200.jpg?v=1732323946&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/dassai-beyond-tps221104ym_093-1200.jpg?v=1732066164&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/dassai-beyond-tps221104ym_116-1200.jpg?v=1732066164&width=1200"
+      ],
+      "reviewCount": 2,
+      "averageRating": 5,
+      "url": "https://www.tippsysake.com/products/dassai-beyond"
+    },
+    {
+      "productName": "Dassai Blue \"50\" Dry",
+      "price": "$35.00",
+      "size": "720 ml",
+      "description": "Dassai Blue Sake Brewery has crafted an alternative version of Dassai Blue '50' to give it a slightly drier impression.",
+      "brand": "DASSAI Blue",
+      "brewery": "DASSAI Inc.",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki (grown in Arkansas)",
+      "yeastVariety": "Undisclosed",
+      "alcohol": "14%",
+      "rpr": "50%",
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Chugoku region",
+      "prefecture": "Yamaguchi prefecture",
+      "tastingNotes": [
+        "Pineapple",
+        "Melon",
+        "Lemon",
+        "Almond",
+        "Caramel"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/dassai-blue-50-dry-1200.jpg"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/dassai-blue-50-dry"
+    },
+    {
+      "productName": "Dassai Blue \"50\" Nigori",
+      "price": "$35.00",
+      "size": "720 ml",
+      "description": "As a brand that exclusively produces junmai daiginjo made with Yamadanishiki rice, Dassai Blue presents a nigori that maintains their signature elegance.",
+      "brand": "DASSAI Blue",
+      "brewery": "DASSAI Inc.",
+      "category": "Junmai Daiginjo",
+      "subcategory": "Nigori",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Yamadanishiki (grown in Arkansas)",
+      "yeastVariety": "Undisclosed",
+      "alcohol": "14%",
+      "rpr": "50%",
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Chugoku region",
+      "prefecture": "Yamaguchi prefecture",
+      "tastingNotes": [
+        "Pear",
+        "Melon"
+      ],
+      "foodPairings": [
+        "Fruits",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/dassai-blue-50-nigori-1200.jpg"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/dassai-blue-50-nigori"
+    },
+    {
+      "productName": "Date Seven \"Season II Episode 4\" Hakurakusei Style",
+      "price": "$65.00",
+      "size": "720 ml",
+      "description": "Named after the feudal domain in infamous Miyagi prefecture ruled by infamous warlord, Date Masamune, this junmai daiginjo is a special collaboration between seven Miyagi breweries.",
+      "brand": "Date Seven",
+      "brewery": "Niizawa Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "In-house",
+      "alcohol": "15%",
+      "rpr": "48%",
+      "smv": "3.0",
+      "acidity": null,
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Miyagi prefecture",
+      "tastingNotes": [
+        "Melon",
+        "Muscat Grape"
+      ],
+      "foodPairings": [
+        "Fruits"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/date-seven-season-ii-episode-4-hakurakusei-style-1200.jpg"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/date-seven-season-ii-episode-4-hakurakusei-style"
+    },
+    {
+      "productName": "Denshin \"Yuki\"",
+      "price": "$35.00",
+      "size": "720 ml",
+      "description": "This junmai ginjo is brewed with water that started as snow in the mountains around the brewery and, over many years, melted then filtered through the earth. This gives the sake a pure, refreshing taste, but enough transparency for you to notice the nuanced smoothness. Like catching snowflakes on your tongue or frolicking in fresh powder, the flavor will whisk you away to the beautiful slopes of pristine, snowy mountains.",
+      "brand": "Denshin",
+      "brewery": "Ippongi Kubohonten",
+      "category": "Junmai Ginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki, Gohyakumangoku",
+      "yeastVariety": null,
+      "alcohol": "16.00%",
+      "rpr": "55%",
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "cold (40-60°F), room temp (70°F) or warm (85-115°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Fukui prefecture",
+      "tastingNotes": [
+        "Cherry",
+        "Vanilla",
+        "Chestnuts"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Sushi/Sashimi"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-denshin-yuki_0d9815fc-be33-40ac-8689-60c52afe1a9e.jpg?v=1717026015&width=1200"
+      ],
+      "reviewCount": 46,
+      "averageRating": 4.7,
+      "url": "https://www.tippsysake.com/products/denshin-yuki"
+    },
+    {
+      "productName": "Eiko Fuji \"10,000 Ways\"",
+      "price": "$28.00",
+      "size": "720 ml",
+      "description": "\"Ban ryu\" means 10,000 ways. It is an expression used in the sake world to answer the question, In how many ways is one sake different from another? The answer: in 10,000 ways — the yeast, the koji, timing of brewing, etc. More informally, it means versatility. The brewery tries to catch both meanings in its name; they passionately believe it can be enjoyed in 10,000 ways, whether it's chilled, warmed, with light food, heavy food, sweet food or spicy food.",
+      "brand": "Eiko Fuji",
+      "brewery": "Fuji Brewing Company (Eiko)",
+      "category": "Honjozo",
+      "subcategory": null,
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Rice grown in Yamagata",
+      "yeastVariety": "Association No. 10",
+      "alcohol": "15.30%",
+      "rpr": "65%",
+      "smv": "1",
+      "acidity": "1",
+      "servingTemperature": "cold (40-60°F), room temp (70°F) or warm (85-115°F)",
+      "region": "Tohoku",
+      "prefecture": "Yamagata",
+      "tastingNotes": [
+        "Orange",
+        "Toasted Malt"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Cheese",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-eiko-fuji-10000-ways_5bb3167c-ec34-4007-8e5a-aed821411f1a.jpg?v=1724180787&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/eiko-fuji-10000-ways-front-label-720-2410.jpg?v=1734376077&width=1200"
+      ],
+      "reviewCount": 21,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/eiko-fuji-10000-ways"
+    },
+    {
+      "productName": "Fukucho \"Moon on the Water\"",
+      "price": "$54.00",
+      "size": "720 ml",
+      "description": "This vibrant showstopper is beautifully soft and feminine, brewed by one of Japan's few female brewery owners and brewmaster. Brewed in Hiroshima, the birthplace of ginjo sake, known for remarkably soft water that requires expert skill to use in sake production. Once mastered, it enables a highly controlled, precise fermentation resulting in vibrant fruit aromas. This Junmai Ginjo is bottled without charcoal fining, keeping all the flavor intact.",
+      "brand": "Fukucho",
+      "brewery": "Imada Brewing Company",
+      "category": "Junmai Ginjo",
+      "subcategory": "Muroka",
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": null,
+      "alcohol": "16.50%",
+      "rpr": "55%",
+      "smv": "3",
+      "acidity": "1.4",
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Chugoku",
+      "prefecture": "Hiroshima",
+      "tastingNotes": [
+        "Pineapple",
+        "Violet",
+        "Fennel"
+      ],
+      "foodPairings": [
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-fukucho-moon-on-the-water_28b7aec9-252a-404a-a3be-cf1ce8d3632b.jpg?v=1717027846&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/fukucho-moon-on-the-water-front-label-720-2206.jpg?v=1717027846&width=1080"
+      ],
+      "reviewCount": 13,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/fukucho-moon-on-the-water"
+    },
+    {
+      "productName": "Gozenshu \"Tokuto Omachi 2.2\"",
+      "price": "$880.00",
+      "size": "720 ml",
+      "description": "The most special gift of Omachi sake. The wooden hinoki box is also of a local craft, beautifully handmade.",
+      "brand": "Gozenshu",
+      "brewery": "Tsuji Honten",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Omachi",
+      "yeastVariety": null,
+      "alcohol": "16%",
+      "rpr": "40%",
+      "smv": "-3",
+      "acidity": "1.6",
+      "servingTemperature": "Room temperature",
+      "region": "Chugoku region",
+      "prefecture": "Okayama prefecture",
+      "tastingNotes": [
+        "Melon",
+        "Apple",
+        "Pear"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Fruits"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-gozenshu-tokuto-omachi-2.2.jpg"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/gozenshu-tokuto-omachi-2-2"
+    },
+    {
+      "productName": "Hakkaisan \"AWA\" Clear Sparkling 720 ml",
+      "price": "$75.00",
+      "size": "720 ml",
+      "description": "In preparation for the 2020 Tokyo Olympics, Hakkaisan Brewery Company introduced \"AWA\" Clear Sparkling as an alternative for Champagne. It is light, clear and of course, bubbly. The delightful effervescence drops sweet fruit flavor over your palate. We had a blast popping a bottle during the Olympic torch ceremony, but Hakkaisan \"AWA\" Clear Sparkling can make any occasion a celebration. Who needs champagne anyway?",
+      "brand": "Hakkaisan",
+      "brewery": "Hakkaisan Brewery Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": "Sparkling",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Yamadanishiki, Gohyakumangoku, Miyamanishiki",
+      "yeastVariety": "Akita Konno No. 2",
+      "alcohol": "13%",
+      "rpr": "50%",
+      "smv": "-5",
+      "acidity": "1.4",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Hokuriku",
+      "prefecture": "Niigata prefecture",
+      "tastingNotes": [
+        "Melon",
+        "Pear",
+        "Grapefruit"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Fruits",
+        "Aperitif",
+        "Apple pie"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-hakkaisan-awa-elp230520_049.jpg?v=1702068851&width=1080",
+        "https://www.tippsysake.com/cdn/shop/files/hakkaisan-awa-clear-sparkling-720-1200.jpg?v=1733257911&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/hakkaisan-awa-clear-sparkling-front-label-720-2303.jpg?v=1692121475&width=1080"
+      ],
+      "reviewCount": 16,
+      "averageRating": 4.94,
+      "url": "https://www.tippsysake.com/products/hakkaisan-awa-clear-sparkling-720-ml"
+    },
+    {
+      "productName": "Hakkaisan \"Junmai Daiginjo\"",
+      "price": "$44.00",
+      "size": "720 ml",
+      "description": "Hakkaisan \"Junmai Daiginjo\" is blessed with a wonderful crispness like a cool, brisk morning. A quick sniff evokes floral scents as if you've just stepped into a lavish garden. With a clean, gentle rice flavor and a dash of dryness, this sake is a must try. Every swig is polished off with an ardent finish that just might turn you into a sake fanatic-exactly what you'd expect from a high-quality sake.",
+      "brand": "Hakkaisan",
+      "brewery": "Hakkaisan Brewery Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki, Miyamanishiki, Gohyakumangoku, Other",
+      "yeastVariety": "Akita Konno No. 2",
+      "alcohol": "15.50%",
+      "rpr": "45%",
+      "smv": "4",
+      "acidity": "1.2",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Niigata prefecture",
+      "tastingNotes": [
+        "Melon",
+        "Apple",
+        "Walnuts"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-hakkaisan-junmai-daiginjo-tps230805elp_076_258940d2-3d01-4685-8f2e-5bacdb15979c.jpg?v=1717026187&width=1200"
+      ],
+      "reviewCount": 32,
+      "averageRating": 4.56,
+      "url": "https://www.tippsysake.com/products/hakkaisan-junmai-daiginjo"
+    },
+    {
+      "productName": "Hakkaisan \"Tokubetsu Junmai\"",
+      "price": "$28.00",
+      "size": "720 ml",
+      "description": "Tokubetsu means 'special' in Japanese, and Hakkaisan 'Tokubetsu Junmai' is special indeed, with a bit of extra polish on the rice compared to a regular junmai.",
+      "brand": "Hakkaisan",
+      "brewery": "Hakkaisan Brewery Company",
+      "category": "Junmai",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Gohyakumangoku, Koshiibuki",
+      "yeastVariety": "Association No. 901",
+      "alcohol": "15.5%",
+      "rpr": "60%",
+      "smv": "-1",
+      "acidity": "1.5",
+      "servingTemperature": "Cold to hot (40-120°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Niigata prefecture",
+      "tastingNotes": [
+        "Flower",
+        "Cream",
+        "Vanilla"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood",
+        "Cheese",
+        "Pizza"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/hakkaisan-tokubetsu-junmai-1200.jpg"
+      ],
+      "reviewCount": 53,
+      "averageRating": 4.53,
+      "url": "https://www.tippsysake.com/products/hakkaisan-tokubetsu-junmai"
+    },
+    {
+      "productName": "Hakkaisan \"Yukimuro\" 3 Years Snow Aged",
+      "price": "$82.00",
+      "size": "720 ml",
+      "description": "This sake's minimalist white bottle represents the unique snow-chilling method used in its brewing. This 'Yukimuro' is aged for three years in an insulated room next to huge mounds of frigid, mountain snow.",
+      "brand": "Hakkaisan",
+      "brewery": "Hakkaisan Brewery Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": "Genshu, Koshu",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Yamadanishiki, Yuki no Sei, Gohyakumangoku",
+      "yeastVariety": "Association No. 1001, Association No. 10 lineage (M310)",
+      "alcohol": "17%",
+      "rpr": "50%",
+      "smv": "-1",
+      "acidity": "1.5",
+      "servingTemperature": "Cold (40-60°F) or Room temp (70°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Niigata prefecture",
+      "tastingNotes": [
+        "Cream",
+        "Pear",
+        "Melon"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Smoked beef"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/hakkaisan-yukimuro-3-years-snow-aged-1200.jpg"
+      ],
+      "reviewCount": 36,
+      "averageRating": 4.89,
+      "url": "https://www.tippsysake.com/products/hakkaisan-yukimuro-3-years-snow-aged"
+    },
+    {
+      "productName": "Hakutsuru \"Blanc\"",
+      "price": "$26.00",
+      "size": "720 ml",
+      "description": "Crafted with a unique blend of wine and sake yeasts, this junmai reveals a vibrant, wine-like bouquet with subtle notes of apple and lime. Refreshing acidity shines through the sweetness, rendering it a nice match for salty foods such as chorizo and salted squid. This non-traditional sake won Platinum at Milano Sake Challenge 2023. For your worry-free enjoyment, it is also vegan and gluten free.",
+      "brand": "Hakutsuru",
+      "brewery": "Hakutsuru Brewing Company",
+      "category": "Junmai",
+      "subcategory": null,
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Rice grown in Japan",
+      "yeastVariety": "In-house",
+      "alcohol": "8.3%",
+      "rpr": "78%",
+      "smv": "-50.0",
+      "acidity": "4.2",
+      "servingTemperature": "cold (40-60°F) or room temp (70°F)",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Apple",
+        "Lime",
+        "Flower"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Veggies",
+        "Chorizo",
+        "Salted squid"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/hakutsuru-blanc-1200.jpg?v=1761159417&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/hakutsuru-blanc-front-label-720-2510.jpg?v=1761159417&width=1200"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/hakutsuru-blanc"
+    },
+    {
+      "productName": "Hakutsuru \"Junmai\"",
+      "price": "$18.00",
+      "size": "720 ml",
+      "description": "An excellent junmai from Hakutsuru Brewing Company. Don't expect anything overly snazzy, but we think that's the point of this brew. It boasts robust, toasty flavors matched with an easy dryness that make it such a solid stand by. And if you find yourself craving sake on a cold winter day, don't worry, Hakutsuru Junmai is just as delicious warm as it is cold. Pair with grilled meats or creamy pastas.",
+      "brand": "Hakutsuru",
+      "brewery": "Hakutsuru Brewing Company",
+      "category": "Junmai",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Rice grown in Japan",
+      "yeastVariety": "In-house",
+      "alcohol": "15.00%",
+      "rpr": "70%",
+      "smv": "4",
+      "acidity": "1.7",
+      "servingTemperature": "Cold (40-60°F), Room temp (70°F), or Warm (85-115°F)",
+      "region": "Kinki",
+      "prefecture": "Hyogo",
+      "tastingNotes": [
+        "Rice",
+        "Sweet Rice",
+        "Toasted Bread"
+      ],
+      "foodPairings": [
+        "Grilled meats",
+        "Creamy pastas",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-hakutsuru-junmai_f6f46384-9721-4564-b2f9-d16332fca769.jpg?v=1717027521&width=1200"
+      ],
+      "reviewCount": 28,
+      "averageRating": 4.29,
+      "url": "https://www.tippsysake.com/products/hakutsuru-junmai"
+    },
+    {
+      "productName": "Hakutsuru \"Junmai Ginjo\"",
+      "price": "$23.00",
+      "size": "720 ml",
+      "description": "Hakutsuru is a gentle and incredibly drinkable sake. Its nose is an aromatic concoction of melon, grape, and sweet rice. Each sip is balanced with a rounded-out dry finish. The meticulous care used during brewing is reflected in the light complexity of the brew. Hakutsuru is charming, whether served cold or room temperature and amiable to everyone.",
+      "brand": "Hakutsuru",
+      "brewery": "Hakutsuru Brewing Company",
+      "category": "Junmai Ginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Rice grown in Japan",
+      "yeastVariety": "In-house",
+      "alcohol": "14.50%",
+      "rpr": "60%",
+      "smv": "3",
+      "acidity": "1.3",
+      "servingTemperature": "cold (40-60°F) or room temp (70°F)",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Flower",
+        "Melon"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/hakutsuru-junmai-ginjo-1200.jpg?v=1733527544&width=1200"
+      ],
+      "reviewCount": 86,
+      "averageRating": 4.56,
+      "url": "https://www.tippsysake.com/products/hakutsuru-junmai-ginjo"
+    },
+    {
+      "productName": "Hakutsuru \"Sayuri\"",
+      "price": "$24.00",
+      "size": "720 ml",
+      "description": "\"Sayuri\" is a coarsely filtered sake in a cheerful bottle. The design and pink color of the bottle entices you to start sipping the moment you see it. Its creamy taste matches its creamy texture, and the natural smoothness is enhanced by the fruity and light strawberry aroma, which lifts the spirit like a sweet song. If you prefer lighter brews, don't miss the chance to give this one a try.",
+      "brand": "Hakutsuru",
+      "brewery": "Hakutsuru Brewing Company",
+      "category": "Junmai",
+      "subcategory": "Nigori",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Rice grown in Japan",
+      "yeastVariety": "In-house",
+      "alcohol": "12.50%",
+      "rpr": "70%",
+      "smv": "-11",
+      "acidity": "1.6",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Cherry",
+        "Cream",
+        "Strawberry",
+        "Floral"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood",
+        "Cheese"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/hakutsuru-sayuri-1200.jpg?v=1733959297&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/tps220303yp_009-hakutsuru-sayuri.jpg?v=1715109449&width=1200"
+      ],
+      "reviewCount": 92,
+      "averageRating": 4.48,
+      "url": "https://www.tippsysake.com/products/hakutsuru-sayuri"
+    },
+    {
+      "productName": "Hakutsuru \"Tenku\" Yamadanishiki",
+      "price": "$480.00",
+      "size": "720 ml",
+      "description": "Everything is done by hand to ensure the rice is perfectly prepared; washing it bag by bag, and preparing the koji in small batches for the most even result.",
+      "brand": "Hakutsuru",
+      "brewery": "Hakutsuru Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "In-house",
+      "alcohol": "16.3%",
+      "rpr": "38%",
+      "smv": "1.0",
+      "acidity": "1.4",
+      "servingTemperature": "Cold (40-60°F) or room temp (70°F)",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Apple",
+        "Pear"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Seafood",
+        "Veggies"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/hakutsuru-tenku-yamadanishiki-1200.jpg"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/hakutsuru-tenku-yamadanishiki"
+    },
+    {
+      "productName": "Hanagaki \"Kimoto\"",
+      "price": "$52.00",
+      "size": "720 ml",
+      "description": "A great example of an aged sake, this one is allowed rest for one and a half years before being bottled. You'll find the nose to be full of malt and alluring honey, which goes along with the slight gold tint of the sake. On the tongue this sake delivers a bright macadamia nut flavor backed by caramel sweetness with just a touch of astringency. Serving room temperature will give the best effect.",
+      "brand": "Hanagaki",
+      "brewery": "Nanbu Brewing Company",
+      "category": "Junmai",
+      "subcategory": "Kimoto",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Gohyakumangoku",
+      "yeastVariety": "In-house",
+      "alcohol": "15.00%",
+      "rpr": "70%",
+      "smv": "5",
+      "acidity": "2.3",
+      "servingTemperature": "room temp (70°F) or warm (85-115°F)",
+      "region": "Hokuriku",
+      "prefecture": "Fukui",
+      "tastingNotes": [
+        "Walnuts",
+        "Honey",
+        "Caramel"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/hanagaki-kimoto-1200.jpg?v=1733531220&width=1200"
+      ],
+      "reviewCount": 3,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/hanagaki-kimoto"
+    },
+    {
+      "productName": "Harushika \"Junmai Ginjo\"",
+      "price": "$43.00",
+      "size": "720 ml",
+      "description": "This sake is in line with the brewery's goal of crafting clean and clear sake. It's as if it's a clear, mild white wine you can enjoy right from home!",
+      "brand": "Harushika",
+      "brewery": "Imanishi Seibee Shoten",
+      "category": "Junmai Ginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Yamadanishiki, Gohyakumangoku",
+      "yeastVariety": "In-house (Harushika No. 6), In-house (Harushika No. 7)",
+      "alcohol": "15%",
+      "rpr": "60%",
+      "smv": "-3",
+      "acidity": "1.5",
+      "servingTemperature": "Cold to warm (40-105°F)",
+      "region": "Kinki region",
+      "prefecture": "Nara prefecture",
+      "tastingNotes": [
+        "Flower",
+        "Anise",
+        "Cream"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat",
+        "Veggies"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/harushika-junmai-ginjo-1200.jpg"
+      ],
+      "reviewCount": 5,
+      "averageRating": 4,
+      "url": "https://www.tippsysake.com/products/harushika-junmai-ginjo"
+    },
+    {
+      "productName": "HEAVENSAKE \"Konishi\" Junmai 12",
+      "price": "$29.00",
+      "size": "720 ml",
+      "description": "This is a blend created by HEAVENSAKE's assemblage master Regis Camus and the brewmaster of Konishi Brewing Company. With their years of experience and keen senses, they combined sake with different rice polishing ratios, joining the positive aspects of each base sake into something new. \"Konishi\" Junmai 12's well-balanced composition delivers a wonderfully savory flavor with nutty notes that end in a bright, fresh finish.",
+      "brand": "HEAVENSAKE",
+      "brewery": "Konishi Brewing Company",
+      "category": "Junmai",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Nihonbare",
+      "yeastVariety": null,
+      "alcohol": "12.00%",
+      "rpr": "50-70%",
+      "smv": "2",
+      "acidity": "1.7",
+      "servingTemperature": "over ice, cold (40-60°F), room temp (70°F) or warm (85-115°F)",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Toasted Malt",
+        "Cashew"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/heavensake-konishi-junmai-12-1200.jpg?v=1733532664&width=1200"
+      ],
+      "reviewCount": 35,
+      "averageRating": 4.17,
+      "url": "https://www.tippsysake.com/products/heavensake-konishi-junmai-12"
+    },
+    {
+      "productName": "Homare \"Yuzu\"",
+      "price": "$25.00",
+      "size": "720 ml",
+      "description": "This sake was developed to be enjoyable for people who have little to no sake experience. The yuzu flavor comes only from 100% Japanese yuzu fruit that has high-quality taste and aroma. Using a junmai sake base adds soft texture to the flavor. The result is a sweet, smooth sake that can be enjoyed on its own, to accentuate a cocktail, or paired with fruit dishes.",
+      "brand": "Homare",
+      "brewery": "Homare Brewing Company",
+      "category": "Other",
+      "subcategory": "Flavored",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Gohyakumangoku, Hanafubuki, Other",
+      "yeastVariety": "Association No. 701",
+      "alcohol": "10.50%",
+      "rpr": "70%",
+      "smv": "-72",
+      "acidity": "14.7",
+      "servingTemperature": "Over ice or cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Fukushima prefecture",
+      "tastingNotes": [
+        "Yuzu"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Fruits"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/homare-yuzu-1200.jpg?v=1733533730&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/homare-yuzu-front-label-720-2003.jpg?v=1724180911&width=1080"
+      ],
+      "reviewCount": 73,
+      "averageRating": 4.68,
+      "url": "https://www.tippsysake.com/products/homare-yuzu"
+    },
+    {
+      "productName": "Horaisen \"Beshi\"",
+      "price": "$33.00",
+      "size": "720 ml",
+      "description": "This is Horaisen's best-selling product, so you know that you'll be getting sake that satisfies. Its name is taken from an Edo period poem about drinking written by Kansazan, which is printed on the bottle for those of you who can read Japanese. As a junmai, this sake has low acidity and light aroma like steamed brown rice. Its clean, medium body delivers a dry, sweet rice flavor.",
+      "brand": "Horaisen",
+      "brewery": "Sekiya Brewing Company",
+      "category": "Junmai",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Sake rice",
+      "yeastVariety": null,
+      "alcohol": "15.00%",
+      "rpr": "55%",
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "cold (40-60°F), room temp (70°F) or warm (85-115°F)",
+      "region": "Chubu",
+      "prefecture": "Aichi",
+      "tastingNotes": [
+        "Sweet Rice",
+        "Toasted Malt"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/horaisen-beshi-1200.jpg?v=1733533815&width=1200"
+      ],
+      "reviewCount": 3,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/horaisen-beshi"
+    },
+    {
+      "productName": "Ichinokura \"Himezen\" Yuzu",
+      "price": "$42.00",
+      "size": "720 ml",
+      "description": "Made with whole, peeled Tadanishiki yuzu from southern Miyagi prefecture, this lemon-like sake is sweet and tart, yet mild.",
+      "brand": "Ichinokura",
+      "brewery": "Ichinokura",
+      "category": "Other",
+      "subcategory": "Flavored",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Toyonishiki",
+      "yeastVariety": null,
+      "alcohol": "7.5%",
+      "rpr": "65%",
+      "smv": "-65.0",
+      "acidity": "6.5",
+      "servingTemperature": "Room temperature",
+      "region": "Tohoku region",
+      "prefecture": "Miyagi prefecture",
+      "tastingNotes": [
+        "Yuzu"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Meat",
+        "Veggies"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ichinokura-himezen-yuzu-1200.jpg"
+      ],
+      "reviewCount": 1,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/ichinokura-himezen-yuzu"
+    },
+    {
+      "productName": "Ichinokura \"Mukansa\" Amakuchi",
+      "price": "$32.00",
+      "size": "720 ml",
+      "description": "Before the time when sake grades were based on rice polishing ratio, Ichinokura created the \"Mukansa\" series as the epitome of quality sake for a great price. The Japanese writings on the label express their strong, unwavering commitment to this principle since 1977. Now with a friendly QR code and a pink label for their sweet \"amakuchi\" version, their signature clean finish and incredible versatility continues to shine through.",
+      "brand": "Ichinokura",
+      "brewery": "Ichinokura",
+      "category": "Honjozo",
+      "subcategory": null,
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Toyonishiki",
+      "yeastVariety": "In-house (Association No. 9 lineage)",
+      "alcohol": "15.00%",
+      "rpr": "65%",
+      "smv": "-4",
+      "acidity": "1.4",
+      "servingTemperature": "Cold (40-60°F), Room temp (70°F), or Hot (120°F-)",
+      "region": "Tohoku region",
+      "prefecture": "Miyagi prefecture",
+      "tastingNotes": [
+        "Rice",
+        "Banana"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Veggies",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ichinokura-mukansa-amakuchi-1200.jpg?v=1733534388&width=1200"
+      ],
+      "reviewCount": 7,
+      "averageRating": 4.14,
+      "url": "https://www.tippsysake.com/products/ichinokura-mukansa-amakuchi"
+    },
+    {
+      "productName": "IWA 5 \"Assemblage 4\"",
+      "price": "$195.00",
+      "size": "720 ml",
+      "description": "Welcome to chapter four in the story of IWA 5, a junmai daiginjo offered in more than 40 Michelin 3-star restaurants. Expertly brewed by Shiraiwa K.K.'s toji in Japan, and meticulously blended by founder and maker Richard Geoffroy, 'Assemblage 4' is a wine-lover's sake. This once-pasteurized brew is light, focused and supple. Marzipan, mushroom, cherry, violet, even a touch of woodsmoke and vermouth appear like momentary daydreams.",
+      "brand": "IWA",
+      "brewery": "Shiraiwa K. K.",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Yamadanishiki, Omachi, Gohyakumangoku",
+      "yeastVariety": null,
+      "alcohol": "15.0%",
+      "rpr": null,
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "cold (40-60°F), room temp (70°F), warm (85-115°F) or hot (120°F-)",
+      "region": "Hokuriku region",
+      "prefecture": "Toyama prefecture",
+      "tastingNotes": [
+        "Mineral",
+        "Coconut",
+        "White Pepper"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat",
+        "Veggies"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/iwa-5-assemblage-4-1200.jpg?v=1733534876&width=1200"
+      ],
+      "reviewCount": 2,
+      "averageRating": 5,
+      "url": "https://www.tippsysake.com/products/iwa-5-assemblage-4"
+    },
+    {
+      "productName": "IWA \"Reserves\"",
+      "price": "$390.00",
+      "size": "720 ml",
+      "description": "IWA 5, each presenting its own unique characteristics. Reserves dives into this sake catalog by blending 12 different aged sake together.",
+      "brand": "IWA",
+      "brewery": null,
+      "category": "Junmai Daiginjo",
+      "subcategory": "Genshu",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Yamadanishiki, Omachi, Gohyakumangoku",
+      "yeastVariety": null,
+      "alcohol": "15%",
+      "rpr": "35%",
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "Room temperature",
+      "region": "Hokuriku region",
+      "prefecture": "Toyama prefecture",
+      "tastingNotes": [
+        "Plum",
+        "Flower",
+        "Cocoa"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat",
+        "Veggies"
+      ],
+      "images": [],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/iwa-reserves"
+    },
+    {
+      "productName": "Izumibashi \"Dragonfly\" Nigori Sparking Set",
+      "price": "$56.00",
+      "size": "250 ml",
+      "description": "Soft as a cloud. The lees in this sparkling nigori sake come from rice grown by the brewery via environmentally friendly farming methods.",
+      "brand": "Izumibashi",
+      "brewery": "Izumibashi Brewing Company",
+      "category": "Junmai",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": null,
+      "alcohol": "15%",
+      "rpr": "70%",
+      "smv": "-5.0",
+      "acidity": "2.1",
+      "servingTemperature": "Room temperature",
+      "region": "Kanto region",
+      "prefecture": "Kanagawa prefecture",
+      "tastingNotes": [
+        "Peach",
+        "Pineapple",
+        "Linden"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Seafood",
+        "Fruits"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/izumibashi-dragonfly-nigori-sparking-set-1200.jpg"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/izumibashi-dragonfly-nigori-sparking-set"
+    },
+    {
+      "productName": "Jikon \"Junmai Ginjo\" Omachi",
+      "price": "$78.00",
+      "size": "720 ml",
+      "description": "This sake is brewed with Nabari River well water, and Omachi rice from Okayama prefecture.",
+      "brand": "Jikon",
+      "brewery": "Kiyashou Sake Brewery",
+      "category": "Junmai Ginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Omachi",
+      "yeastVariety": null,
+      "alcohol": "16%",
+      "rpr": "50%",
+      "smv": "1.0",
+      "acidity": "1.6",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Kinki region",
+      "prefecture": "Mie prefecture",
+      "tastingNotes": [
+        "Asian Pear",
+        "Aloe Vera"
+      ],
+      "foodPairings": [
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/jikon-junmai-ginjo-omachi-1200_66c9575d-3162-4b9b-9a69-eeef48cab2cb.jpg"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/jikon-junmai-ginjo-omachi"
+    },
+    {
+      "productName": "Jozen \"Aqua\"",
+      "price": "$25.00",
+      "size": "720 ml",
+      "description": "Brewed to perfection using precious mountain water, Jozen \"Aqua\" is definitely a dry sake, but has some hidden sweetness underneath. Light notes of peach sprinkled with brown sugar glide subtly through the dry currents. From the first look at the bottle to the last drop of sake, we think you'll find going with this sake's flow nice and easy.",
+      "brand": "Jozen",
+      "brewery": "Shirataki Brewing Company",
+      "category": "Junmai",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Gohyakumangoku, Koshiibuki",
+      "yeastVariety": "Association No. 1801",
+      "alcohol": "17.50%",
+      "rpr": "70%",
+      "smv": "7",
+      "acidity": "1.6",
+      "servingTemperature": "cold (40-60°F) or room temp (70°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Niigata prefecture",
+      "tastingNotes": [
+        "Apple",
+        "Melon",
+        "Peach"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Seafood",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/jozen-aqua-1200.jpg?v=1733771370&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/jozen-aqua-tps230214yp_022-1200.jpg?v=1729026583&width=1200"
+      ],
+      "reviewCount": 38,
+      "averageRating": 4.61,
+      "url": "https://www.tippsysake.com/products/jozen-aqua"
+    },
+    {
+      "productName": "Juemon \"Junmai\"",
+      "price": "$49.00",
+      "size": "720 ml",
+      "description": "Named after the founder of the brewery, the development of this sake took several years so as to not compromise a drop of quality. The hand-grown Hattannishiki rice comes from Hiroshima Prefecture and is carefully prepared to produce a sake with a suppressed melon aroma, but deep flavor. A soothing mix of cucumber and melon, cooked apple and a dash of sansho pepper await you with each sip.",
+      "brand": "Juemon",
+      "brewery": "Toshimaya Honten",
+      "category": "Junmai",
+      "subcategory": "Muroka, Genshu",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Hattannishiki",
+      "yeastVariety": null,
+      "alcohol": "17.50%",
+      "rpr": "60%",
+      "smv": "3.5",
+      "acidity": "1.6",
+      "servingTemperature": "Cold (40-60°F), room temp (70°F), warm (85-115°F)",
+      "region": "Kanto region",
+      "prefecture": "Tokyo prefecture",
+      "tastingNotes": [
+        "Melon",
+        "Apple",
+        "Cucumber",
+        "Sansho pepper"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood",
+        "Umaki (rolled, glazed eel omelet)",
+        "Sushi",
+        "Beef"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/juemon-junmai-1200.jpg?v=1733771497&width=1080",
+        "https://www.tippsysake.com/cdn/shop/files/juemon-junmai-tps240629elp_004_b2274466-7364-4c56-81af-6a14f911412b.jpg?v=1729706537&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/juemon-junmai-front-label-720-1711.jpg?v=1720628584&width=1080"
+      ],
+      "reviewCount": 4,
+      "averageRating": 4.5,
+      "url": "https://www.tippsysake.com/products/juemon-junmai"
+    },
+    {
+      "productName": "Juyondai \"Tokujo Omachi\"",
+      "price": "$2,900.00",
+      "size": "720 ml",
+      "description": "This superb junmai daiginjo from one of the world's most influential sake breweries is crafted with the best Tokuju-grade Omachi rice.",
+      "brand": "Juyondai",
+      "brewery": "Takagi Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": "Namazume",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Omachi",
+      "yeastVariety": "In-house (Association No. 10 lineage)",
+      "alcohol": "15%",
+      "rpr": null,
+      "smv": "4.0",
+      "acidity": "1.6",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Yamagata prefecture",
+      "tastingNotes": [
+        "Flower",
+        "Rice"
+      ],
+      "foodPairings": [
+        "Aperitif"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/juyondai-tokujo-omachi-box-1200.jpg"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/juyondai-tokujo-omachi"
+    },
+    {
+      "productName": "Kagatobi \"Sennichi Kakoi\"",
+      "price": "$118.00",
+      "size": "720 ml",
+      "description": "Aged to perfection. Brewed with Yamadanishiki rice, this junmai daiginjo is aged for 1,000 days at low temperatures. This aging process gives the sake a nutty aroma, which is followed by a rich, dry flavor. On the palate there are notes of walnuts, honey and clove. It's recommended you serve this sake in a large wine glass so that you can relish the complex notes. Also take in its ornate kabuki label.",
+      "brand": "Kagatobi",
+      "brewery": "Fukumitsuya",
+      "category": "Junmai Daiginjo",
+      "subcategory": "Koshu",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "In-house",
+      "alcohol": "17.00%",
+      "rpr": "50%",
+      "smv": "4",
+      "acidity": "1.6",
+      "servingTemperature": "cold (40-60°F), room temp (70°F) or warm (85-115°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Ishikawa prefecture",
+      "tastingNotes": [
+        "Walnuts",
+        "Honey",
+        "Clove"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Cheese",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/kagatobi-sennichi-kakoi-1200.jpg?v=1732317299&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/kagatobi-sennichi-kakoi-tps221104ym_101-1200.jpg?v=1732067540&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/kagatobi-sennichi-kakoi-tps221104ym_110-1200.jpg?v=1732067540&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/kagatobi-sennichi-kakoi-front-label-720-2003.jpg?v=1711146416&width=1080"
+      ],
+      "reviewCount": 7,
+      "averageRating": 4.57,
+      "url": "https://www.tippsysake.com/products/kagatobi-sennichi-kakoi"
+    },
+    {
+      "productName": "Kamikokoro \"Momo\"",
+      "price": "$37.00",
+      "size": "500 ml",
+      "description": "Taking a sip of this is like taking a bite into the juicy, sweet nectar of a white peach called Shimizu Hakuto, the queen of peaches, from Okayama prefecture. They even use peach yeast for their carefully crafted sake, and express the fruit's elegant white flesh and natural sweetness by using a process with minimal filtering. This sake contains a whole fleshy white peach in every 500-milliliter bottle.",
+      "brand": "Kamikokoro",
+      "brewery": "Kamikokoro Brewing Company",
+      "category": "Other",
+      "subcategory": "Flavored",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": null,
+      "yeastVariety": "Okayama white peach",
+      "alcohol": "8%",
+      "rpr": null,
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "Over ice or cold (40-60°F)",
+      "region": "Chugoku region",
+      "prefecture": "Okayama prefecture",
+      "tastingNotes": [
+        "Peach"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Seafood",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/kamikokoro-momo-1200.jpg"
+      ],
+      "reviewCount": 17,
+      "averageRating": 4.29,
+      "url": "https://www.tippsysake.com/products/kamikokoro-momo"
+    },
+    {
+      "productName": "Katsuyama \"Akatsuki\"",
+      "price": "$270.00",
+      "size": "720 ml",
+      "description": "The rice mash used to make 'Akatsuki' was removed with a high-tech centrifuge. That complex process is reflected in the complexity of the sake.",
+      "brand": "Katsuyama",
+      "brewery": "Katsuyama Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": null,
+      "alcohol": "16%",
+      "rpr": "35%",
+      "smv": "0",
+      "acidity": "1.4",
+      "servingTemperature": "Cold (40-60°F) or room temp (70°F)",
+      "region": "Tohoku region",
+      "prefecture": "Miyagi prefecture",
+      "tastingNotes": [
+        "Walnuts",
+        "Flower"
+      ],
+      "foodPairings": [
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/katsuyama-akatsuki-1200.jpg"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/katsuyama-akatsuki"
+    },
+    {
+      "productName": "Katsuyama \"Ken\"",
+      "price": "$71.00",
+      "size": "720 ml",
+      "description": "The perfect pairing of bold and sweet. Katsuyama has its roots in brewing sake for feudal lords, including a renowned samurai, Date Masamune.",
+      "brand": "Katsuyama",
+      "brewery": "Katsuyama Brewing Company",
+      "category": "Junmai Ginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": null,
+      "alcohol": "16%",
+      "rpr": "50%",
+      "smv": "4",
+      "acidity": "1.6",
+      "servingTemperature": "Room temperature",
+      "region": "Tohoku region",
+      "prefecture": "Miyagi prefecture",
+      "tastingNotes": [
+        "Earth",
+        "Sweet Rice"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/katsuyama-ken-1200.jpg"
+      ],
+      "reviewCount": 13,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/katsuyama-ken"
+    },
+    {
+      "productName": "Kenbishi \"Kuromatsu\"",
+      "price": "$52.00",
+      "size": "900 ml",
+      "description": "This honjozo has a little more color than some sake because the brewers don't carbon-filter it as much. This helps retain that tantalizing umami taste.",
+      "brand": "Kenbishi",
+      "brewery": "Kenbishi Brewing Company",
+      "category": "Honjozo",
+      "subcategory": "Yamahai",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Yamadanishiki (Designation A), Aiyama",
+      "yeastVariety": "In-house",
+      "alcohol": "17%",
+      "rpr": null,
+      "smv": "0.5",
+      "acidity": "2",
+      "servingTemperature": "Room temp (70°F) or warm (85-115°F)",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Anise",
+        "Olive",
+        "Brown Sugar"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/kenbishi-kuromatsu-1200.jpg"
+      ],
+      "reviewCount": 6,
+      "averageRating": 4,
+      "url": "https://www.tippsysake.com/products/kenbishi-kuromatsu"
+    },
+    {
+      "productName": "Kikumasamune \"Kinushiro\" Nigori",
+      "price": "$20.00",
+      "size": "500 ml",
+      "description": "Sometimes different countries have different sake preferences. In the case of this sake, that saved its life! In Japan, this sake was being discontinued, but it became a hit with U.S. sake drinkers, so they kept it around. Luckily for us, we get to experience its silky-white texture and fruity aroma thanks to their original yeast. Goes well with yakiniku (Japanese grilled meat), having enough sweetness and texture to enhance your meal.",
+      "brand": "Kikumasamune",
+      "brewery": "Kikumasamune Brewing Company",
+      "category": "Junmai",
+      "subcategory": "Nigori",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Rice grown in Japan",
+      "yeastVariety": "In-house (Kikumasa HB2)",
+      "alcohol": "10.00%",
+      "rpr": "73%",
+      "smv": "-40",
+      "acidity": "2",
+      "servingTemperature": "Over ice or cold (40-60°F)",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Banana",
+        "Melon"
+      ],
+      "foodPairings": [
+        "Yakiniku (Japanese grilled meat)",
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/kikumasamune-kinushiro-nigori-1200.jpg?v=1733772632&width=1200"
+      ],
+      "reviewCount": 9,
+      "averageRating": 4.78,
+      "url": "https://www.tippsysake.com/products/kikumasamune-kinushiro-nigori"
+    },
+    {
+      "productName": "Kikumasamune \"Taru\"",
+      "price": "$22.00",
+      "size": null,
+      "description": "'Taru sake' is stored in barrels, which is often reserved for special occasions, but the brewers think it's so good they decided to produce this sake to be enjoyed anytime.",
+      "brand": "Kikumasamune",
+      "brewery": "Kikumasamune Brewing Company",
+      "category": "Junmai",
+      "subcategory": "Kimoto",
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Rice grown in Japan",
+      "yeastVariety": "In-house (Kikumasa)",
+      "alcohol": "15%",
+      "rpr": "70%",
+      "smv": "5",
+      "acidity": "1.4",
+      "servingTemperature": "Over ice, cold (40-60°F) or warm (85-115°F)",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Cedar",
+        "Black Pepper",
+        "Baking Spice"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/kikumasamune-taru-1200.jpg"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/kikumasamune-taru"
+    },
+    {
+      "productName": "Kikusui \"Funaguchi\"",
+      "price": "$28.00",
+      "size": "200 ml",
+      "description": "Fans of strong drinks find a friend in Kikusui's original 'Funaguchi' Nama Genshu. Unpasteurized and undiluted, this sake is bursting with full-bodied flavor and 19% ABV.",
+      "brand": "Kikusui",
+      "brewery": "Kikusui Brewing Company",
+      "category": "Ginjo",
+      "subcategory": "Nama",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Gohyakumangoku",
+      "yeastVariety": "Association No. 701",
+      "alcohol": "19%",
+      "rpr": "55%",
+      "smv": "-4.0",
+      "acidity": "1.7",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Niigata prefecture",
+      "tastingNotes": [
+        "Flower"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/kikusui-funaguchi-1200.jpg"
+      ],
+      "reviewCount": 2,
+      "averageRating": 4.5,
+      "url": "https://www.tippsysake.com/products/kikusui-funaguchi"
+    },
+    {
+      "productName": "Kirakucho \"Super Dry\"",
+      "price": "$35.00",
+      "size": "720 ml",
+      "description": "If you're in the mood for a dry ride, look no further. Kirakucho \"Super Dry\" doesn't shy away from dryness, it takes it on boldly. The aroma is reminiscent of crushed leaves. The intense dryness is grounded by subtle bitterness. The renowned \"Noto\" style brewing is easily evident in the sake's rich, deep flavor. You can really taste the brewery's desire to create something that will fill you with happiness and enjoyment.",
+      "brand": "Kirakucho",
+      "brewery": "Kita Brewing Company",
+      "category": "Junmai Ginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": null,
+      "alcohol": "17.50%",
+      "rpr": "55%",
+      "smv": "14",
+      "acidity": "1.6",
+      "servingTemperature": "cold (40-60°F), room temp (70°F) or warm (85-115°F)",
+      "region": "Kinki region",
+      "prefecture": "Shiga prefecture",
+      "tastingNotes": [
+        "Grapefruit",
+        "Lime"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/kirakucho-super-dry-1200.jpg?v=1733773352&width=1200"
+      ],
+      "reviewCount": 12,
+      "averageRating": 3.5,
+      "url": "https://www.tippsysake.com/products/kirakucho-super-dry"
+    },
+    {
+      "productName": "Konteki \"Tears of Dawn\"",
+      "price": "$53.00",
+      "size": "720 ml",
+      "description": "This one is brewed in the same way with the same ingredients as 'Pearls of Simplicity,' but with a touch of distilled alcohol to open up aromatics and lighten the overall impact.",
+      "brand": "Konteki",
+      "brewery": "Higashiyama Brewing Company",
+      "category": "Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": null,
+      "alcohol": "15.5%",
+      "rpr": "50%",
+      "smv": "3",
+      "acidity": "1.4",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Kinki region",
+      "prefecture": "Kyoto prefecture",
+      "tastingNotes": [
+        "Banana",
+        "Cream",
+        "White Pepper"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/konteki-tears-of-dawn-1200.jpg"
+      ],
+      "reviewCount": 20,
+      "averageRating": 4.7,
+      "url": "https://www.tippsysake.com/products/konteki-tears-of-dawn"
+    },
+    {
+      "productName": "Kubota \"Junmai Daiginjo\"",
+      "price": "$40.00",
+      "size": "720 ml",
+      "description": "The brewers that dreamed up the famous Kubota sake lineup are proud to present Kubota \"Junmai Daiginjo.\" From the first scent of pear to the unmistakable smoothness, this sake graces your taste buds with magnificent flavor. A harmonious balance is found in each sip, and hopefully this harmony will stay with you long after you finish the bottle.",
+      "brand": "Kubota",
+      "brewery": "Asahi-Shuzo Sake Brewing Co., Ltd. (Kubota)",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Gohyakumangoku",
+      "yeastVariety": null,
+      "alcohol": "15.00%",
+      "rpr": "50%",
+      "smv": "0",
+      "acidity": "1.3",
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Niigata prefecture",
+      "tastingNotes": [
+        "Pear",
+        "Melon"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Cheese"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/kubota-junmai-daiginjo-1200.jpg?v=1733774017&width=1200"
+      ],
+      "reviewCount": 24,
+      "averageRating": 4.83,
+      "url": "https://www.tippsysake.com/products/kubota-junmai-daiginjo"
+    },
+    {
+      "productName": "Kubota \"Manju\"",
+      "price": "$95.00",
+      "size": "720 ml",
+      "description": "500 years of sake making experience have culminated in Kubota \"Manju,\" a sake said to be one of the finest around. This crowning achievement has a plush texture with several layers of flavor. Each sip is a new journey, revealing more and more, like watching an artist paint up a gorgeous portrait. With countless gold medals under its belt, and more than a few high recommendations, Kubota \"Manju\"s timeless taste is one that you will always enjoy.",
+      "brand": "Kubota",
+      "brewery": "Asahi-Shuzo Sake Brewing Co., Ltd. (Kubota)",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Gohyakumangoku, Rice grown in Niigata",
+      "yeastVariety": null,
+      "alcohol": "15.00%",
+      "rpr": "33%",
+      "smv": "2",
+      "acidity": "1.2",
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Niigata prefecture",
+      "tastingNotes": [
+        "Pear",
+        "Flower"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/kubota-manju-1200.jpg?v=1733774054&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/kubota-manju-front-label-720-2206.jpg?v=1711149713&width=1080"
+      ],
+      "reviewCount": 25,
+      "averageRating": 4.92,
+      "url": "https://www.tippsysake.com/products/kubota-manju"
+    },
+    {
+      "productName": "Kubota \"Seppou\" White",
+      "price": "$70.00",
+      "size": "500 ml",
+      "description": "Kubota \"Seppou\" White is a limited seasonal release that is brewed and stored during mid-winter in super low temperatures using sokujo method which produces a cleaner, fresh-tasting sake. It is the counterpart to the fall seasonal \"Black,\" and theoretically, blending it together would create Kubota's iconic product \"Manju.\" The refreshing white flower aroma and crystal clean texture is like a fresh spring stream babbling in the sun.",
+      "brand": "Kubota",
+      "brewery": "Asahi-Shuzo Sake Brewing Co., Ltd. (Kubota)",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Gohyakumangoku, Rice grown in Niigata",
+      "yeastVariety": null,
+      "alcohol": "14.00%",
+      "rpr": "50%",
+      "smv": "2",
+      "acidity": "1.2",
+      "servingTemperature": "Cold (40-60°F) or Room temp (70°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Niigata prefecture",
+      "tastingNotes": [
+        "Muscat Grape",
+        "Melon",
+        "Flower"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Seafood",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/kubota-seppou-white-1200_51421897-d22c-4479-a2de-cad6fe802cb4.jpg?v=1733256317&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/kubota-seppou-white-tps231118elp_014-1200.jpg?v=1732064656&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/kubota-seppou-white-tps231118elp_016-1200.jpg?v=1732064656&width=1200"
+      ],
+      "reviewCount": 8,
+      "averageRating": 4.5,
+      "url": "https://www.tippsysake.com/products/kubota-seppou-white"
+    },
+    {
+      "productName": "Kubota \"Tsugu\"",
+      "price": "$550.00",
+      "size": "720 ml",
+      "description": "At the highest quality that the Asahi-Shuzo Sake Brewing Co., Ltd. (Kubota) can offer, this sake uses Koshitanrei sake rice made from Yamadanishiki and Gohyakumangoku, the king and queen of sake rice. The brewers use a unique rice polishing process that takes twice as long to polish this exquisite rice, then use 1/5 of normal pressure when extracting. The result is sake with a floral first sip, a second sip of complex flavor and followed by a third sip of bliss.",
+      "brand": "Kubota",
+      "brewery": "Asahi-Shuzo Sake Brewing Co., Ltd. (Kubota)",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Koshitanrei",
+      "yeastVariety": null,
+      "alcohol": "16.00%",
+      "rpr": "35%",
+      "smv": "0",
+      "acidity": "1.5",
+      "servingTemperature": "Cold (40-60°F) or room temp (70°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Niigata prefecture",
+      "tastingNotes": [
+        "Flower",
+        "Mineral"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/kubota-tsugu-1200.jpg?v=1734043625&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/kubota-tsugu-tps221104ym_092-1200.jpg?v=1734043603&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/kubota-tsugu-tps221104ym_114-1200.jpg?v=1734043615&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/kubota-tsugu-front-label-720-2303.jpg?v=1734043639&width=1080"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/kubota-tsugu"
+    },
+    {
+      "productName": "Kudoki Jozu \"Junmai Ginjo\"",
+      "price": "$35.00",
+      "size": "720 ml",
+      "description": "From a brewery founded in 1875 that focuses all its resources on creating just ginjo-grade sake.",
+      "brand": "Kudoki Jozu",
+      "brewery": "Kamenoi Brewing Company",
+      "category": "Junmai Ginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Miyamanishiki",
+      "yeastVariety": null,
+      "alcohol": "16%",
+      "rpr": "50%",
+      "smv": "0",
+      "acidity": "1.2",
+      "servingTemperature": "Cold (40-60°F) or Room temp (70°F)",
+      "region": "Tohoku region",
+      "prefecture": "Yamagata prefecture",
+      "tastingNotes": [
+        "Apple",
+        "Flower"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Fruits"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/kudoki-jozu-junmai-ginjo-1200.jpg"
+      ],
+      "reviewCount": 58,
+      "averageRating": 4.59,
+      "url": "https://www.tippsysake.com/products/kudoki-jozu-junmai-ginjo"
+    },
+    {
+      "productName": "Kurosawa \"Junmai\"",
+      "price": "$28.00",
+      "size": "720 ml",
+      "description": "Kurosawa Brewing Company lays near the source of the great Chikuma River, and produces premium sake. True to the brand, this sake is silky smooth, full-bodied with a slight silver hue to match. Cool and clean, like a rushing river, pop out a bottle to bask in wonderful earthy flavors that go hand in hand with hearty meals.",
+      "brand": "Kurosawa",
+      "brewery": "Kurosawa Brewing Company",
+      "category": "Junmai",
+      "subcategory": "Kimoto",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Miyamanishiki",
+      "yeastVariety": null,
+      "alcohol": "15.5%",
+      "rpr": "65%",
+      "smv": "2",
+      "acidity": "1.8",
+      "servingTemperature": "Cold to room temperature (50-70°F)",
+      "region": "Chubu region",
+      "prefecture": "Nagano prefecture",
+      "tastingNotes": [
+        "Wet Stone",
+        "Earth"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-kurosawa-junmai_bbc7d871-463b-4a02-9b1a-58db387e4c25.jpg",
+        "https://www.tippsysake.com/cdn/shop/files/kurosawa-junmai-front-label-720-2206.jpg"
+      ],
+      "reviewCount": 89,
+      "averageRating": 4.63,
+      "url": "https://www.tippsysake.com/products/kurosawa-junmai"
+    },
+    {
+      "productName": "Maboroshi \"Junmai Daiginjo\"",
+      "price": "$184.00",
+      "size": "720 ml",
+      "description": "Sake is an ever-changing art, and this junmai daiginjo is the proof. The brewers over at Nakao Brewing Company do something a little different, they use their own original apple yeast, which enhances the fragrance and refines the acidity. This is precisely why Maboroshi gives off any air of easy elegance. The undiluted sake has a lazy citrus that glides through the finely tuned junmai daiginjo flavor, and washes down incredibly smooth.",
+      "brand": "Maboroshi",
+      "brewery": "Nakao Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "Apple",
+      "alcohol": "16.50%",
+      "rpr": "35%",
+      "smv": "1",
+      "acidity": "1.5",
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Chugoku region",
+      "prefecture": "Hiroshima prefecture",
+      "tastingNotes": [
+        "Apple",
+        "Orange",
+        "Melon"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/maboroshi-junmai-daiginjo-tps221104ym_112-1200.jpg?v=1732066716&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/maboroshi-junmai-daiginjo-1200.jpg?v=1732315870&width=1200"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/maboroshi-junmai-daiginjo"
+    },
+    {
+      "productName": "Mutsu Hassen \"Pink Label\"",
+      "price": "$47.00",
+      "size": "720 ml",
+      "description": "The pink label sets the vibe, bright, playful, and alluring. Produced with local yeast and rice as well as white koji, which adds a little more citric acid.",
+      "brand": "Mutsu Hassen",
+      "brewery": "Hachinohe Brewing Company",
+      "category": "Ginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Rice grown in Aomori",
+      "yeastVariety": "Aomori Yeast",
+      "alcohol": "16%",
+      "rpr": "60%",
+      "smv": "-2",
+      "acidity": "1",
+      "servingTemperature": "Cold to room temperature (50-70°F)",
+      "region": "Tohoku region",
+      "prefecture": "Aomori prefecture",
+      "tastingNotes": [
+        "Peach",
+        "Licorice",
+        "Rice-Pudding"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Cheese",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/mutsu-hassen-pink-label-1200.jpg"
+      ],
+      "reviewCount": 2,
+      "averageRating": 5,
+      "url": "https://www.tippsysake.com/products/mutsu-hassen-pink-label"
+    },
+    {
+      "productName": "Nanbu Bijin \"Tokubetsu Junmai\"",
+      "price": "$38.00",
+      "size": "720 ml",
+      "description": "Nanbu Bijin's staple 'Tokubetsu Junmai' was long known in the U.S. as the one with the butterflies on the label. As the 2017 International Wine Challenge Champion sake.",
+      "brand": "Nanbu Bijin",
+      "brewery": "Nanbu Bijin",
+      "category": "Junmai",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Gin Otome",
+      "yeastVariety": "Association No. 10 lineage (M310), Association No. 1901",
+      "alcohol": "15%",
+      "rpr": "55%",
+      "smv": "0",
+      "acidity": "1.5",
+      "servingTemperature": "Cold to hot (40-120°F)",
+      "region": "Tohoku region",
+      "prefecture": "Iwate prefecture",
+      "tastingNotes": [
+        "Apple",
+        "Pear",
+        "Flower"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Meat",
+        "Cheese"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/nanbu-bijin-tokubetsu-junmai-1200.jpg"
+      ],
+      "reviewCount": 52,
+      "averageRating": 4.69,
+      "url": "https://www.tippsysake.com/products/nanbu-bijin-tokubetsu-junmai"
+    },
+    {
+      "productName": "Ninki-ichi \"Sake Godzilla\"",
+      "price": "$78.00",
+      "size": "720 ml",
+      "description": "Ninki Brewing Company is hereby commissioned by the Special Headquarters for Countermeasures against Giant Unknown Creatures to brew the ultimate weapon for stopping Godzilla.",
+      "brand": "Sake Godzilla",
+      "brewery": "Ninki Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yume no Kaori",
+      "yeastVariety": "Fukushima (Utsukushima Kirameki Yeast)",
+      "alcohol": "16%",
+      "rpr": "50%",
+      "smv": "3.0",
+      "acidity": "1.4",
+      "servingTemperature": "Cold (40-60°F) or room temp (70°F)",
+      "region": "Tohoku region",
+      "prefecture": "Fukushima prefecture",
+      "tastingNotes": [
+        "Mineral",
+        "Melon"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ninki-ichi-sake-godzilla-02-1200.jpg"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/ninki-ichi-sake-godzilla"
+    },
+    {
+      "productName": "Nishide \"100 Year\"",
+      "price": "$175.00",
+      "size": "720 ml",
+      "description": "Nishide Shuzo brews up this special batch of junmai daiginjo using a unique yeast that was discovered one hundred years ago.",
+      "brand": "Nishide",
+      "brewery": "Nishide Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Gohyakumangoku",
+      "yeastVariety": "Ambient yeast (kuratsuki kobo)",
+      "alcohol": "16%",
+      "rpr": "50%",
+      "smv": "3",
+      "acidity": "2",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Ishikawa prefecture",
+      "tastingNotes": [
+        "Cedar",
+        "Banana",
+        "Mushroom",
+        "Apricot"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/nishide-100-year-1200.jpg"
+      ],
+      "reviewCount": 8,
+      "averageRating": 5,
+      "url": "https://www.tippsysake.com/products/nishide-100-year"
+    },
+    {
+      "productName": "Okunomatsu \"Ihei\"",
+      "price": "$190.00",
+      "size": "720 ml",
+      "description": "Using just gravity to collect drips from fine-grained fermented rice, the brewer waits days to fill the bottles of this premium grade sake.",
+      "brand": "Okunomatsu",
+      "brewery": "Okunomatsu Brewing Company",
+      "category": "Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "Association No. 1801",
+      "alcohol": "17%",
+      "rpr": "40%",
+      "smv": "3",
+      "acidity": "1.3",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Fukushima prefecture",
+      "tastingNotes": [
+        "Pear",
+        "Honey"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Braised beef"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/okunomatsu-ihei-tps221104ym_102-1200.jpg"
+      ],
+      "reviewCount": 1,
+      "averageRating": 5,
+      "url": "https://www.tippsysake.com/products/okunomatsu-ihei"
+    },
+    {
+      "productName": "Okunomatsu \"Tororingo\"",
+      "price": "$44.00",
+      "size": "500 ml",
+      "description": "The name \"Tororingo\" or \"Creamy Apple\" says it all. Drinking this sake is like taking a juicy bite out of an alcoholic apple! To achieve this stunning flavor, the brewers at Okunomatsu blend their junmai sake with freshly squeezed apple juice from Japan's leading apple producer. This sake is a stellar blend of sweet and sour, much like a Fuji apple, and is enhanced by serving chilled or over ice. If you want to draw someone into the sake world, this is a good sake to get them acquainted.",
+      "brand": "Okunomatsu",
+      "brewery": "Okunomatsu Brewing Company",
+      "category": "Other",
+      "subcategory": "Flavored",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": null,
+      "yeastVariety": null,
+      "alcohol": "7.20%",
+      "rpr": null,
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "Over ice or cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Fukushima prefecture",
+      "tastingNotes": [
+        "Apple"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Meat",
+        "Fruits"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/okunomatsu-tororingo-1200.jpg?v=1733785480&width=1200"
+      ],
+      "reviewCount": 15,
+      "averageRating": 4.87,
+      "url": "https://www.tippsysake.com/products/okunomatsu-tororingo"
+    },
+    {
+      "productName": "Okunomatsu \"Yuzutoro\"",
+      "price": "$42.00",
+      "size": "500 ml",
+      "description": "The fruit used for flavoring this yuzu sake is all naturally derived, and uses no artificial sweeteners or pigments to ensure a real, fresh flavor. The base sake is junmai, which lends a pleasant rice essence to the gently sweet citrus flavor of the yuzu. Overall, this sake demonstrates the smooth drinkability for which yuzu sake is known, and will keep you coming back for more.",
+      "brand": "Okunomatsu",
+      "brewery": "Okunomatsu Brewing Company",
+      "category": "Other",
+      "subcategory": "Flavored",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": null,
+      "yeastVariety": null,
+      "alcohol": "7.20%",
+      "rpr": null,
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "Over ice or cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Fukushima prefecture",
+      "tastingNotes": [
+        "Yuzu"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Meat",
+        "Fruits"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/okunomatsu-yuzutoro-1200.jpg?v=1733785509&width=1200"
+      ],
+      "reviewCount": 14,
+      "averageRating": 4.93,
+      "url": "https://www.tippsysake.com/products/okunomatsu-yuzutoro"
+    },
+    {
+      "productName": "Otokoyama \"Junmai Daiginjo\"",
+      "price": "$125.00",
+      "size": "720 ml",
+      "description": "In 1977, Otokoyama \"Junmai Daiginjo\" became the first sake to win an award from Monde Selection, an international institution that evaluates the quality of products worldwide. The bottle has been winning awards globally ever since. The best Yamadanishiki rice is processed mainly by hand and milled to 38%. The brewery's signature sake offers soft aromas on the nose, with complex and rich flavors on the palate, ending in a velvety finish.",
+      "brand": "Otokoyama",
+      "brewery": "Otokoyama",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "Association No. 1801, In-house",
+      "alcohol": "16.00%",
+      "rpr": "50%",
+      "smv": "5",
+      "acidity": "1.3",
+      "servingTemperature": "cold (40-60°F) or room temp (70°F)",
+      "region": "Hokkaido",
+      "prefecture": "Hokkaido",
+      "tastingNotes": [
+        "Pineapple",
+        "Plum"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/otokoyama-junmai-daiginjo-1200.jpg?v=1733785682&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/otokoyama-junmai-daiginjo-tps221104ym_089-1200.jpg?v=1732150792&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/otokoyama-junmai-daiginjo-tps221104ym_108-1200.jpg?v=1732150792&width=1200"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/otokoyama-junmai-daiginjo"
+    },
+    {
+      "productName": "Otokoyama \"Tokubetsu Junmai\"",
+      "price": "$26.00",
+      "size": "720 ml",
+      "description": "\"Otokoyama\" literally translates to \"Man Mountain.\" The name alludes to the drinking parties some samurais had before war. This sake packs a dry, full-bodied taste with hints of dark plum or black cherry. It's become synonymous with good sake worldwide due to its perfect flavor for pairing with Japanese sushi and sashimi. Expect sweetness and velvety texture you'll want to share with your friends.",
+      "brand": "Otokoyama",
+      "brewery": "Otokoyama",
+      "category": "Junmai",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Miyamanishiki",
+      "yeastVariety": "Association No. 901",
+      "alcohol": "15.50%",
+      "rpr": "55%",
+      "smv": "10",
+      "acidity": "1.6",
+      "servingTemperature": "cold (40-60°F), room temp (70°F), warm (85-115°F) or hot (120°F-)",
+      "region": "Hokkaido",
+      "prefecture": "Hokkaido",
+      "tastingNotes": [
+        "Plum",
+        "Cherry"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/otokoyama-tokubetsu-junmai-1200.jpg?v=1733785723&width=1200"
+      ],
+      "reviewCount": 39,
+      "averageRating": 4.67,
+      "url": "https://www.tippsysake.com/products/otokoyama-tokubetsu-junmai"
+    },
+    {
+      "productName": "Ozeki \"Karatamba\"",
+      "price": "$22.00",
+      "size": "720 ml",
+      "description": "The commitment of the creators is clear upon first sip. The dry sake awakens your palate, and leaves it with a refreshing finish.",
+      "brand": "Ozeki",
+      "brewery": "Ozeki",
+      "category": "Honjozo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki, Rice grown in Hyogo",
+      "yeastVariety": null,
+      "alcohol": "15%",
+      "rpr": "60%",
+      "smv": "7",
+      "acidity": "1.5",
+      "servingTemperature": "Cold to hot (40-120°F)",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Stone",
+        "Sage",
+        "Earthy"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ozeki-karatamba-1200.jpg"
+      ],
+      "reviewCount": 12,
+      "averageRating": 4.42,
+      "url": "https://www.tippsysake.com/products/ozeki-karatamba"
+    },
+    {
+      "productName": "Ozeki \"Osakaya Chobei\"",
+      "price": "$39.00",
+      "size": "720 ml",
+      "description": "Named after the founder of Ozeki brewery, the Osakaya Chobei is a Daiginjo made from rice that has been polished by a whooping 50%.",
+      "brand": "Ozeki",
+      "brewery": "Ozeki",
+      "category": "Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": null,
+      "alcohol": "15%",
+      "rpr": "50%",
+      "smv": "4",
+      "acidity": "1.3",
+      "servingTemperature": "Cold (40-60°F) or room temp (70°F)",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Lychee",
+        "Melon"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ozeki-osakaya-chobei-1200.jpg"
+      ],
+      "reviewCount": 5,
+      "averageRating": 4.4,
+      "url": "https://www.tippsysake.com/products/ozeki-osakaya-chobei"
+    },
+    {
+      "productName": "Ozeki \"Yamadanishiki\"",
+      "price": "$26.00",
+      "size": "720 ml",
+      "description": "Unmatched earthy purity. The Yamadanishiki rice used to brew this sake has a larger kernel, which contains the essential ingredients for creating natural, full-bodied flavor.",
+      "brand": "Ozeki",
+      "brewery": "Ozeki",
+      "category": "Junmai",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": null,
+      "alcohol": "14%",
+      "rpr": "60%",
+      "smv": "3",
+      "acidity": "1.8",
+      "servingTemperature": "Room temperature",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Pear",
+        "Earth"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ozeki-yamadanishiki-1200.jpg"
+      ],
+      "reviewCount": 11,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/ozeki-yamadanishiki"
+    },
+    {
+      "productName": "Reikyo \"Absolute 0\"",
+      "price": "$5,600.00",
+      "size": "500 ml",
+      "description": "Reikyo 'Absolute 0' is a product that debuted in 2018. It takes an astonishing seven months to polish the Kura no Hana sake rice.",
+      "brand": "Reikyo",
+      "brewery": "Niizawa Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Kura no Hana",
+      "yeastVariety": null,
+      "alcohol": "16%",
+      "rpr": "1%",
+      "smv": "0",
+      "acidity": "0.6",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Miyagi prefecture",
+      "tastingNotes": [
+        "Asian Pear",
+        "Melon"
+      ],
+      "foodPairings": [
+        "Aperitif"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-reikyo-absolute-0-openbox.jpg"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/reikyo-absolute-0"
+    },
+    {
+      "productName": "Rihaku \"Wandering Poet\"",
+      "price": "$39.00",
+      "size": "720 ml",
+      "description": "Like poetry for your palate. With broad appeal and a memorable, sturdy flavor, this sake has the ability to complement even the most wine-unfriendly vegetables.",
+      "brand": "Rihaku",
+      "brewery": "Rihaku Brewing Company",
+      "category": "Junmai Ginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": null,
+      "alcohol": "15.2%",
+      "rpr": "55%",
+      "smv": "3",
+      "acidity": "1.6",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Chugoku region",
+      "prefecture": "Shimane prefecture",
+      "tastingNotes": [
+        "Banana",
+        "Lemon",
+        "Aloe Vera"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/rihaku-wandering-poet-1200.jpg"
+      ],
+      "reviewCount": 8,
+      "averageRating": 4.63,
+      "url": "https://www.tippsysake.com/products/rihaku-wandering-poet"
+    },
+    {
+      "productName": "Sakari \"no. 21\" Yuzu",
+      "price": "$39.00",
+      "size": "700 ml",
+      "description": "This yuzu sake gets everything the fruit has to offer. They use every part of the fruit in production, from the flesh and seed to the peel. The fruits are sourced from Kochi and Kagoshima, places known for their yuzu, and the base is a junmai using their famous Miyamizu water source. Each sip brings soft, balanced sweetness that lingers on like a gentle kiss.",
+      "brand": "Sakari",
+      "brewery": "Nihonsakari",
+      "category": "Other",
+      "subcategory": "Flavored",
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Undisclosed",
+      "yeastVariety": "Undisclosed",
+      "alcohol": "8%",
+      "rpr": null,
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "over ice or cold (40-60°F)",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Yuzu",
+        "Rice"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Fruits"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-sakari-no-21-yuzu.jpg?v=1715033212&width=1200"
+      ],
+      "reviewCount": 4,
+      "averageRating": 5,
+      "url": "https://www.tippsysake.com/products/sakari-no-21-yuzu"
+    },
+    {
+      "productName": "Sawanotsuru \"Plum Sake\"",
+      "price": "$34.00",
+      "size": "720 ml",
+      "description": "Sawanotsuru employees come together to clean every single fruit by hand when the ume fruit season comes, before soaking them in three-year-aged kimoto junmai. Using the best ume fruit called Nanko ume from Kishu in Wakayama prefecture, the tartness of the fruit is balanced with natural sweetness from the rice koji and the extra umami developed from aging, so there's only a touch of sugar added.",
+      "brand": "Sawanotsuru",
+      "brewery": "Sawanotsuru",
+      "category": "Other",
+      "subcategory": "Umeshu (Plum Wine), Kimoto, Koshu",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": null,
+      "yeastVariety": "Undisclosed",
+      "alcohol": "11.00%",
+      "rpr": null,
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "over ice, cold (40-60°F), room temp (70°F), warm (85-115°F) or hot (120°F-)",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Apricot",
+        "Dried Fruit",
+        "Caramel"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Meat",
+        "Fruits"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/sawanotsuru-plum-sake-1200.jpg?v=1733255920&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/sawanotsuru-plum-sake-front-label-720-2003.jpg?v=1711396989&width=1080"
+      ],
+      "reviewCount": 44,
+      "averageRating": 4.52,
+      "url": "https://www.tippsysake.com/products/sawanotsuru-plum-sake"
+    },
+    {
+      "productName": "Senkin \"Modern\" Muku",
+      "price": "$33.00",
+      "size": "720 ml",
+      "description": "Senkin \"Modern\" Muku, using Yamadanishiki rice from their local farm, has their signature bright, juicy taste profile in its purest form. It is their wish that you enjoy this modern expression of sake as part of your everyday life. As the flavor profile is inspired by white wine from the old world, pairing with your everyday foods is encouraged—they literally say to enjoy it like your go-to white T-shirt.",
+      "brand": "Senkin",
+      "brewery": "Senkin Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": "Muroka, Genshu",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": null,
+      "alcohol": "16.00%",
+      "rpr": "50%",
+      "smv": "-2",
+      "acidity": "2.2",
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Kanto region",
+      "prefecture": "Tochigi prefecture",
+      "tastingNotes": [
+        "Orange",
+        "Rice",
+        "Apple"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Seafood",
+        "Fruits"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/senkin-modern-muku-1200.jpg?v=1733787194&width=1200"
+      ],
+      "reviewCount": 9,
+      "averageRating": 4.33,
+      "url": "https://www.tippsysake.com/products/senkin-modern-muku"
+    },
+    {
+      "productName": "Senkin \"Modern\" Omachi",
+      "price": "$36.00",
+      "size": "720 ml",
+      "description": "Why is 'Modern' in the name? Well, this sake uses Japan's historic first sake rice, Omachi, but it's expressing a brand new taste using innovative analysis.",
+      "brand": "Senkin",
+      "brewery": "Senkin Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": "Muroka, Genshu",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Yamadanishiki, Omachi",
+      "yeastVariety": "Tochigi Yeast",
+      "alcohol": "16%",
+      "rpr": "60%",
+      "smv": "-2",
+      "acidity": "2.2",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Kanto region",
+      "prefecture": "Tochigi prefecture",
+      "tastingNotes": [
+        "Apple",
+        "Peach",
+        "Apricot"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Cheese"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/senkin-modern-omachi-1200.jpg"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/senkin-modern-omachi"
+    },
+    {
+      "productName": "Shichida \"Junmai\"",
+      "price": "$50.00",
+      "size": "720 ml",
+      "description": "This delightful creation is brought to you from the land of junmai, the smallest prefecture within Kyushu in the southern part of Japan.",
+      "brand": "Shichida",
+      "brewery": "Tenzan Brewing Company",
+      "category": "Junmai",
+      "subcategory": "Genshu",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Yamadanishiki, Reiho",
+      "yeastVariety": null,
+      "alcohol": "17%",
+      "rpr": "65%",
+      "smv": "2",
+      "acidity": "1.8",
+      "servingTemperature": "Cold to warm (40-115°F)",
+      "region": "Kyushu region",
+      "prefecture": "Saga prefecture",
+      "tastingNotes": [
+        "Melon",
+        "Banana"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-shichida-junmai_4a1be8e9-08b8-4849-af0c-8644f60ba8de.jpg"
+      ],
+      "reviewCount": 10,
+      "averageRating": 4.3,
+      "url": "https://www.tippsysake.com/products/shichida-junmai"
+    },
+    {
+      "productName": "Shichiken \"Kinunoaji\"",
+      "price": "$36.00",
+      "size": "720 ml",
+      "description": "As a Kura Master 2023 gold winner and two-time IWC bronze winner, this junmai daiginjo is sure to impress. Its name translates to \"silky taste,\" and you'll understand why the brewery called it that. A flavor similar to strawberry-banana milk coats the tongue before resolving in a long finish. It is intended to be a fixture at the dinner table, recommended for creamy dishes such as cheesy risotto and pasta.",
+      "brand": "Shichiken",
+      "brewery": "Yamanashi Meijo",
+      "category": "Junmai Daiginjo",
+      "subcategory": "Genshu",
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Undisclosed",
+      "yeastVariety": "Undisclosed",
+      "alcohol": "15.0%",
+      "rpr": null,
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Chubu",
+      "prefecture": "Yamanashi",
+      "tastingNotes": [
+        "Strawberry",
+        "Banana",
+        "Rice Pudding"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat",
+        "Cheese"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/shichiken-kinunoaji-1200.jpg?v=1765328858&width=1200"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/shichiken-kinunoaji"
+    },
+    {
+      "productName": "Shinsei \"Yuzu Omoi\"",
+      "price": "$34.00",
+      "size": "500 ml",
+      "description": "Shinsei \"Yuzu Omoi\" combines fresh yuzu fruit from Ehime prefecture with sake made with a highly coveted water source in Fushimi, Kyoto. Think of this as a softer version of limoncello. It will mix beautifully with sparkling sake, and pairs well with any charcuterie meat to add a slightly sweet zing to your palate. It's a calming and rewarding treat for brunch, lunch, dinner, and after dinner.",
+      "brand": "Shinsei",
+      "brewery": "Yamamoto Honke",
+      "category": "Other",
+      "subcategory": "Flavored",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Hanaechizen",
+      "yeastVariety": null,
+      "alcohol": "7.60%",
+      "rpr": "78%",
+      "smv": null,
+      "acidity": "-70",
+      "servingTemperature": "Over ice or cold (40-60°F)",
+      "region": "Kinki region",
+      "prefecture": "Kyoto prefecture",
+      "tastingNotes": [
+        "Yuzu",
+        "Cream",
+        "Sweet Rice"
+      ],
+      "foodPairings": [
+        "Charcuterie meat",
+        "Aperitif",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/shinsei-yuzu-omoi-1200.jpg?v=1733791707&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/shinsei-yuzu-omoi-front-label-500-2210.jpg?v=1734044467&width=1080"
+      ],
+      "reviewCount": 6,
+      "averageRating": 5,
+      "url": "https://www.tippsysake.com/products/shinsei-yuzu-omoi"
+    },
+    {
+      "productName": "Shirakabegura \"Mio\"",
+      "price": "$30.00",
+      "size": "750 ml",
+      "description": "Brings a sparkle to the eye. Named using the Japanese word for areas of light, shallow water in oceans or rivers.",
+      "brand": "Shirakabegura",
+      "brewery": "Shirakabegura",
+      "category": "Junmai",
+      "subcategory": "Sparkling",
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Undisclosed",
+      "yeastVariety": "Undisclosed",
+      "alcohol": "5%",
+      "rpr": null,
+      "smv": "-70",
+      "acidity": "4",
+      "servingTemperature": "Room temperature",
+      "region": "Kinki region",
+      "prefecture": "Hyogo prefecture",
+      "tastingNotes": [
+        "Grape",
+        "Pear"
+      ],
+      "foodPairings": [
+        "Aperitif"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/shirakabegura-mio-1200.jpg"
+      ],
+      "reviewCount": 116,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/shirakabegura-mio"
+    },
+    {
+      "productName": "Starter Set",
+      "price": "$99.00",
+      "size": "300 ml x 6",
+      "description": "Curious about sake but don't know where to start? Six different sake from different regions and categories, with product cards and Tippsy Sake Guide by your side should do! Learn about the different breweries' legacies one by one, and discover how sake has evolved with a deep appreciation for nature and the human process.",
+      "brand": null,
+      "brewery": null,
+      "category": "Set",
+      "subcategory": null,
+      "tasteProfile": null,
+      "riceVariety": null,
+      "yeastVariety": null,
+      "alcohol": null,
+      "rpr": null,
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": null,
+      "region": null,
+      "prefecture": null,
+      "tastingNotes": [],
+      "foodPairings": [],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/starter-set-styled-01_543b7e60-8413-4ab4-bdf0-84f0100c4bbb.jpg?v=1702084967&width=1080",
+        "https://www.tippsysake.com/cdn/shop/files/starter-set-2412-03-01.jpg?v=1734571955&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/starter-set-2412-03-02.jpg?v=1734571955&width=1200"
+      ],
+      "reviewCount": 223,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/starter-set"
+    },
+    {
+      "productName": "Suigei \"Kaju\" 39",
+      "price": "$28.00",
+      "size": "720 ml",
+      "description": "Suigei Brewing Company blends three types of Japanese citrus fruit juices together to create a sweet and sour liqueur you'll become obsessed with. Bright and juicy, this concoction of authentic Kochi prefecture citrus is absolutely dreamy when chilled, poured over ice, or mixed with sparkling water, cocktails or hot water.",
+      "brand": "Suigei",
+      "brewery": "Suigei Brewing Company",
+      "category": "Other",
+      "subcategory": "Flavored",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": null,
+      "yeastVariety": null,
+      "alcohol": "9.0%",
+      "rpr": null,
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "over ice, cold (40-60°F) or warm (85-115°F)",
+      "region": "Shikoku region",
+      "prefecture": "Kochi prefecture",
+      "tastingNotes": [
+        "Yuzu",
+        "Orange",
+        "Lime"
+      ],
+      "foodPairings": [
+        "Aperitif",
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/suigei-kaju-yuzu-39-1200.jpg?v=1748632345&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/suigei-kaju-yuzu-39-front-label-720-2505.jpg?v=1748632353&width=1200"
+      ],
+      "reviewCount": 4,
+      "averageRating": 5,
+      "url": "https://www.tippsysake.com/products/suigei-kaju-39"
+    },
+    {
+      "productName": "Suigei \"MANN\"",
+      "price": "$216.00",
+      "size": "720 ml",
+      "description": "The Yamadanishiki rice for this sake is cultivated in the Special A District in East Tojo then polished way down to a stupendous 30%! When brewed at low temperature and with kumamoto yeast, the sake takes on a distinctly ginjo scent, but retains the extravagant and round flavor you love about junmai daiginjo. This brew is a fantastic representation of Suigei's distinct style, and it stands out amongst the crowd because of this uniqueness.",
+      "brand": "Suigei",
+      "brewery": "Suigei Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Yamadanishiki (Designation A)",
+      "yeastVariety": "Association No. 9 (Kumamoto Yeast)",
+      "alcohol": "17.00%",
+      "rpr": "30%",
+      "smv": "6.5",
+      "acidity": "1.8",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Shikoku region",
+      "prefecture": "Kochi prefecture",
+      "tastingNotes": [
+        "Melon",
+        "Honey",
+        "Butterscotch"
+      ],
+      "foodPairings": [
+        "Aperitif"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/suigei-mann-1200.jpg?v=1733256604&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/suigei-mann-tps221104ym_083-1200.jpg?v=1732150726&width=1200"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/suigei-mann"
+    },
+    {
+      "productName": "Suigei \"Tokubetsu Junmai\"",
+      "price": "$29.00",
+      "size": "720 ml",
+      "description": "Suigei, meaning Drunken Whale, is named after a warlord in Kochi Prefecture in the Edo period who loved eating and drinking.",
+      "brand": "Suigei",
+      "brewery": "Suigei Brewing Company",
+      "category": "Junmai",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Sake rice",
+      "yeastVariety": "Association No. 9 lineage (KA-1)",
+      "alcohol": "15%",
+      "rpr": "55%",
+      "smv": "7",
+      "acidity": "1.7",
+      "servingTemperature": "Cold (40-60°F) or room temp (70°F)",
+      "region": "Shikoku region",
+      "prefecture": "Kochi prefecture",
+      "tastingNotes": [
+        "Fennel",
+        "Rose"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/suigei-tokubetsu-junmai-1200.jpg"
+      ],
+      "reviewCount": 108,
+      "averageRating": 4.65,
+      "url": "https://www.tippsysake.com/products/suigei-tokubetsu-junmai"
+    },
+    {
+      "productName": "Taiheizan \"Nigori\"",
+      "price": "$36.00",
+      "size": "720 ml",
+      "description": "The very fine sediments in this bottle are hand pressed, keeping a very fine texture. True to the regional style, it finishes dry and is incredibly food friendly. They've not submitted this to any competitions — this is a product they created to please the locals, with a bit of nostalgia towards \"doburoku,\" a more ancient brew. Recommended in a \"guinomi,\" a slightly larger ceramic cup, to slow down your meal and to savor every sip.",
+      "brand": "Taiheizan",
+      "brewery": "Kodama Brewing Company",
+      "category": "Honjozo",
+      "subcategory": "Nigori",
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Rice grown in Akita",
+      "yeastVariety": "Association No. 701",
+      "alcohol": "14.00%",
+      "rpr": "65%",
+      "smv": "2",
+      "acidity": "1.3",
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Tohoku",
+      "prefecture": "Akita",
+      "tastingNotes": [
+        "Mint",
+        "Rice"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/taiheizan-nigori-1200.jpg?v=1733792938&width=1200"
+      ],
+      "reviewCount": 6,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/taiheizan-nigori"
+    },
+    {
+      "productName": "Tamanohikari \"Junmai Daiginjo\"",
+      "price": "$52.00",
+      "size": "720 ml",
+      "description": "Although from a reputable brewery from a very historic region, this is not your typical junmai daiginjo. Are you able to catch the humble expression of 'ginjo-ka,' full of white flowers and a hint of anise?",
+      "brand": "Tamanohikari",
+      "brewery": "Tamanohikari Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Bizen Omachi",
+      "yeastVariety": "Association No. 901",
+      "alcohol": "16%",
+      "rpr": "50%",
+      "smv": "3.5",
+      "acidity": "1.7",
+      "servingTemperature": "Cold (40-60°F) or room temp (70°F)",
+      "region": "Kinki region",
+      "prefecture": "Kyoto prefecture",
+      "tastingNotes": [
+        "Anise",
+        "Asian Pear",
+        "Sweet Rice"
+      ],
+      "foodPairings": [
+        "Sushi/Sashimi",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/tamanohikari-junmai-daiginjo-1200.jpg"
+      ],
+      "reviewCount": 15,
+      "averageRating": 4.33,
+      "url": "https://www.tippsysake.com/products/tamanohikari-junmai-daiginjo"
+    },
+    {
+      "productName": "Tatenokawa \"Komyo\" Dewasansan",
+      "price": "$2,800.00",
+      "size": "720 ml",
+      "description": "No one imagined that 1% RPR was achievable until 2016 brewing year when Tatenokawa Brewing Company obtained that skill. It takes 1800 hours and 2.5 months to create these pristine pearls of rice, and we can't imagine the ultimate care this sake goes through. Made with local Dewasansan sake rice, Yamagata KA and Association No. 1801 yeast—take in the flavor experience only those who have tasted it will know.",
+      "brand": "Tatenokawa",
+      "brewery": "Tatenokawa Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Dewasansan",
+      "yeastVariety": "Yamagata (KA), Association No. 1801",
+      "alcohol": "15.00%",
+      "rpr": "1%",
+      "smv": "-2",
+      "acidity": "1.4",
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Yamagata prefecture",
+      "tastingNotes": [
+        "Melon",
+        "Apricot"
+      ],
+      "foodPairings": [
+        "Aperitif"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/tatenokawa-komyo-dewasansan-box-1200_a4e1da5f-79db-44e4-b041-3281eaade45c.jpg?v=1732312720&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/tatenokawa-komyo-dewasansan-box-02-1200_51f4aca5-eeb0-4bda-af71-374c4961ebc9.jpg?v=1732312720&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/tatenokawa-komyo-dewasansan-1200_b8f6141c-d3ee-4fe6-895e-1a3b58a78ce3.jpg?v=1732312720&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/tatenokawa-komyo-dewasansan-front-label-720-2304.jpg?v=1711401439&width=1080"
+      ],
+      "reviewCount": 0,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/tatenokawa-komyo-dewasansan"
+    },
+    {
+      "productName": "Tatenokawa \"Komyo\" Yamadanishiki",
+      "price": "$3,800.00",
+      "size": "720 ml",
+      "description": "With a penchant for extreme rice polishing, Tatenokawa Brewing Company produces some of the world's most daring sake.",
+      "brand": "Tatenokawa",
+      "brewery": "Tatenokawa Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "Yamagata (KA), Association No. 1801",
+      "alcohol": "15%",
+      "rpr": "1%",
+      "smv": "-2",
+      "acidity": "1.3",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Yamagata prefecture",
+      "tastingNotes": [
+        "Peach",
+        "Pear"
+      ],
+      "foodPairings": [
+        "Aperitif"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-tatenokawa-komyo-yamadanishiki.jpg"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/tatenokawa-komyo-yamadanishiki"
+    },
+    {
+      "productName": "Tedorigawa \"Iki na Onna\" Lady Luck",
+      "price": "$63.00",
+      "size": "720 ml",
+      "description": "If you get your hands on this sake, Lady Luck is with you indeed! \"Iki na Onna\" is brewed in limited amounts for the Association of Lady Sake Retailers, so get it while you can. This classy brew delivers a clean, balanced taste with a confident splash of wild honey. The pronounced aroma is a swirl of cardamom, cinnamon and stewed apple, notes of which blend into the flavor.",
+      "brand": "Tedorigawa",
+      "brewery": "Yoshida Sake Brewery",
+      "category": "Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": "In-house (Kanazawa Yeast lineage)",
+      "alcohol": "16.50%",
+      "rpr": "40%",
+      "smv": "5",
+      "acidity": "1",
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Hokuriku region",
+      "prefecture": "Ishikawa prefecture",
+      "tastingNotes": [
+        "Asian Pear",
+        "Mineral"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Fruits"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/tedorigawa-iki-na-onna-lady-luck-1200.jpg?v=1733949816&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/tedorigawa-iki-na-onna-lady-luck-front-label-720-2107.jpg?v=1733949816&width=1080"
+      ],
+      "reviewCount": 4,
+      "averageRating": 5,
+      "url": "https://www.tippsysake.com/products/tedorigawa-iki-na-onna-lady-luck"
+    },
+    {
+      "productName": "Tentaka \"Hawk in the Heavens\"",
+      "price": "$43.00",
+      "size": "720 ml",
+      "description": "High acid, umami-rich sake achieved through heavy application of koji-kin and extended maturation period of 18 months. A go-to sake for barbeque, this rustic, high acid sake is a great representation of traditional Junmai style that you would find in Izakayas throughout Japan. The brewery name, Tentaka, translates to \"hawk in the heavens,\" a prosperous Japanese symbol that is thought to bring good fortune to the brewery.",
+      "brand": "Tentaka",
+      "brewery": "Tentaka Brewing Company",
+      "category": "Junmai",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Gohyakumangoku",
+      "yeastVariety": "Association No. 901",
+      "alcohol": "15.60%",
+      "rpr": "55%",
+      "smv": "3",
+      "acidity": "2.1",
+      "servingTemperature": "room temp (70°F) or warm (85-115°F)",
+      "region": "Kanto",
+      "prefecture": "Tochigi",
+      "tastingNotes": [
+        "Mushroom",
+        "Toasted Sesame"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/tentaka-hawk-in-the-heavens-1200.jpg?v=1733950218&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/tentaka-hawk-in-the-heavens-front-label-720-2206.jpg?v=1733950218&width=1080"
+      ],
+      "reviewCount": 8,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/tentaka-hawk-in-the-heavens"
+    },
+    {
+      "productName": "Toko \"Ultraluxe\"",
+      "price": "$145.00",
+      "size": "720 ml",
+      "description": "The brewers poured every drop of luxury and extravagance into this one-of-a-kind sake. Using finely milled Yamadanishiki rice and a drip separation method, this sake delivers an aroma like that of a gorgeous bouquet. This is followed by a masterful mosaic of flavor shining across the spectrum that blend together in a finish fit for royalty. Getting the chance to delve into such a sake is lucky indeed.",
+      "brand": "Toko",
+      "brewery": "Kojima Sohonten",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Light & Sweet",
+      "riceVariety": "Yamadanishiki",
+      "yeastVariety": null,
+      "alcohol": "16.00%",
+      "rpr": "35%",
+      "smv": "0",
+      "acidity": "0.8",
+      "servingTemperature": "cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Yamagata prefecture",
+      "tastingNotes": [
+        "Violet",
+        "Rose",
+        "Pineapple"
+      ],
+      "foodPairings": [
+        "Fruits",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/toko-ultraluxe-1200.jpg?v=1732317245&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/toko-ultraluxe-tps221104ym_099-1200.jpg?v=1732067485&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/toko-ultraluxe-tps221104ym_120-1200.jpg?v=1732067485&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/toko-ultraluxe-front-label-720-2303.jpg?v=1683765777&width=1080"
+      ],
+      "reviewCount": 7,
+      "averageRating": 4.43,
+      "url": "https://www.tippsysake.com/products/toko-ultraluxe"
+    },
+    {
+      "productName": "Torai \"Antelope\"",
+      "price": "$44.00",
+      "size": "720 ml",
+      "description": "With notes of flower and apricot, each sip feels like striding peacefully through verdant grasslands.",
+      "brand": "Torai",
+      "brewery": "Rokka Brewing Company",
+      "category": "Junmai",
+      "subcategory": "Genshu",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Hanafubuki",
+      "yeastVariety": "Mahoroba jun yeast",
+      "alcohol": "16%",
+      "rpr": "55%",
+      "smv": "-1.0",
+      "acidity": "1.5",
+      "servingTemperature": "Cold to warm (40-115°F)",
+      "region": "Tohoku region",
+      "prefecture": "Aomori prefecture",
+      "tastingNotes": [
+        "Flower",
+        "Apricot"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat",
+        "Veggies"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/torai-antelope-1200.jpg"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/torai-antelope"
+    },
+    {
+      "productName": "Torai \"Tokubetsu Junmai\"",
+      "price": "$40.00",
+      "size": "720 ml",
+      "description": "Made with in-house yeast, this smooth-drinking junmai's tropical flavor profile sends your taste buds to paradise.",
+      "brand": "Torai",
+      "brewery": "Rokka Brewing Company",
+      "category": "Junmai",
+      "subcategory": "Genshu",
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Rice grown in Aomori",
+      "yeastVariety": "In-house",
+      "alcohol": "16%",
+      "rpr": "60%",
+      "smv": "0.4",
+      "acidity": "1.5",
+      "servingTemperature": "Cold to hot (40-120°F)",
+      "region": "Tohoku region",
+      "prefecture": "Aomori prefecture",
+      "tastingNotes": [
+        "Pineapple",
+        "Mango",
+        "Banana"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/torai-tokubetsu-junmai-1200.jpg"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/torai-tokubetsu-junmai"
+    },
+    {
+      "productName": "Tozai \"Night Swim\"",
+      "price": "$33.00",
+      "size": "180 ml",
+      "description": "There's nothing quite like swimming under the stars at night, and this sake captures that feeling in a dreamy wave of citrus, pineapple, and banana flavors with a surprising undercurrent of light mint.",
+      "brand": "Tozai",
+      "brewery": "Kizakura",
+      "category": "Futsushu",
+      "subcategory": null,
+      "tasteProfile": "Light & Dry",
+      "riceVariety": "Koshihikari",
+      "yeastVariety": null,
+      "alcohol": "14%",
+      "rpr": "70%",
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Kinki region",
+      "prefecture": "Kyoto prefecture",
+      "tastingNotes": [
+        "Pineapple",
+        "Mint",
+        "Banana"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Meat",
+        "Fruits"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/tozai-night-swim-1200.jpg"
+      ],
+      "reviewCount": 41,
+      "averageRating": 4.44,
+      "url": "https://www.tippsysake.com/products/tozai-night-swim"
+    },
+    {
+      "productName": "Tozai \"Snow Maiden\"",
+      "price": "$24.00",
+      "size": "720 ml",
+      "description": "This sake is named after Hanako, or \"Flower Maiden,\" the most famous Japanese koi fish that lived for 226 years in the snowy, icy waters at the foot of Japan's Mount Ontake. Snow Maiden's creamy texture befits its name and has a surprising yet pleasurable dryness for a nigori. The exceptional, vibrant aromas are a prelude to the ricey, fruity flavor combination that graces the palate with each sip.",
+      "brand": "Tozai",
+      "brewery": "Kizakura",
+      "category": "Junmai",
+      "subcategory": "Nigori",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": "Gohyakumangoku, Gin Omi",
+      "yeastVariety": "Association No. 9",
+      "alcohol": "14.90%",
+      "rpr": "70%",
+      "smv": null,
+      "acidity": "1.6",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Kinki region",
+      "prefecture": "Kyoto prefecture",
+      "tastingNotes": [
+        "Melon",
+        "Radish"
+      ],
+      "foodPairings": [
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/tozai-snow-maiden-1200.jpg?v=1733951021&width=1200",
+        "https://www.tippsysake.com/cdn/shop/files/ft-tozai-snow-maiden-tps211223yp_009.jpg?v=1724194205&width=1200",
+        "https://www.tippsysake.com/cdn/shop/products/tozai-snow-maiden-front-label-720-2206.jpg?v=1733951021&width=1080"
+      ],
+      "reviewCount": 80,
+      "averageRating": 4.46,
+      "url": "https://www.tippsysake.com/products/tozai-snow-maiden"
+    },
+    {
+      "productName": "Tsukasabotan \"Yuzu\"",
+      "price": "$43.00",
+      "size": "720 ml",
+      "description": "This sake delivers a delightful dash of citrus with its 10% yuzu juice. The yuzu's enlivening aroma and vibrant acidity bring a pleasant citrus kick without any bitterness.",
+      "brand": "Tsukasabotan",
+      "brewery": "Tsukasabotan Brewing Company",
+      "category": "Other",
+      "subcategory": "Flavored",
+      "tasteProfile": "Rich & Sweet",
+      "riceVariety": null,
+      "yeastVariety": null,
+      "alcohol": "8%",
+      "rpr": null,
+      "smv": null,
+      "acidity": null,
+      "servingTemperature": "Over ice or cold (40-60°F)",
+      "region": "Shikoku region",
+      "prefecture": "Kochi prefecture",
+      "tastingNotes": [
+        "Yuzu"
+      ],
+      "foodPairings": [
+        "Aperitif"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/tsukasabotan-yuzu-1200.jpg"
+      ],
+      "reviewCount": 62,
+      "averageRating": 4.87,
+      "url": "https://www.tippsysake.com/products/tsukasabotan-yuzu"
+    },
+    {
+      "productName": "Urakasumi \"Hiyaoroshi\"",
+      "price": "$52.00",
+      "size": "720 ml",
+      "description": "Relaxation in a bottle. The autumn leaves on the label represent the best time to enjoy this seasonal brew.",
+      "brand": "Urakasumi",
+      "brewery": "Saura",
+      "category": "Junmai",
+      "subcategory": "Namazume",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Sasanishiki",
+      "yeastVariety": "In-house",
+      "alcohol": "16.5%",
+      "rpr": null,
+      "smv": "1.5",
+      "acidity": "1.7",
+      "servingTemperature": "Room temperature",
+      "region": "Tohoku region",
+      "prefecture": "Miyagi prefecture",
+      "tastingNotes": [
+        "Banana",
+        "Nutmeg",
+        "Mushroom"
+      ],
+      "foodPairings": [
+        "Seafood",
+        "Cheese"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/ft-urakasumi-hiyaoroshi.jpg"
+      ],
+      "reviewCount": 1,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/urakasumi-hiyaoroshi"
+    },
+    {
+      "productName": "Wakatake \"Onikoroshi\" Junmai Daiginjo",
+      "price": "$52.00",
+      "size": "720 ml",
+      "description": "This famous brand, called 'Demon Slayer,' tastes nothing like its name, unless you can slay demons with sweetness.",
+      "brand": "Wakatake",
+      "brewery": "Omuraya Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Yamadanishiki, Gohyakumangoku, Aichinokaori",
+      "yeastVariety": "Shizuoka (NEW-5)",
+      "alcohol": "16.5%",
+      "rpr": "50%",
+      "smv": "0",
+      "acidity": "1.5",
+      "servingTemperature": "Cold (40-60°F) or Warm (85-115°F)",
+      "region": "Chubu region",
+      "prefecture": "Shizuoka prefecture",
+      "tastingNotes": [
+        "Peach",
+        "Melon"
+      ],
+      "foodPairings": [
+        "Meat",
+        "Seafood"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/wakatake-onikoroshi-junmai-daiginjo-1200.jpg"
+      ],
+      "reviewCount": 43,
+      "averageRating": 4.88,
+      "url": "https://www.tippsysake.com/products/wakatake-onikoroshi"
+    },
+    {
+      "productName": "Yuho \"Rhythm of the Centuries\"",
+      "price": "$45.00",
+      "size": "720 ml",
+      "description": "Made using the 17th-century time and labor intensive kimoto method and then aged four years in bottle resulting in rich, earthy, and wild aromas and flavors. This brewing method of mixing the yeast starter has been perfected by Toji Yokomichi-san, who knows how to maximize the method. The extensive bottle aging rounds out the edges of the sake's flavor and creates overall smoothness.",
+      "brand": "Yuho",
+      "brewery": "Mioya Brewing Company",
+      "category": "Junmai",
+      "subcategory": "Kimoto",
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Notohikari",
+      "yeastVariety": null,
+      "alcohol": "15.90%",
+      "rpr": "55%",
+      "smv": "3",
+      "acidity": "2.2",
+      "servingTemperature": "room temp (70°F) or warm (85-115°F)",
+      "region": "Hokuriku",
+      "prefecture": "Ishikawa",
+      "tastingNotes": [
+        "Orange",
+        "Banana"
+      ],
+      "foodPairings": [
+        "Cheese",
+        "Meat"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/yuho-rhythm-of-the-centuries-1200_0f3d0042-6aae-4aca-9af1-a3acd5347375.jpg?v=1733960055&width=1200"
+      ],
+      "reviewCount": 14,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/yuho-rhythm-of-the-centuries"
+    },
+    {
+      "productName": "Zankyo \"Super 7\"",
+      "price": "$1,800.00",
+      "size": "720 ml",
+      "description": "In 2015 when the extreme rice polishing limit was thought to be 8%, president Niizawa and his team created a 7% RPR sake.",
+      "brand": "Zankyo",
+      "brewery": "Niizawa Brewing Company",
+      "category": "Junmai Daiginjo",
+      "subcategory": null,
+      "tasteProfile": "Rich & Dry",
+      "riceVariety": "Kura no Hana",
+      "yeastVariety": "In-house",
+      "alcohol": "16%",
+      "rpr": "7%",
+      "smv": "0",
+      "acidity": "1.5",
+      "servingTemperature": "Cold (40-60°F)",
+      "region": "Tohoku region",
+      "prefecture": "Miyagi prefecture",
+      "tastingNotes": [
+        "Grape",
+        "Pear",
+        "Pineapple"
+      ],
+      "foodPairings": [
+        "Fruits"
+      ],
+      "images": [
+        "https://www.tippsysake.com/cdn/shop/files/zankyo-super-7-1200.jpg"
+      ],
+      "reviewCount": null,
+      "averageRating": null,
+      "url": "https://www.tippsysake.com/products/zankyo-super-7"
+    }
+  ],
+  "totalProducts": 104
+}

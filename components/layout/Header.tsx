@@ -1,0 +1,167 @@
+"use client"
+
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Button } from "@/components/ui/Button"
+import { Input } from "@/components/ui/Input"
+import { Badge } from "@/components/ui/Badge"
+import { Search, Mic, ShoppingCart, Menu } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+// Conditional imports for Clerk
+let UserButton: any = null
+let useUser: any = null
+
+try {
+  const clerk = require("@clerk/nextjs")
+  UserButton = clerk.UserButton
+  useUser = clerk.useUser
+} catch (error) {
+  // Clerk not available
+}
+
+const navigation = [
+  { name: "Home", href: "/" },
+  { name: "Discover", href: "/discover" },
+  { name: "Podcasts", href: "/podcasts" },
+  { name: "Map", href: "/map" },
+  { name: "Learn", href: "/learn" },
+]
+
+export function Header() {
+  const pathname = usePathname()
+  
+  // Safe Clerk usage
+  let isSignedIn = false
+  let user = null
+  
+  if (useUser) {
+    try {
+      const userData = useUser()
+      isSignedIn = userData.isSignedIn
+      user = userData.user
+    } catch (error) {
+      // Handle Clerk errors gracefully
+    }
+  }
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b-3 border-ink bg-sakura-pink">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
+        {/* Logo */}
+        <Link href="/" className="flex items-center space-x-2">
+          <div className="text-2xl font-display font-bold text-ink">
+            🌸 Sakéverse
+          </div>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-plum-dark",
+                pathname === item.href
+                  ? "text-plum-dark font-semibold"
+                  : "text-ink"
+              )}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Search Bar (Desktop) */}
+        <div className="hidden lg:flex items-center space-x-4 flex-1 max-w-md mx-8">
+          <div className="relative w-full">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <Input
+              placeholder="Search sake, breweries, regions..."
+              className="pl-10 bg-white"
+            />
+          </div>
+        </div>
+
+        {/* Actions */}
+        <div className="flex items-center space-x-3">
+          {/* Voice Agent Button */}
+          <Button
+            variant="accent"
+            size="icon"
+            className="relative"
+            asChild
+          >
+            <Link href="/yuki">
+              <Mic className="h-4 w-4" />
+              <Badge 
+                variant="success" 
+                size="sm" 
+                className="absolute -top-1 -right-1 h-3 w-3 p-0 text-xs"
+              >
+                •
+              </Badge>
+            </Link>
+          </Button>
+
+          {/* Cart */}
+          <Button variant="ghost" size="icon" className="relative">
+            <ShoppingCart className="h-4 w-4" />
+            <Badge 
+              variant="primary" 
+              size="sm" 
+              className="absolute -top-1 -right-1 h-5 w-5 p-0 text-xs"
+            >
+              3
+            </Badge>
+          </Button>
+
+          {/* User Menu */}
+          {isSignedIn && UserButton ? (
+            <div className="flex items-center space-x-2">
+              <div className="hidden sm:block text-right">
+                <div className="text-sm font-medium text-ink">
+                  {user?.firstName || "User"}
+                </div>
+                <div className="text-xs text-gray-600">Level 3 • 340 XP</div>
+              </div>
+              <UserButton 
+                appearance={{
+                  elements: {
+                    avatarBox: "w-8 h-8 border-2 border-ink rounded-full shadow-retro-sm"
+                  }
+                }}
+              />
+            </div>
+          ) : (
+            <div className="flex items-center space-x-2">
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/sign-in">Sign In</Link>
+              </Button>
+              <Button variant="primary" size="sm" asChild>
+                <Link href="/sign-up">Sign Up</Link>
+              </Button>
+            </div>
+          )}
+
+          {/* Mobile Menu Button */}
+          <Button variant="ghost" size="icon" className="md:hidden">
+            <Menu className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+
+      {/* Mobile Search Bar */}
+      <div className="lg:hidden border-t-2 border-ink bg-sakura-light p-4">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+          <Input
+            placeholder="Search sake..."
+            className="pl-10 bg-white"
+          />
+        </div>
+      </div>
+    </header>
+  )
+}

@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Cherry Blossom Color Palette */
+    --sakura-pink: 255 186 210;
+    --sakura-light: 255 228 236;
+    --sakura-white: 255 245 248;
+    --petal-light: 255 228 236;
+    --plum-dark: 107 78 113;
+    
+    /* Accent Colors */
+    --sake-mist: 232 244 248;
+    --sake-warm: 255 229 196;
+    --matcha: 152 212 168;
+    
+    /* Neutral Colors */
+    --ink: 45 45 45;
+    --gray-600: 75 85 99;
+    --gray-400: 156 163 175;
+  }
+
+  * {
+    border-color: rgb(var(--ink));
+  }
+
+  body {
+    @apply bg-sakura-white text-ink font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+}
+
+@layer components {
+  /* RetroUI Base Classes */
+  .retro-shadow {
+    box-shadow: 4px 4px 0px rgb(var(--ink));
+  }
+  
+  .retro-shadow-lg {
+    box-shadow: 6px 6px 0px rgb(var(--ink));
+  }
+  
+  .retro-shadow-sm {
+    box-shadow: 2px 2px 0px rgb(var(--ink));
+  }
+  
+  .retro-shadow-pink {
+    box-shadow: 4px 4px 0px rgb(var(--plum-dark));
+  }
+
+  /* Button Styles */
+  .btn-retro {
+    @apply inline-flex items-center justify-center rounded-lg border-2 border-ink font-medium transition-all duration-200;
+    box-shadow: 4px 4px 0px rgb(var(--ink));
+  }
+
+  .btn-retro:hover {
+    box-shadow: 6px 6px 0px rgb(var(--ink));
+    transform: translate(-2px, -2px);
+  }
+
+  .btn-retro:active {
+    box-shadow: 2px 2px 0px rgb(var(--ink));
+    transform: translate(0, 0);
+  }
+
+  .btn-primary {
+    @apply bg-sakura-pink text-ink;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-ink;
+  }
+
+  .btn-accent {
+    @apply bg-plum-dark text-white;
+    box-shadow: 4px 4px 0px rgb(var(--plum-dark));
+  }
+
+  /* Card Styles */
+  .card-retro {
+    @apply rounded-xl border-2 border-ink bg-white transition-all duration-200;
+    box-shadow: 4px 4px 0px rgb(var(--ink));
+  }
+
+  .card-retro:hover {
+    box-shadow: 6px 6px 0px rgb(var(--ink));
+    transform: translateY(-4px);
+  }
+
+  /* Input Styles */
+  .input-retro {
+    @apply rounded-lg border-2 border-ink bg-white px-3 py-2 text-ink transition-all duration-200;
+    box-shadow: 2px 2px 0px rgb(var(--ink));
+  }
+
+  .input-retro:focus {
+    @apply border-plum-dark outline-none ring-2 ring-plum-dark ring-offset-2;
+  }
+
+  /* Badge Styles */
+  .badge-retro {
+    @apply inline-flex items-center rounded-full border-2 border-ink px-2.5 py-0.5 text-xs font-semibold;
+  }
+
+  /* Progress Bar */
+  .progress-bar {
+    @apply h-2 w-full rounded-full border-2 border-ink bg-white overflow-hidden;
+    box-shadow: inset 2px 2px 0px rgb(var(--ink));
+  }
+
+  .progress-fill {
+    @apply h-full bg-sakura-pink transition-all duration-300;
+  }
+
+  /* Container */
+  .container-retro {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Mobile Navigation Offset */
+  .mobile-nav-offset {
+    @apply pb-16 md:pb-0;
+  }
+}
