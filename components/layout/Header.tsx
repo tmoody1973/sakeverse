@@ -47,11 +47,11 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b-3 border-ink bg-sakura-pink">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
+      <div className="container mx-auto flex h-16 items-center px-4 lg:px-8">
         {/* Logo */}
         <Link 
           href="/" 
-          className="flex items-center"
+          className="flex items-center flex-shrink-0"
           aria-label="Sakéverse Home"
         >
           <img 
@@ -62,13 +62,13 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden md:flex items-center ml-10 space-x-8">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-plum-dark",
+                "text-sm font-medium transition-colors hover:text-plum-dark whitespace-nowrap",
                 pathname === item.href
                   ? "text-plum-dark font-semibold"
                   : "text-ink"
@@ -80,7 +80,7 @@ export function Header() {
         </nav>
 
         {/* Search Bar (Desktop) */}
-        <div className="hidden lg:flex items-center space-x-4 flex-1 max-w-md mx-8">
+        <div className="hidden lg:flex items-center flex-1 max-w-md ml-auto mr-4">
           <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
             <Input
