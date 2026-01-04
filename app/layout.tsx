@@ -1,10 +1,13 @@
 import type { Metadata } from "next"
 import { Inter, Space_Grotesk, Noto_Sans_JP } from "next/font/google"
-import { ClerkProvider } from "@clerk/nextjs"
 import { ConvexClientProvider } from "@/lib/convex"
 import { Header } from "@/components/layout/Header"
 import { BottomNav } from "@/components/layout/BottomNav"
 import "./globals.css"
+
+// Only import Clerk if we have valid keys
+const hasClerkKeys = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && 
+                    !process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY.includes('placeholder')
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -80,31 +83,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  // Check if we have valid Clerk keys
-  const hasClerkKeys = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && 
-                      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY !== 'pk_test_placeholder'
-
-  if (hasClerkKeys) {
-    return (
-      <ClerkProvider>
-        <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${notoSansJP.variable}`}>
-          <body className="min-h-screen bg-sakura-white font-body antialiased" suppressHydrationWarning={true}>
-            <ConvexClientProvider>
-              <div className="flex min-h-screen flex-col">
-                <Header />
-                <main className="flex-1 mobile-nav-offset">
-                  {children}
-                </main>
-                <BottomNav />
-              </div>
-            </ConvexClientProvider>
-          </body>
-        </html>
-      </ClerkProvider>
-    )
-  }
-
-  // Fallback without Clerk for development/build
+  // Always render without Clerk for now (can add back when keys are configured)
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${notoSansJP.variable}`}>
       <body className="min-h-screen bg-sakura-white font-body antialiased" suppressHydrationWarning={true}>
