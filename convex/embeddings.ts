@@ -127,27 +127,16 @@ export const semanticSearch = action({
       const data = await response.json()
       const embedding = data.data[0].embedding
       
-      // Build filter for vector search
+      // Build filter for vector search - Convex only supports eq filters
       let filter = undefined
-      if (priceRange && category) {
-        filter = (q: any) => q.and(
-          q.gte("price", priceRange.min),
-          q.lte("price", priceRange.max),
-          q.eq("category", category)
-        )
-      } else if (priceRange) {
-        filter = (q: any) => q.and(
-          q.gte("price", priceRange.min),
-          q.lte("price", priceRange.max)
-        )
-      } else if (category) {
+      if (category) {
         filter = (q: any) => q.eq("category", category)
       }
       
       // Perform vector search using Convex native API
       const results = await ctx.vectorSearch("tippsyProducts", "by_embedding", {
         vector: embedding,
-        limit: limit * 2, // Get more for potential filtering
+        limit: limit * 3, // Get more for post-filtering
         filter
       })
       
@@ -156,7 +145,15 @@ export const semanticSearch = action({
         ids: results.map(r => r._id)
       })
       
-      return products.slice(0, limit)
+      // Post-filter by price range if specified
+      let filtered = products
+      if (priceRange) {
+        filtered = products.filter((p: any) => 
+          p.price >= priceRange.min && p.price <= priceRange.max
+        )
+      }
+      
+      return filtered.slice(0, limit)
       
     } catch (error) {
       console.error("Vector search error:", error)

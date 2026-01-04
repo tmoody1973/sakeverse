@@ -444,55 +444,62 @@ You have access to specialized retrieval systems that provide you with:
               }
             }
             
-            try {
-              // Use semantic search for product recommendations
-              console.log("Attempting semantic search with query:", text)
-              products = await semanticSearch({ 
-                query: text,
-                priceRange: preferences.priceRange,
-                category: preferences.category,
-                limit: 3
-              })
-              console.log("Semantic search returned:", products.length, "products")
-              
-              // If no results, try without filters
-              if (products.length === 0 && (preferences.priceRange || preferences.category)) {
-                console.log("Retrying semantic search without filters")
+            // Detect if this is a product recommendation request vs educational question
+            const isRecommendationQuery = input.includes("recommend") || input.includes("suggest") ||
+                                         input.includes("buy") || input.includes("try") ||
+                                         input.includes("beginner") || input.includes("budget") ||
+                                         input.includes("under $") || input.includes("affordable") ||
+                                         input.includes("premium") || input.includes("best") ||
+                                         input.includes("favorite") || input.includes("popular")
+            
+            // Only search for products if it's a recommendation request AND we don't have a knowledge answer
+            if (isRecommendationQuery && !knowledgeAnswer && !wineToSakeAnswer) {
+              try {
+                console.log("Attempting semantic search with query:", text)
                 products = await semanticSearch({ 
                   query: text,
+                  priceRange: preferences.priceRange,
+                  category: preferences.category,
                   limit: 3
                 })
-                console.log("Retry returned:", products.length, "products")
-              }
-              
-            } catch (error) {
-              console.log("Semantic search failed, using fallback:", error)
-              try {
-                products = await getSakeRecommendations({ preferences })
-                console.log("Fallback returned:", products.length, "products")
-              } catch (fallbackError) {
-                console.log("Fallback also failed:", fallbackError)
+                console.log("Semantic search returned:", products.length, "products")
+                
+                // If no results, try without filters
+                if (products.length === 0 && (preferences.priceRange || preferences.category)) {
+                  console.log("Retrying semantic search without filters")
+                  products = await semanticSearch({ 
+                    query: text,
+                    limit: 3
+                  })
+                  console.log("Retry returned:", products.length, "products")
+                }
+                
+              } catch (error) {
+                console.log("Semantic search failed:", error)
                 products = []
               }
             }
             
-            // Generate varied responses based on input and knowledge
+            // Generate responses - prioritize knowledge over products
             if (text.toLowerCase().includes("hello") || text.toLowerCase().includes("hi")) {
               response = "Hello! I'm Kiki, your sake sommelier. My name comes from Kikizake (利き酒) - the art of sake tasting. I'm excited to help you explore the wonderful world of Japanese sake! What brings you here today - are you new to sake, or do you have some experience?"
+            } else if (knowledgeAnswer && !isRecommendationQuery) {
+              // Pure educational response - no products
+              response = knowledgeAnswer
             } else if (wineToSakeAnswer) {
-              // Prioritize wine-to-sake recommendations for wine lovers
+              // Wine-to-sake with optional products
               response = `Great question! Based on your wine preferences, here's what I recommend:\n\n${wineToSakeAnswer}`
               if (products.length > 0) {
                 response += `\n\nLet me suggest some specific bottles: The ${products[0].productName} from ${products[0].brewery} would be perfect for you at $${products[0].price}.`
               }
             } else if (currentAnswer) {
-              // Prioritize current information for trending queries
-              response = `${currentAnswer}\n\n${products.length > 0 ? `Based on this, here are some sake recommendations I think you'd enjoy:` : ''}`
+              // Current information
+              response = currentAnswer
             } else if (knowledgeAnswer) {
-              // Use deep knowledge from PDF books
+              // Knowledge with optional product tie-in
               response = knowledgeAnswer
-              if (products.length > 0) {
-                response += `\n\nBased on this knowledge, I'd recommend trying the ${products[0].productName} from ${products[0].brewery} - it exemplifies these characteristics beautifully.`
+              if (products.length > 0 && isRecommendationQuery) {
+                response += `\n\nIf you'd like to try one, the ${products[0].productName} from ${products[0].brewery} exemplifies this beautifully.`
               }
             } else if (text.toLowerCase().includes("beginner") || text.toLowerCase().includes("new to sake")) {
               response = "Perfect! I love helping newcomers discover sake. Let me recommend some excellent beginner-friendly options:"
@@ -561,6 +568,25 @@ You have access to specialized retrieval systems that provide you with:
     }
   }, [addMessage, getSakeRecommendations])
 
+  // Send message to C1 for dynamic UI generation
+  const sendC1Message = useCallback(async (text: string): Promise<string | null> => {
+    try {
+      const response = await fetch("/api/c1/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: text }),
+      })
+      
+      if (!response.ok) return null
+      
+      const data = await response.json()
+      return data.content || null
+    } catch (error) {
+      console.error("C1 API error:", error)
+      return null
+    }
+  }, [])
+
   // Cleanup on unmount
   useEffect(() => {
     return () => {
@@ -573,5 +599,6 @@ You have access to specialized retrieval systems that provide you with:
     connect,
     disconnect,
     sendMessage,
+    sendC1Message,
   }
 }
