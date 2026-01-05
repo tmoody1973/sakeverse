@@ -3,7 +3,8 @@
 import { useUser } from "@clerk/nextjs"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
-import { Mic, MapPin, BookOpen, TrendingUp } from "lucide-react"
+import { Badge } from "@/components/ui/Badge"
+import { Mic, Play, MapPin, BookOpen, TrendingUp, Star } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
 import { LandingPage } from "@/components/landing/LandingPage"
@@ -14,7 +15,7 @@ const DashboardContent = dynamic(
 )
 
 export default function HomeContent() {
-  const { isSignedIn, isLoaded, user } = useUser()
+  const { isSignedIn, isLoaded } = useUser()
 
   if (!isLoaded) {
     return <div className="min-h-screen flex items-center justify-center">
@@ -26,6 +27,10 @@ export default function HomeContent() {
     return <LandingPage />
   }
 
+  return <Dashboard />
+}
+
+function Dashboard() {
   return (
     <div className="container-retro py-8 space-y-8">
       {/* Welcome Hero */}
@@ -35,7 +40,7 @@ export default function HomeContent() {
             <div className="flex items-center justify-between">
               <div>
                 <CardTitle className="text-3xl mb-2">
-                  Welcome back, {user?.firstName || "Sake Explorer"}! 🌸
+                  Welcome back! 🌸
                 </CardTitle>
                 <p className="text-gray-600">
                   Ready to discover your next favorite sake?
@@ -44,7 +49,7 @@ export default function HomeContent() {
               <div className="text-right">
                 <div className="text-2xl font-bold text-plum-dark">Level 3</div>
                 <div className="text-sm text-gray-600">340 XP</div>
-                <div className="flex items-center mt-1 justify-end">
+                <div className="flex items-center mt-1">
                   <div className="text-sm text-gray-600 mr-2">7 day streak</div>
                   <div className="text-lg">🔥</div>
                 </div>
@@ -91,16 +96,16 @@ export default function HomeContent() {
                     <span className="text-xs">Ask Kiki</span>
                   </Link>
                 </Button>
-                <Button variant="secondary" className="h-16 flex-col" asChild>
+                <Button variant="primary" className="h-16 flex-col" asChild>
                   <Link href="/discover">
-                    <TrendingUp className="h-6 w-6 mb-1" />
+                    <Star className="h-6 w-6 mb-1" />
                     <span className="text-xs">Discover</span>
                   </Link>
                 </Button>
                 <Button variant="secondary" className="h-16 flex-col" asChild>
                   <Link href="/map">
                     <MapPin className="h-6 w-6 mb-1" />
-                    <span className="text-xs">Map</span>
+                    <span className="text-xs">Explore Map</span>
                   </Link>
                 </Button>
                 <Button variant="secondary" className="h-16 flex-col" asChild>
@@ -113,23 +118,171 @@ export default function HomeContent() {
             </CardContent>
           </Card>
 
-          {/* Kiki CTA */}
-          <Card className="bg-sake-mist">
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-white border-2 border-ink flex items-center justify-center shadow-retro-sm">
-                  <Mic className="h-6 w-6 text-plum-dark" />
+          {/* Current Course */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Current Course</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <div className="text-2xl">🌱</div>
+                  <div>
+                    <div className="font-semibold">Sake Fundamentals</div>
+                    <div className="text-sm text-gray-600">Lesson 8 of 10</div>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-ink">Chat with Kiki</h3>
-                  <p className="text-sm text-gray-600">Your AI sake sommelier</p>
+                <div className="progress-bar">
+                  <div className="progress-fill" style={{ width: "80%" }}></div>
                 </div>
+                <Button variant="primary" size="sm" className="w-full">
+                  Continue Learning
+                </Button>
               </div>
-              <Button variant="primary" className="w-full mt-4" asChild>
-                <Link href="/kiki">Start Conversation</Link>
-              </Button>
             </CardContent>
           </Card>
+        </div>
+      </div>
+
+      {/* Featured Podcast */}
+      <Card className="bg-plum-dark text-white">
+        <CardContent className="p-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 bg-sake-warm rounded-lg flex items-center justify-center text-2xl">
+                🍽️
+              </div>
+              <div>
+                <Badge variant="secondary" className="mb-2">Now Playing</Badge>
+                <h3 className="text-xl font-bold mb-1">Pairing Lab</h3>
+                <p className="text-gray-300">Korean BBQ and Sake—Why It Works</p>
+                <div className="text-sm text-gray-400 mt-1">15 min • Episode 12</div>
+              </div>
+            </div>
+            <div className="flex items-center space-x-3">
+              <Button variant="secondary" size="icon">
+                <Play className="h-4 w-4" />
+              </Button>
+              <div className="text-sm text-gray-400">5:23 / 15:00</div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Kiki CTA */}
+      <Card className="bg-sake-mist">
+        <CardContent className="p-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-2xl border-2 border-ink shadow-retro">
+                🎤
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-1">Chat with Kiki</h3>
+                <p className="text-gray-600">Your AI sake sommelier (利き酒) is ready to help you discover new flavors</p>
+              </div>
+            </div>
+            <Button variant="accent" size="lg" className="voice-pulse" asChild>
+              <Link href="/kiki">
+                <Mic className="h-5 w-5 mr-2" />
+                Start Conversation
+              </Link>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Recommendations */}
+      <div>
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-display font-bold">Recommended for You</h2>
+          <Button variant="ghost" asChild>
+            <Link href="/discover">
+              View All
+              <TrendingUp className="h-4 w-4 ml-2" />
+            </Link>
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Sake Cards */}
+          {[
+            {
+              name: "Dassai 23",
+              brewery: "Asahi Shuzo",
+              region: "Yamaguchi",
+              type: "Junmai Daiginjo",
+              price: "$85",
+              image: "🍶",
+              rating: 4.8,
+              compatibility: 95,
+            },
+            {
+              name: "Hakkaisan",
+              brewery: "Hakkaisan Brewery",
+              region: "Niigata",
+              type: "Junmai Ginjo",
+              price: "$32",
+              image: "🍶",
+              rating: 4.6,
+              compatibility: 88,
+            },
+            {
+              name: "Kubota Manju",
+              brewery: "Asahi-shuzo",
+              region: "Niigata",
+              type: "Junmai Daiginjo",
+              price: "$45",
+              image: "🍶",
+              rating: 4.7,
+              compatibility: 92,
+            },
+            {
+              name: "Juyondai",
+              brewery: "Takagi Shuzo",
+              region: "Yamagata",
+              type: "Junmai",
+              price: "$120",
+              image: "🍶",
+              rating: 4.9,
+              compatibility: 89,
+            },
+          ].map((sake, index) => (
+            <Card key={index} className="group cursor-pointer">
+              <CardContent className="p-4">
+                <div className="aspect-square bg-sakura-light rounded-lg flex items-center justify-center text-4xl mb-3 group-hover:bg-petal-light transition-colors relative">
+                  {sake.image}
+                  <Badge 
+                    variant="primary"
+                    className="absolute top-2 left-2 text-xs"
+                  >
+                    {sake.type.split(' ')[0]}
+                  </Badge>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="font-semibold text-ink group-hover:text-plum-dark transition-colors">
+                    {sake.name}
+                  </h3>
+                  <p className="text-sm text-gray-600">{sake.region}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-plum-dark">{sake.price}</span>
+                    <div className="flex items-center space-x-1">
+                      <Star className="h-3 w-3 fill-current text-yellow-500" />
+                      <span className="text-xs text-gray-600">{sake.rating}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Badge variant="success" size="sm">
+                      {sake.compatibility}% match
+                    </Badge>
+                    <Button variant="primary" size="sm">
+                      Add to Cart
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </div>
