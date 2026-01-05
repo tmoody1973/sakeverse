@@ -4,13 +4,39 @@ import { useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import { useUser } from "@clerk/nextjs"
 import Link from "next/link"
+import { useState } from "react"
+
+// Badge data for the guide
+const LEVELS = [
+  { level: 1, xp: 0, title: "Sake Curious", image: "/badges/sake-curious.png" },
+  { level: 2, xp: 100, title: "Sake Novice", image: "/badges/sake-novice.png" },
+  { level: 3, xp: 300, title: "Sake Student", image: "/badges/sake-student.png" },
+  { level: 4, xp: 600, title: "Sake Enthusiast", image: "/badges/sake-enthusist.png" },
+  { level: 5, xp: 1000, title: "Sake Connoisseur", image: "/badges/sake-connosieur.png" },
+  { level: 6, xp: 1500, title: "Sake Expert", image: "/badges/sake-expert.png" },
+  { level: 7, xp: 2500, title: "Sake Master", image: "/badges/sake-master.png" },
+  { level: 8, xp: 4000, title: "Sake Sensei", image: "/badges/sake-sensei.png" },
+  { level: 9, xp: 6000, title: "Sake Legend", image: "/badges/sake-legend.png" },
+  { level: 10, xp: 10000, title: "Sake Grandmaster", image: "/badges/sake-grandmaster.png" },
+]
+
+const XP_REWARDS = [
+  { action: "Read a chapter", xp: 25 },
+  { action: "Pass a quiz", xp: 50 },
+  { action: "Perfect quiz score", xp: 100 },
+]
 
 export default function LearnContent() {
   const { user } = useUser()
+  const [showGuide, setShowGuide] = useState(false)
   const courses = useQuery(api.learn.courses.listPublishedCourses, {})
   const categories = useQuery(api.learn.courses.getCategories)
   const userProgress = useQuery(
     api.learn.progress.getUserCourseList,
+    user?.id ? { clerkId: user.id } : "skip"
+  )
+  const stats = useQuery(
+    api.gamification.getUserStats,
     user?.id ? { clerkId: user.id } : "skip"
   )
 
@@ -36,15 +62,87 @@ export default function LearnContent() {
   return (
     <div className="min-h-screen bg-sakura-white p-6">
       <div className="max-w-6xl mx-auto space-y-8">
-        {/* Header */}
-        <div>
-          <h1 className="text-3xl font-bold text-ink flex items-center gap-3">
-            🍶 Learn Sake
-          </h1>
-          <p className="text-gray-600 mt-2">
-            Master the art of sake with guided courses
-          </p>
+        {/* Header with XP */}
+        <div className="flex items-start justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-ink flex items-center gap-3">
+              🍶 Learn Sake
+            </h1>
+            <p className="text-gray-600 mt-2">
+              Master the art of sake with guided courses
+            </p>
+          </div>
+          
+          {/* XP Badge */}
+          <button 
+            onClick={() => setShowGuide(true)}
+            className="flex items-center gap-3 bg-white border-2 border-ink rounded-xl p-3 shadow-retro hover:shadow-retro-lg transition-all"
+          >
+            {stats?.image && (
+              <img src={stats.image} alt={stats.title || ""} className="w-12 h-12 rounded-full" />
+            )}
+            <div className="text-left">
+              <div className="font-bold text-ink">{stats?.title || "Sake Curious"}</div>
+              <div className="text-sm text-gray-600">{stats?.xp || 0} XP</div>
+            </div>
+          </button>
         </div>
+
+        {/* XP Guide Modal */}
+        {showGuide && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setShowGuide(false)}>
+            <div className="bg-white border-3 border-ink rounded-xl shadow-retro-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+              <div className="p-6 border-b-2 border-ink flex justify-between items-center">
+                <h2 className="text-2xl font-bold text-ink">🏆 XP & Badges Guide</h2>
+                <button onClick={() => setShowGuide(false)} className="text-2xl hover:opacity-70">×</button>
+              </div>
+              
+              <div className="p-6 space-y-6">
+                {/* How to Earn XP */}
+                <div>
+                  <h3 className="font-bold text-lg text-ink mb-3">How to Earn XP</h3>
+                  <div className="space-y-2">
+                    {XP_REWARDS.map((reward, i) => (
+                      <div key={i} className="flex justify-between items-center bg-sakura-light rounded-lg p-3">
+                        <span>{reward.action}</span>
+                        <span className="font-bold text-plum">+{reward.xp} XP</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* All Badges */}
+                <div>
+                  <h3 className="font-bold text-lg text-ink mb-3">All Badges</h3>
+                  <div className="grid grid-cols-2 gap-3">
+                    {LEVELS.map((level) => {
+                      const isUnlocked = (stats?.xp || 0) >= level.xp
+                      return (
+                        <div 
+                          key={level.level} 
+                          className={`flex items-center gap-3 p-3 rounded-lg border-2 ${
+                            isUnlocked ? "border-matcha bg-matcha/10" : "border-gray-200 opacity-60"
+                          }`}
+                        >
+                          <img 
+                            src={level.image} 
+                            alt={level.title} 
+                            className={`w-12 h-12 rounded-full ${!isUnlocked && "grayscale"}`}
+                          />
+                          <div>
+                            <div className="font-medium text-ink">{level.title}</div>
+                            <div className="text-xs text-gray-500">{level.xp.toLocaleString()} XP</div>
+                          </div>
+                          {isUnlocked && <span className="ml-auto text-matcha">✓</span>}
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Continue Learning */}
         {inProgress.length > 0 && (

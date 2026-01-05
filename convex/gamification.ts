@@ -11,16 +11,16 @@ const XP_REWARDS = {
 
 // Level thresholds
 const LEVELS = [
-  { level: 1, xp: 0, title: "Sake Curious" },
-  { level: 2, xp: 100, title: "Sake Novice" },
-  { level: 3, xp: 300, title: "Sake Student" },
-  { level: 4, xp: 600, title: "Sake Enthusiast" },
-  { level: 5, xp: 1000, title: "Sake Connoisseur" },
-  { level: 6, xp: 1500, title: "Sake Expert" },
-  { level: 7, xp: 2500, title: "Sake Master" },
-  { level: 8, xp: 4000, title: "Sake Sensei" },
-  { level: 9, xp: 6000, title: "Sake Legend" },
-  { level: 10, xp: 10000, title: "Sake Grandmaster" },
+  { level: 1, xp: 0, title: "Sake Curious", image: "/badges/sake-curious.png" },
+  { level: 2, xp: 100, title: "Sake Novice", image: "/badges/sake-novice.png" },
+  { level: 3, xp: 300, title: "Sake Student", image: "/badges/sake-student.png" },
+  { level: 4, xp: 600, title: "Sake Enthusiast", image: "/badges/sake-enthusist.png" },
+  { level: 5, xp: 1000, title: "Sake Connoisseur", image: "/badges/sake-connosieur.png" },
+  { level: 6, xp: 1500, title: "Sake Expert", image: "/badges/sake-expert.png" },
+  { level: 7, xp: 2500, title: "Sake Master", image: "/badges/sake-master.png" },
+  { level: 8, xp: 4000, title: "Sake Sensei", image: "/badges/sake-sensei.png" },
+  { level: 9, xp: 6000, title: "Sake Legend", image: "/badges/sake-legend.png" },
+  { level: 10, xp: 10000, title: "Sake Grandmaster", image: "/badges/sake-grandmaster.png" },
 ]
 
 function getLevelFromXP(xp: number) {
@@ -56,8 +56,10 @@ export const getUserStats = query({
       xp: user.xp,
       level: currentLevel.level,
       title: currentLevel.title,
+      image: currentLevel.image,
       nextLevel: nextLevel?.level || null,
       nextTitle: nextLevel?.title || null,
+      nextImage: nextLevel?.image || null,
       xpToNext,
       progress: Math.round(progress),
       streak: user.streak,

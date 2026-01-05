@@ -99,19 +99,27 @@ function Dashboard({ userId }: { userId?: string }) {
                   Ready to discover your next favorite sake?
                 </p>
               </div>
-              <div className="text-right">
-                <div className="text-2xl font-bold text-plum-dark">
-                  {stats ? `Level ${stats.level}` : "Level 1"}
-                </div>
-                <div className="text-sm text-gray-600">
-                  {stats?.xp || 0} XP
-                </div>
-                {stats?.streak ? (
-                  <div className="flex items-center justify-end mt-1">
-                    <div className="text-sm text-gray-600 mr-2">{stats.streak} day streak</div>
-                    <div className="text-lg">🔥</div>
+              <div className="text-right flex items-center gap-3">
+                {stats?.image && (
+                  <img 
+                    src={stats.image} 
+                    alt={stats.title || "Badge"} 
+                    className="w-16 h-16 rounded-full border-2 border-ink shadow-retro-sm"
+                  />
+                )}
+                <div>
+                  <div className="text-lg font-bold text-plum-dark">
+                    {stats?.title || "Sake Curious"}
                   </div>
-                ) : null}
+                  <div className="text-sm text-gray-600">
+                    Level {stats?.level || 1} • {stats?.xp || 0} XP
+                  </div>
+                  {stats?.nextTitle && (
+                    <div className="text-xs text-gray-500">
+                      {stats.xpToNext} XP to {stats.nextTitle}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </CardHeader>
