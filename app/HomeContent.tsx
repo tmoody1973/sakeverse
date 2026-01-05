@@ -54,9 +54,13 @@ function Dashboard({ userId }: { userId?: string }) {
     userId ? { clerkId: userId } : "skip"
   )
   
-  // Debug: log preferences
-  console.log("Dashboard - userId:", userId)
-  console.log("Dashboard - preferences:", preferences)
+  const stats = useQuery(api.gamification.getUserStats,
+    userId ? { clerkId: userId } : "skip"
+  )
+  
+  const courseProgress = useQuery(api.learn.progress.getUserCourseList,
+    userId ? { clerkId: userId } : "skip"
+  )
   
   // Get first wine preference for the tip (case-insensitive matching)
   const winePrefs = preferences?.winePreferences || []
@@ -68,6 +72,11 @@ function Dashboard({ userId }: { userId?: string }) {
   // Find the properly cased key
   const matchedKey = primaryWine ? wineMapKeys.find(k => k.toLowerCase() === primaryWine.toLowerCase()) : null
   const wineRec = matchedKey ? wineToSakeMap[matchedKey] : null
+  
+  // Calculate stats
+  const sakeTried = library?.length || 0
+  const currentCourse = courseProgress?.inProgress?.[0] as { _id: string; title: string; slug: string; progress: number } | undefined
+  const coursesInProgress = courseProgress?.inProgress?.length || 0
   const displayWine = matchedKey || primaryWine
 
   return (
@@ -86,32 +95,38 @@ function Dashboard({ userId }: { userId?: string }) {
                 </p>
               </div>
               <div className="text-right">
-                <div className="text-2xl font-bold text-plum-dark">Level 3</div>
-                <div className="text-sm text-gray-600">340 XP</div>
-                <div className="flex items-center mt-1">
-                  <div className="text-sm text-gray-600 mr-2">7 day streak</div>
-                  <div className="text-lg">🔥</div>
+                <div className="text-2xl font-bold text-plum-dark">
+                  {stats ? `Level ${stats.level}` : "Level 1"}
                 </div>
+                <div className="text-sm text-gray-600">
+                  {stats?.xp || 0} XP
+                </div>
+                {stats?.streak ? (
+                  <div className="flex items-center justify-end mt-1">
+                    <div className="text-sm text-gray-600 mr-2">{stats.streak} day streak</div>
+                    <div className="text-lg">🔥</div>
+                  </div>
+                ) : null}
               </div>
             </div>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-plum-dark">12</div>
-                <div className="text-sm text-gray-600">Sake Tried</div>
+                <div className="text-2xl font-bold text-plum-dark">{sakeTried}</div>
+                <div className="text-sm text-gray-600">Sake Saved</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-plum-dark">4</div>
-                <div className="text-sm text-gray-600">Badges</div>
+                <div className="text-2xl font-bold text-plum-dark">{stats?.level || 1}</div>
+                <div className="text-sm text-gray-600">Level</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-plum-dark">3</div>
-                <div className="text-sm text-gray-600">Regions</div>
+                <div className="text-2xl font-bold text-plum-dark">{coursesInProgress}</div>
+                <div className="text-sm text-gray-600">Courses</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-plum-dark">80%</div>
-                <div className="text-sm text-gray-600">Course Progress</div>
+                <div className="text-2xl font-bold text-plum-dark">{currentCourse?.progress || 0}%</div>
+                <div className="text-sm text-gray-600">Progress</div>
               </div>
             </div>
             
@@ -163,21 +178,30 @@ function Dashboard({ userId }: { userId?: string }) {
               <CardTitle className="text-lg">Current Course</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-2">
-                  <div className="text-2xl">🌱</div>
-                  <div>
-                    <div className="font-semibold">Sake Fundamentals</div>
-                    <div className="text-sm text-gray-600">Lesson 8 of 10</div>
+              {currentCourse ? (
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-2">
+                    <div className="text-2xl">🌱</div>
+                    <div>
+                      <div className="font-semibold">{currentCourse.title}</div>
+                      <div className="text-sm text-gray-600">{currentCourse.progress}% complete</div>
+                    </div>
                   </div>
+                  <div className="progress-bar">
+                    <div className="progress-fill" style={{ width: `${currentCourse.progress}%` }}></div>
+                  </div>
+                  <Button variant="primary" size="sm" className="w-full" asChild>
+                    <Link href={`/learn/${currentCourse.slug}`}>Continue Learning</Link>
+                  </Button>
                 </div>
-                <div className="progress-bar">
-                  <div className="progress-fill" style={{ width: "80%" }}></div>
+              ) : (
+                <div className="space-y-3">
+                  <p className="text-sm text-gray-600">Start your sake learning journey!</p>
+                  <Button variant="primary" size="sm" className="w-full" asChild>
+                    <Link href="/learn">Browse Courses</Link>
+                  </Button>
                 </div>
-                <Button variant="primary" size="sm" className="w-full">
-                  Continue Learning
-                </Button>
-              </div>
+              )}
             </CardContent>
           </Card>
 
