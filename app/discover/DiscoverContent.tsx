@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useQuery, useMutation } from "convex/react"
+import { useUser } from "@clerk/nextjs"
 import { api } from "@/convex/_generated/api"
 import { Card, CardContent } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
@@ -17,23 +18,15 @@ const sortOptions = [
 ]
 
 export default function DiscoverContent() {
+  const { user } = useUser()
+  const clerkId = user?.id
+
   const [category, setCategory] = useState("All")
   const [minPrice, setMinPrice] = useState(0)
   const [maxPrice, setMaxPrice] = useState(200)
   const [region, setRegion] = useState("All")
   const [sort, setSort] = useState("recommended")
   const [showFilters, setShowFilters] = useState(false)
-
-  // Session for library
-  const [sessionId, setSessionId] = useState<string | null>(null)
-  useEffect(() => {
-    let id = sessionStorage.getItem('sakeverse-session')
-    if (!id) {
-      id = crypto.randomUUID()
-      sessionStorage.setItem('sakeverse-session', id)
-    }
-    setSessionId(id)
-  }, [])
 
   const categories = useQuery(api.discover.getCategories)
   const regions = useQuery(api.discover.getRegions)
@@ -50,10 +43,10 @@ export default function DiscoverContent() {
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set())
 
   const handleSave = async (product: any) => {
-    if (!sessionId) return
+    if (!clerkId) return
     try {
       await saveSake({
-        sessionId,
+        clerkId,
         sake: {
           name: product.productName || product.name,
           brewery: product.brewery,

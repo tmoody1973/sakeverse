@@ -50,19 +50,8 @@ function Dashboard({ userId }: { userId?: string }) {
     userId ? { clerkId: userId } : "skip"
   )
   
-  // Get session ID for library
-  const [sessionId, setSessionId] = useState<string | null>(null)
-  useEffect(() => {
-    let id = sessionStorage.getItem('sakeverse-session')
-    if (!id) {
-      id = crypto.randomUUID()
-      sessionStorage.setItem('sakeverse-session', id)
-    }
-    setSessionId(id)
-  }, [])
-  
   const library = useQuery(api.userLibrary.getLibrary, 
-    sessionId ? { sessionId } : "skip"
+    userId ? { clerkId: userId } : "skip"
   )
   
   // Debug: log preferences

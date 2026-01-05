@@ -2,40 +2,40 @@
 
 import { useQuery, useMutation } from "convex/react"
 import { api } from "@/convex/_generated/api"
-import { useEffect, useState } from "react"
+import { useUser } from "@clerk/nextjs"
 import Link from "next/link"
 import { Trash2, ExternalLink, Wine } from "lucide-react"
 
-function getSessionId() {
-  if (typeof window === "undefined") return ""
-  let id = sessionStorage.getItem("sakeverse-session")
-  if (!id) {
-    id = crypto.randomUUID()
-    sessionStorage.setItem("sakeverse-session", id)
-  }
-  return id
-}
-
 export default function LibraryContent() {
-  const [sessionId, setSessionId] = useState<string>("")
-  
-  useEffect(() => {
-    setSessionId(getSessionId())
-  }, [])
+  const { user, isLoaded } = useUser()
+  const clerkId = user?.id
 
   const library = useQuery(
     api.userLibrary.getLibrary, 
-    sessionId ? { sessionId } : "skip"
+    isLoaded ? { clerkId: clerkId || undefined } : "skip"
   )
   const removeSake = useMutation(api.userLibrary.removeSake)
 
   const handleRemove = async (sakeName: string) => {
-    if (!sessionId) return
-    await removeSake({ sessionId, sakeName })
+    if (!clerkId) return
+    await removeSake({ clerkId, sakeName })
   }
 
-  if (!sessionId) {
+  if (!isLoaded) {
     return <div className="min-h-screen bg-sakura-white p-6 flex items-center justify-center">Loading...</div>
+  }
+
+  if (!clerkId) {
+    return (
+      <main className="min-h-screen bg-sakura-white p-6">
+        <div className="max-w-6xl mx-auto text-center py-20">
+          <Wine className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+          <h1 className="text-2xl font-bold text-ink mb-2">Sign in to view your library</h1>
+          <p className="text-gray-600 mb-6">Save your favorite sake and access them anywhere</p>
+          <Link href="/sign-in" className="btn-primary">Sign In</Link>
+        </div>
+      </main>
+    )
   }
 
   return (
@@ -49,87 +49,73 @@ export default function LibraryContent() {
               My Sake Library
             </h1>
             <p className="text-gray-600 mt-1">
-              Your saved sake collection • {library?.length || 0} bottles
+              {library?.length || 0} sake saved
             </p>
           </div>
           <Link 
-            href="/kiki"
-            className="px-4 py-2 bg-sakura-pink border-2 border-ink rounded-lg font-medium retro-shadow hover:translate-y-[-2px] transition-all"
+            href="/discover" 
+            className="btn-primary"
           >
-            Ask Kiki for more →
+            Discover More
           </Link>
         </div>
 
-        {/* Empty State */}
-        {library?.length === 0 && (
-          <div className="text-center py-16 bg-white border-2 border-ink rounded-xl retro-shadow">
-            <div className="text-6xl mb-4">🍶</div>
+        {/* Library Grid */}
+        {!library || library.length === 0 ? (
+          <div className="text-center py-20 bg-white rounded-2xl border-2 border-ink shadow-retro">
+            <Wine className="w-16 h-16 mx-auto mb-4 text-gray-400" />
             <h2 className="text-xl font-semibold text-ink mb-2">Your library is empty</h2>
-            <p className="text-gray-600 mb-6 max-w-md mx-auto">
-              Start exploring sake with Kiki and save your favorites here!
-            </p>
-            <Link 
-              href="/kiki"
-              className="inline-block px-6 py-3 bg-sakura-pink border-2 border-ink rounded-lg font-medium retro-shadow hover:translate-y-[-2px] transition-all"
-            >
-              Chat with Kiki 🎤
+            <p className="text-gray-600 mb-6">Start exploring and save sake you love!</p>
+            <Link href="/discover" className="btn-primary">
+              Browse Sake
             </Link>
           </div>
-        )}
-
-        {/* Library Grid */}
-        {library && library.length > 0 && (
+        ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {library.map((item) => (
               <div 
-                key={item._id}
-                className="bg-white border-2 border-ink rounded-xl retro-shadow overflow-hidden hover:translate-y-[-4px] transition-all"
+                key={item._id} 
+                className="bg-white rounded-xl border-2 border-ink shadow-retro p-4 hover:shadow-retro-lg transition-shadow"
               >
-                {/* Image */}
-                <div className="aspect-square bg-sake-mist/30 relative">
-                  <img 
-                    src={item.image} 
-                    alt={item.sakeName}
-                    className="w-full h-full object-contain p-4"
-                  />
-                  <span className="absolute top-2 right-2 bg-sakura-pink px-2 py-1 rounded text-xs font-medium border border-ink">
-                    {item.category}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="p-4">
-                  <h3 className="font-bold text-lg text-ink">{item.sakeName}</h3>
-                  <p className="text-sm text-gray-600">{item.brewery} • {item.region}</p>
-                  <p className="text-lg font-bold text-sakura-dark mt-1">${item.price}</p>
-                  
-                  {item.description && (
-                    <p className="text-sm text-gray-500 mt-2 line-clamp-2">{item.description}</p>
+                <div className="flex gap-4">
+                  {item.image ? (
+                    <img 
+                      src={item.image} 
+                      alt={item.sakeName}
+                      className="w-20 h-28 object-contain rounded-lg bg-sakura-light"
+                    />
+                  ) : (
+                    <div className="w-20 h-28 bg-sakura-light rounded-lg flex items-center justify-center text-3xl">
+                      🍶
+                    </div>
                   )}
-
-                  {/* Actions */}
-                  <div className="flex gap-2 mt-4">
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-sakura-pink border-2 border-ink rounded-lg text-sm font-medium hover:bg-sakura-dark transition-colors"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      View on Tippsy
-                    </a>
-                    <button
-                      onClick={() => handleRemove(item.sakeName)}
-                      className="px-3 py-2 bg-red-50 border-2 border-red-300 rounded-lg text-red-600 hover:bg-red-100 transition-colors"
-                      title="Remove from library"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-ink truncate">{item.sakeName}</h3>
+                    <p className="text-sm text-gray-600 truncate">{item.brewery}</p>
+                    <p className="text-sm text-gray-500">{item.region}</p>
+                    <p className="text-lg font-bold text-plum-dark mt-1">${item.price}</p>
+                    <span className="inline-block text-xs bg-sakura-light px-2 py-0.5 rounded-full mt-1">
+                      {item.category}
+                    </span>
                   </div>
-
-                  <p className="text-xs text-gray-400 mt-3">
-                    Saved {new Date(item.savedAt).toLocaleDateString()}
-                  </p>
+                </div>
+                <div className="flex gap-2 mt-4">
+                  <a 
+                    href={item.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex-1 btn-secondary text-sm flex items-center justify-center gap-1"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View on Tippsy
+                  </a>
+                  <button
+                    onClick={() => handleRemove(item.sakeName)}
+                    className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                    title="Remove from library"
+                  >
+                    <Trash2 className="w-5 h-5" />
+                  </button>
                 </div>
               </div>
             ))}

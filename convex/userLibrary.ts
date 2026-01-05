@@ -5,7 +5,7 @@ import { mutation, query } from "./_generated/server"
 export const saveSake = mutation({
   args: {
     clerkId: v.optional(v.string()),
-    sessionId: v.string(), // For anonymous users
+    sessionId: v.optional(v.string()),
     sake: v.object({
       name: v.string(),
       brewery: v.string(),
@@ -18,12 +18,19 @@ export const saveSake = mutation({
     }),
   },
   handler: async (ctx, args) => {
-    const existing = await ctx.db
-      .query("userLibrary")
-      .withIndex("by_session_sake", (q) => 
-        q.eq("sessionId", args.sessionId).eq("sakeName", args.sake.name)
-      )
-      .first()
+    // Check for existing - prefer clerkId
+    const existing = args.clerkId
+      ? await ctx.db
+          .query("userLibrary")
+          .withIndex("by_clerk", (q) => q.eq("clerkId", args.clerkId))
+          .filter((q) => q.eq(q.field("sakeName"), args.sake.name))
+          .first()
+      : await ctx.db
+          .query("userLibrary")
+          .withIndex("by_session_sake", (q) => 
+            q.eq("sessionId", args.sessionId || "").eq("sakeName", args.sake.name)
+          )
+          .first()
     
     if (existing) {
       return { success: false, message: "Already in library" }
@@ -31,7 +38,7 @@ export const saveSake = mutation({
 
     await ctx.db.insert("userLibrary", {
       clerkId: args.clerkId,
-      sessionId: args.sessionId,
+      sessionId: args.sessionId || "",
       sakeName: args.sake.name,
       brewery: args.sake.brewery,
       price: args.sake.price,
@@ -50,16 +57,23 @@ export const saveSake = mutation({
 // Remove sake from library
 export const removeSake = mutation({
   args: {
-    sessionId: v.string(),
+    clerkId: v.optional(v.string()),
+    sessionId: v.optional(v.string()),
     sakeName: v.string(),
   },
   handler: async (ctx, args) => {
-    const item = await ctx.db
-      .query("userLibrary")
-      .withIndex("by_session_sake", (q) => 
-        q.eq("sessionId", args.sessionId).eq("sakeName", args.sakeName)
-      )
-      .first()
+    const item = args.clerkId
+      ? await ctx.db
+          .query("userLibrary")
+          .withIndex("by_clerk", (q) => q.eq("clerkId", args.clerkId))
+          .filter((q) => q.eq(q.field("sakeName"), args.sakeName))
+          .first()
+      : await ctx.db
+          .query("userLibrary")
+          .withIndex("by_session_sake", (q) => 
+            q.eq("sessionId", args.sessionId || "").eq("sakeName", args.sakeName)
+          )
+          .first()
     
     if (item) {
       await ctx.db.delete(item._id)
@@ -72,32 +86,50 @@ export const removeSake = mutation({
 // Get user's library
 export const getLibrary = query({
   args: {
-    sessionId: v.string(),
+    clerkId: v.optional(v.string()),
+    sessionId: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-    const items = await ctx.db
-      .query("userLibrary")
-      .withIndex("by_session", (q) => q.eq("sessionId", args.sessionId))
-      .order("desc")
-      .collect()
+    if (args.clerkId) {
+      return await ctx.db
+        .query("userLibrary")
+        .withIndex("by_clerk", (q) => q.eq("clerkId", args.clerkId))
+        .order("desc")
+        .collect()
+    }
     
-    return items
+    if (args.sessionId) {
+      return await ctx.db
+        .query("userLibrary")
+        .withIndex("by_session", (q) => q.eq("sessionId", args.sessionId!))
+        .order("desc")
+        .collect()
+    }
+    
+    return []
   },
 })
 
 // Check if sake is in library
 export const isInLibrary = query({
   args: {
-    sessionId: v.string(),
+    clerkId: v.optional(v.string()),
+    sessionId: v.optional(v.string()),
     sakeName: v.string(),
   },
   handler: async (ctx, args) => {
-    const item = await ctx.db
-      .query("userLibrary")
-      .withIndex("by_session_sake", (q) => 
-        q.eq("sessionId", args.sessionId).eq("sakeName", args.sakeName)
-      )
-      .first()
+    const item = args.clerkId
+      ? await ctx.db
+          .query("userLibrary")
+          .withIndex("by_clerk", (q) => q.eq("clerkId", args.clerkId))
+          .filter((q) => q.eq(q.field("sakeName"), args.sakeName))
+          .first()
+      : await ctx.db
+          .query("userLibrary")
+          .withIndex("by_session_sake", (q) => 
+            q.eq("sessionId", args.sessionId || "").eq("sakeName", args.sakeName)
+          )
+          .first()
     
     return !!item
   },
