@@ -11,6 +11,7 @@ import { Mic, Play, MapPin, BookOpen, TrendingUp, Star } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
 import { LandingPage } from "@/components/landing/LandingPage"
+import { FoodPairingWidget } from "@/components/dashboard/FoodPairingWidget"
 
 const DashboardContent = dynamic(
   () => import("@/components/dashboard/DashboardContent").then(mod => mod.DashboardContent),
@@ -218,18 +219,7 @@ function Dashboard({ userId }: { userId?: string }) {
           </Card>
 
           {/* Food Pairing of the Day */}
-          <Card className="bg-gradient-to-br from-sake-warm/30 to-white">
-            <CardContent className="p-4">
-              <div className="flex items-start gap-3">
-                <div className="text-2xl">🍜</div>
-                <div>
-                  <p className="text-xs text-gray-500 font-medium mb-1">Tonight's Pairing</p>
-                  <p className="text-sm text-ink font-semibold">Ramen + Junmai Ginjo</p>
-                  <p className="text-xs text-gray-600 mt-1">Rich broth meets clean finish</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <FoodPairingWidget />
 
           {/* Your Library Preview */}
           <Card>

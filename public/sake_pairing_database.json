@@ -1,0 +1,2482 @@
+{
+  "sakeTypes": [
+    {
+      "id": "junmai",
+      "name": "Junmai",
+      "body": "medium",
+      "sweetness": "dry",
+      "acidity": "medium-high",
+      "umami": "high",
+      "notes": [
+        "rice",
+        "umami",
+        "savory"
+      ],
+      "bestWith": [
+        "rich",
+        "salty",
+        "umami-heavy",
+        "grilled"
+      ],
+      "serve": [
+        "room_temp",
+        "warm"
+      ]
+    },
+    {
+      "id": "junmai_ginjo",
+      "name": "Junmai Ginjo",
+      "body": "light-medium",
+      "sweetness": "off-dry",
+      "acidity": "medium",
+      "umami": "medium",
+      "notes": [
+        "fruity",
+        "floral",
+        "elegant"
+      ],
+      "bestWith": [
+        "delicate",
+        "light",
+        "subtle flavors"
+      ],
+      "serve": [
+        "chilled"
+      ]
+    },
+    {
+      "id": "junmai_daiginjo",
+      "name": "Junmai Daiginjo",
+      "body": "light",
+      "sweetness": "off-dry",
+      "acidity": "medium-low",
+      "umami": "medium",
+      "notes": [
+        "aromatic",
+        "refined",
+        "silky"
+      ],
+      "bestWith": [
+        "high-end",
+        "delicate",
+        "clean seafood"
+      ],
+      "serve": [
+        "chilled"
+      ]
+    },
+    {
+      "id": "honjozo",
+      "name": "Honjozo",
+      "body": "light-medium",
+      "sweetness": "dry",
+      "acidity": "medium",
+      "umami": "medium",
+      "notes": [
+        "smooth",
+        "clean"
+      ],
+      "bestWith": [
+        "casual",
+        "fried",
+        "bar_food"
+      ],
+      "serve": [
+        "chilled",
+        "room_temp"
+      ]
+    },
+    {
+      "id": "nigori",
+      "name": "Nigori",
+      "body": "full",
+      "sweetness": "sweet",
+      "acidity": "low",
+      "umami": "medium",
+      "notes": [
+        "creamy",
+        "milky",
+        "sweet"
+      ],
+      "bestWith": [
+        "spicy",
+        "desserts"
+      ],
+      "serve": [
+        "chilled"
+      ]
+    },
+    {
+      "id": "sparkling",
+      "name": "Sparkling Sake",
+      "body": "light",
+      "sweetness": "off-dry",
+      "acidity": "medium-high",
+      "umami": "low-medium",
+      "notes": [
+        "effervescent",
+        "fruity"
+      ],
+      "bestWith": [
+        "fried",
+        "salty_snacks",
+        "starters"
+      ],
+      "serve": [
+        "chilled"
+      ]
+    }
+  ],
+  "cuisines": [
+    {
+      "id": "southern_soul",
+      "name": "Southern & Soul Food",
+      "dishes": [
+        {
+          "id": "fried_chicken",
+          "name": "Fried Chicken",
+          "shortDescription": "Crispy buttermilk fried chicken with seasoned crust.",
+          "keyIngredients": [
+            "chicken",
+            "flour",
+            "buttermilk",
+            "spices",
+            "oil"
+          ],
+          "flavorProfile": [
+            "rich",
+            "savory",
+            "salty",
+            "crispy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "sparkling",
+            "honjozo"
+          ],
+          "pairingNotes": "The fat and salt of fried chicken are cut nicely by sparkling sake's bubbles or a dry, umami-rich Junmai."
+        },
+        {
+          "id": "shrimp_and_grits",
+          "name": "Shrimp and Grits",
+          "shortDescription": "Creamy grits topped with saut\u00e9ed shrimp and savory gravy.",
+          "keyIngredients": [
+            "shrimp",
+            "grits",
+            "butter",
+            "stock",
+            "spices"
+          ],
+          "flavorProfile": [
+            "creamy",
+            "savory",
+            "seafood",
+            "buttery"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "junmai"
+          ],
+          "pairingNotes": "Junmai Ginjo's aromatics lift the seafood while Junmai's umami echoes the rich, savory gravy."
+        },
+        {
+          "id": "mac_and_cheese",
+          "name": "Baked Mac and Cheese",
+          "shortDescription": "Oven-baked macaroni in a rich cheese sauce.",
+          "keyIngredients": [
+            "pasta",
+            "cheddar",
+            "milk",
+            "butter"
+          ],
+          "flavorProfile": [
+            "rich",
+            "creamy",
+            "cheesy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "nigori"
+          ],
+          "pairingNotes": "A fuller-bodied Junmai stands up to the cheese, while a lightly sweet Nigori contrasts the saltiness."
+        },
+        {
+          "id": "collard_greens",
+          "name": "Collard Greens",
+          "shortDescription": "Slow-cooked greens with smoked ham hock and aromatics.",
+          "keyIngredients": [
+            "collard greens",
+            "ham hock",
+            "onion",
+            "garlic"
+          ],
+          "flavorProfile": [
+            "savory",
+            "smoky",
+            "bitter_greens",
+            "umami"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai's umami matches the smoked meat and earthiness of greens; Honjozo provides brightness."
+        },
+        {
+          "id": "chicken_and_dumplings",
+          "name": "Chicken and Dumplings",
+          "shortDescription": "Tender chicken in creamy broth with fluffy dumplings.",
+          "keyIngredients": [
+            "chicken",
+            "cream",
+            "stock",
+            "flour",
+            "thyme"
+          ],
+          "flavorProfile": [
+            "creamy",
+            "comforting",
+            "herbaceous"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "honjozo"
+          ],
+          "pairingNotes": "Ginjo's aromatic notes lift the creamy broth; Honjozo provides clean, refreshing contrast."
+        },
+        {
+          "id": "gumbo",
+          "name": "Gumbo",
+          "shortDescription": "Thick stew with roux, okra, and sausage or seafood.",
+          "keyIngredients": [
+            "roux",
+            "okra",
+            "sausage",
+            "seafood",
+            "rice"
+          ],
+          "flavorProfile": [
+            "rich",
+            "savory",
+            "spiced",
+            "thick"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "nigori"
+          ],
+          "pairingNotes": "Junmai complements the deep umami; Nigori can soothe any spice."
+        },
+        {
+          "id": "cornbread",
+          "name": "Cornbread",
+          "shortDescription": "Golden-brown corn cake, slightly sweet and buttery.",
+          "keyIngredients": [
+            "cornmeal",
+            "flour",
+            "butter",
+            "honey",
+            "eggs"
+          ],
+          "flavorProfile": [
+            "sweet",
+            "buttery",
+            "corn"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "sparkling"
+          ],
+          "pairingNotes": "Nigori's sweetness echoes the cornbread; sparkling sake cuts through the butter."
+        },
+        {
+          "id": "po_boy",
+          "name": "Po'boy Sandwich",
+          "shortDescription": "Fried seafood or roast beef on French bread with dressed greens.",
+          "keyIngredients": [
+            "fried fish",
+            "roast beef",
+            "French bread",
+            "remoulade"
+          ],
+          "flavorProfile": [
+            "crispy",
+            "savory",
+            "tangy"
+          ],
+          "recommendedSakeTypes": [
+            "sparkling",
+            "honjozo"
+          ],
+          "pairingNotes": "Sparkling sake cuts the fried coating; Honjozo balances the tart remoulade."
+        }
+      ]
+    },
+    {
+      "id": "italian",
+      "name": "Italian",
+      "dishes": [
+        {
+          "id": "margherita_pizza",
+          "name": "Margherita Pizza",
+          "shortDescription": "Thin crust pizza with tomato, mozzarella and basil.",
+          "keyIngredients": [
+            "tomato",
+            "mozzarella",
+            "basil",
+            "olive oil"
+          ],
+          "flavorProfile": [
+            "tomato",
+            "herbaceous",
+            "fresh",
+            "savory"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai Ginjo's fruitiness works like a light white wine with tomato and basil."
+        },
+        {
+          "id": "carbonara",
+          "name": "Pasta Carbonara",
+          "shortDescription": "Spaghetti with egg, cheese, pancetta and black pepper.",
+          "keyIngredients": [
+            "pasta",
+            "egg",
+            "pecorino",
+            "pancetta",
+            "pepper"
+          ],
+          "flavorProfile": [
+            "rich",
+            "peppery",
+            "savory"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "junmai_ginjo"
+          ],
+          "pairingNotes": "Junmai matches umami and richness; Ginjo adds lift."
+        },
+        {
+          "id": "risotto_ai_funghi",
+          "name": "Mushroom Risotto",
+          "shortDescription": "Creamy rice cooked with stock, mushrooms and parmesan.",
+          "keyIngredients": [
+            "rice",
+            "mushrooms",
+            "stock",
+            "parmesan"
+          ],
+          "flavorProfile": [
+            "earthy",
+            "creamy",
+            "umami"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "junmai_daiginjo"
+          ],
+          "pairingNotes": "Junmai brings earthy umami; Junmai Daiginjo adds polish."
+        },
+        {
+          "id": "lasagna_bolognese",
+          "name": "Lasagna Bolognese",
+          "shortDescription": "Layered pasta with meat rag\u00f9 and b\u00e9chamel.",
+          "keyIngredients": [
+            "pasta",
+            "beef",
+            "tomato",
+            "b\u00e9chamel",
+            "parmesan"
+          ],
+          "flavorProfile": [
+            "rich",
+            "savory",
+            "complex"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai's umami matches the slow-cooked rag\u00f9; Honjozo adds brightness."
+        },
+        {
+          "id": "osso_buco",
+          "name": "Osso Buco",
+          "shortDescription": "Braised veal shanks in tomato and wine.",
+          "keyIngredients": [
+            "veal shank",
+            "tomato",
+            "white wine",
+            "mirepoix"
+          ],
+          "flavorProfile": [
+            "tender",
+            "savory",
+            "braised"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "junmai_ginjo"
+          ],
+          "pairingNotes": "Junmai complements the rich braised meat; Ginjo adds aromatic contrast."
+        },
+        {
+          "id": "cacio_e_pepe",
+          "name": "Cacio e Pepe",
+          "shortDescription": "Spaghetti with cheese and black pepper only.",
+          "keyIngredients": [
+            "pasta",
+            "pecorino",
+            "black pepper"
+          ],
+          "flavorProfile": [
+            "peppery",
+            "cheesy",
+            "savory"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai matches the umami depth; Honjozo cuts through the pepper and cheese."
+        },
+        {
+          "id": "pappardelle_cinghiale",
+          "name": "Pappardelle with Wild Boar",
+          "shortDescription": "Wide ribbon pasta with wild boar rag\u00f9.",
+          "keyIngredients": [
+            "pappardelle",
+            "wild boar",
+            "tomato",
+            "herbs"
+          ],
+          "flavorProfile": [
+            "gamey",
+            "rich",
+            "herbaceous"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "junmai_ginjo"
+          ],
+          "pairingNotes": "Junmai's umami handles the gamey meat; Ginjo offers floral notes for balance."
+        },
+        {
+          "id": "burrata_salad",
+          "name": "Burrata and Heirloom Tomato",
+          "shortDescription": "Creamy burrata with ripe tomatoes and basil.",
+          "keyIngredients": [
+            "burrata",
+            "tomatoes",
+            "basil",
+            "olive oil"
+          ],
+          "flavorProfile": [
+            "fresh",
+            "creamy",
+            "tomato"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "junmai_daiginjo"
+          ],
+          "pairingNotes": "Delicate Ginjo or Daiginjo highlight the burrata's cream and tomato freshness."
+        },
+        {
+          "id": "saltimbocca",
+          "name": "Saltimbocca",
+          "shortDescription": "Veal wrapped with prosciutto and sage.",
+          "keyIngredients": [
+            "veal",
+            "prosciutto",
+            "sage",
+            "wine"
+          ],
+          "flavorProfile": [
+            "savory",
+            "herbal",
+            "salty"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "honjozo"
+          ],
+          "pairingNotes": "Ginjo's aromatics match the sage; Honjozo balances salt and richness."
+        }
+      ]
+    },
+    {
+      "id": "french",
+      "name": "French",
+      "dishes": [
+        {
+          "id": "coq_au_vin",
+          "name": "Coq au Vin",
+          "shortDescription": "Chicken braised in red wine with mushrooms and bacon.",
+          "keyIngredients": [
+            "chicken",
+            "red wine",
+            "mushrooms",
+            "bacon"
+          ],
+          "flavorProfile": [
+            "deep",
+            "savory",
+            "wine_sauce",
+            "umami"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Robust Junmai handles braised flavors; Honjozo keeps finish clean."
+        },
+        {
+          "id": "bouillabaisse",
+          "name": "Bouillabaisse",
+          "shortDescription": "Proven\u00e7al fish stew with saffron and herbs.",
+          "keyIngredients": [
+            "mixed fish",
+            "shellfish",
+            "tomato",
+            "saffron"
+          ],
+          "flavorProfile": [
+            "seafood",
+            "herbal",
+            "brothy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "junmai_daiginjo"
+          ],
+          "pairingNotes": "Aromatic Ginjo styles balance saffron and seafood."
+        },
+        {
+          "id": "duck_confit",
+          "name": "Duck Confit",
+          "shortDescription": "Slow-cooked duck leg preserved in its own fat.",
+          "keyIngredients": [
+            "duck leg",
+            "duck fat",
+            "herbs"
+          ],
+          "flavorProfile": [
+            "rich",
+            "savory",
+            "crispy_skin"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "junmai_ginjo"
+          ],
+          "pairingNotes": "Junmai's umami handles richness; Ginjo cuts through fat."
+        },
+        {
+          "id": "beef_bourguignon",
+          "name": "Beef Bourguignon",
+          "shortDescription": "Beef braised in red wine with pearl onions and mushrooms.",
+          "keyIngredients": [
+            "beef chuck",
+            "red wine",
+            "pearl onions",
+            "mushrooms"
+          ],
+          "flavorProfile": [
+            "deep",
+            "savory",
+            "rich"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai stands up to the wine and meat; Honjozo provides balance."
+        },
+        {
+          "id": "sole_meuniere",
+          "name": "Sole Meuni\u00e8re",
+          "shortDescription": "Pan-fried sole with browned butter and lemon.",
+          "keyIngredients": [
+            "sole",
+            "butter",
+            "lemon"
+          ],
+          "flavorProfile": [
+            "delicate",
+            "buttery",
+            "subtle"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_daiginjo",
+            "junmai_ginjo"
+          ],
+          "pairingNotes": "Elegant Daiginjo highlights the delicate fish and butter nuance."
+        },
+        {
+          "id": "coquilles_st_jacques",
+          "name": "Coquilles St. Jacques",
+          "shortDescription": "Scallops in creamy sauce gratin\u00e9ed with breadcrumbs.",
+          "keyIngredients": [
+            "scallops",
+            "cream",
+            "mushroom",
+            "breadcrumbs"
+          ],
+          "flavorProfile": [
+            "creamy",
+            "seafood",
+            "rich"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "junmai_daiginjo"
+          ],
+          "pairingNotes": "Ginjo complements creamy sauce and sweet scallops perfectly."
+        },
+        {
+          "id": "french_onion_soup",
+          "name": "French Onion Soup",
+          "shortDescription": "Caramelized onions in beef stock with cheesy bread.",
+          "keyIngredients": [
+            "onions",
+            "beef stock",
+            "gruyere",
+            "bread"
+          ],
+          "flavorProfile": [
+            "sweet_umami",
+            "savory",
+            "cheesy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai matches the umami depth; Honjozo cuts through cheese."
+        },
+        {
+          "id": "cassoulet",
+          "name": "Cassoulet",
+          "shortDescription": "Slow-cooked beans with duck and sausage.",
+          "keyIngredients": [
+            "white beans",
+            "duck",
+            "sausage",
+            "tomato"
+          ],
+          "flavorProfile": [
+            "rich",
+            "savory",
+            "hearty"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai's umami complements the rich, slow-cooked flavors."
+        }
+      ]
+    },
+    {
+      "id": "american",
+      "name": "American",
+      "dishes": [
+        {
+          "id": "cheeseburger",
+          "name": "Cheeseburger",
+          "shortDescription": "Grilled beef patty with cheese on a bun.",
+          "keyIngredients": [
+            "beef",
+            "cheese",
+            "bun",
+            "condiments"
+          ],
+          "flavorProfile": [
+            "meaty",
+            "salty",
+            "juicy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "sparkling"
+          ],
+          "pairingNotes": "Junmai supports beef and cheese; sparkling sake cuts fat."
+        },
+        {
+          "id": "clam_chowder",
+          "name": "New England Clam Chowder",
+          "shortDescription": "Creamy soup with clams, potatoes and bacon.",
+          "keyIngredients": [
+            "clams",
+            "potato",
+            "cream",
+            "bacon"
+          ],
+          "flavorProfile": [
+            "creamy",
+            "seafood",
+            "smoky"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "junmai"
+          ],
+          "pairingNotes": "Junmai Ginjo enhances clam sweetness."
+        },
+        {
+          "id": "new_york_strip",
+          "name": "NY Strip Steak",
+          "shortDescription": "Grilled prime beef steak with char.",
+          "keyIngredients": [
+            "beef strip",
+            "salt",
+            "pepper"
+          ],
+          "flavorProfile": [
+            "meaty",
+            "umami",
+            "charred"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "junmai_daiginjo"
+          ],
+          "pairingNotes": "Junmai's umami echoes the beef; Daiginjo refines the pairing."
+        },
+        {
+          "id": "lobster_roll",
+          "name": "Lobster Roll",
+          "shortDescription": "Fresh lobster meat on toasted bun with mayo.",
+          "keyIngredients": [
+            "lobster",
+            "mayo",
+            "lemon",
+            "bun"
+          ],
+          "flavorProfile": [
+            "sweet_seafood",
+            "buttery",
+            "light"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "junmai_daiginjo"
+          ],
+          "pairingNotes": "Delicate Ginjo/Daiginjo highlight lobster sweetness."
+        },
+        {
+          "id": "mac_and_cheese_american",
+          "name": "Mac and Cheese",
+          "shortDescription": "Creamy pasta with aged cheeses.",
+          "keyIngredients": [
+            "pasta",
+            "cheddar",
+            "gruyere",
+            "cream"
+          ],
+          "flavorProfile": [
+            "rich",
+            "cheesy",
+            "creamy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "nigori"
+          ],
+          "pairingNotes": "Junmai stands up to cheese richness."
+        },
+        {
+          "id": "pulled_pork_sandwich",
+          "name": "Pulled Pork Sandwich",
+          "shortDescription": "Slow-cooked pork on bun with coleslaw.",
+          "keyIngredients": [
+            "pork shoulder",
+            "bbq sauce",
+            "coleslaw"
+          ],
+          "flavorProfile": [
+            "savory",
+            "smoky",
+            "tangy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "nigori"
+          ],
+          "pairingNotes": "Junmai balances smoke and sauce; Nigori softens spice."
+        },
+        {
+          "id": "buffalo_wings",
+          "name": "Buffalo Wings",
+          "shortDescription": "Fried chicken wings in spicy hot sauce.",
+          "keyIngredients": [
+            "chicken wings",
+            "hot sauce",
+            "butter"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "crispy",
+            "tangy"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "sparkling"
+          ],
+          "pairingNotes": "Nigori's sweetness soothes heat; sparkling cuts fat."
+        },
+        {
+          "id": "crab_cakes",
+          "name": "Crab Cakes",
+          "shortDescription": "Pan-fried lumpy crab cakes with Old Bay seasoning.",
+          "keyIngredients": [
+            "crabmeat",
+            "breadcrumb",
+            "mayo",
+            "Old Bay"
+          ],
+          "flavorProfile": [
+            "seafood",
+            "savory",
+            "crispy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "honjozo"
+          ],
+          "pairingNotes": "Ginjo enhances crab sweetness; Honjozo keeps finish light."
+        }
+      ]
+    },
+    {
+      "id": "bbq",
+      "name": "BBQ",
+      "dishes": [
+        {
+          "id": "bbq_brisket",
+          "name": "Smoked Brisket",
+          "shortDescription": "Slow-smoked beef brisket with bark and smoke ring.",
+          "keyIngredients": [
+            "beef brisket",
+            "dry rub",
+            "smoke"
+          ],
+          "flavorProfile": [
+            "smoky",
+            "rich",
+            "peppery"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai stands up to smoke and fat."
+        },
+        {
+          "id": "pulled_pork_bbq",
+          "name": "Pulled Pork",
+          "shortDescription": "Slow-cooked pork shoulder shredded and sauced.",
+          "keyIngredients": [
+            "pork shoulder",
+            "bbq sauce",
+            "spices"
+          ],
+          "flavorProfile": [
+            "sweet",
+            "smoky",
+            "tangy",
+            "rich"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "nigori"
+          ],
+          "pairingNotes": "Junmai balances sweetness and tang."
+        },
+        {
+          "id": "bbq_ribs",
+          "name": "BBQ Pork Ribs",
+          "shortDescription": "Smoked or grilled pork ribs with sticky glaze.",
+          "keyIngredients": [
+            "pork ribs",
+            "bbq glaze",
+            "spices"
+          ],
+          "flavorProfile": [
+            "sweet",
+            "smoky",
+            "sticky",
+            "rich"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "nigori",
+            "sparkling"
+          ],
+          "pairingNotes": "Rich ribs take fuller Junmai or Nigori."
+        },
+        {
+          "id": "bbq_chicken",
+          "name": "BBQ Chicken",
+          "shortDescription": "Slow-smoked chicken with sweet and spicy sauce.",
+          "keyIngredients": [
+            "chicken",
+            "bbq sauce",
+            "smoke"
+          ],
+          "flavorProfile": [
+            "smoky",
+            "sweet",
+            "savory"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "nigori"
+          ],
+          "pairingNotes": "Junmai complements smoke; Nigori softens sweetness."
+        },
+        {
+          "id": "burnt_ends",
+          "name": "Burnt Ends",
+          "shortDescription": "Caramelized brisket point cubes with bark.",
+          "keyIngredients": [
+            "brisket point",
+            "dry rub",
+            "bbq sauce"
+          ],
+          "flavorProfile": [
+            "sweet_smoky",
+            "crispy",
+            "tender"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "nigori"
+          ],
+          "pairingNotes": "Junmai matches umami; Nigori suits the caramelized sweetness."
+        },
+        {
+          "id": "texas_sausage",
+          "name": "Texas Smoked Sausage",
+          "shortDescription": "Whole smoked sausage with heavy smoke.",
+          "keyIngredients": [
+            "beef sausage",
+            "smoke",
+            "spices"
+          ],
+          "flavorProfile": [
+            "smoky",
+            "savory",
+            "rich"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai's umami echoes the meat; Honjozo provides balance."
+        },
+        {
+          "id": "brisket_burnt_ends",
+          "name": "Smoked Turkey Breast",
+          "shortDescription": "Whole smoked turkey breast with smoke ring.",
+          "keyIngredients": [
+            "turkey breast",
+            "dry rub",
+            "smoke"
+          ],
+          "flavorProfile": [
+            "smoky",
+            "poultry",
+            "lean"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "honjozo"
+          ],
+          "pairingNotes": "Ginjo adds delicacy to lean meat; Honjozo keeps it clean."
+        }
+      ]
+    },
+    {
+      "id": "vegetarian",
+      "name": "Vegetarian",
+      "dishes": [
+        {
+          "id": "grilled_veggie_platter",
+          "name": "Grilled Vegetable Platter",
+          "shortDescription": "Assorted seasonal vegetables grilled with olive oil and herbs.",
+          "keyIngredients": [
+            "zucchini",
+            "eggplant",
+            "peppers",
+            "onion"
+          ],
+          "flavorProfile": [
+            "smoky",
+            "sweet_veggie",
+            "herbal"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "junmai"
+          ],
+          "pairingNotes": "Ginjo's aromatics work with sweet vegetables."
+        },
+        {
+          "id": "tofu_stir_fry",
+          "name": "Tofu Stir-Fry",
+          "shortDescription": "Stir-fried tofu with mixed vegetables in soy-based sauce.",
+          "keyIngredients": [
+            "tofu",
+            "soy sauce",
+            "vegetables",
+            "ginger",
+            "garlic"
+          ],
+          "flavorProfile": [
+            "umami",
+            "light",
+            "savory"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Soy-based sauces echo umami in Junmai."
+        },
+        {
+          "id": "caprese_salad",
+          "name": "Caprese Salad",
+          "shortDescription": "Tomato, mozzarella, basil with balsamic reduction.",
+          "keyIngredients": [
+            "tomato",
+            "mozzarella",
+            "basil",
+            "balsamic"
+          ],
+          "flavorProfile": [
+            "fresh",
+            "creamy",
+            "tangy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "junmai_daiginjo"
+          ],
+          "pairingNotes": "Delicate Ginjo/Daiginjo highlight tomato and mozzarella."
+        },
+        {
+          "id": "vegetable_tempura",
+          "name": "Vegetable Tempura",
+          "shortDescription": "Light-battered fried vegetables with dipping sauce.",
+          "keyIngredients": [
+            "vegetables",
+            "tempura batter",
+            "dipping sauce"
+          ],
+          "flavorProfile": [
+            "crispy",
+            "light",
+            "delicate"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "sparkling"
+          ],
+          "pairingNotes": "Ginjo or sparkling sake pairs beautifully with fried delicacy."
+        },
+        {
+          "id": "eggplant_parmesan",
+          "name": "Eggplant Parmesan",
+          "shortDescription": "Breaded fried eggplant layered with sauce and cheese.",
+          "keyIngredients": [
+            "eggplant",
+            "tomato sauce",
+            "mozzarella",
+            "parmesan"
+          ],
+          "flavorProfile": [
+            "creamy",
+            "tomato",
+            "cheesy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai matches tomato and cheese richness."
+        },
+        {
+          "id": "vegetable_quiche",
+          "name": "Vegetable Quiche",
+          "shortDescription": "Creamy egg tart with seasonal vegetables.",
+          "keyIngredients": [
+            "eggs",
+            "cream",
+            "cheese",
+            "vegetables"
+          ],
+          "flavorProfile": [
+            "creamy",
+            "savory",
+            "herbal"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "honjozo"
+          ],
+          "pairingNotes": "Ginjo adds elegance; Honjozo keeps it fresh."
+        },
+        {
+          "id": "chickpea_curry",
+          "name": "Chickpea Curry",
+          "shortDescription": "Spiced chickpea stew in coconut milk.",
+          "keyIngredients": [
+            "chickpeas",
+            "coconut milk",
+            "curry spices",
+            "tomato"
+          ],
+          "flavorProfile": [
+            "spiced",
+            "creamy",
+            "earthy"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "junmai"
+          ],
+          "pairingNotes": "Nigori's sweetness soothes spice; Junmai adds depth."
+        },
+        {
+          "id": "mushroom_risotto",
+          "name": "Mushroom Risotto",
+          "shortDescription": "Creamy rice with wild mushrooms.",
+          "keyIngredients": [
+            "rice",
+            "mushrooms",
+            "parmesan",
+            "stock"
+          ],
+          "flavorProfile": [
+            "earthy",
+            "umami",
+            "creamy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "junmai_daiginjo"
+          ],
+          "pairingNotes": "Junmai's umami complements earthy mushrooms."
+        }
+      ]
+    },
+    {
+      "id": "seafood",
+      "name": "Seafood",
+      "dishes": [
+        {
+          "id": "oysters",
+          "name": "Fresh Oysters",
+          "shortDescription": "Raw oysters on the half shell with lemon.",
+          "keyIngredients": [
+            "oysters",
+            "lemon"
+          ],
+          "flavorProfile": [
+            "briny",
+            "mineral",
+            "delicate"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_daiginjo",
+            "junmai_ginjo"
+          ],
+          "pairingNotes": "Clean Daiginjo/Ginjo emphasize salinity and sweetness."
+        },
+        {
+          "id": "seared_scallops",
+          "name": "Seared Scallops",
+          "shortDescription": "Pan-seared scallops with browned butter.",
+          "keyIngredients": [
+            "scallops",
+            "butter",
+            "lemon"
+          ],
+          "flavorProfile": [
+            "sweet_seafood",
+            "buttery",
+            "delicate"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_daiginjo",
+            "junmai_ginjo"
+          ],
+          "pairingNotes": "Elegant Junmai Daiginjo pairs beautifully with scallops."
+        },
+        {
+          "id": "grilled_salmon",
+          "name": "Grilled Salmon",
+          "shortDescription": "Salmon fillet grilled with herbs and lemon.",
+          "keyIngredients": [
+            "salmon",
+            "herbs",
+            "lemon",
+            "olive oil"
+          ],
+          "flavorProfile": [
+            "rich",
+            "oily",
+            "herbaceous"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "honjozo"
+          ],
+          "pairingNotes": "Ginjo highlights herbaceous notes; Honjozo balances richness."
+        },
+        {
+          "id": "lobster_tail",
+          "name": "Butter-Poached Lobster Tail",
+          "shortDescription": "Tender lobster poached in butter.",
+          "keyIngredients": [
+            "lobster tail",
+            "butter"
+          ],
+          "flavorProfile": [
+            "sweet_seafood",
+            "buttery",
+            "delicate"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_daiginjo",
+            "junmai_ginjo"
+          ],
+          "pairingNotes": "Premium Daiginjo suits the delicacy of lobster and butter."
+        },
+        {
+          "id": "shrimp_scampi",
+          "name": "Shrimp Scampi",
+          "shortDescription": "Garlic butter shrimp over pasta.",
+          "keyIngredients": [
+            "shrimp",
+            "garlic",
+            "butter",
+            "white wine"
+          ],
+          "flavorProfile": [
+            "garlicky",
+            "buttery",
+            "seafood"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "honjozo"
+          ],
+          "pairingNotes": "Ginjo's aromatics match garlic and shrimp."
+        },
+        {
+          "id": "ceviche",
+          "name": "Fish Ceviche",
+          "shortDescription": "Raw fish cured in citrus juice with vegetables.",
+          "keyIngredients": [
+            "white fish",
+            "lime",
+            "cilantro",
+            "peppers"
+          ],
+          "flavorProfile": [
+            "fresh",
+            "citrus",
+            "spicy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_daiginjo",
+            "sparkling"
+          ],
+          "pairingNotes": "Daiginjo's elegance suits the delicate ceviche; sparkling cuts citrus."
+        },
+        {
+          "id": "fish_and_chips",
+          "name": "Fish and Chips",
+          "shortDescription": "Battered fried fish with fries.",
+          "keyIngredients": [
+            "white fish",
+            "batter",
+            "potatoes"
+          ],
+          "flavorProfile": [
+            "crispy",
+            "fried",
+            "salty"
+          ],
+          "recommendedSakeTypes": [
+            "sparkling",
+            "honjozo"
+          ],
+          "pairingNotes": "Sparkling sake cuts fat; Honjozo keeps it fresh."
+        },
+        {
+          "id": "mussels_white_wine",
+          "name": "Mussels in White Wine",
+          "shortDescription": "Steamed mussels in white wine and herbs.",
+          "keyIngredients": [
+            "mussels",
+            "white wine",
+            "garlic",
+            "herbs"
+          ],
+          "flavorProfile": [
+            "briny",
+            "herbal",
+            "light"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "junmai_daiginjo"
+          ],
+          "pairingNotes": "Aromatic Ginjo/Daiginjo highlight the delicate briny mussels."
+        }
+      ]
+    },
+    {
+      "id": "korean",
+      "name": "Korean",
+      "dishes": [
+        {
+          "id": "bulgogi",
+          "name": "Bulgogi",
+          "shortDescription": "Marinated grilled beef with sweet soy and sesame.",
+          "keyIngredients": [
+            "beef",
+            "soy sauce",
+            "sugar",
+            "garlic",
+            "sesame"
+          ],
+          "flavorProfile": [
+            "sweet_savory",
+            "umami",
+            "grilled"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "junmai_ginjo"
+          ],
+          "pairingNotes": "Junmai complements sweet-salty marinade."
+        },
+        {
+          "id": "kimchi_stew",
+          "name": "Kimchi Jjigae",
+          "shortDescription": "Spicy stew with kimchi, tofu and pork.",
+          "keyIngredients": [
+            "kimchi",
+            "pork",
+            "tofu",
+            "chili"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "sour",
+            "umami"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "junmai"
+          ],
+          "pairingNotes": "Nigori's sweetness soothes heat and sourness."
+        },
+        {
+          "id": "bibimbap",
+          "name": "Bibimbap",
+          "shortDescription": "Rice bowl with assorted vegetables, egg and chili sauce.",
+          "keyIngredients": [
+            "rice",
+            "vegetables",
+            "egg",
+            "gochujang"
+          ],
+          "flavorProfile": [
+            "mixed",
+            "spicy",
+            "savory"
+          ],
+          "recommendedSakeTypes": [
+            "honjozo",
+            "nigori"
+          ],
+          "pairingNotes": "Honjozo is versatile for many components."
+        },
+        {
+          "id": "korean_bbq",
+          "name": "Korean BBQ Beef",
+          "shortDescription": "Thinly sliced beef grilled at the table.",
+          "keyIngredients": [
+            "beef short rib",
+            "soy sauce",
+            "sesame"
+          ],
+          "flavorProfile": [
+            "smoky",
+            "sweet_savory",
+            "tender"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "junmai_ginjo"
+          ],
+          "pairingNotes": "Junmai matches umami; Ginjo adds fruity aromatic lift."
+        },
+        {
+          "id": "sundubu_jjigae",
+          "name": "Soft Tofu Stew",
+          "shortDescription": "Spicy stew with silken tofu and seafood.",
+          "keyIngredients": [
+            "silken tofu",
+            "seafood",
+            "gochugaru",
+            "egg"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "seafood",
+            "delicate"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "honjozo"
+          ],
+          "pairingNotes": "Nigori's sweetness complements spice; Honjozo for balance."
+        },
+        {
+          "id": "korean_fried_chicken",
+          "name": "Korean Fried Chicken",
+          "shortDescription": "Crispy chicken with sweet soy or spicy sauce.",
+          "keyIngredients": [
+            "chicken",
+            "batter",
+            "soy sauce",
+            "gochujang"
+          ],
+          "flavorProfile": [
+            "crispy",
+            "sweet_spicy",
+            "savory"
+          ],
+          "recommendedSakeTypes": [
+            "sparkling",
+            "nigori"
+          ],
+          "pairingNotes": "Sparkling cuts fat; Nigori softens sweetness and spice."
+        },
+        {
+          "id": "japchae",
+          "name": "Japchae",
+          "shortDescription": "Stir-fried sweet potato noodles with vegetables.",
+          "keyIngredients": [
+            "sweet potato noodles",
+            "vegetables",
+            "soy sauce"
+          ],
+          "flavorProfile": [
+            "savory",
+            "slightly_sweet",
+            "chewy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai complements soy-based sauce; Honjozo adds brightness."
+        },
+        {
+          "id": "tteokbokki",
+          "name": "Tteokbokki",
+          "shortDescription": "Spicy rice cakes in gochujang sauce.",
+          "keyIngredients": [
+            "rice cakes",
+            "gochujang",
+            "vegetables"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "chewy",
+            "savory"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "sparkling"
+          ],
+          "pairingNotes": "Nigori soothes heat; sparkling adds freshness."
+        }
+      ]
+    },
+    {
+      "id": "south_african",
+      "name": "South African",
+      "dishes": [
+        {
+          "id": "bobotie",
+          "name": "Bobotie",
+          "shortDescription": "Curried minced meat baked with egg custard topping.",
+          "keyIngredients": [
+            "minced beef",
+            "curry",
+            "dried fruit",
+            "egg"
+          ],
+          "flavorProfile": [
+            "spiced",
+            "sweet_savory",
+            "baked"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "nigori"
+          ],
+          "pairingNotes": "Junmai balances sweet and curry spice."
+        },
+        {
+          "id": "boerewors",
+          "name": "Boerewors Sausage",
+          "shortDescription": "Grilled spiced beef and pork sausage.",
+          "keyIngredients": [
+            "beef",
+            "pork",
+            "spices"
+          ],
+          "flavorProfile": [
+            "meaty",
+            "spiced",
+            "grilled"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Robust Junmai works well with grilled, spiced sausage."
+        },
+        {
+          "id": "sosaties",
+          "name": "Sosaties",
+          "shortDescription": "Cape Malay-style grilled meat skewers with fruit.",
+          "keyIngredients": [
+            "lamb",
+            "dried fruit",
+            "peppers",
+            "turmeric"
+          ],
+          "flavorProfile": [
+            "sweet_savory",
+            "spiced",
+            "grilled"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "nigori"
+          ],
+          "pairingNotes": "Junmai matches spice; Nigori suits the sweet fruit elements."
+        },
+        {
+          "id": "bunny_chow",
+          "name": "Bunny Chow",
+          "shortDescription": "Hollowed bread loaf filled with curry.",
+          "keyIngredients": [
+            "bread loaf",
+            "curry",
+            "meat"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "rich",
+            "comforting"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "junmai"
+          ],
+          "pairingNotes": "Nigori softens heat; Junmai adds savory depth."
+        },
+        {
+          "id": "pap_and_relish",
+          "name": "Pap and Relish",
+          "shortDescription": "Cornmeal porridge with tomato-based relish.",
+          "keyIngredients": [
+            "cornmeal",
+            "tomato",
+            "onion"
+          ],
+          "flavorProfile": [
+            "savory",
+            "tomato",
+            "comforting"
+          ],
+          "recommendedSakeTypes": [
+            "honjozo",
+            "junmai"
+          ],
+          "pairingNotes": "Honjozo matches the corn and savory relish."
+        },
+        {
+          "id": "snitzel",
+          "name": "Schnitzel",
+          "shortDescription": "Breaded and fried meat cutlet.",
+          "keyIngredients": [
+            "veal",
+            "breadcrumb",
+            "lemon"
+          ],
+          "flavorProfile": [
+            "crispy",
+            "tender",
+            "light"
+          ],
+          "recommendedSakeTypes": [
+            "honjozo",
+            "sparkling"
+          ],
+          "pairingNotes": "Honjozo or sparkling sake cuts through the fried coating."
+        }
+      ]
+    },
+    {
+      "id": "nigerian",
+      "name": "Nigerian",
+      "dishes": [
+        {
+          "id": "jollof_rice",
+          "name": "Jollof Rice",
+          "shortDescription": "Tomato-based spiced rice often served with chicken or fish.",
+          "keyIngredients": [
+            "rice",
+            "tomato",
+            "peppers",
+            "onion",
+            "spices"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "smoky",
+            "tomato"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "junmai"
+          ],
+          "pairingNotes": "Nigori's sweetness helps tame heat."
+        },
+        {
+          "id": "egusi_soup",
+          "name": "Egusi Soup",
+          "shortDescription": "Thick soup made with ground melon seeds, greens and meat.",
+          "keyIngredients": [
+            "egusi seeds",
+            "leafy greens",
+            "meat",
+            "palm oil"
+          ],
+          "flavorProfile": [
+            "rich",
+            "nutty",
+            "spiced"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "junmai_ginjo"
+          ],
+          "pairingNotes": "Junmai enhances nutty richness."
+        },
+        {
+          "id": "pepper_soup",
+          "name": "Pepper Soup",
+          "shortDescription": "Aromatic broth with meat and spices.",
+          "keyIngredients": [
+            "meat",
+            "pepper",
+            "ginger",
+            "herbs"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "aromatic",
+            "warming"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "honjozo"
+          ],
+          "pairingNotes": "Nigori soothes the spice; Honjozo keeps it light."
+        },
+        {
+          "id": "moin_moin",
+          "name": "Moin Moin",
+          "shortDescription": "Steamed bean pudding wrapped in leaves.",
+          "keyIngredients": [
+            "black-eyed peas",
+            "peppers",
+            "onion"
+          ],
+          "flavorProfile": [
+            "savory",
+            "mild",
+            "creamy"
+          ],
+          "recommendedSakeTypes": [
+            "honjozo",
+            "junmai"
+          ],
+          "pairingNotes": "Honjozo pairs nicely with the mild, savory pudding."
+        },
+        {
+          "id": "akamu_eba",
+          "name": "Akamu & Eba",
+          "shortDescription": "Cornmeal porridge with cassava cake.",
+          "keyIngredients": [
+            "cornmeal",
+            "cassava flour"
+          ],
+          "flavorProfile": [
+            "starchy",
+            "mild",
+            "comforting"
+          ],
+          "recommendedSakeTypes": [
+            "honjozo",
+            "sparkling"
+          ],
+          "pairingNotes": "Light pairing with refreshing sake."
+        },
+        {
+          "id": "suya",
+          "name": "Suya",
+          "shortDescription": "Spiced grilled meat skewers.",
+          "keyIngredients": [
+            "beef",
+            "peanut powder",
+            "spices"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "nutty",
+            "grilled"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "junmai"
+          ],
+          "pairingNotes": "Nigori softens the spice; Junmai handles the nutty spice."
+        },
+        {
+          "id": "okra_soup",
+          "name": "Okra Soup",
+          "shortDescription": "Slimy okra-based soup with meat.",
+          "keyIngredients": [
+            "okra",
+            "meat",
+            "stock"
+          ],
+          "flavorProfile": [
+            "savory",
+            "thick",
+            "earthy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai matches the umami; Honjozo adds balance."
+        }
+      ]
+    },
+    {
+      "id": "british",
+      "name": "British",
+      "dishes": [
+        {
+          "id": "fish_and_chips",
+          "name": "Fish and Chips",
+          "shortDescription": "Beer-battered fried fish with fries.",
+          "keyIngredients": [
+            "white fish",
+            "batter",
+            "potatoes"
+          ],
+          "flavorProfile": [
+            "crispy",
+            "salty",
+            "fried"
+          ],
+          "recommendedSakeTypes": [
+            "sparkling",
+            "honjozo",
+            "junmai_ginjo"
+          ],
+          "pairingNotes": "Sparkling sake mimics beer's refreshing quality."
+        },
+        {
+          "id": "shepherds_pie",
+          "name": "Shepherd's Pie",
+          "shortDescription": "Baked minced lamb with vegetables topped with mashed potatoes.",
+          "keyIngredients": [
+            "lamb",
+            "potatoes",
+            "vegetables"
+          ],
+          "flavorProfile": [
+            "hearty",
+            "savory",
+            "comfort_food"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Savory Junmai matches hearty filling."
+        },
+        {
+          "id": "sticky_toffee_pudding",
+          "name": "Sticky Toffee Pudding",
+          "shortDescription": "Warm sponge cake with toffee sauce.",
+          "keyIngredients": [
+            "sponge",
+            "dates",
+            "toffee sauce"
+          ],
+          "flavorProfile": [
+            "sweet",
+            "rich",
+            "decadent"
+          ],
+          "recommendedSakeTypes": [
+            "nigori"
+          ],
+          "pairingNotes": "Nigori's sweetness mirrors the pudding."
+        },
+        {
+          "id": "beef_and_ale_pie",
+          "name": "Beef and Ale Pie",
+          "shortDescription": "Slow-cooked beef in ale gravy with pastry crust.",
+          "keyIngredients": [
+            "beef",
+            "ale",
+            "vegetables",
+            "pastry"
+          ],
+          "flavorProfile": [
+            "savory",
+            "rich",
+            "meaty"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai complements the ale and beef."
+        },
+        {
+          "id": "sunday_roast",
+          "name": "Sunday Roast",
+          "shortDescription": "Roasted meat with vegetables and Yorkshire pudding.",
+          "keyIngredients": [
+            "roast beef",
+            "vegetables",
+            "Yorkshire pudding"
+          ],
+          "flavorProfile": [
+            "savory",
+            "roasted",
+            "hearty"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai's umami echoes the roasted meat."
+        },
+        {
+          "id": "cornish_pasty",
+          "name": "Cornish Pasty",
+          "shortDescription": "Pastry filled with beef, potatoes and vegetables.",
+          "keyIngredients": [
+            "beef",
+            "potato",
+            "turnip",
+            "pastry"
+          ],
+          "flavorProfile": [
+            "savory",
+            "hearty",
+            "comfort_food"
+          ],
+          "recommendedSakeTypes": [
+            "honzoyo",
+            "junmai"
+          ],
+          "pairingNotes": "Honjozo keeps the rich pastry fresh."
+        },
+        {
+          "id": "cottage_pie",
+          "name": "Cottage Pie",
+          "shortDescription": "Minced beef topped with mashed potatoes.",
+          "keyIngredients": [
+            "beef",
+            "potatoes",
+            "vegetables"
+          ],
+          "flavorProfile": [
+            "savory",
+            "hearty",
+            "comfort_food"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Similar to Shepherd's Pie, Junmai works well."
+        },
+        {
+          "id": "beans_on_toast",
+          "name": "Beans on Toast",
+          "shortDescription": "Baked beans on buttered white bread.",
+          "keyIngredients": [
+            "baked beans",
+            "bread",
+            "butter"
+          ],
+          "flavorProfile": [
+            "savory",
+            "tomato",
+            "bean"
+          ],
+          "recommendedSakeTypes": [
+            "honjozo",
+            "sparkling"
+          ],
+          "pairingNotes": "Light Honjozo or sparkling sake suits this simple dish."
+        }
+      ]
+    },
+    {
+      "id": "spanish",
+      "name": "Spanish",
+      "dishes": [
+        {
+          "id": "paella",
+          "name": "Seafood Paella",
+          "shortDescription": "Rice dish with saffron, seafood and vegetables.",
+          "keyIngredients": [
+            "rice",
+            "saffron",
+            "shellfish",
+            "fish",
+            "peas"
+          ],
+          "flavorProfile": [
+            "seafood",
+            "saffron",
+            "savory"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "junmai_daiginjo"
+          ],
+          "pairingNotes": "Ginjo/Daiginjo balance saffron fragrance and briny seafood."
+        },
+        {
+          "id": "gambas_al_ajillo",
+          "name": "Gambas al Ajillo",
+          "shortDescription": "Shrimp saut\u00e9ed in garlic and olive oil.",
+          "keyIngredients": [
+            "shrimp",
+            "garlic",
+            "olive oil",
+            "chili"
+          ],
+          "flavorProfile": [
+            "garlicky",
+            "seafood",
+            "rich"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "junmai"
+          ],
+          "pairingNotes": "Aromatic Ginjo works well with garlic and shrimp."
+        },
+        {
+          "id": "gazpacho",
+          "name": "Gazpacho",
+          "shortDescription": "Cold tomato soup with vegetables.",
+          "keyIngredients": [
+            "tomato",
+            "cucumber",
+            "bell pepper",
+            "olive oil"
+          ],
+          "flavorProfile": [
+            "fresh",
+            "tomato",
+            "vegetable"
+          ],
+          "recommendedSakeTypes": [
+            "sparkling",
+            "junmai_daiginjo"
+          ],
+          "pairingNotes": "Sparkling adds refreshment; Daiginjo highlights freshness."
+        },
+        {
+          "id": "chorizo_piquante",
+          "name": "Chorizo Piquante",
+          "shortDescription": "Spicy chorizo sausage with paprika in wine sauce.",
+          "keyIngredients": [
+            "chorizo",
+            "paprika",
+            "wine",
+            "peppers"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "smoky",
+            "rich"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "junmai"
+          ],
+          "pairingNotes": "Nigori softens heat; Junmai matches the paprika smokiness."
+        },
+        {
+          "id": "pan_con_tomate",
+          "name": "Pan con Tomate",
+          "shortDescription": "Toasted bread rubbed with tomato and olive oil.",
+          "keyIngredients": [
+            "bread",
+            "tomato",
+            "olive oil",
+            "garlic"
+          ],
+          "flavorProfile": [
+            "fresh",
+            "tomato",
+            "simple"
+          ],
+          "recommendedSakeTypes": [
+            "sparkling",
+            "junmai_ginjo"
+          ],
+          "pairingNotes": "Sparkling adds brightness; Ginjo complements tomato freshness."
+        },
+        {
+          "id": "croquetas",
+          "name": "Croquetas",
+          "shortDescription": "Fried breaded croquettes with ham or seafood.",
+          "keyIngredients": [
+            "ham",
+            "seafood",
+            "b\u00e9chamel",
+            "breadcrumb"
+          ],
+          "flavorProfile": [
+            "crispy",
+            "savory",
+            "creamy"
+          ],
+          "recommendedSakeTypes": [
+            "sparkling",
+            "honjozo"
+          ],
+          "pairingNotes": "Sparkling cuts fat; Honjozo keeps it light."
+        },
+        {
+          "id": "tortilla_espanola",
+          "name": "Tortilla Espa\u00f1ola",
+          "shortDescription": "Spanish potato and egg omelet.",
+          "keyIngredients": [
+            "potato",
+            "egg",
+            "onion"
+          ],
+          "flavorProfile": [
+            "savory",
+            "creamy",
+            "potato"
+          ],
+          "recommendedSakeTypes": [
+            "honjozo",
+            "junmai"
+          ],
+          "pairingNotes": "Honjozo pairs nicely with potato and egg."
+        },
+        {
+          "id": "pulpo_a_la_gallega",
+          "name": "Pulpo a la Gallega",
+          "shortDescription": "Octopus with paprika and olive oil.",
+          "keyIngredients": [
+            "octopus",
+            "paprika",
+            "potato",
+            "olive oil"
+          ],
+          "flavorProfile": [
+            "tender",
+            "smoky",
+            "seafood"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "honjozo"
+          ],
+          "pairingNotes": "Ginjo highlights tender octopus; Honjozo balances paprika."
+        }
+      ]
+    },
+    {
+      "id": "mexican",
+      "name": "Mexican",
+      "dishes": [
+        {
+          "id": "tacos_al_pastor",
+          "name": "Tacos al Pastor",
+          "shortDescription": "Marinated pork tacos with pineapple and chili.",
+          "keyIngredients": [
+            "pork",
+            "pineapple",
+            "chili",
+            "corn tortilla"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "sweet_savory",
+            "grilled"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "sparkling"
+          ],
+          "pairingNotes": "Nigori's sweetness complements pineapple and chili."
+        },
+        {
+          "id": "mole_poblano",
+          "name": "Mole Poblano",
+          "shortDescription": "Complex sauce with chili, chocolate and spices served over meat.",
+          "keyIngredients": [
+            "chilies",
+            "chocolate",
+            "spices",
+            "sesame"
+          ],
+          "flavorProfile": [
+            "complex",
+            "spiced",
+            "slightly_sweet"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "nigori"
+          ],
+          "pairingNotes": "Junmai complements deep umami and spice."
+        },
+        {
+          "id": "ceviche_mexican",
+          "name": "Mexican Ceviche",
+          "shortDescription": "Raw fish cured in lime with tomato and cilantro.",
+          "keyIngredients": [
+            "white fish",
+            "lime",
+            "tomato",
+            "cilantro"
+          ],
+          "flavorProfile": [
+            "fresh",
+            "citrus",
+            "light"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_daiginjo",
+            "sparkling"
+          ],
+          "pairingNotes": "Daiginjo suits delicate ceviche; sparkling cuts citrus."
+        },
+        {
+          "id": "chiles_rellenos",
+          "name": "Chiles Rellenos",
+          "shortDescription": "Stuffed poblano peppers in tomato sauce.",
+          "keyIngredients": [
+            "poblano peppers",
+            "cheese",
+            "tomato sauce"
+          ],
+          "flavorProfile": [
+            "savory",
+            "roasted",
+            "creamy"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai matches the roasted pepper and cheese."
+        },
+        {
+          "id": "pozole",
+          "name": "Pozole",
+          "shortDescription": "Hominy stew with pork and chili.",
+          "keyIngredients": [
+            "hominy",
+            "pork",
+            "dried chilies"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "savory",
+            "warming"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "junmai"
+          ],
+          "pairingNotes": "Nigori softens heat; Junmai adds savory depth."
+        },
+        {
+          "id": "enchiladas_verdes",
+          "name": "Enchiladas Verdes",
+          "shortDescription": "Tortillas filled with chicken in green sauce.",
+          "keyIngredients": [
+            "corn tortillas",
+            "chicken",
+            "tomatillo",
+            "cream"
+          ],
+          "flavorProfile": [
+            "tangy",
+            "creamy",
+            "herbal"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "honjozo"
+          ],
+          "pairingNotes": "Junmai complements chicken and tangy sauce."
+        },
+        {
+          "id": "chile_con_carne",
+          "name": "Chile con Carne",
+          "shortDescription": "Spiced beef and bean stew.",
+          "keyIngredients": [
+            "beef",
+            "beans",
+            "chili powder",
+            "tomato"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "savory",
+            "hearty"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "junmai"
+          ],
+          "pairingNotes": "Nigori softens spice; Junmai handles the savory depth."
+        },
+        {
+          "id": "street_tacos",
+          "name": "Street Tacos",
+          "shortDescription": "Simple tacos with grilled meat and onion.",
+          "keyIngredients": [
+            "beef",
+            "corn tortilla",
+            "onion",
+            "cilantro"
+          ],
+          "flavorProfile": [
+            "smoky",
+            "savory",
+            "simple"
+          ],
+          "recommendedSakeTypes": [
+            "junmai",
+            "sparkling"
+          ],
+          "pairingNotes": "Junmai matches the grilled meat; sparkling refreshes."
+        }
+      ]
+    },
+    {
+      "id": "jamaican",
+      "name": "Jamaican",
+      "dishes": [
+        {
+          "id": "jerk_chicken",
+          "name": "Jerk Chicken",
+          "shortDescription": "Grilled chicken marinated in spicy jerk seasoning.",
+          "keyIngredients": [
+            "chicken",
+            "scotch bonnet",
+            "allspice",
+            "herbs"
+          ],
+          "flavorProfile": [
+            "very_spicy",
+            "smoky",
+            "herbal"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "sparkling"
+          ],
+          "pairingNotes": "Nigori's sweetness calms intense heat."
+        },
+        {
+          "id": "ackee_and_saltfish",
+          "name": "Ackee and Saltfish",
+          "shortDescription": "National dish of Jamaica with saut\u00e9ed salted cod and ackee.",
+          "keyIngredients": [
+            "saltfish",
+            "ackee",
+            "onion",
+            "peppers"
+          ],
+          "flavorProfile": [
+            "salty",
+            "savory",
+            "buttery_texture"
+          ],
+          "recommendedSakeTypes": [
+            "junmai_ginjo",
+            "honjozo"
+          ],
+          "pairingNotes": "Ginjo highlights unique buttery texture of ackee."
+        },
+        {
+          "id": "rice_and_peas",
+          "name": "Rice and Peas",
+          "shortDescription": "Rice cooked with kidney beans in coconut milk.",
+          "keyIngredients": [
+            "rice",
+            "kidney beans",
+            "coconut milk",
+            "thyme"
+          ],
+          "flavorProfile": [
+            "creamy",
+            "savory",
+            "herbal"
+          ],
+          "recommendedSakeTypes": [
+            "honjozo",
+            "junmai"
+          ],
+          "pairingNotes": "Honjozo pairs nicely with creamy, herbal rice dish."
+        },
+        {
+          "id": "jerk_pork",
+          "name": "Jerk Pork",
+          "shortDescription": "Spice-rubbed grilled pork with jerk seasoning.",
+          "keyIngredients": [
+            "pork",
+            "jerk spices",
+            "smoke"
+          ],
+          "flavorProfile": [
+            "very_spicy",
+            "smoky",
+            "tender"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "sparkling"
+          ],
+          "pairingNotes": "Nigori softens heat; sparkling lightens smoke."
+        },
+        {
+          "id": "patties",
+          "name": "Jamaican Patties",
+          "shortDescription": "Spiced meat filled pastries.",
+          "keyIngredients": [
+            "beef",
+            "pastry",
+            "spices"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "savory",
+            "crispy"
+          ],
+          "recommendedSakeTypes": [
+            "honjozo",
+            "sparkling"
+          ],
+          "pairingNotes": "Honjozo cuts through spiced filling; sparkling cuts pastry."
+        },
+        {
+          "id": "escovitch_fish",
+          "name": "Escovitch Fish",
+          "shortDescription": "Fried fish with pickled vegetable sauce.",
+          "keyIngredients": [
+            "whole fish",
+            "vinegar",
+            "peppers",
+            "onion"
+          ],
+          "flavorProfile": [
+            "crispy",
+            "tangy",
+            "spicy"
+          ],
+          "recommendedSakeTypes": [
+            "sparkling",
+            "honjozo"
+          ],
+          "pairingNotes": "Sparkling cuts fried coating; tangy sauce matches sake acidity."
+        },
+        {
+          "id": "goat_curry",
+          "name": "Goat Curry",
+          "shortDescription": "Tender goat meat in rich curry sauce.",
+          "keyIngredients": [
+            "goat meat",
+            "curry",
+            "potato"
+          ],
+          "flavorProfile": [
+            "spicy",
+            "rich",
+            "gamey"
+          ],
+          "recommendedSakeTypes": [
+            "nigori",
+            "junmai"
+          ],
+          "pairingNotes": "Nigori softens spice; Junmai matches gamey meat."
+        },
+        {
+          "id": "callaloo",
+          "name": "Callaloo",
+          "shortDescription": "Stewed leafy greens with okra.",
+          "keyIngredients": [
+            "callaloo",
+            "okra",
+            "garlic",
+            "coconut milk"
+          ],
+          "flavorProfile": [
+            "savory",
+            "earthy",
+            "creamy"
+          ],
+          "recommendedSakeTypes": [
+            "honjozo",
+            "junmai"
+          ],
+          "pairingNotes": "Honjozo pairs with earthy greens and creamy sauce."
+        }
+      ]
+    }
+  ]
+}
