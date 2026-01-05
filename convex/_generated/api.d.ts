@@ -11,6 +11,7 @@
 import type * as checkData from "../checkData.js";
 import type * as clearData from "../clearData.js";
 import type * as dashboard from "../dashboard.js";
+import type * as discover from "../discover.js";
 import type * as embeddings from "../embeddings.js";
 import type * as foodPairing from "../foodPairing.js";
 import type * as geminiRAG from "../geminiRAG.js";
@@ -32,6 +33,7 @@ declare const fullApi: ApiFromModules<{
   checkData: typeof checkData;
   clearData: typeof clearData;
   dashboard: typeof dashboard;
+  discover: typeof discover;
   embeddings: typeof embeddings;
   foodPairing: typeof foodPairing;
   geminiRAG: typeof geminiRAG;
