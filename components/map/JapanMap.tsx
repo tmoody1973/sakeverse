@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 import mapboxgl from "mapbox-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
 
@@ -10,7 +10,6 @@ interface JapanMapProps {
   selectedPrefecture: string | null
 }
 
-// Convert GeoJSON "nam" (e.g., "Niigata Ken") to normalized name
 function normalizeGeoJsonName(name: string): string {
   return name.replace(/ Ken$/i, "").replace(/ Fu$/i, "").replace(/ To$/i, "").trim()
 }
@@ -18,11 +17,18 @@ function normalizeGeoJsonName(name: string): string {
 export function JapanMap({ prefectureStats, onPrefectureSelect, selectedPrefecture }: JapanMapProps) {
   const mapContainer = useRef<HTMLDivElement>(null)
   const map = useRef<mapboxgl.Map | null>(null)
+  const [mapLoaded, setMapLoaded] = useState(false)
   
   useEffect(() => {
     if (!mapContainer.current || map.current) return
     
-    mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || ""
+    const token = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
+    if (!token) {
+      console.error("Mapbox token not found")
+      return
+    }
+    
+    mapboxgl.accessToken = token
     
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
@@ -34,13 +40,12 @@ export function JapanMap({ prefectureStats, onPrefectureSelect, selectedPrefectu
     })
     
     map.current.on("load", () => {
+      setMapLoaded(true)
+      
       map.current!.addSource("prefectures", {
         type: "geojson",
         data: "/japan-prefectures.geojson",
       })
-      
-      // Create color expression based on data
-      const prefNames = Object.keys(prefectureStats)
       
       map.current!.addLayer({
         id: "prefecture-fills",
@@ -62,7 +67,6 @@ export function JapanMap({ prefectureStats, onPrefectureSelect, selectedPrefectu
         },
       })
       
-      // Highlight layer for selected
       map.current!.addLayer({
         id: "prefecture-highlight",
         type: "fill",
@@ -79,8 +83,6 @@ export function JapanMap({ prefectureStats, onPrefectureSelect, selectedPrefectu
           const rawName = e.features[0].properties?.nam
           const normalized = normalizeGeoJsonName(rawName || "")
           onPrefectureSelect(normalized)
-          
-          // Update highlight filter
           map.current!.setFilter("prefecture-highlight", ["==", ["get", "nam"], rawName])
         }
       })
@@ -97,9 +99,16 @@ export function JapanMap({ prefectureStats, onPrefectureSelect, selectedPrefectu
       map.current?.remove()
       map.current = null
     }
-  }, [prefectureStats, onPrefectureSelect])
+  }, [onPrefectureSelect])
   
   return (
-    <div ref={mapContainer} className="w-full h-full rounded-xl border-3 border-ink" />
+    <div className="relative w-full h-full min-h-[500px]">
+      <div ref={mapContainer} className="absolute inset-0 rounded-xl border-3 border-ink" />
+      {!mapLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center bg-petal-light rounded-xl">
+          <p className="text-gray-500 animate-pulse">Loading map...</p>
+        </div>
+      )}
+    </div>
   )
 }
