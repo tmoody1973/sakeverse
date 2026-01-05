@@ -966,3 +966,102 @@ Updated `app/page.tsx`:
 - ✅ Clerk Authentication
 - ✅ 4-Step Onboarding Flow
 - ✅ Conditional Navigation (logged-in vs logged-out)
+
+
+---
+
+## January 4, 2026 (Evening) - Dashboard Widgets & Clerk+Convex Integration
+
+### 🔧 **Clerk + Convex Proper Integration**
+
+**Time**: 5:30 PM - 6:00 PM  
+**Focus**: Fix authentication flow and user sync
+
+#### **✅ Fixes Implemented**
+- **Logout redirect**: Added `afterSignOutUrl="/"` to redirect to landing page
+- **Clerk middleware**: Added `middleware.ts` for route protection
+- **ConvexProviderWithClerk**: Proper integration per Clerk docs
+- **JWT Template**: Created in Clerk dashboard for Convex auth
+- **Webhook endpoint**: `/api/webhooks/clerk` for user sync to Convex
+- **Settings page**: `/settings` for editing preferences post-onboarding
+- **UserButton menu**: Added "Preferences" link with ⚙️ icon
+
+#### **✅ Architecture Changes**
+- Created `AppShell` client component to wrap providers
+- Dynamic imports to avoid SSR issues with Clerk hooks
+- `convex/auth.config.js` for Clerk domain configuration
+
+### 🎨 **Dashboard Sidebar Widgets**
+
+**Time**: 6:15 PM - 7:15 PM  
+**Focus**: Fill empty sidebar space with useful widgets
+
+#### **✅ Three New Widgets Added**
+
+1. **Wine-to-Sake Tip** 🍷
+   - Fetches user's wine preferences from Convex
+   - Maps to sake recommendations (Riesling → Nigori, Chardonnay → Kimoto, etc.)
+   - Shows fallback "Set your wine preferences" if none saved
+   - Case-insensitive matching to handle data inconsistencies
+
+2. **Food Pairing of the Day** 🍜
+   - Daily pairing suggestion (Ramen + Junmai Ginjo)
+   - Warm gradient styling
+
+3. **Your Library Preview** 🍶
+   - Fetches real saved sake from Convex `userLibrary`
+   - Shows up to 2 items with images
+   - "View all →" link to full library
+   - Empty state: "No saved sake yet"
+
+#### **✅ Bug Fixes**
+- **Case sensitivity**: Wine preferences saved as lowercase weren't matching map keys
+- **Solution**: Case-insensitive lookup with proper display casing
+- **Dashboard restoration**: Accidentally removed sections during SSR refactor - fully restored
+
+### **📊 Technical Details**
+
+**Wine-to-Sake Mapping**:
+```typescript
+const wineToSakeMap = {
+  "Pinot Noir": { sake: "aged Junmai or Koshu", reason: "Similar earthy, elegant notes" },
+  "Chardonnay": { sake: "Junmai with Kimoto", reason: "Rich, full-bodied character" },
+  "Riesling": { sake: "Nigori or sweet Junmai", reason: "Fruity, aromatic profile" },
+  "Champagne": { sake: "Sparkling Sake", reason: "Celebratory bubbles" },
+  // ...
+}
+```
+
+**Session-based Library**:
+```typescript
+const [sessionId, setSessionId] = useState<string | null>(null)
+useEffect(() => {
+  let id = sessionStorage.getItem('sakeverse-session')
+  if (!id) {
+    id = crypto.randomUUID()
+    sessionStorage.setItem('sakeverse-session', id)
+  }
+  setSessionId(id)
+}, [])
+
+const library = useQuery(api.userLibrary.getLibrary, 
+  sessionId ? { sessionId } : "skip"
+)
+```
+
+### **⏱️ Session Stats**
+- **Duration**: ~4 hours
+- **Commits**: 12 commits
+- **Files Modified**: 15+
+- **Features Added**: Settings page, 3 dashboard widgets, Clerk webhook, proper auth flow
+
+**Status**: 
+- ✅ Clerk + Convex properly integrated
+- ✅ Dashboard widgets using real user data
+- ✅ Wine preferences reflected in recommendations
+- ✅ Library widget shows actual saved sake
+
+---
+
+**Last Updated**: January 4, 2026 - 7:15 PM  
+**Next Steps**: Remove debug console.logs, test voice agent, polish UI
