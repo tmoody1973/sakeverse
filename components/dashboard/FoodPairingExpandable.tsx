@@ -236,7 +236,7 @@ export function FoodPairingExpandable() {
         data.cuisines.forEach((c) => {
           c.dishes.forEach((d) => all.push({ dish: d, cuisine: c }));
         });
-        setPairings(all.sort(() => Math.random() - 0.5).slice(0, 4));
+        setPairings(all.sort(() => Math.random() - 0.5).slice(0, 2));
       })
       .catch(() => {});
   }, []);
@@ -246,7 +246,7 @@ export function FoodPairingExpandable() {
   if (pairings.length === 0) {
     return (
       <div className="space-y-3">
-        {[1, 2, 3, 4].map((i) => (
+        {[1, 2].map((i) => (
           <div key={i} className="h-16 bg-sakura-light/50 rounded-xl animate-pulse" />
         ))}
       </div>
