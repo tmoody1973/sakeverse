@@ -65,7 +65,8 @@ function Dashboard({ userId }: { userId?: string }) {
   )
   
   // Debug: log preferences
-  console.log("User preferences:", preferences)
+  console.log("Dashboard - userId:", userId)
+  console.log("Dashboard - preferences:", preferences)
   
   // Get first wine preference for the tip
   const winePrefs = preferences?.winePreferences || []

@@ -40,6 +40,8 @@ export default function SettingsContent() {
   const handleSave = async () => {
     if (!user?.id) return
     setSaving(true)
+    console.log("Saving preferences for clerkId:", user.id)
+    console.log("Wine preferences:", winePrefs)
     await savePreferences({
       clerkId: user.id,
       preferences: {
@@ -50,6 +52,7 @@ export default function SettingsContent() {
         onboardingComplete: true,
       },
     })
+    console.log("Save complete")
     setSaving(false)
     setSaved(true)
     setTimeout(() => setSaved(false), 2000)
