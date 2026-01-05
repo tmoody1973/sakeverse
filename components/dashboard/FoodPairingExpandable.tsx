@@ -136,15 +136,14 @@ export function FoodPairingExpandable() {
               onClick={() => setActive(null)}
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ type: "spring", duration: 0.3 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               className="fixed inset-0 z-50 flex items-center justify-center p-4"
             >
               <div
                 ref={ref}
-                className="bg-white border-3 border-ink shadow-retro-lg rounded-2xl overflow-hidden w-full max-w-[500px] max-h-[80vh] flex flex-col"
+                className="bg-white border-3 border-ink shadow-retro-lg rounded-2xl overflow-hidden w-full max-w-[500px] h-[70vh] flex flex-col"
               >
                 {/* Header */}
                 <div className="bg-gradient-to-br from-sake-warm to-sakura-light p-6 flex items-center gap-4 relative flex-shrink-0">
