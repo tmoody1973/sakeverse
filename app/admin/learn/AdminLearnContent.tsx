@@ -3,7 +3,10 @@
 import { useState } from "react"
 import { useAction, useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
+import { useUser } from "@clerk/nextjs"
 import Link from "next/link"
+
+const ADMIN_EMAILS = ["tarikjmoody@gmail.com"]
 
 const categories = [
   { value: "fundamentals", label: "🌱 Fundamentals" },
@@ -15,6 +18,7 @@ const categories = [
 ]
 
 export default function AdminLearnContent() {
+  const { user, isLoaded } = useUser()
   const [topic, setTopic] = useState("")
   const [chapterCount, setChapterCount] = useState(4)
   const [category, setCategory] = useState("fundamentals")
@@ -24,6 +28,19 @@ export default function AdminLearnContent() {
 
   const generateCourse = useAction(api.learn.generation.generateFullCourse)
   const courses = useQuery(api.learn.courses.listPublishedCourses, {})
+
+  // Admin check
+  if (!isLoaded) return <div className="p-6">Loading...</div>
+  if (!user || !ADMIN_EMAILS.includes(user.primaryEmailAddress?.emailAddress || "")) {
+    return (
+      <div className="min-h-screen bg-sakura-white p-6 flex items-center justify-center">
+        <div className="bg-white border-3 border-ink rounded-xl shadow-retro p-8 text-center">
+          <p className="text-2xl mb-2">🔒</p>
+          <p className="font-bold text-ink">Admin access required</p>
+        </div>
+      </div>
+    )
+  }
 
   const handleGenerate = async () => {
     if (!topic.trim()) return
