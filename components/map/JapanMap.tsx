@@ -23,8 +23,10 @@ export function JapanMap({ prefectureStats, onPrefectureSelect, selectedPrefectu
     if (!mapContainer.current || map.current) return
     
     const token = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
+    console.log("Mapbox token:", token ? `${token.substring(0, 20)}...` : "NOT FOUND")
+    
     if (!token) {
-      console.error("Mapbox token not found")
+      console.error("Mapbox token not found in NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN")
       return
     }
     
