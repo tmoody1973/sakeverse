@@ -77,7 +77,7 @@ export const getPersonalizedRecommendations = query({
       if (product.subcategory && preferredCategories.has(product.subcategory)) score += 5
       
       // Keyword match in description/taste profile
-      const text = `${product.description} ${product.tasteProfile} ${product.tastingNotes.join(" ")}`.toLowerCase()
+      const text = `${product.description || ""} ${product.tasteProfile || ""} ${(product.tastingNotes || []).join(" ")}`.toLowerCase()
       for (const keyword of preferredKeywords) {
         if (text.includes(keyword)) score += 3
       }

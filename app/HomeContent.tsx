@@ -372,7 +372,7 @@ function Dashboard({ userId }: { userId?: string }) {
                     </h3>
                     <p className="text-sm text-gray-600">{sake.brand}</p>
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-plum-dark">${sake.price}</span>
+                      <span className="font-bold text-plum-dark">${sake.price.toFixed(2)}</span>
                       {sake.tasteProfile && (
                         <span className="text-xs text-gray-500 truncate max-w-[100px]">{sake.tasteProfile}</span>
                       )}
