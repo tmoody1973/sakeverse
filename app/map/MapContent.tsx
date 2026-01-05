@@ -15,8 +15,8 @@ export default function MapContent() {
       <div className="container-retro py-4">
         <h1 className="text-2xl font-display font-bold mb-4">🗾 Explore Japan&apos;s Sake Regions</h1>
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4" style={{ height: "calc(100vh - 180px)" }}>
-          <div className="lg:col-span-8 h-full min-h-[400px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-[600px]">
+          <div className="lg:col-span-8 h-[600px]">
             <JapanMap
               prefectureStats={prefectureStats}
               onPrefectureSelect={setSelectedPrefecture}
@@ -24,7 +24,7 @@ export default function MapContent() {
             />
           </div>
           
-          <div className="lg:col-span-4 h-full">
+          <div className="lg:col-span-4 h-[600px]">
             {selectedPrefecture ? (
               <PrefecturePanel
                 prefecture={selectedPrefecture}
