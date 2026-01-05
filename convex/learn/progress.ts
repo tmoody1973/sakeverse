@@ -94,7 +94,7 @@ export const markChapterRead = mutation({
       )
       .first()
     
-    if (!progress) return { success: false }
+    if (!progress) return { success: false, xpEarned: 0 }
     
     // Add chapter if not already read
     if (!progress.readChapterIds.includes(chapterId)) {
@@ -102,9 +102,24 @@ export const markChapterRead = mutation({
         readChapterIds: [...progress.readChapterIds, chapterId],
         updatedAt: Date.now(),
       })
+      
+      // Award XP
+      const user = await ctx.db
+        .query("users")
+        .withIndex("by_clerk_id", (q) => q.eq("clerkId", clerkId))
+        .first()
+      
+      if (user) {
+        await ctx.db.patch(user._id, {
+          xp: user.xp + 25,
+          updatedAt: Date.now(),
+        })
+      }
+      
+      return { success: true, xpEarned: 25 }
     }
     
-    return { success: true, xpEarned: 10 }
+    return { success: true, xpEarned: 0 }
   },
 })
 

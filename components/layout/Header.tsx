@@ -8,6 +8,8 @@ import { Badge } from "@/components/ui/Badge"
 import { Search, Mic, Menu } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { UserButton, useUser } from "@clerk/nextjs"
+import { useQuery } from "convex/react"
+import { api } from "@/convex/_generated/api"
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -20,6 +22,10 @@ const navigation = [
 export function Header() {
   const pathname = usePathname()
   const { isSignedIn, isLoaded, user } = useUser()
+  const stats = useQuery(
+    api.gamification.getUserStats,
+    user?.id ? { clerkId: user.id } : "skip"
+  )
 
   return (
     <header className="sticky top-0 z-50 w-full border-b-3 border-ink bg-sakura-pink">
@@ -103,7 +109,9 @@ export function Header() {
                 <div className="text-sm font-medium text-ink">
                   {user?.firstName || "User"}
                 </div>
-                <div className="text-xs text-gray-600">Level 3 • 340 XP</div>
+                <div className="text-xs text-gray-600">
+                  {stats ? `Lvl ${stats.level} • ${stats.xp} XP` : "Loading..."}
+                </div>
               </Link>
               <UserButton 
                 afterSignOutUrl="/"

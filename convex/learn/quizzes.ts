@@ -140,13 +140,30 @@ export const submitQuizAttempt = mutation({
       }
     }
     
+    // Award XP if passed (first time only)
+    let xpEarned = 0
+    if (passed && previousAttempts.filter(a => a.passed).length === 0) {
+      const user = await ctx.db
+        .query("users")
+        .withIndex("by_clerk_id", (q) => q.eq("clerkId", clerkId))
+        .first()
+      
+      if (user) {
+        xpEarned = percentage === 100 ? 100 : 50 // Bonus for perfect score
+        await ctx.db.patch(user._id, {
+          xp: user.xp + xpEarned,
+          updatedAt: Date.now(),
+        })
+      }
+    }
+    
     return {
       score,
       maxScore,
       percentage,
       passed,
       answers: gradedAnswers,
-      xpEarned: passed ? 50 : 10,
+      xpEarned,
     }
   },
 })

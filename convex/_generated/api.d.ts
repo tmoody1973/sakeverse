@@ -14,6 +14,7 @@ import type * as dashboard from "../dashboard.js";
 import type * as discover from "../discover.js";
 import type * as embeddings from "../embeddings.js";
 import type * as foodPairing from "../foodPairing.js";
+import type * as gamification from "../gamification.js";
 import type * as geminiRAG from "../geminiRAG.js";
 import type * as importTippsy from "../importTippsy.js";
 import type * as learn_courses from "../learn/courses.js";
@@ -42,6 +43,7 @@ declare const fullApi: ApiFromModules<{
   discover: typeof discover;
   embeddings: typeof embeddings;
   foodPairing: typeof foodPairing;
+  gamification: typeof gamification;
   geminiRAG: typeof geminiRAG;
   importTippsy: typeof importTippsy;
   "learn/courses": typeof learn_courses;
