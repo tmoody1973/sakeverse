@@ -24,6 +24,7 @@ import type * as learn_quizzes from "../learn/quizzes.js";
 import type * as learn_seed from "../learn/seed.js";
 import type * as pairingTips from "../pairingTips.js";
 import type * as perplexityAPI from "../perplexityAPI.js";
+import type * as recommendations from "../recommendations.js";
 import type * as sake from "../sake.js";
 import type * as sakeBreweries from "../sakeBreweries.js";
 import type * as userLibrary from "../userLibrary.js";
@@ -53,6 +54,7 @@ declare const fullApi: ApiFromModules<{
   "learn/seed": typeof learn_seed;
   pairingTips: typeof pairingTips;
   perplexityAPI: typeof perplexityAPI;
+  recommendations: typeof recommendations;
   sake: typeof sake;
   sakeBreweries: typeof sakeBreweries;
   userLibrary: typeof userLibrary;

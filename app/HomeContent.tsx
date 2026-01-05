@@ -62,6 +62,10 @@ function Dashboard({ userId }: { userId?: string }) {
     userId ? { clerkId: userId } : "skip"
   )
   
+  const recommendations = useQuery(api.recommendations.getPersonalizedRecommendations,
+    userId ? { clerkId: userId } : "skip"
+  )
+  
   // Get first wine preference for the tip (case-insensitive matching)
   const winePrefs = preferences?.winePreferences || []
   const wineMapKeys = Object.keys(wineToSakeMap)
@@ -348,84 +352,50 @@ function Dashboard({ userId }: { userId?: string }) {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Sake Cards */}
-          {[
-            {
-              name: "Dassai 23",
-              brewery: "Asahi Shuzo",
-              region: "Yamaguchi",
-              type: "Junmai Daiginjo",
-              price: "$85",
-              image: "🍶",
-              rating: 4.8,
-              compatibility: 95,
-            },
-            {
-              name: "Hakkaisan",
-              brewery: "Hakkaisan Brewery",
-              region: "Niigata",
-              type: "Junmai Ginjo",
-              price: "$32",
-              image: "🍶",
-              rating: 4.6,
-              compatibility: 88,
-            },
-            {
-              name: "Kubota Manju",
-              brewery: "Asahi-shuzo",
-              region: "Niigata",
-              type: "Junmai Daiginjo",
-              price: "$45",
-              image: "🍶",
-              rating: 4.7,
-              compatibility: 92,
-            },
-            {
-              name: "Juyondai",
-              brewery: "Takagi Shuzo",
-              region: "Yamagata",
-              type: "Junmai",
-              price: "$120",
-              image: "🍶",
-              rating: 4.9,
-              compatibility: 89,
-            },
-          ].map((sake, index) => (
-            <Card key={index} className="group cursor-pointer">
-              <CardContent className="p-4">
-                <div className="aspect-square bg-sakura-light rounded-lg flex items-center justify-center text-4xl mb-3 group-hover:bg-petal-light transition-colors relative">
-                  {sake.image}
-                  <Badge 
-                    variant="primary"
-                    className="absolute top-2 left-2 text-xs"
-                  >
-                    {sake.type.split(' ')[0]}
-                  </Badge>
-                </div>
-                <div className="space-y-2">
-                  <h3 className="font-semibold text-ink group-hover:text-plum-dark transition-colors">
-                    {sake.name}
-                  </h3>
-                  <p className="text-sm text-gray-600">{sake.region}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-plum-dark">{sake.price}</span>
-                    <div className="flex items-center space-x-1">
-                      <Star className="h-3 w-3 fill-current text-yellow-500" />
-                      <span className="text-xs text-gray-600">{sake.rating}</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <Badge variant="success" size="sm">
-                      {sake.compatibility}% match
+          {recommendations && recommendations.length > 0 ? (
+            recommendations.map((sake) => (
+              <Card key={sake._id} className="group cursor-pointer">
+                <CardContent className="p-4">
+                  <div className="aspect-square bg-sakura-light rounded-lg flex items-center justify-center mb-3 group-hover:bg-petal-light transition-colors relative overflow-hidden">
+                    {sake.image ? (
+                      <img src={sake.image} alt={sake.productName} className="w-full h-full object-contain p-2" />
+                    ) : (
+                      <span className="text-4xl">🍶</span>
+                    )}
+                    <Badge variant="primary" className="absolute top-2 left-2 text-xs">
+                      {sake.category}
                     </Badge>
-                    <Button variant="primary" size="sm">
-                      Add to Cart
-                    </Button>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                  <div className="space-y-2">
+                    <h3 className="font-semibold text-ink group-hover:text-plum-dark transition-colors line-clamp-2">
+                      {sake.productName}
+                    </h3>
+                    <p className="text-sm text-gray-600">{sake.brand}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-plum-dark">${sake.price}</span>
+                      {sake.tasteProfile && (
+                        <span className="text-xs text-gray-500 truncate max-w-[100px]">{sake.tasteProfile}</span>
+                      )}
+                    </div>
+                    {sake.url && (
+                      <a href={sake.url} target="_blank" rel="noopener noreferrer">
+                        <Button variant="primary" size="sm" className="w-full">
+                          View on Tippsy
+                        </Button>
+                      </a>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-8 text-gray-500">
+              <p>Complete your preferences to get personalized recommendations!</p>
+              <Link href="/settings" className="text-plum-dark hover:underline mt-2 inline-block">
+                Update Preferences →
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
