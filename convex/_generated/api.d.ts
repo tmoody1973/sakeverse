@@ -17,6 +17,7 @@ import type * as foodPairing from "../foodPairing.js";
 import type * as geminiRAG from "../geminiRAG.js";
 import type * as importTippsy from "../importTippsy.js";
 import type * as learn_courses from "../learn/courses.js";
+import type * as learn_generation from "../learn/generation.js";
 import type * as learn_progress from "../learn/progress.js";
 import type * as learn_quizzes from "../learn/quizzes.js";
 import type * as learn_seed from "../learn/seed.js";
@@ -44,6 +45,7 @@ declare const fullApi: ApiFromModules<{
   geminiRAG: typeof geminiRAG;
   importTippsy: typeof importTippsy;
   "learn/courses": typeof learn_courses;
+  "learn/generation": typeof learn_generation;
   "learn/progress": typeof learn_progress;
   "learn/quizzes": typeof learn_quizzes;
   "learn/seed": typeof learn_seed;

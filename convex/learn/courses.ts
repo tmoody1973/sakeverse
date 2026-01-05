@@ -196,3 +196,19 @@ export const createChapter = mutation({
     return chapterId
   },
 })
+
+// Update chapter count after generation
+export const updateChapterCount = mutation({
+  args: { courseId: v.id("courses") },
+  handler: async (ctx, { courseId }) => {
+    const chapters = await ctx.db
+      .query("chapters")
+      .withIndex("by_course", (q) => q.eq("courseId", courseId))
+      .collect()
+    
+    await ctx.db.patch(courseId, {
+      chapterCount: chapters.length,
+      updatedAt: Date.now(),
+    })
+  },
+})
