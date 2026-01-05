@@ -68,10 +68,17 @@ function Dashboard({ userId }: { userId?: string }) {
   console.log("Dashboard - userId:", userId)
   console.log("Dashboard - preferences:", preferences)
   
-  // Get first wine preference for the tip
+  // Get first wine preference for the tip (case-insensitive matching)
   const winePrefs = preferences?.winePreferences || []
-  const primaryWine = winePrefs.find(w => w !== "None") || null
-  const wineRec = primaryWine ? wineToSakeMap[primaryWine] : null
+  const wineMapKeys = Object.keys(wineToSakeMap)
+  const primaryWine = winePrefs.find(w => {
+    if (w === "None" || w === "none") return false
+    return wineMapKeys.some(key => key.toLowerCase() === w.toLowerCase())
+  })
+  // Find the properly cased key
+  const matchedKey = primaryWine ? wineMapKeys.find(k => k.toLowerCase() === primaryWine.toLowerCase()) : null
+  const wineRec = matchedKey ? wineToSakeMap[matchedKey] : null
+  const displayWine = matchedKey || primaryWine
 
   return (
     <div className="container-retro py-8 space-y-8">
@@ -190,9 +197,9 @@ function Dashboard({ userId }: { userId?: string }) {
               <div className="flex items-start gap-3">
                 <div className="text-2xl">🍷</div>
                 <div>
-                  {primaryWine && wineRec ? (
+                  {displayWine && wineRec ? (
                     <>
-                      <p className="text-xs text-plum-dark font-medium mb-1">Based on your {primaryWine} preference</p>
+                      <p className="text-xs text-plum-dark font-medium mb-1">Based on your {displayWine} preference</p>
                       <p className="text-sm text-ink font-semibold">Try {wineRec.sake}</p>
                       <p className="text-xs text-gray-600 mt-1">{wineRec.reason}</p>
                     </>
