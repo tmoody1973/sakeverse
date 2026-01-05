@@ -95,13 +95,16 @@ export function Header() {
 
           {/* User Menu */}
           {isSignedIn ? (
-            <div className="flex items-center space-x-2">
-              <div className="hidden sm:block text-right">
+            <div className="flex items-center space-x-3">
+              <Link 
+                href="/settings" 
+                className="hidden sm:block text-right hover:opacity-80 transition-opacity"
+              >
                 <div className="text-sm font-medium text-ink">
                   {user?.firstName || "User"}
                 </div>
                 <div className="text-xs text-gray-600">Level 3 • 340 XP</div>
-              </div>
+              </Link>
               <UserButton 
                 afterSignOutUrl="/"
                 appearance={{
@@ -109,7 +112,11 @@ export function Header() {
                     avatarBox: "w-8 h-8 border-2 border-ink rounded-full shadow-retro-sm"
                   }
                 }}
-              />
+              >
+                <UserButton.MenuItems>
+                  <UserButton.Link label="Preferences" labelIcon={<span>⚙️</span>} href="/settings" />
+                </UserButton.MenuItems>
+              </UserButton>
             </div>
           ) : (
             <div className="hidden sm:flex items-center space-x-2">
