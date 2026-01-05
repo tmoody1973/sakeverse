@@ -57,11 +57,7 @@ export const searchWebContent = action({
             }
           ],
           max_tokens: 800,
-          temperature: 0.3,
-          top_p: 0.9,
-          return_citations: true,
-          search_domain_filter: ["sake", "japanese", "brewery", "alcohol", "wine"],
-          search_recency_filter: "month"
+          temperature: 0.3
         })
       })
 
