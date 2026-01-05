@@ -2,33 +2,31 @@ import { action } from "../_generated/server"
 import { v } from "convex/values"
 import { api } from "../_generated/api"
 
-// Helper to retry Gemini calls with delay on rate limit
-async function fetchWithRetry(apiKey: string, prompt: string, maxTokens: number, retries = 3): Promise<Response> {
-  for (let i = 0; i < retries; i++) {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { temperature: 0.7, maxOutputTokens: maxTokens }
-        })
-      }
-    )
-    
-    if (response.ok) return response
-    if (response.status === 429 && i < retries - 1) {
-      // Wait 5 seconds before retry
-      await new Promise(r => setTimeout(r, 5000))
-      continue
-    }
-    throw new Error(`Gemini error: ${response.status}`)
-  }
-  throw new Error("Max retries exceeded")
+// Helper to call Perplexity API
+async function callPerplexity(apiKey: string, prompt: string): Promise<string> {
+  const response = await fetch("https://api.perplexity.ai/chat/completions", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "sonar",
+      messages: [
+        { role: "system", content: "You are a sake education expert. Return ONLY valid JSON, no markdown or explanation." },
+        { role: "user", content: prompt }
+      ],
+      max_tokens: 4000,
+      temperature: 0.7
+    })
+  })
+  
+  if (!response.ok) throw new Error(`Perplexity error: ${response.status}`)
+  const result = await response.json()
+  return result.choices?.[0]?.message?.content || ""
 }
 
-// Generate course outline using Perplexity + Gemini
+// Generate course outline using Perplexity
 export const generateCourseOutline = action({
   args: {
     topic: v.string(),
@@ -36,30 +34,14 @@ export const generateCourseOutline = action({
     category: v.string(),
   },
   handler: async (ctx, { topic, chapterCount, category }) => {
-    const geminiApiKey = process.env.GEMINI_API_KEY
-    if (!geminiApiKey) throw new Error("GEMINI_API_KEY not found")
+    const apiKey = process.env.PERPLEXITY_API_KEY
+    if (!apiKey) throw new Error("PERPLEXITY_API_KEY not found")
 
-    // Get current context from Perplexity
-    let currentContext = ""
-    try {
-      const perplexityResult = await ctx.runAction(api.perplexityAPI.searchWebContent, {
-        query: `${topic} sake education trends 2024 2025`,
-        focus: "reviews"
-      })
-      currentContext = perplexityResult.answer
-    } catch (e) {
-      console.log("Perplexity unavailable, using Gemini only")
-    }
-
-    const prompt = `You are a sake education expert creating a course outline.
-
-Topic: ${topic}
+    const prompt = `Create a sake education course outline about: ${topic}
 Category: ${category}
 Number of chapters: ${chapterCount}
 
-${currentContext ? `Current trends and context:\n${currentContext}\n` : ""}
-
-Create a structured course outline in JSON format:
+Return JSON:
 {
   "title": "Course title",
   "subtitle": "Brief tagline",
@@ -76,19 +58,11 @@ Create a structured course outline in JSON format:
   ]
 }
 
-Make it educational, engaging, and appropriate for sake beginners to intermediate learners.
-Include wine bridge comparisons where relevant.
-Return ONLY valid JSON, no markdown.`
+Make it educational and engaging for sake beginners. Include wine comparisons where relevant.`
 
-    const response = await fetchWithRetry(geminiApiKey, prompt, 2000)
-    
-    const result = await response.json()
-    const text = result.candidates?.[0]?.content?.parts?.[0]?.text || ""
-    
-    // Parse JSON from response
+    const text = await callPerplexity(apiKey, prompt)
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     if (!jsonMatch) throw new Error("Failed to parse course outline")
-    
     return JSON.parse(jsonMatch[0])
   },
 })
@@ -103,10 +77,10 @@ export const generateChapterContent = action({
     keyTopics: v.array(v.string()),
   },
   handler: async (ctx, args) => {
-    const geminiApiKey = process.env.GEMINI_API_KEY
-    if (!geminiApiKey) throw new Error("GEMINI_API_KEY not found")
+    const apiKey = process.env.PERPLEXITY_API_KEY
+    if (!apiKey) throw new Error("PERPLEXITY_API_KEY not found")
 
-    const prompt = `You are a sake education expert writing chapter content.
+    const prompt = `Write chapter content for a sake education course.
 
 Course: ${args.courseTitle}
 Chapter: ${args.chapterTitle}
@@ -114,34 +88,21 @@ Description: ${args.chapterDescription}
 Learning Objectives: ${args.learningObjectives.join(", ")}
 Key Topics: ${args.keyTopics.join(", ")}
 
-Create chapter content as JSON array of content blocks:
+Return JSON array of content blocks:
 [
   { "id": "1", "type": "text", "content": "Introduction paragraph..." },
   { "id": "2", "type": "heading", "content": "Section Title" },
   { "id": "3", "type": "text", "content": "Section content..." },
-  { "id": "4", "type": "callout", "content": "{\\"variant\\": \\"tip\\", \\"text\\": \\"Pro tip here...\\"}" },
+  { "id": "4", "type": "callout", "content": "{\\"variant\\": \\"tip\\", \\"text\\": \\"Pro tip...\\"}" },
   { "id": "5", "type": "wine_bridge", "content": "{\\"wine\\": \\"Pinot Noir\\", \\"sake\\": \\"Aged Junmai\\", \\"reason\\": \\"Both share...\\"}" },
   { "id": "6", "type": "key_terms", "content": "[{\\"term\\": \\"Koji\\", \\"pronunciation\\": \\"KOH-jee\\", \\"definition\\": \\"...\\"}, ...]" }
 ]
 
-Block types available:
-- text: Regular paragraph
-- heading: Section heading
-- callout: Tip/info/warning box (variant: tip, info, warning)
-- wine_bridge: Wine comparison
-- key_terms: Array of terms with definitions
+Write 600-800 words. Include 2-3 key terms.`
 
-Write 800-1200 words of educational content. Include 2-3 key terms.
-Return ONLY valid JSON array, no markdown.`
-
-    const response = await fetchWithRetry(geminiApiKey, prompt, 3000)
-    
-    const result = await response.json()
-    const text = result.candidates?.[0]?.content?.parts?.[0]?.text || ""
-    
+    const text = await callPerplexity(apiKey, prompt)
     const jsonMatch = text.match(/\[[\s\S]*\]/)
     if (!jsonMatch) throw new Error("Failed to parse chapter content")
-    
     return JSON.parse(jsonMatch[0])
   },
 })
@@ -154,10 +115,10 @@ export const generateQuizQuestions = action({
     questionCount: v.number(),
   },
   handler: async (ctx, args) => {
-    const geminiApiKey = process.env.GEMINI_API_KEY
-    if (!geminiApiKey) throw new Error("GEMINI_API_KEY not found")
+    const apiKey = process.env.PERPLEXITY_API_KEY
+    if (!apiKey) throw new Error("PERPLEXITY_API_KEY not found")
 
-    const prompt = `Create ${args.questionCount} quiz questions for a sake education chapter.
+    const prompt = `Create ${args.questionCount} quiz questions about sake.
 
 Chapter: ${args.chapterTitle}
 Learning Objectives: ${args.learningObjectives.join(", ")}
@@ -180,18 +141,11 @@ Return JSON array:
   }
 ]
 
-Mix question types: multiple_choice and true_false.
-Make questions test understanding, not just memorization.
-Return ONLY valid JSON array.`
+Mix multiple_choice and true_false types. Test understanding, not memorization.`
 
-    const response = await fetchWithRetry(geminiApiKey, prompt, 2000)
-    
-    const result = await response.json()
-    const text = result.candidates?.[0]?.content?.parts?.[0]?.text || ""
-    
+    const text = await callPerplexity(apiKey, prompt)
     const jsonMatch = text.match(/\[[\s\S]*\]/)
     if (!jsonMatch) throw new Error("Failed to parse quiz questions")
-    
     return JSON.parse(jsonMatch[0])
   },
 })
