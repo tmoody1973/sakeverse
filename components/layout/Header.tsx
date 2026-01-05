@@ -31,7 +31,7 @@ export function Header() {
           aria-label="Sakécosm Home"
         >
           <img 
-            src="/sakverse-logo.svg" 
+            src="/sakecosm-logo.svg" 
             alt="Sakécosm" 
             className="h-8 md:h-9 w-auto"
           />
