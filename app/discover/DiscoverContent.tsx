@@ -47,21 +47,27 @@ export default function DiscoverContent() {
   })
 
   const saveSake = useMutation(api.userLibrary.saveSake)
+  const [savedIds, setSavedIds] = useState<Set<string>>(new Set())
 
   const handleSave = async (product: any) => {
     if (!sessionId) return
-    await saveSake({
-      sessionId,
-      sake: {
-        name: product.productName,
-        brewery: product.brewery,
-        region: product.prefecture || product.region || "",
-        category: product.category,
-        price: product.price,
-        image: product.images?.[0] || "",
-        url: product.url || "",
-      },
-    })
+    try {
+      await saveSake({
+        sessionId,
+        sake: {
+          name: product.productName || product.name,
+          brewery: product.brewery,
+          region: product.prefecture || product.region || "",
+          category: product.category,
+          price: product.price,
+          image: product.images?.[0] || product.image || "",
+          url: product.url || "",
+        },
+      })
+      setSavedIds(prev => new Set([...prev, product._id]))
+    } catch (error) {
+      console.error("Failed to save:", error)
+    }
   }
 
   return (
@@ -257,9 +263,13 @@ export default function DiscoverContent() {
                     </Badge>
                     <button
                       onClick={() => handleSave(product)}
-                      className="absolute top-2 right-2 p-1.5 bg-white/80 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-sakura-pink"
+                      className={`absolute top-2 right-2 p-1.5 rounded-full transition-all ${
+                        savedIds.has(product._id) 
+                          ? "bg-sakura-pink opacity-100" 
+                          : "bg-white/80 opacity-0 group-hover:opacity-100 hover:bg-sakura-pink"
+                      }`}
                     >
-                      <Heart className="w-4 h-4" />
+                      <Heart className={`w-4 h-4 ${savedIds.has(product._id) ? "fill-plum-dark text-plum-dark" : ""}`} />
                     </button>
                   </div>
                   <h3 className="font-semibold text-sm text-ink truncate group-hover:text-plum-dark transition-colors">
