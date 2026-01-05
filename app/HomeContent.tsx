@@ -1,6 +1,8 @@
 "use client"
 
 import { useUser } from "@clerk/nextjs"
+import { useQuery } from "convex/react"
+import { api } from "@/convex/_generated/api"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
 import { Badge } from "@/components/ui/Badge"
@@ -14,8 +16,19 @@ const DashboardContent = dynamic(
   { ssr: false, loading: () => <div className="animate-pulse text-gray-500">Loading...</div> }
 )
 
+// Wine to sake mapping
+const wineToSakeMap: Record<string, { sake: string; reason: string }> = {
+  "Pinot Noir": { sake: "aged Junmai or Koshu", reason: "Similar earthy, elegant notes" },
+  "Chardonnay": { sake: "Junmai with Kimoto", reason: "Rich, full-bodied character" },
+  "Cabernet": { sake: "Yamahai Junmai", reason: "Bold, structured flavors" },
+  "Sauvignon Blanc": { sake: "Junmai Ginjo", reason: "Crisp, refreshing finish" },
+  "Riesling": { sake: "Nigori or sweet Junmai", reason: "Fruity, aromatic profile" },
+  "Champagne": { sake: "Sparkling Sake", reason: "Celebratory bubbles" },
+  "Rosé": { sake: "light Junmai Ginjo", reason: "Delicate, floral notes" },
+}
+
 export default function HomeContent() {
-  const { isSignedIn, isLoaded } = useUser()
+  const { isSignedIn, isLoaded, user } = useUser()
 
   if (!isLoaded) {
     return <div className="min-h-screen flex items-center justify-center">
@@ -27,10 +40,19 @@ export default function HomeContent() {
     return <LandingPage />
   }
 
-  return <Dashboard />
+  return <Dashboard userId={user?.id} />
 }
 
-function Dashboard() {
+function Dashboard({ userId }: { userId?: string }) {
+  const preferences = useQuery(api.users.getUserPreferences, 
+    userId ? { clerkId: userId } : "skip"
+  )
+  
+  // Get first wine preference for the tip
+  const winePrefs = preferences?.winePreferences || []
+  const primaryWine = winePrefs.find(w => w !== "None") || null
+  const wineRec = primaryWine ? wineToSakeMap[primaryWine] : null
+
   return (
     <div className="container-retro py-8 space-y-8">
       {/* Welcome Hero */}
@@ -142,19 +164,21 @@ function Dashboard() {
             </CardContent>
           </Card>
 
-          {/* Wine-to-Sake Tip */}
-          <Card className="bg-gradient-to-br from-plum-dark/10 to-sakura-light border-plum-dark/20">
-            <CardContent className="p-4">
-              <div className="flex items-start gap-3">
-                <div className="text-2xl">🍷</div>
-                <div>
-                  <p className="text-xs text-plum-dark font-medium mb-1">Based on your Pinot Noir preference</p>
-                  <p className="text-sm text-ink font-semibold">Try aged Junmai or Koshu</p>
-                  <p className="text-xs text-gray-600 mt-1">Similar earthy, elegant notes</p>
+          {/* Wine-to-Sake Tip - only show if user has wine preferences */}
+          {primaryWine && wineRec && (
+            <Card className="bg-gradient-to-br from-plum-dark/10 to-sakura-light border-plum-dark/20">
+              <CardContent className="p-4">
+                <div className="flex items-start gap-3">
+                  <div className="text-2xl">🍷</div>
+                  <div>
+                    <p className="text-xs text-plum-dark font-medium mb-1">Based on your {primaryWine} preference</p>
+                    <p className="text-sm text-ink font-semibold">Try {wineRec.sake}</p>
+                    <p className="text-xs text-gray-600 mt-1">{wineRec.reason}</p>
+                  </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          )}
 
           {/* Food Pairing of the Day */}
           <Card className="bg-gradient-to-br from-sake-warm/30 to-white">
