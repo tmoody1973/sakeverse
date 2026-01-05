@@ -15,9 +15,12 @@ Sakéverse is an AI-powered sake discovery platform featuring Kiki (利き酒 - 
 - **User Sake Library**: Session-based save/view functionality for favorite sake
 - **Tippsy Integration**: Product cards with images, prices, and direct purchase links
 - **Landing Page**: Marketing page for logged-out users with features, how-it-works, CTAs
-- **Clerk Authentication**: Sign-in/sign-up with RetroUI styling
+- **Clerk Authentication**: Sign-in/sign-up with RetroUI styling, JWT template for Convex
 - **4-Step Onboarding**: Experience level, taste preferences, food preferences, wine preferences (optional)
 - **Conditional Navigation**: Different header for logged-in vs logged-out users
+- **Settings Page**: Edit preferences anytime at `/settings`
+- **Dashboard Widgets**: Wine-to-Sake tip (personalized), Food Pairing of the Day, Library preview
+- **Clerk Webhook**: User sync to Convex on create/update/delete
 
 ## Planned Features (Not Yet Built)
 - Interactive Japan Brewery Map (Mapbox GL)

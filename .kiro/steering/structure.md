@@ -88,14 +88,21 @@ sakeverse/
 
 ## Key Files
 - `app/api/c1/chat/route.ts`: Main C1 endpoint with tool calling
+- `app/api/webhooks/clerk/route.ts`: Clerk webhook for user sync
 - `hooks/useVoiceChat.ts`: OpenAI Realtime WebRTC integration
 - `components/voice/KikiChat.tsx`: Primary chat interface
 - `components/layout/Header.tsx`: Conditional nav (logged-in vs logged-out)
+- `components/layout/AppShell.tsx`: Client-side provider wrapper
 - `components/landing/LandingPage.tsx`: Marketing page for logged-out users
 - `components/onboarding/OnboardingContent.tsx`: 4-step preference capture
+- `app/settings/SettingsContent.tsx`: Edit preferences page
+- `app/HomeContent.tsx`: Dashboard with personalized widgets
 - `convex/schema.ts`: All database table definitions
 - `convex/embeddings.ts`: Vector search implementation
-- `convex/users.ts`: User preferences and onboarding
+- `convex/users.ts`: User preferences, onboarding, webhook handlers
+- `convex/auth.config.js`: Clerk domain configuration for Convex
+- `lib/convex.tsx`: Combined Clerk + Convex providers
+- `middleware.ts`: Clerk route protection
 
 ## Configuration Files
 - `next.config.js`: Next.js 15 with `serverExternalPackages: ['convex']`

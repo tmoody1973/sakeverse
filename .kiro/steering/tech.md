@@ -56,8 +56,17 @@ User Interface
 
 ### Authentication & Onboarding
 - Clerk for sign-in/sign-up with RetroUI styled pages
+- JWT Template configured for Convex authentication
+- Clerk webhook syncs users to Convex on create/update/delete
 - 4-step onboarding: experience level, taste preferences, food preferences, wine preferences
 - Conditional navigation: logged-out sees landing + auth buttons, logged-in sees full nav
+- Settings page at `/settings` for editing preferences post-onboarding
+
+### Dashboard Personalization
+- Wine-to-Sake widget fetches user preferences from Convex
+- Case-insensitive wine matching for data consistency
+- Library widget shows real saved sake from session storage
+- Food pairing of the day suggestion
 
 ### Session-Based Storage
 - User library works without authentication via session ID
