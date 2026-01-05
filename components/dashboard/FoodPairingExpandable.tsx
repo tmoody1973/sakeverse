@@ -135,15 +135,13 @@ export function FoodPairingExpandable() {
               className="fixed inset-0 bg-black/50 z-40"
               onClick={() => setActive(null)}
             />
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            >
-              <div
+            <div className="fixed inset-0 z-50 grid place-items-center">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 ref={ref}
-                className="bg-white border-3 border-ink shadow-retro-lg rounded-2xl overflow-hidden w-full max-w-[500px] h-[70vh] flex flex-col"
+                className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white border-3 border-ink shadow-retro-lg sm:rounded-2xl overflow-hidden"
               >
                 {/* Header */}
                 <div className="bg-gradient-to-br from-sake-warm to-sakura-light p-6 flex items-center gap-4 relative flex-shrink-0">
@@ -231,8 +229,8 @@ export function FoodPairingExpandable() {
                     )}
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </>
         )}
       </AnimatePresence>
