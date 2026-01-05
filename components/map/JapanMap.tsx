@@ -26,7 +26,7 @@ export function JapanMap({ prefectureStats, onPrefectureSelect, selectedPrefectu
       try {
         const mapboxgl = (await import("mapbox-gl")).default
         
-        const token = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
+        const token = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "pk.eyJ1IjoidG1vb2R5MTk3MyIsImEiOiJjbWsxbXFobjcwN3NzM2Zwdnc2Zm5rMmV2In0.X-FrW3N8GF9JzLWDL6q9Nw"
         if (!token) {
           setError("Mapbox token not configured")
           return
