@@ -180,21 +180,31 @@ function Dashboard({ userId }: { userId?: string }) {
             </CardContent>
           </Card>
 
-          {/* Wine-to-Sake Tip - only show if user has wine preferences */}
-          {primaryWine && wineRec && (
-            <Card className="bg-gradient-to-br from-plum-dark/10 to-sakura-light border-plum-dark/20">
-              <CardContent className="p-4">
-                <div className="flex items-start gap-3">
-                  <div className="text-2xl">🍷</div>
-                  <div>
-                    <p className="text-xs text-plum-dark font-medium mb-1">Based on your {primaryWine} preference</p>
-                    <p className="text-sm text-ink font-semibold">Try {wineRec.sake}</p>
-                    <p className="text-xs text-gray-600 mt-1">{wineRec.reason}</p>
-                  </div>
+          {/* Wine-to-Sake Tip */}
+          <Card className="bg-gradient-to-br from-plum-dark/10 to-sakura-light border-plum-dark/20">
+            <CardContent className="p-4">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">🍷</div>
+                <div>
+                  {primaryWine && wineRec ? (
+                    <>
+                      <p className="text-xs text-plum-dark font-medium mb-1">Based on your {primaryWine} preference</p>
+                      <p className="text-sm text-ink font-semibold">Try {wineRec.sake}</p>
+                      <p className="text-xs text-gray-600 mt-1">{wineRec.reason}</p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-xs text-plum-dark font-medium mb-1">Wine-to-Sake Bridge</p>
+                      <p className="text-sm text-ink font-semibold">Set your wine preferences</p>
+                      <Link href="/settings" className="text-xs text-plum-dark hover:underline mt-1 inline-block">
+                        Update in Settings →
+                      </Link>
+                    </>
+                  )}
                 </div>
-              </CardContent>
-            </Card>
-          )}
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Food Pairing of the Day */}
           <Card className="bg-gradient-to-br from-sake-warm/30 to-white">
