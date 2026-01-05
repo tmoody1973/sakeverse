@@ -213,3 +213,22 @@ export const updateChapterCount = mutation({
     })
   },
 })
+
+
+// Publish all draft courses (admin utility)
+export const publishAllDrafts = mutation({
+  handler: async (ctx) => {
+    const drafts = await ctx.db
+      .query("courses")
+      .filter((q) => q.eq(q.field("status"), "draft"))
+      .collect()
+    
+    for (const course of drafts) {
+      await ctx.db.patch(course._id, {
+        status: "published",
+        publishedAt: Date.now(),
+      })
+    }
+    return { published: drafts.length }
+  },
+})

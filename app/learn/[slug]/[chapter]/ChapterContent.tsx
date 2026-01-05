@@ -123,12 +123,12 @@ export default function ChapterContent() {
 
         {/* Quiz CTA */}
         {quiz && !showQuiz && (
-          <div className="bg-plum text-white border-3 border-ink rounded-xl p-6 shadow-retro text-center">
-            <h3 className="font-bold text-xl mb-2">Ready to test your knowledge?</h3>
-            <p className="text-white/80 mb-4">Take the chapter quiz to check your understanding</p>
+          <div className="bg-sakura-pink border-3 border-ink rounded-xl p-6 shadow-retro text-center">
+            <h3 className="font-bold text-xl mb-2 text-ink">Ready to test your knowledge?</h3>
+            <p className="text-ink/70 mb-4">Take the chapter quiz to check your understanding</p>
             <button
               onClick={() => setShowQuiz(true)}
-              className="px-6 py-3 bg-white text-plum font-bold rounded-lg border-2 border-ink shadow-retro hover:shadow-retro-lg hover:-translate-y-0.5 transition-all"
+              className="px-6 py-3 bg-white text-ink font-bold rounded-lg border-2 border-ink shadow-retro hover:shadow-retro-lg hover:-translate-y-0.5 transition-all"
             >
               Take Quiz
             </button>
