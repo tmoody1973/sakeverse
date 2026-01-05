@@ -1257,3 +1257,158 @@ const library = useQuery(api.userLibrary.getLibrary,
 
 **Last Updated**: January 4, 2026 - 7:15 PM  
 **Next Steps**: Remove debug console.logs, test voice agent, polish UI
+
+
+---
+
+## January 5, 2026 - Learning System, Gamification & Interactive Map
+
+### 📚 **Learning System with AI Course Generation**
+
+**Time**: 9:00 AM - 1:00 PM  
+**Focus**: Complete learning system with courses, chapters, quizzes, and gamification
+
+#### **✅ Database Schema (convex/schema.ts)**
+- `courses` - Course metadata, status, timestamps
+- `chapters` - Chapter content blocks, key terms
+- `quizzes` - Quiz settings, passing score
+- `questions` - Individual quiz questions
+- `userProgress` - User's progress per course
+- `quizAttempts` - User's quiz answers and scores
+- `categories` - Learning categories (Fundamentals, Brewing, Tasting, etc.)
+
+#### **✅ Convex Functions Created**
+```
+convex/learn/courses.ts - listPublishedCourses, getCourseBySlug, getCourseChapters
+convex/learn/progress.ts - getUserProgress, startCourse, markChapterRead
+convex/learn/quizzes.ts - getQuiz, submitQuizAttempt, createQuiz
+convex/learn/seed.ts - seedCategories, seedSampleCourse
+convex/learn/generation.ts - Perplexity-powered AI course generation
+convex/gamification.ts - getUserStats, awardXP, getLevels
+```
+
+#### **✅ Frontend Pages**
+- `/learn` - Course catalog with XP badge and guide modal
+- `/learn/[slug]` - Course detail with chapter list
+- `/learn/[slug]/[chapter]` - Chapter content with quiz player
+- `/admin/learn` - AI course generator (admin only - tarikjmoody@gmail.com)
+
+#### **✅ Gamification System**
+**XP Rewards**:
+- Chapter read: +25 XP
+- Quiz passed (first time): +50 XP
+- Perfect quiz score: +100 XP
+
+**10 Badge Levels** (Stardew Valley-style artwork):
+| Level | Title | XP Required |
+|-------|-------|-------------|
+| 1 | Sake Curious | 0 |
+| 2 | Sake Novice | 100 |
+| 3 | Sake Student | 300 |
+| 4 | Sake Enthusiast | 600 |
+| 5 | Sake Connoisseur | 1,000 |
+| 6 | Sake Expert | 1,500 |
+| 7 | Sake Master | 2,500 |
+| 8 | Sake Sensei | 4,000 |
+| 9 | Sake Legend | 6,000 |
+| 10 | Sake Grandmaster | 10,000 |
+
+#### **✅ Dashboard Integration**
+- Live XP and level display in Header
+- Badge image with XP guide modal on `/learn`
+- Course progress tracking on dashboard
+- Real stats from Convex (replaced hardcoded values)
+
+### 🗾 **Interactive Japan Map**
+
+**Time**: 2:00 PM - 4:00 PM  
+**Focus**: Mapbox GL map with prefecture exploration
+
+#### **✅ Dependencies Added**
+```bash
+npm install mapbox-gl react-map-gl @types/mapbox-gl
+```
+
+#### **✅ Components Created**
+- `components/map/JapanMap.tsx` - Mapbox GL map with prefecture polygons
+- `components/map/PrefecturePanel.tsx` - Side panel with breweries and products
+- `app/map/MapContent.tsx` - Main map page layout
+- `app/map/page.tsx` - Dynamic import wrapper (SSR disabled)
+
+#### **✅ Features**
+- 47 clickable prefecture polygons from GeoJSON
+- **Color coding**: Pink = has breweries, Gray = no data
+- **Selected state**: Plum/dark highlight
+- **Side panel**: Breweries list, products with Tippsy links
+- **Navigation**: Added Map to BottomNav and Header
+
+#### **✅ Perplexity-Generated Prefecture Descriptions**
+- First click → calls Perplexity API with structured JSON prompt
+- Response cached in `prefectureDescriptions` table
+- Subsequent views → instant load from cache
+- Shows: Overview, sake style, key characteristics, famous breweries, recommended sake
+
+**Convex Functions** (`convex/map.ts`):
+```typescript
+getPrefectureStats - Brewery/product counts per prefecture
+getBreweriesByPrefectureNormalized - Handles "Niigata" vs "Niigata Ken"
+getPrefectureDescription - Cached descriptions
+generatePrefectureDescription - Perplexity action with caching
+storePrefectureDescription - Mutation to save cache
+```
+
+#### **✅ Prefecture Name Normalization**
+Database has mixed formats: "Niigata", "Niigata prefecture", "Niigata Ken"
+GeoJSON uses: "Niigata Ken", "Kyoto Fu", "Tokyo To"
+Solution: `normalizePrefecture()` function strips suffixes for matching
+
+### 📊 **Personalized Recommendations**
+
+**Time**: 1:30 PM - 2:00 PM  
+**Focus**: Replace hardcoded dashboard recommendations with real data
+
+#### **✅ Created `convex/recommendations.ts`**
+- Scores products based on:
+  - Wine preferences → mapped to sake categories
+  - Taste slider values (sweetness, acidity, richness, umami)
+  - Food preferences → matched against product pairings
+  - Product ratings (bonus for 4.0+ and 4.5+)
+  - Daily variety via date-based hash
+- Returns top 4 recommendations with images and Tippsy links
+
+### 🐛 **Bug Fixes**
+- Fixed null safety in recommendations string concatenation
+- Fixed price formatting (`.toFixed(2)`)
+- Fixed Mapbox token env var name mismatch
+- Fixed map container height (explicit 600px)
+- Switched from raw mapbox-gl to react-map-gl/mapbox for proper React integration
+
+### **⏱️ Session Stats**
+- **Duration**: ~7 hours
+- **Commits**: 20+ commits
+- **Files Created**: 15+ new files
+- **Files Modified**: 25+ files
+- **Features Added**: Learning system, gamification, map, recommendations
+
+### **📦 Deployments**
+- Multiple Vercel deployments for testing
+- Added `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` to Vercel env vars
+- All features live at https://dynamous-kiro-hackathon.vercel.app
+
+---
+
+**Last Updated**: January 5, 2026 - 4:30 PM  
+**Status**: 
+- ✅ Learning System with AI Course Generation
+- ✅ Gamification (XP, Levels, 10 Badges)
+- ✅ Interactive Japan Map with Mapbox
+- ✅ Perplexity-Generated Prefecture Descriptions (cached)
+- ✅ Personalized Sake Recommendations
+- ✅ Dashboard with Live Stats
+- ✅ README Updated
+
+**Remaining**:
+- [ ] AI-Generated Podcasts (Gemini TTS)
+- [ ] Temperature Lab
+- [ ] More courses via admin generator
+- [ ] Polish and bug fixes
