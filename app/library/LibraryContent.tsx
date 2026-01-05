@@ -8,10 +8,10 @@ import { Trash2, ExternalLink, Wine } from "lucide-react"
 
 function getSessionId() {
   if (typeof window === "undefined") return ""
-  let id = localStorage.getItem("sakeverse_session")
+  let id = sessionStorage.getItem("sakeverse-session")
   if (!id) {
-    id = `session_${Date.now()}_${Math.random().toString(36).slice(2)}`
-    localStorage.setItem("sakeverse_session", id)
+    id = crypto.randomUUID()
+    sessionStorage.setItem("sakeverse-session", id)
   }
   return id
 }
