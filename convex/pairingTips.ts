@@ -52,18 +52,35 @@ export const getPairingTips = action({
 
     // Fetch from Perplexity
     const result: { answer: string } = await ctx.runAction(api.perplexityAPI.searchWebContent, {
-      query: `${dishName} ${sakeType} sake pairing`,
+      query: `Japanese sake pairing tips: How to pair ${sakeType} sake with ${dishName}. What flavors complement each other?`,
       focus: "reviews"
     });
 
-    // Cache the result if successful
-    if (result.answer && !result.answer.includes("couldn't access")) {
+    // Cache the result if successful (and not an error response)
+    if (result.answer && 
+        !result.answer.includes("cannot provide") && 
+        !result.answer.includes("couldn't access") &&
+        !result.answer.includes("no data")) {
       await ctx.runMutation(api.pairingTips.saveTips, {
         dishId,
         tips: result.answer
       });
+      return result.answer;
     }
 
-    return result.answer;
+    // Fallback response if Perplexity fails
+    return `${sakeType} sake pairs wonderfully with ${dishName}. The umami and subtle sweetness of sake complements the dish's flavors, creating a harmonious balance.`;
+  },
+});
+
+
+// Clear all cached tips (admin use)
+export const clearAllTips = mutation({
+  handler: async (ctx) => {
+    const all = await ctx.db.query("pairingTipsCache").collect();
+    for (const tip of all) {
+      await ctx.db.delete(tip._id);
+    }
+    return { deleted: all.length };
   },
 });
