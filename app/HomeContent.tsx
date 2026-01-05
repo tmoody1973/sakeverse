@@ -3,6 +3,7 @@
 import { useUser } from "@clerk/nextjs"
 import { useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
 import { Badge } from "@/components/ui/Badge"
@@ -46,6 +47,21 @@ export default function HomeContent() {
 function Dashboard({ userId }: { userId?: string }) {
   const preferences = useQuery(api.users.getUserPreferences, 
     userId ? { clerkId: userId } : "skip"
+  )
+  
+  // Get session ID for library
+  const [sessionId, setSessionId] = useState<string | null>(null)
+  useEffect(() => {
+    let id = sessionStorage.getItem('sakeverse-session')
+    if (!id) {
+      id = crypto.randomUUID()
+      sessionStorage.setItem('sakeverse-session', id)
+    }
+    setSessionId(id)
+  }, [])
+  
+  const library = useQuery(api.userLibrary.getLibrary, 
+    sessionId ? { sessionId } : "skip"
   )
   
   // Get first wine preference for the tip
@@ -201,20 +217,25 @@ function Dashboard({ userId }: { userId?: string }) {
                 <span className="text-sm font-semibold text-ink">Your Library</span>
                 <Link href="/library" className="text-xs text-plum-dark hover:underline">View all →</Link>
               </div>
-              <div className="space-y-2">
-                {[
-                  { name: "Dassai 23", type: "Daiginjo" },
-                  { name: "Hakkaisan", type: "Ginjo" },
-                ].map((sake, i) => (
-                  <div key={i} className="flex items-center gap-2 p-2 bg-sakura-light/50 rounded-lg">
-                    <span className="text-lg">🍶</span>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-ink truncate">{sake.name}</p>
-                      <p className="text-xs text-gray-500">{sake.type}</p>
+              {library && library.length > 0 ? (
+                <div className="space-y-2">
+                  {library.slice(0, 2).map((sake, i) => (
+                    <div key={i} className="flex items-center gap-2 p-2 bg-sakura-light/50 rounded-lg">
+                      {sake.image ? (
+                        <img src={sake.image} alt={sake.sakeName} className="w-8 h-8 object-contain" />
+                      ) : (
+                        <span className="text-lg">🍶</span>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-ink truncate">{sake.sakeName}</p>
+                        <p className="text-xs text-gray-500">{sake.category || "Sake"}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-gray-500 text-center py-2">No saved sake yet</p>
+              )}
             </CardContent>
           </Card>
         </div>
