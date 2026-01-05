@@ -16,6 +16,7 @@ import type * as embeddings from "../embeddings.js";
 import type * as foodPairing from "../foodPairing.js";
 import type * as geminiRAG from "../geminiRAG.js";
 import type * as importTippsy from "../importTippsy.js";
+import type * as pairingTips from "../pairingTips.js";
 import type * as perplexityAPI from "../perplexityAPI.js";
 import type * as sake from "../sake.js";
 import type * as sakeBreweries from "../sakeBreweries.js";
@@ -38,6 +39,7 @@ declare const fullApi: ApiFromModules<{
   foodPairing: typeof foodPairing;
   geminiRAG: typeof geminiRAG;
   importTippsy: typeof importTippsy;
+  pairingTips: typeof pairingTips;
   perplexityAPI: typeof perplexityAPI;
   sake: typeof sake;
   sakeBreweries: typeof sakeBreweries;

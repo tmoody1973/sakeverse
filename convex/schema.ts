@@ -2,6 +2,13 @@ import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
 export default defineSchema({
+  // Cached pairing tips from Perplexity
+  pairingTipsCache: defineTable({
+    dishId: v.string(),
+    tips: v.string(),
+    createdAt: v.number(),
+  }).index("by_dish", ["dishId"]),
+
   // User Management
   users: defineTable({
     clerkId: v.string(),

@@ -54,17 +54,18 @@ function PairingModal({
 }) {
   const [tips, setTips] = useState<string>("");
   const [loading, setLoading] = useState(true);
-  const searchWeb = useAction(api.perplexityAPI.searchWebContent);
+  const getPairingTips = useAction(api.pairingTips.getPairingTips);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
     
     const sakeType = sakeTypeNames[pairing.dish.recommendedSakeTypes[0]] || pairing.dish.recommendedSakeTypes[0];
-    searchWeb({ 
-      query: `${pairing.dish.name} ${sakeType} sake pairing`,
-      focus: "reviews"
+    getPairingTips({ 
+      dishId: pairing.dish.id,
+      dishName: pairing.dish.name,
+      sakeType
     })
-      .then((r) => setTips(r.answer || ""))
+      .then((r) => setTips(r || ""))
       .catch(() => setTips(""))
       .finally(() => setLoading(false));
 
@@ -77,7 +78,7 @@ function PairingModal({
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleEsc);
     };
-  }, [pairing, searchWeb, onClose]);
+  }, [pairing, getPairingTips, onClose]);
 
   const { dish, cuisine } = pairing;
 
