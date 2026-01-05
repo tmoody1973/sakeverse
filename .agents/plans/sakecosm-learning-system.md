@@ -684,14 +684,233 @@ Start with these block types:
 
 Add more block types post-MVP.
 
-### Confidence Score: 7/10
+---
 
-High confidence on:
+## RISK MITIGATIONS
+
+### Risk 1: AI Generation Quality
+
+**Problem**: Generated courses may be low quality, inaccurate, or poorly structured.
+
+**Mitigations**:
+
+1. **Two-Step Generation with Human Review**
+   - Step 1: Generate outline only (title, chapters, objectives)
+   - Admin reviews and can regenerate or edit before proceeding
+   - Step 2: Generate content chapter-by-chapter
+   - This prevents wasting API calls on rejected content
+
+2. **Structured Output with JSON Schema**
+   ```typescript
+   // Force structured output from AI
+   const outlineSchema = {
+     title: "string",
+     description: "string (2-3 sentences)",
+     chapters: [
+       { title: "string", objectives: ["string"], estimatedMinutes: "number" }
+     ],
+     learningOutcomes: ["string (4-6 items)"]
+   }
+   ```
+
+3. **Dual Knowledge Source Validation**
+   - Query Gemini RAG first for foundational accuracy
+   - Query Perplexity for current context
+   - Cross-reference to catch hallucinations
+   - Include source citations in generated content
+
+4. **Content Templates**
+   - Pre-define content block structure per chapter type
+   - AI fills in templates rather than free-form generation
+   - Example: "Introduction chapter must have: overview, key_terms, wine_bridge"
+
+5. **Fallback to Manual Editing**
+   - All generated content is editable by admin
+   - Save as "draft" status by default
+   - Admin must explicitly publish
+
+**Implementation**:
+```typescript
+// convex/learn/generation.ts
+export const generateCourseOutline = action({
+  args: { topic: v.string(), chapterCount: v.number(), category: v.string() },
+  handler: async (ctx, args) => {
+    // 1. Get foundational knowledge from Gemini RAG
+    const ragContext = await ctx.runAction(api.geminiRAG.searchSakeKnowledge, {
+      query: `Educational content about ${args.topic} for sake learners`
+    })
+    
+    // 2. Get current trends from Perplexity
+    const currentContext = await ctx.runAction(api.perplexityAPI.searchWebContent, {
+      query: `Latest information about ${args.topic} sake`,
+      focus: "reviews"
+    })
+    
+    // 3. Generate structured outline with both contexts
+    const outline = await generateWithSchema(ragContext, currentContext, outlineSchema)
+    
+    // 4. Return for admin review (NOT auto-saved)
+    return { outline, ragSources: ragContext.sources, webCitations: currentContext.citations }
+  }
+})
+```
+
+---
+
+### Risk 2: Quiz UX Needs Iteration
+
+**Problem**: Quiz interface may be confusing, frustrating, or not engaging.
+
+**Mitigations**:
+
+1. **Progressive Disclosure**
+   - Show one question at a time (not all at once)
+   - Clear progress indicator (Question 3 of 5)
+   - Immediate feedback after each answer
+
+2. **Forgiving Design**
+   - Unlimited retries (no penalty)
+   - Show explanation after wrong answer
+   - "Try Again" button prominent
+   - No time pressure (no countdown timer)
+
+3. **Clear Visual States**
+   ```typescript
+   // Question states with distinct styling
+   const questionStates = {
+     unanswered: "border-gray-200",
+     selected: "border-sakura-pink bg-sakura-light/30",
+     correct: "border-matcha-500 bg-matcha-50",
+     incorrect: "border-red-400 bg-red-50"
+   }
+   ```
+
+4. **Celebration on Success**
+   - Confetti animation on quiz pass
+   - XP gain animation (+50 XP)
+   - Clear "Continue to Next Chapter" CTA
+
+5. **Graceful Failure**
+   - On fail: Show score, highlight weak areas
+   - "Review Chapter" button
+   - Encouraging message ("You got 60%! Review and try again")
+
+**Implementation**:
+```typescript
+// components/learn/QuizPlayer.tsx
+const [currentQuestion, setCurrentQuestion] = useState(0)
+const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
+const [showResult, setShowResult] = useState(false)
+const [answers, setAnswers] = useState<Record<string, string>>({})
+
+// Show one question at a time
+const question = questions[currentQuestion]
+
+// Immediate feedback flow
+const handleCheckAnswer = () => {
+  setShowResult(true)
+  // Show correct/incorrect styling
+  // Show explanation
+  // After 2 seconds, enable "Next Question" button
+}
+```
+
+---
+
+### Risk 3: Content Block Rendering Edge Cases
+
+**Problem**: Different content block types need different rendering, and malformed data could crash the UI.
+
+**Mitigations**:
+
+1. **Type-Safe Block Definitions**
+   ```typescript
+   // Define exact shape for each block type
+   type TextBlock = { type: "text"; content: string }
+   type HeadingBlock = { type: "heading"; content: string; level: 1 | 2 | 3 }
+   type CalloutBlock = { type: "callout"; content: string; variant: "info" | "tip" | "warning" }
+   type KeyTermsBlock = { type: "key_terms"; terms: Array<{ term: string; definition: string }> }
+   type WineBridgeBlock = { type: "wine_bridge"; wine: string; sake: string; reason: string }
+   type SakeExampleBlock = { type: "sake_example"; name: string; brewery: string; description: string }
+   
+   type ContentBlock = TextBlock | HeadingBlock | CalloutBlock | KeyTermsBlock | WineBridgeBlock | SakeExampleBlock
+   ```
+
+2. **Defensive Rendering with Fallbacks**
+   ```typescript
+   // components/learn/ContentBlock.tsx
+   function ContentBlock({ block }: { block: ContentBlock }) {
+     try {
+       switch (block.type) {
+         case "text":
+           return <p className="text-gray-700 leading-relaxed">{block.content || ""}</p>
+         case "heading":
+           const Tag = `h${block.level || 2}` as keyof JSX.IntrinsicElements
+           return <Tag className="font-bold text-ink">{block.content || "Untitled"}</Tag>
+         case "callout":
+           return <CalloutBlock variant={block.variant || "info"} content={block.content || ""} />
+         case "key_terms":
+           if (!Array.isArray(block.terms)) return null
+           return <KeyTermsList terms={block.terms} />
+         case "wine_bridge":
+           return <WineBridgeCard {...block} />
+         case "sake_example":
+           return <SakeExampleCard {...block} />
+         default:
+           // Unknown block type - render as text fallback
+           console.warn("Unknown block type:", (block as any).type)
+           return <p className="text-gray-500 italic">[Content block]</p>
+       }
+     } catch (error) {
+       console.error("Error rendering block:", error)
+       return <p className="text-red-500 text-sm">Error rendering content</p>
+     }
+   }
+   ```
+
+3. **Validation on Save**
+   ```typescript
+   // Validate content blocks before saving to database
+   function validateContentBlocks(blocks: any[]): ContentBlock[] {
+     return blocks.filter(block => {
+       if (!block || typeof block !== "object") return false
+       if (!block.type || typeof block.type !== "string") return false
+       return true
+     }).map(block => ({
+       ...block,
+       id: block.id || crypto.randomUUID(),
+       content: block.content || ""
+     }))
+   }
+   ```
+
+4. **Start with MVP Block Types**
+   - Phase 1: `text`, `heading`, `callout` (simple, low risk)
+   - Phase 2: `key_terms`, `wine_bridge` (structured, medium risk)
+   - Phase 3: `sake_example`, `image`, `exercise` (complex, higher risk)
+
+5. **Error Boundary per Chapter**
+   ```typescript
+   // Wrap chapter content in error boundary
+   <ErrorBoundary fallback={<p>Error loading chapter content. Please refresh.</p>}>
+     <ChapterContent blocks={chapter.contentBlocks} />
+   </ErrorBoundary>
+   ```
+
+---
+
+## CONFIDENCE SCORE: 8/10
+
+**High confidence on:**
 - Schema design (follows existing patterns)
 - Convex functions (well-documented)
 - Page structure (mirrors existing pages)
 
-Medium confidence on:
-- AI generation quality (depends on prompts)
-- Quiz UX (needs iteration)
-- Content block rendering (many edge cases)
+**Mitigated risks:**
+- AI generation has human review checkpoint ✓
+- Quiz UX follows proven patterns (one question at a time, immediate feedback) ✓
+- Content blocks have type safety and fallbacks ✓
+
+**Remaining uncertainty:**
+- Actual prompt quality needs testing with real topics
+- May need to adjust passing scores based on user feedback
