@@ -22,7 +22,7 @@ export function JapanMap({ prefectureStats, onPrefectureSelect, selectedPrefectu
   useEffect(() => {
     if (!mapContainer.current || map.current) return
     
-    mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || ""
+    mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || ""
     
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
