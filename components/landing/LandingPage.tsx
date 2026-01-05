@@ -49,7 +49,7 @@ export function LandingPage() {
       <section className="bg-sakura-light py-16">
         <div className="container-retro">
           <h2 className="text-3xl font-display font-bold text-center text-ink mb-12">
-            Why Sakéverse?
+            Why Sakécosm?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <FeatureCard

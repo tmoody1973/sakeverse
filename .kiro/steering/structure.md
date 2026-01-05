@@ -2,7 +2,7 @@
 
 ## Directory Layout
 ```
-sakeverse/
+sakecosm/
 ├── app/                          # Next.js App Router
 │   ├── page.tsx                  # Home (landing or dashboard based on auth)
 │   ├── layout.tsx                # Root layout with ClerkProvider

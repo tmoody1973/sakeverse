@@ -1,4 +1,4 @@
-# Sakéverse Development Log
+# Sakécosm Development Log
 
 > **🏆 Kiro Hackathon Project** | January 3-23, 2026  
 > **Developer**: Tarik Moody  
@@ -8,7 +8,7 @@
 
 ## 📋 Project Overview
 
-**Sakéverse** is an AI-powered sake discovery platform featuring Kiki (from Kikizake 利き酒 - "sake tasting"), a voice-first sommelier agent that helps wine lovers and beginners explore Japanese sake through conversational interactions, dynamic UI generation, and personalized learning experiences.
+**Sakécosm** is an AI-powered sake discovery platform featuring Kiki (from Kikizake 利き酒 - "sake tasting"), a voice-first sommelier agent that helps wine lovers and beginners explore Japanese sake through conversational interactions, dynamic UI generation, and personalized learning experiences.
 
 ### 🎯 Core Features
 - **Voice-First Sommelier (Kiki)**: Real-time conversations using OpenAI Realtime API
@@ -1036,10 +1036,10 @@ const wineToSakeMap = {
 ```typescript
 const [sessionId, setSessionId] = useState<string | null>(null)
 useEffect(() => {
-  let id = sessionStorage.getItem('sakeverse-session')
+  let id = sessionStorage.getItem('sakecosm-session')
   if (!id) {
     id = crypto.randomUUID()
-    sessionStorage.setItem('sakeverse-session', id)
+    sessionStorage.setItem('sakecosm-session', id)
   }
   setSessionId(id)
 }, [])

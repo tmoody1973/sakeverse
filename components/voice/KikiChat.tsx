@@ -10,10 +10,10 @@ import Link from "next/link"
 
 function getSessionId() {
   if (typeof window === "undefined") return "server"
-  let id = localStorage.getItem("sakeverse_session")
+  let id = localStorage.getItem("sakecosm_session")
   if (!id) {
     id = `session_${Date.now()}_${Math.random().toString(36).slice(2)}`
-    localStorage.setItem("sakeverse_session", id)
+    localStorage.setItem("sakecosm_session", id)
   }
   return id
 }

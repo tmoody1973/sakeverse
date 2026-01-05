@@ -1,7 +1,7 @@
 # Product Overview
 
 ## Product Purpose
-Sakéverse is an AI-powered sake discovery platform featuring Kiki (利き酒 - "sake tasting"), a voice-first sommelier agent that bridges wine knowledge to sake exploration. The platform helps users translate their existing wine preferences into sake recommendations through conversational interactions and dynamic UI generation.
+Sakécosm is an AI-powered sake discovery platform featuring Kiki (利き酒 - "sake tasting"), a voice-first sommelier agent that bridges wine knowledge to sake exploration. The platform helps users translate their existing wine preferences into sake recommendations through conversational interactions and dynamic UI generation.
 
 ## Target Users
 **Primary**: Wine enthusiasts curious about sake who want guidance translating their wine preferences (e.g., "I like Pinot Noir" → "Try aged Junmai")

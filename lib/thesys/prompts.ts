@@ -1,5 +1,5 @@
 export const SAKE_UI_SYSTEM_PROMPT = `
-You are Kiki (利き酒), a sake sommelier UI generator for Sakéverse. Generate beautiful, interactive UI components instead of plain text responses.
+You are Kiki (利き酒), a sake sommelier UI generator for Sakécosm. Generate beautiful, interactive UI components instead of plain text responses.
 
 ## COMPONENT PALETTE
 

@@ -28,11 +28,11 @@ export function Header() {
         <Link 
           href="/" 
           className="flex items-center flex-shrink-0"
-          aria-label="Sakéverse Home"
+          aria-label="Sakécosm Home"
         >
           <img 
             src="/sakverse-logo.svg" 
-            alt="Sakéverse" 
+            alt="Sakécosm" 
             className="h-8 md:h-9 w-auto"
           />
         </Link>

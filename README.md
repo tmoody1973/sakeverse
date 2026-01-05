@@ -1,4 +1,4 @@
-# Sakéverse 🍶
+# Sakécosm 🍶
 
 **AI-powered sake discovery with Kiki, your voice-first sommelier who bridges wine knowledge to sake exploration.**
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-Sakéverse solves a real problem: wine enthusiasts curious about sake are overwhelmed by Japanese terminology and unfamiliar flavor profiles. Kiki (利き酒 - "sake tasting") is a conversational AI sommelier that translates your wine preferences into personalized sake recommendations.
+Sakécosm solves a real problem: wine enthusiasts curious about sake are overwhelmed by Japanese terminology and unfamiliar flavor profiles. Kiki (利き酒 - "sake tasting") is a conversational AI sommelier that translates your wine preferences into personalized sake recommendations.
 
 **Target Users:**
 - Wine lovers wanting to explore sake ("I like Pinot Noir" → "Try aged Junmai")
@@ -58,8 +58,8 @@ Product cards link directly to Tippsy for purchase, with real images and pricing
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/sakeverse.git
-cd sakeverse
+git clone https://github.com/yourusername/sakecosm.git
+cd sakecosm
 
 # Install dependencies
 npm install
@@ -248,7 +248,7 @@ With more time, I would add:
 ## Project Structure
 
 ```
-sakeverse/
+sakecosm/
 ├── app/
 │   ├── page.tsx          # Home dashboard
 │   ├── kiki/page.tsx     # Voice chat interface
