@@ -75,8 +75,13 @@ function Dashboard({ userId }: { userId?: string }) {
   
   // Calculate stats
   const sakeTried = library?.length || 0
-  const currentCourse = courseProgress?.inProgress?.[0] as { _id: string; title: string; slug: string; progress: number } | undefined
-  const coursesInProgress = courseProgress?.inProgress?.length || 0
+  // Get course that's actually in progress (not 100% complete)
+  const allInProgress = courseProgress?.inProgress || []
+  const inProgressCourses = allInProgress.filter(
+    (c) => c && c.progress !== undefined && c.progress < 100
+  )
+  const currentCourse = inProgressCourses[0] as { _id: string; title: string; slug: string; progress: number } | undefined
+  const coursesInProgress = inProgressCourses.length
   const displayWine = matchedKey || primaryWine
 
   return (
