@@ -18,21 +18,43 @@ Sakécosm solves a real problem: wine enthusiasts curious about sake are overwhe
 ### 🎤 Voice-First Sommelier (Kiki)
 Real-time voice conversations using OpenAI Realtime API with WebRTC for sub-200ms latency. Ask questions naturally and get personalized recommendations.
 
+### 🗾 Interactive Japan Map
+Explore sake regions with an interactive Mapbox-powered map of Japan's 47 prefectures:
+- Click any prefecture to see local breweries and products
+- AI-generated regional descriptions via Perplexity (cached for all users)
+- Color-coded prefectures showing which have brewery data
+- Regional sake styles, key characteristics, and famous breweries
+
+### 📚 Learning System with Gamification
+Complete sake courses with AI-generated content:
+- **Courses & Chapters**: Structured learning paths on sake fundamentals, brewing, tasting
+- **Quizzes**: Test knowledge with chapter quizzes and final exams
+- **XP & Levels**: Earn 25 XP per chapter, 50-100 XP per quiz
+- **10 Badge Levels**: From "Sake Curious" to "Sake Grandmaster" with Stardew Valley-style artwork
+- **Progress Tracking**: Dashboard shows real stats from Convex
+
 ### 🧠 Multi-Layer RAG System
-- **Vector Search**: 104 Tippsy products with semantic matching
+- **Vector Search**: 104 Tippsy products with semantic matching (OpenAI embeddings)
 - **Wine-to-Sake Knowledge**: 13 pre-chunked wine preference translations
 - **Food Pairing RAG**: 9 knowledge chunks for pairing recommendations
 - **Gemini File Search**: 5 PDF sake books for deep expertise
-- **Perplexity API**: Real-time web search for current trends
+- **Perplexity API**: Real-time web search for current trends and prefecture descriptions
 
 ### 🎨 Dynamic UI Generation
 Thesys C1 generates React components during conversations—sake cards with images, temperature guides, comparison tables, and more.
 
+### 📊 Personalized Dashboard
+- Real user stats (XP, level, badge) from Convex
+- Wine-to-sake recommendations based on preferences
+- Food pairing of the day
+- Course progress tracking
+- Personalized sake recommendations based on taste preferences
+
 ### 📚 User Sake Library
-Save favorite sake to your personal library. Session-based storage works without authentication.
+Save favorite sake to your personal library with Clerk authentication.
 
 ### 🛒 Tippsy Integration
-Product cards link directly to Tippsy for purchase, with real images and pricing.
+Product cards link directly to Tippsy for purchase, with real images and pricing from 104 imported products.
 
 ## Tech Stack
 
@@ -42,9 +64,25 @@ Product cards link directly to Tippsy for purchase, with real images and pricing
 | Backend | Convex (realtime database, serverless functions) |
 | Voice | OpenAI Realtime API (WebRTC) |
 | Dynamic UI | Thesys C1 with Claude Sonnet 4 |
+| Maps | Mapbox GL JS, react-map-gl |
 | RAG | Gemini File Search, Perplexity API, OpenAI Embeddings |
-| Auth | Clerk (optional) |
+| Auth | Clerk |
 | Styling | RetroUI neobrutalism + cherry blossom theme |
+
+## Pages & Routes
+
+| Route | Description |
+|-------|-------------|
+| `/` | Dashboard with stats, recommendations, course progress |
+| `/kiki` | Voice chat with Kiki sommelier |
+| `/discover` | Browse 104 sake products with filters |
+| `/map` | Interactive Japan prefecture map |
+| `/learn` | Course catalog with progress tracking |
+| `/learn/[slug]` | Course detail with chapter list |
+| `/learn/[slug]/[chapter]` | Chapter content with quiz |
+| `/library` | Saved sake collection |
+| `/settings` | Edit taste preferences |
+| `/admin/learn` | AI course generator (admin only) |
 
 ## Getting Started
 
@@ -52,14 +90,14 @@ Product cards link directly to Tippsy for purchase, with real images and pricing
 - Node.js 18+
 - npm or yarn
 - Convex account (free tier works)
-- API keys for: OpenAI, Thesys, Gemini, Perplexity (optional)
+- API keys for: OpenAI, Thesys, Gemini, Perplexity, Mapbox, Clerk
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/sakecosm.git
-cd sakecosm
+git clone https://github.com/tmoody1973/sakeverse.git
+cd sakeverse
 
 # Install dependencies
 npm install
@@ -83,9 +121,12 @@ OPENAI_API_KEY=sk-...
 # Thesys C1 (for dynamic UI)
 THESYS_API_KEY=...
 
-# Clerk (optional - for auth)
+# Clerk (for auth)
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_...
 CLERK_SECRET_KEY=sk_...
+
+# Mapbox (for Japan map)
+NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=pk...
 ```
 
 Set Convex environment variables:
@@ -118,59 +159,86 @@ npx convex run wineToSake:importWineToSakeKnowledge
 
 # Import food pairing knowledge
 npx convex run foodPairing:importFoodPairingKnowledge
+
+# Import brewery data
+npx convex run sakeBreweries:importBreweries
+
+# Seed learning categories and sample course
+npx convex run learn/seed:seedCategories
+npx convex run learn/seed:seedSampleCourse
 ```
 
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    User Interface                        │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐  │
-│  │ Voice Chat  │  │  C1 Chat    │  │  Library Page   │  │
-│  │ (Realtime)  │  │ (Streaming) │  │  (Saved Sake)   │  │
-│  └──────┬──────┘  └──────┬──────┘  └────────┬────────┘  │
-└─────────┼────────────────┼──────────────────┼───────────┘
-          │                │                  │
-          ▼                ▼                  ▼
-┌─────────────────────────────────────────────────────────┐
-│                   Query Router                           │
-│  Wine preference? → Wine-to-Sake RAG                    │
-│  Product search?  → Vector Search (Tippsy)              │
-│  Food pairing?    → Food Pairing RAG                    │
-│  Knowledge?       → Gemini File Search                  │
-│  Current info?    → Perplexity API                      │
-│  Visual UI?       → Thesys C1                           │
-└─────────────────────────────────────────────────────────┘
-          │
-          ▼
-┌─────────────────────────────────────────────────────────┐
-│                   Convex Backend                         │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌─────────┐  │
-│  │ Products │  │Knowledge │  │ Library  │  │ Users   │  │
-│  │ (Vector) │  │ Chunks   │  │ (Saved)  │  │         │  │
-│  └──────────┘  └──────────┘  └──────────┘  └─────────┘  │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                        User Interface                            │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────┐ │
+│  │Dashboard │ │Voice Chat│ │Japan Map │ │ Learning │ │Library │ │
+│  └────┬─────┘ └────┬─────┘ └────┬─────┘ └────┬─────┘ └───┬────┘ │
+└───────┼────────────┼────────────┼────────────┼───────────┼──────┘
+        │            │            │            │           │
+        ▼            ▼            ▼            ▼           ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      Query Router                                │
+│  Wine preference? → Wine-to-Sake RAG                            │
+│  Product search?  → Vector Search (104 products)                │
+│  Food pairing?    → Food Pairing RAG                            │
+│  Prefecture info? → Perplexity API (cached)                     │
+│  Knowledge?       → Gemini File Search (5 PDFs)                 │
+│  Visual UI?       → Thesys C1                                   │
+└─────────────────────────────────────────────────────────────────┘
+        │
+        ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      Convex Backend                              │
+│  ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌─────────────────┐  │
+│  │ Products  │ │ Breweries │ │  Courses  │ │ User Progress   │  │
+│  │ (Vector)  │ │ (50+)     │ │ Chapters  │ │ XP, Levels      │  │
+│  └───────────┘ └───────────┘ │ Quizzes   │ │ Quiz Attempts   │  │
+│  ┌───────────┐ ┌───────────┐ └───────────┘ └─────────────────┘  │
+│  │ Knowledge │ │Prefecture │ ┌───────────┐ ┌─────────────────┐  │
+│  │ Chunks    │ │Descriptions│ │  Users    │ │ Recommendations │  │
+│  └───────────┘ └───────────┘ └───────────┘ └─────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
 ```
+
+## Gamification System
+
+### XP Rewards
+| Action | XP Earned |
+|--------|-----------|
+| Complete chapter | +25 XP |
+| Pass quiz (first time) | +50 XP |
+| Perfect quiz score | +100 XP |
+
+### Level Progression
+| Level | Title | XP Required |
+|-------|-------|-------------|
+| 1 | Sake Curious | 0 |
+| 2 | Sake Novice | 100 |
+| 3 | Sake Student | 300 |
+| 4 | Sake Enthusiast | 600 |
+| 5 | Sake Connoisseur | 1,000 |
+| 6 | Sake Expert | 1,500 |
+| 7 | Sake Master | 2,500 |
+| 8 | Sake Sensei | 4,000 |
+| 9 | Sake Legend | 6,000 |
+| 10 | Sake Grandmaster | 10,000 |
 
 ## Kiro CLI Workflow
 
 This project was built entirely with Kiro CLI, demonstrating AI-assisted development at scale.
 
-### Custom Prompts Created (18 total)
+### Custom Prompts Created
 
 | Prompt | Purpose |
 |--------|---------|
 | `@prime` | Load project context at session start |
 | `@plan-feature` | Create comprehensive implementation plans |
 | `@execute` | Systematic task execution |
-| `@plan-rag` | Design multi-source RAG architecture |
-| `@enhance-voice-agent` | Refine Kiki's personality and capabilities |
+| `@code-review` | Technical code review pre-commit |
 | `@update-devlog` | Maintain development documentation |
-| `@test-rag` | Validate RAG system responses |
-| `@code-review` | Technical code review |
-| `@code-review-hackathon` | Hackathon submission evaluation |
-| `@write-readme` | Generate comprehensive README |
-| `@update-steering` | Refine steering documents |
 
 ### Steering Documents
 
@@ -181,100 +249,42 @@ This project was built entirely with Kiro CLI, demonstrating AI-assisted develop
 ### Development Pattern
 
 ```
-@prime → @plan-feature → @execute → @code-review → @update-devlog
+@prime → @plan-feature → @execute → @code-review → commit
 ```
-
-### Time Savings
-
-| Task | Manual Estimate | With Kiro | Savings |
-|------|-----------------|-----------|---------|
-| Project setup | 4 hours | 45 min | 81% |
-| Feature planning | 2 hours | 30 min | 75% |
-| RAG implementation | 8 hours | 2 hours | 75% |
-| Documentation | 3 hours | 30 min | 83% |
-
-## Demo
-
-🎥 **Video Demo**: [Coming Soon]
-
-### Key Interactions
-
-1. **Wine-to-Sake Translation**
-   > "I love Pinot Noir, what sake should I try?"
-   > → Kiki recommends aged Junmai or Koshu with explanation
-
-2. **Food Pairing**
-   > "What sake goes with spicy Korean BBQ?"
-   > → Kiki suggests off-dry Junmai with cooling effect
-
-3. **Product Discovery**
-   > "Show me smooth sake under $50"
-   > → Dynamic UI cards with images, prices, Tippsy links
-
-4. **Save to Library**
-   > "Save that Dassai 23 for later"
-   > → Added to personal library, accessible at /library
-
-## Development Journey
-
-### Day 1 (Jan 3)
-- Project setup with `@quickstart`
-- RetroUI design system implementation
-- Convex schema and foundation
-
-### Day 2 (Jan 4)
-- Complete RAG triad (Vector + Gemini + Perplexity)
-- Agent rebrand: Yuki → Kiki (利き酒)
-- Wine-to-sake knowledge base (13 chunks)
-- Thesys C1 dynamic UI integration
-- User library feature
-- Food pairing RAG (9 chunks)
-
-### Challenges Solved
-- **Streaming with runTools**: Manual iteration over ChatCompletionStreamingRunner
-- **Gemini File API**: Correct resumable upload protocol via Context7 MCP
-- **C1Chat integration**: Overlay pattern for voice controls on C1Chat
-
-## Future Improvements
-
-With more time, I would add:
-
-- **Interactive Japan Map**: Mapbox GL with prefecture-based brewery exploration
-- **AI-Generated Podcasts**: Multi-speaker educational content with Gemini TTS
-- **Badge System**: WSET-style certifications and progress tracking
-- **Temperature Lab**: Interactive serving temperature recommendations
-- **Brewery Deep Dives**: Detailed brewery profiles with history and specialties
 
 ## Project Structure
 
 ```
 sakecosm/
 ├── app/
-│   ├── page.tsx          # Home dashboard
-│   ├── kiki/page.tsx     # Voice chat interface
-│   ├── library/          # Saved sake library
-│   └── api/c1/chat/      # C1 API route with tools
+│   ├── page.tsx              # Dashboard
+│   ├── kiki/                 # Voice chat
+│   ├── map/                  # Japan prefecture map
+│   ├── learn/                # Learning system
+│   ├── discover/             # Product catalog
+│   ├── library/              # Saved sake
+│   ├── settings/             # User preferences
+│   └── admin/learn/          # Course generator
 ├── components/
-│   ├── ui/               # RetroUI components
-│   ├── voice/            # Voice chat components
-│   └── layout/           # Header, BottomNav
+│   ├── map/                  # JapanMap, PrefecturePanel
+│   ├── voice/                # KikiChat, VoiceControls
+│   ├── ui/                   # RetroUI components
+│   └── layout/               # Header, BottomNav
 ├── convex/
-│   ├── schema.ts         # Database schema
-│   ├── sake.ts           # Product queries
-│   ├── embeddings.ts     # Vector search
-│   ├── wineToSake.ts     # Wine preference RAG
-│   ├── foodPairing.ts    # Food pairing RAG
-│   ├── geminiRAG.ts      # PDF knowledge search
-│   ├── perplexityAPI.ts  # Live web search
-│   └── userLibrary.ts    # Saved sake functions
-├── hooks/
-│   └── useVoiceChat.ts   # OpenAI Realtime integration
-├── lib/
-│   └── thesys/           # C1 client and prompts
-└── .kiro/
-    ├── steering/         # Product, tech, structure docs
-    └── prompts/          # 18 custom development prompts
+│   ├── schema.ts             # Database schema
+│   ├── map.ts                # Prefecture queries + Perplexity
+│   ├── learn/                # Courses, progress, quizzes
+│   ├── gamification.ts       # XP, levels, badges
+│   ├── recommendations.ts    # Personalized sake recs
+│   └── embeddings.ts         # Vector search
+└── public/
+    ├── badges/               # 10 level badge images
+    └── japan-prefectures.geojson
 ```
+
+## Live Demo
+
+🌐 **Production**: [https://dynamous-kiro-hackathon.vercel.app](https://dynamous-kiro-hackathon.vercel.app)
 
 ## License
 
