@@ -2,6 +2,32 @@ import { action } from "../_generated/server"
 import { v } from "convex/values"
 import { api } from "../_generated/api"
 
+// Helper to retry Gemini calls with delay on rate limit
+async function fetchWithRetry(apiKey: string, prompt: string, maxTokens: number, retries = 3): Promise<Response> {
+  for (let i = 0; i < retries; i++) {
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { temperature: 0.7, maxOutputTokens: maxTokens }
+        })
+      }
+    )
+    
+    if (response.ok) return response
+    if (response.status === 429 && i < retries - 1) {
+      // Wait 5 seconds before retry
+      await new Promise(r => setTimeout(r, 5000))
+      continue
+    }
+    throw new Error(`Gemini error: ${response.status}`)
+  }
+  throw new Error("Max retries exceeded")
+}
+
 // Generate course outline using Perplexity + Gemini
 export const generateCourseOutline = action({
   args: {
@@ -54,19 +80,7 @@ Make it educational, engaging, and appropriate for sake beginners to intermediat
 Include wine bridge comparisons where relevant.
 Return ONLY valid JSON, no markdown.`
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { temperature: 0.7, maxOutputTokens: 2000 }
-        })
-      }
-    )
-
-    if (!response.ok) throw new Error(`Gemini error: ${response.status}`)
+    const response = await fetchWithRetry(geminiApiKey, prompt, 2000)
     
     const result = await response.json()
     const text = result.candidates?.[0]?.content?.parts?.[0]?.text || ""
@@ -120,19 +134,7 @@ Block types available:
 Write 800-1200 words of educational content. Include 2-3 key terms.
 Return ONLY valid JSON array, no markdown.`
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { temperature: 0.7, maxOutputTokens: 3000 }
-        })
-      }
-    )
-
-    if (!response.ok) throw new Error(`Gemini error: ${response.status}`)
+    const response = await fetchWithRetry(geminiApiKey, prompt, 3000)
     
     const result = await response.json()
     const text = result.candidates?.[0]?.content?.parts?.[0]?.text || ""
@@ -182,19 +184,7 @@ Mix question types: multiple_choice and true_false.
 Make questions test understanding, not just memorization.
 Return ONLY valid JSON array.`
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { temperature: 0.5, maxOutputTokens: 2000 }
-        })
-      }
-    )
-
-    if (!response.ok) throw new Error(`Gemini error: ${response.status}`)
+    const response = await fetchWithRetry(geminiApiKey, prompt, 2000)
     
     const result = await response.json()
     const text = result.candidates?.[0]?.content?.parts?.[0]?.text || ""
