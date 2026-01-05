@@ -141,6 +141,58 @@ function Dashboard() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Wine-to-Sake Tip */}
+          <Card className="bg-gradient-to-br from-plum-dark/10 to-sakura-light border-plum-dark/20">
+            <CardContent className="p-4">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">🍷</div>
+                <div>
+                  <p className="text-xs text-plum-dark font-medium mb-1">Based on your Pinot Noir preference</p>
+                  <p className="text-sm text-ink font-semibold">Try aged Junmai or Koshu</p>
+                  <p className="text-xs text-gray-600 mt-1">Similar earthy, elegant notes</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Food Pairing of the Day */}
+          <Card className="bg-gradient-to-br from-sake-warm/30 to-white">
+            <CardContent className="p-4">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">🍜</div>
+                <div>
+                  <p className="text-xs text-gray-500 font-medium mb-1">Tonight's Pairing</p>
+                  <p className="text-sm text-ink font-semibold">Ramen + Junmai Ginjo</p>
+                  <p className="text-xs text-gray-600 mt-1">Rich broth meets clean finish</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Your Library Preview */}
+          <Card>
+            <CardContent className="p-4">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-sm font-semibold text-ink">Your Library</span>
+                <Link href="/library" className="text-xs text-plum-dark hover:underline">View all →</Link>
+              </div>
+              <div className="space-y-2">
+                {[
+                  { name: "Dassai 23", type: "Daiginjo" },
+                  { name: "Hakkaisan", type: "Ginjo" },
+                ].map((sake, i) => (
+                  <div key={i} className="flex items-center gap-2 p-2 bg-sakura-light/50 rounded-lg">
+                    <span className="text-lg">🍶</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-ink truncate">{sake.name}</p>
+                      <p className="text-xs text-gray-500">{sake.type}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
 
