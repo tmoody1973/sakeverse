@@ -64,6 +64,9 @@ function Dashboard({ userId }: { userId?: string }) {
     sessionId ? { sessionId } : "skip"
   )
   
+  // Debug: log preferences
+  console.log("User preferences:", preferences)
+  
   // Get first wine preference for the tip
   const winePrefs = preferences?.winePreferences || []
   const primaryWine = winePrefs.find(w => w !== "None") || null
