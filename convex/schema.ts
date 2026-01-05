@@ -487,4 +487,16 @@ export default defineSchema({
     .index("by_prefecture", ["prefecture"])
     .index("by_region", ["region"])
     .index("by_name", ["breweryName"]),
+
+  // Cached prefecture descriptions from Perplexity
+  prefectureDescriptions: defineTable({
+    prefecture: v.string(),
+    overview: v.string(),
+    sakeStyle: v.string(),
+    famousBreweries: v.array(v.string()),
+    keyCharacteristics: v.array(v.string()),
+    recommendedSake: v.array(v.string()),
+    createdAt: v.number(),
+  })
+    .index("by_prefecture", ["prefecture"]),
 });
