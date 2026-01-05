@@ -11,7 +11,7 @@ import { Mic, Play, MapPin, BookOpen, TrendingUp, Star } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
 import { LandingPage } from "@/components/landing/LandingPage"
-import { FoodPairingWidget } from "@/components/dashboard/FoodPairingWidget"
+import { FoodPairingExpandable } from "@/components/dashboard/FoodPairingExpandable"
 
 const DashboardContent = dynamic(
   () => import("@/components/dashboard/DashboardContent").then(mod => mod.DashboardContent),
@@ -219,7 +219,16 @@ function Dashboard({ userId }: { userId?: string }) {
           </Card>
 
           {/* Food Pairing of the Day */}
-          <FoodPairingWidget />
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg flex items-center gap-2">
+                <span>🍜</span> Food Pairings
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <FoodPairingExpandable />
+            </CardContent>
+          </Card>
 
           {/* Your Library Preview */}
           <Card>
