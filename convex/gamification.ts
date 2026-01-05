@@ -111,3 +111,35 @@ export const getXPRewards = query({
 export const getLevels = query({
   handler: () => LEVELS,
 })
+
+
+// Debug: List all users (admin only)
+export const listAllUsers = query({
+  handler: async (ctx) => {
+    const users = await ctx.db.query("users").collect()
+    return users.map(u => ({ 
+      clerkId: u.clerkId, 
+      email: u.email, 
+      xp: u.xp, 
+      level: u.level 
+    }))
+  },
+})
+
+
+// Fix levels for all users based on XP
+export const fixAllLevels = mutation({
+  handler: async (ctx) => {
+    const users = await ctx.db.query("users").collect()
+    for (const user of users) {
+      const xp = user.xp
+      const level = xp >= 10000 ? 10 : xp >= 6000 ? 9 : xp >= 4000 ? 8 : 
+                   xp >= 2500 ? 7 : xp >= 1500 ? 6 : xp >= 1000 ? 5 :
+                   xp >= 600 ? 4 : xp >= 300 ? 3 : xp >= 100 ? 2 : 1
+      if (user.level !== level) {
+        await ctx.db.patch(user._id, { level })
+      }
+    }
+    return { fixed: users.length }
+  },
+})

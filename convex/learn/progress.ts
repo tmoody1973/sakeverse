@@ -110,8 +110,13 @@ export const markChapterRead = mutation({
         .first()
       
       if (user) {
+        const newXP = user.xp + 25
+        const newLevel = newXP >= 10000 ? 10 : newXP >= 6000 ? 9 : newXP >= 4000 ? 8 : 
+                         newXP >= 2500 ? 7 : newXP >= 1500 ? 6 : newXP >= 1000 ? 5 :
+                         newXP >= 600 ? 4 : newXP >= 300 ? 3 : newXP >= 100 ? 2 : 1
         await ctx.db.patch(user._id, {
-          xp: user.xp + 25,
+          xp: newXP,
+          level: newLevel,
           updatedAt: Date.now(),
         })
       }
