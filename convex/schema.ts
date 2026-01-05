@@ -183,40 +183,136 @@ export default defineSchema({
   })
     .index("by_prefecture", ["prefecture"]),
 
-  // Learning System
+  // ============================================
+  // LEARNING SYSTEM TABLES (Enhanced)
+  // ============================================
+
   courses: defineTable({
+    slug: v.string(),
     title: v.string(),
+    subtitle: v.optional(v.string()),
     description: v.string(),
-    level: v.string(), // "Beginner", "Intermediate", "Advanced"
-    icon: v.string(),
-    color: v.string(),
-    prerequisites: v.array(v.id("courses")),
-    lessons: v.array(v.object({
-      id: v.string(),
-      title: v.string(),
-      description: v.string(),
-      content: v.string(),
-      quiz: v.optional(v.array(v.object({
-        question: v.string(),
-        options: v.array(v.string()),
-        correct: v.number(),
-        explanation: v.string(),
-      }))),
-      xpReward: v.number(),
-    })),
-    totalXp: v.number(),
-    estimatedTime: v.number(), // minutes
+    coverImage: v.optional(v.string()),
+    category: v.string(),
+    tags: v.array(v.string()),
+    learningOutcomes: v.array(v.string()),
+    estimatedMinutes: v.number(),
+    chapterCount: v.number(),
+    generatedBy: v.union(v.literal("ai"), v.literal("manual")),
+    aiPrompt: v.optional(v.string()),
+    status: v.union(v.literal("draft"), v.literal("published"), v.literal("archived")),
+    publishedAt: v.optional(v.number()),
+    enrollmentCount: v.number(),
+    completionCount: v.number(),
     createdAt: v.number(),
     updatedAt: v.number(),
-  }),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_status", ["status"])
+    .index("by_category", ["category"]),
 
-  // User Progress
+  chapters: defineTable({
+    courseId: v.id("courses"),
+    order: v.number(),
+    title: v.string(),
+    description: v.optional(v.string()),
+    contentBlocks: v.array(v.object({
+      id: v.string(),
+      type: v.string(),
+      content: v.any(),
+    })),
+    learningObjectives: v.array(v.string()),
+    keyTerms: v.array(v.object({
+      term: v.string(),
+      pronunciation: v.optional(v.string()),
+      definition: v.string(),
+    })),
+    estimatedMinutes: v.number(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_course", ["courseId"])
+    .index("by_course_order", ["courseId", "order"]),
+
+  quizzes: defineTable({
+    courseId: v.id("courses"),
+    chapterId: v.optional(v.id("chapters")),
+    type: v.union(v.literal("chapter_review"), v.literal("course_final")),
+    title: v.string(),
+    passingScore: v.number(),
+    createdAt: v.number(),
+  })
+    .index("by_course", ["courseId"])
+    .index("by_chapter", ["chapterId"]),
+
+  questions: defineTable({
+    quizId: v.id("quizzes"),
+    order: v.number(),
+    type: v.union(v.literal("multiple_choice"), v.literal("true_false")),
+    question: v.string(),
+    options: v.array(v.object({
+      id: v.string(),
+      text: v.string(),
+    })),
+    correctAnswers: v.array(v.string()),
+    explanation: v.string(),
+    points: v.number(),
+    createdAt: v.number(),
+  })
+    .index("by_quiz", ["quizId"]),
+
+  userCourseProgress: defineTable({
+    clerkId: v.string(),
+    courseId: v.id("courses"),
+    status: v.union(v.literal("not_started"), v.literal("in_progress"), v.literal("completed")),
+    readChapterIds: v.array(v.id("chapters")),
+    passedQuizIds: v.array(v.id("quizzes")),
+    totalTimeSpent: v.number(),
+    startedAt: v.number(),
+    completedAt: v.optional(v.number()),
+    updatedAt: v.number(),
+  })
+    .index("by_user", ["clerkId"])
+    .index("by_user_course", ["clerkId", "courseId"]),
+
+  quizAttempts: defineTable({
+    clerkId: v.string(),
+    quizId: v.id("quizzes"),
+    courseId: v.id("courses"),
+    score: v.number(),
+    maxScore: v.number(),
+    percentage: v.number(),
+    passed: v.boolean(),
+    answers: v.array(v.object({
+      questionId: v.id("questions"),
+      selectedAnswers: v.array(v.string()),
+      isCorrect: v.boolean(),
+    })),
+    attemptNumber: v.number(),
+    completedAt: v.number(),
+  })
+    .index("by_user", ["clerkId"])
+    .index("by_user_quiz", ["clerkId", "quizId"]),
+
+  learnCategories: defineTable({
+    slug: v.string(),
+    name: v.string(),
+    description: v.optional(v.string()),
+    icon: v.optional(v.string()),
+    displayOrder: v.number(),
+    isActive: v.boolean(),
+    createdAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_active", ["isActive"]),
+
+  // User Progress (legacy - keeping for compatibility)
   userProgress: defineTable({
     userId: v.id("users"),
     courseId: v.id("courses"),
     completedLessons: v.array(v.string()),
     currentLesson: v.optional(v.string()),
-    progress: v.number(), // 0-100
+    progress: v.number(),
     xpEarned: v.number(),
     startedAt: v.number(),
     lastAccessedAt: v.number(),
