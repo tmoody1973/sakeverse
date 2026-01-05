@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useMemo } from "react"
 import Map, { Layer, Source } from "react-map-gl/mapbox"
 import "mapbox-gl/dist/mapbox-gl.css"
 
@@ -16,8 +16,13 @@ function normalizeGeoJsonName(name: string): string {
 
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "pk.eyJ1IjoidG1vb2R5MTk3MyIsImEiOiJjbWsxbXFobjcwN3NzM2Zwdnc2Zm5rMmV2In0.X-FrW3N8GF9JzLWDL6q9Nw"
 
-export function JapanMap({ onPrefectureSelect, selectedPrefecture }: JapanMapProps) {
+export function JapanMap({ prefectureStats, onPrefectureSelect, selectedPrefecture }: JapanMapProps) {
   const [cursor, setCursor] = useState("grab")
+
+  // Build list of prefecture names (with Ken suffix) that have breweries
+  const prefecturesWithBreweries = useMemo(() => {
+    return Object.keys(prefectureStats).map(name => `${name} Ken`)
+  }, [prefectureStats])
 
   const onClick = useCallback((event: any) => {
     const feature = event.features?.[0]
@@ -30,6 +35,14 @@ export function JapanMap({ onPrefectureSelect, selectedPrefecture }: JapanMapPro
 
   const onMouseEnter = useCallback(() => setCursor("pointer"), [])
   const onMouseLeave = useCallback(() => setCursor("grab"), [])
+
+  // Color expression: pink if has breweries, gray if not
+  const fillColor: any = [
+    "case",
+    ["in", ["get", "nam"], ["literal", prefecturesWithBreweries]],
+    "#FFBAD2", // sakura-pink for prefectures with breweries
+    "#e5e5e5"  // gray for others
+  ]
 
   return (
     <Map
@@ -52,7 +65,7 @@ export function JapanMap({ onPrefectureSelect, selectedPrefecture }: JapanMapPro
           id="prefecture-fills"
           type="fill"
           paint={{
-            "fill-color": "#FFE4EC",
+            "fill-color": fillColor,
             "fill-opacity": 0.7,
           }}
         />
@@ -69,8 +82,8 @@ export function JapanMap({ onPrefectureSelect, selectedPrefecture }: JapanMapPro
           type="fill"
           filter={["==", ["get", "nam"], selectedPrefecture ? `${selectedPrefecture} Ken` : ""]}
           paint={{
-            "fill-color": "#FFBAD2",
-            "fill-opacity": 0.9,
+            "fill-color": "#6B4E71", // plum-dark when selected
+            "fill-opacity": 0.8,
           }}
         />
       </Source>
