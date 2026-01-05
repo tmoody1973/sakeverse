@@ -22,6 +22,7 @@ import type * as learn_generation from "../learn/generation.js";
 import type * as learn_progress from "../learn/progress.js";
 import type * as learn_quizzes from "../learn/quizzes.js";
 import type * as learn_seed from "../learn/seed.js";
+import type * as map from "../map.js";
 import type * as pairingTips from "../pairingTips.js";
 import type * as perplexityAPI from "../perplexityAPI.js";
 import type * as recommendations from "../recommendations.js";
@@ -52,6 +53,7 @@ declare const fullApi: ApiFromModules<{
   "learn/progress": typeof learn_progress;
   "learn/quizzes": typeof learn_quizzes;
   "learn/seed": typeof learn_seed;
+  map: typeof map;
   pairingTips: typeof pairingTips;
   perplexityAPI: typeof perplexityAPI;
   recommendations: typeof recommendations;

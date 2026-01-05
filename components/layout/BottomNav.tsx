@@ -2,15 +2,15 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, Search, Mic, BookOpen, User } from "lucide-react"
+import { Home, Search, Mic, BookOpen, Map } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navigation = [
   { name: "Home", href: "/", icon: Home },
   { name: "Discover", href: "/discover", icon: Search },
+  { name: "Map", href: "/map", icon: Map },
   { name: "Kiki", href: "/kiki", icon: Mic },
   { name: "Learn", href: "/learn", icon: BookOpen },
-  { name: "Profile", href: "/profile", icon: User },
 ]
 
 export function BottomNav() {
