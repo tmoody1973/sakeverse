@@ -1,5 +1,13 @@
-import { mutation, query, internalMutation } from "./_generated/server"
+import { mutation, query, internalMutation, internalQuery } from "./_generated/server"
 import { v } from "convex/values"
+
+// Internal query to get episode
+export const getByIdInternal = internalQuery({
+  args: { episodeId: v.id("podcastEpisodes") },
+  handler: async (ctx, { episodeId }) => {
+    return await ctx.db.get(episodeId)
+  },
+})
 
 // Create a new episode
 export const create = internalMutation({
@@ -77,6 +85,27 @@ export const updateStatus = internalMutation({
   handler: async (ctx, { episodeId, status }) => {
     await ctx.db.patch(episodeId, {
       status,
+      updatedAt: Date.now(),
+    })
+  },
+})
+
+// Update audio
+export const updateAudio = internalMutation({
+  args: {
+    episodeId: v.id("podcastEpisodes"),
+    audio: v.object({
+      storageId: v.id("_storage"),
+      url: v.string(),
+      duration: v.number(),
+      format: v.string(),
+      generatedAt: v.number(),
+    }),
+  },
+  handler: async (ctx, { episodeId, audio }) => {
+    await ctx.db.patch(episodeId, {
+      audio,
+      status: "review",
       updatedAt: Date.now(),
     })
   },
