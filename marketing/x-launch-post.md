@@ -1,116 +1,88 @@
-# Sakécosm Launch Post - X.com
+# Sakécosm X.com Post - Build in Public
 
 ---
 
-## The Problem
+## Main Post
 
-80M+ Americans drink wine. Most are terrified of sake menus.
+Been building something for the past 3 days and I'm hyped to share it.
 
-I'm a certified sake professional, and I see it every day:
-- Sake education is fragmented, academic, and intimidating
-- Wine vocabulary doesn't translate ("Is Junmai like Pinot?")
-- There's no bridge between curiosity and confident purchase
+I'm a certified sake professional and I keep seeing the same thing: wine lovers curious about sake but completely lost when they see a menu. "Is Junmai like... Merlot?" 
 
-So I built one.
+So I built Sakécosm — an AI sake sommelier that actually speaks wine.
 
----
+The voice agent is named Kiki (short for kikizake 利き酒, meaning "sake tasting"). You can literally tell her "I love Pinot Noir" and she'll explain which sake has that same earthy, elegant vibe.
 
-## Introducing Sakécosm 🍶
+Built with @OpenAI's realtime API so conversations feel natural, not robotic.
 
-An AI-powered sake mastery platform that transforms beginners into connoisseurs.
+The catalog connects to @TippsySake — they're my go-to for quality sake and their product data made this possible. Real bottles, real prices, real purchase links.
 
-Meet **Kiki** (利き酒 - "sake tasting") — your voice-first sake sommelier.
+Other stuff I crammed in:
+- Interactive map of Japan's 47 sake regions (click a prefecture, get AI-generated info)
+- Wine-to-sake translator 
+- Gamified learning with XP and badges
+- Dynamic UI that generates sake cards and comparisons on the fly
 
-Tell Kiki you love Pinot Noir. She'll recommend an aged Junmai with similar earthy elegance.
+Tech stack for the nerds: Next.js 15, Convex, OpenAI Realtime, Thesys C1, Mapbox, Perplexity API. All built with @KiroDev CLI for the hackathon.
 
-Mention you're having ramen tonight. She'll suggest the perfect pairing and explain *why* it works.
+Try it: https://dynamous-kiro-hackathon.vercel.app
 
----
+Ask Kiki something like "what sake pairs with ramen?" or "I like Sauvignon Blanc, help me out"
 
-## What Makes It Different
+Still rough around the edges but the core is there. Sake shouldn't be intimidating — it should be fun to explore.
 
-**🎤 Voice Sommelier**
-Real conversations, not chatbots. Built on @OpenAI's Realtime API for sub-200ms responses. Ask anything, naturally.
-
-**🎨 Dynamic UI**
-Rich visual responses — sake cards, temperature guides, comparison tables — generated on the fly with @ThesysAI's C1.
-
-**🗾 Interactive Japan Map**
-Explore all 47 sake-producing prefectures. Click Niigata, learn why it's the "Burgundy of sake." AI-generated regional guides powered by @peraborgs.
-
-**🍷 Wine Bridge**
-The killer feature. Your wine preferences become sake recommendations. Chardonnay lover? Try Kimoto-style Junmai. Riesling fan? Nigori awaits.
-
-**📚 Gamified Learning**
-AI-generated courses. Quizzes. XP. 10 badge levels from "Sake Curious" to "Sake Grandmaster." Learning should be fun.
-
-**🛒 Real Products**
-Connected to @TippsySake's catalog — 100+ premium sakes with real images, prices, and one-click purchase.
+🍶
 
 ---
 
-## The Tech
+## Shorter Version (if needed)
 
-Built in 3 days for the @KiroDev hackathon:
+3 days of building, finally sharing:
 
-- Next.js 15 + TypeScript
-- Convex (realtime backend)
-- OpenAI Realtime API (voice)
-- Thesys C1 (dynamic UI)
-- Mapbox GL (maps)
-- Perplexity API (live knowledge)
-- Clerk (auth)
+I'm a certified sake pro and wine lovers keep asking me "where do I even start with sake?"
 
-100% built with Kiro CLI — AI-assisted development that actually works.
+So I built Sakécosm — an AI sommelier that translates wine preferences into sake recommendations.
 
----
+Voice agent named Kiki (kikizake = sake tasting). Tell her you love Pinot Noir, she'll find you something with similar vibes.
 
-## Try It
+Connected to @TippsySake's catalog for real products. Interactive Japan map. Gamified learning. The works.
 
-🌐 https://dynamous-kiro-hackathon.vercel.app
+Built with @OpenAI realtime API + @KiroDev CLI for the hackathon.
 
-Ask Kiki anything:
-- "I like Sauvignon Blanc, what sake should I try?"
-- "What's the difference between Junmai and Daiginjo?"
-- "Pair something with my sushi dinner"
+Try it: https://dynamous-kiro-hackathon.vercel.app
+
+🍶
 
 ---
 
-## The Vision
+## Thread Version
 
-Sake shouldn't be intimidating. It should be an adventure.
+**1/** Been heads down building for 3 days. Finally ready to share.
 
-Sakécosm is the guide I wish I had when I started my sake journey.
+I'm a certified sake professional and I keep running into the same problem: wine lovers want to try sake but have no idea where to start.
 
-Now it exists for everyone.
+**2/** So I built Sakécosm — an AI sake sommelier that speaks wine.
 
-🍶 Kanpai!
+The voice agent is Kiki (kikizake 利き酒 = "sake tasting"). You can say "I love Pinot Noir" and she'll recommend sake with similar earthy elegance.
 
----
+Built on @OpenAI's realtime API.
 
-*#sake #AI #OpenAI #buildinpublic #hackathon #wine #foodtech*
+**3/** The catalog connects to @TippsySake — my go-to for quality sake. Real bottles, real prices, one-click purchase. Their product data made this whole thing possible. 🙏
 
----
+**4/** Other features:
+🗾 Interactive Japan map (47 prefectures, AI-generated regional guides)
+🍷 Wine-to-sake translator
+📚 Gamified courses with XP and badges
+🎨 Dynamic UI that generates sake cards on the fly
 
-### Thread Version (for replies)
+**5/** Tech stack: Next.js 15, Convex, OpenAI Realtime, Thesys C1, Mapbox, Perplexity API
 
-**1/7** 80M+ Americans drink wine. Most are terrified of sake menus. I'm a certified sake professional, and I built an AI to fix that. Meet Sakécosm 🍶
+Built entirely with @KiroDev CLI for the hackathon. AI-assisted dev that actually works.
 
-**2/7** The problem: Sake education is fragmented & academic. Wine vocabulary doesn't translate. There's no bridge between curiosity and confident purchase.
+**6/** Try it: https://dynamous-kiro-hackathon.vercel.app
 
-**3/7** The solution: Kiki (利き酒) — a voice-first AI sommelier. Tell her you love Pinot Noir. She'll recommend aged Junmai with similar earthy elegance. Built on @OpenAI Realtime API.
+Ask Kiki:
+- "what sake pairs with sushi?"
+- "I like Chardonnay, what should I try?"
+- "explain Junmai vs Daiginjo"
 
-**4/7** Key features:
-🎤 Voice conversations (not chatbots)
-🗾 Interactive Japan map (47 regions)
-🍷 Wine-to-sake translation
-📚 Gamified learning with badges
-🛒 Real products from @TippsySake
-
-**5/7** The tech: Next.js, Convex, OpenAI Realtime, Thesys C1 for dynamic UI, Mapbox, Perplexity. Built in 3 days with @KiroDev CLI.
-
-**6/7** Try it: https://dynamous-kiro-hackathon.vercel.app
-
-Ask Kiki: "I like Chardonnay, what sake should I try?"
-
-**7/7** Sake shouldn't be intimidating. It should be an adventure. Sakécosm is the guide I wish I had. Now it exists for everyone. 🍶 Kanpai!
+Still polishing but the core works. Feedback welcome 🍶
