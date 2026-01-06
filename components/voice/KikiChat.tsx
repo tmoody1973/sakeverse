@@ -339,10 +339,33 @@ export function KikiChat() {
   }, [handleToolCall])
 
   const disconnectVoice = useCallback(() => {
+    // Stop all playing audio
+    activeSourcesRef.current.forEach(source => {
+      try { source.stop() } catch (e) {}
+    })
+    activeSourcesRef.current = []
+    
+    // Stop mic
     mediaStreamRef.current?.getTracks().forEach(t => t.stop())
+    mediaStreamRef.current = null
+    
+    // Disconnect audio processing
     processorRef.current?.disconnect()
-    audioContextRef.current?.close()
+    processorRef.current = null
+    
+    // Close audio context
+    if (audioContextRef.current?.state !== 'closed') {
+      audioContextRef.current?.close()
+    }
+    audioContextRef.current = null
+    
+    // Close WebSocket
     wsRef.current?.close()
+    wsRef.current = null
+    
+    // Reset state
+    nextPlayTimeRef.current = 0
+    isSpeakingRef.current = false
     setIsConnected(false)
     setIsListening(false)
     setIsSpeaking(false)
