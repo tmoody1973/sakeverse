@@ -85,23 +85,33 @@ async function gatherResearch(ctx: any, topic: any) {
     aggregatedAt: Date.now(),
   }
 
-  // 1. Gemini RAG queries
-  for (const query of topic.researchQueries.geminiRag.slice(0, 2)) {
-    try {
-      const ragResult = await ctx.runAction(api.podcastRAG.queryBreweryKnowledge, { query })
-      if (ragResult.chunks?.[0]?.content) {
-        results.geminiResults.push(ragResult.chunks[0].content)
+  const geminiApiKey = process.env.GEMINI_API_KEY
+  const fileUri = process.env.GEMINI_FILE_URI
+
+  // 1. Gemini RAG queries (direct API call, not via runAction)
+  const ragQueries = topic.researchQueries?.geminiRag || []
+  if (geminiApiKey && ragQueries.length > 0) {
+    for (const query of ragQueries.slice(0, 2)) {
+      try {
+        const ragResult = await queryGeminiRAG(geminiApiKey, fileUri, query)
+        if (ragResult) {
+          results.geminiResults.push(ragResult)
+        }
+      } catch (e) {
+        console.error("RAG query failed (continuing):", e)
       }
-    } catch (e) {
-      console.error("RAG query failed:", e)
     }
   }
 
-  // 2. Perplexity queries
+  // 2. Perplexity queries for current news/trends
   const perplexityKey = process.env.PERPLEXITY_API_KEY
-  if (perplexityKey) {
-    for (const query of topic.researchQueries.perplexity.slice(0, 2)) {
+  const perplexityQueries = topic.researchQueries?.perplexity || []
+  console.log(`Perplexity: ${perplexityQueries.length} queries, key: ${perplexityKey ? "set" : "missing"}`)
+  
+  if (perplexityKey && perplexityQueries.length > 0) {
+    for (const query of perplexityQueries.slice(0, 2)) {
       try {
+        console.log(`Perplexity query: ${query}`)
         const response = await fetch("https://api.perplexity.ai/chat/completions", {
           method: "POST",
           headers: {
@@ -119,10 +129,13 @@ async function gatherResearch(ctx: any, topic: any) {
           const content = data.choices?.[0]?.message?.content
           if (content) {
             results.perplexityResults.push(content)
+            console.log(`Perplexity result: ${content.substring(0, 100)}...`)
           }
+        } else {
+          console.error(`Perplexity error: ${response.status}`)
         }
       } catch (e) {
-        console.error("Perplexity query failed:", e)
+        console.error("Perplexity query failed (continuing):", e)
       }
     }
   }
@@ -252,4 +265,36 @@ CRITICAL: Include at least 2-3 specific sake recommendations from the products a
     estimatedDuration,
     generatedAt: Date.now(),
   }
+}
+
+
+// Direct Gemini RAG query (avoids runAction from action issue)
+async function queryGeminiRAG(apiKey: string, fileUri: string | undefined, query: string): Promise<string | null> {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`
+  
+  const contents = fileUri ? [{
+    parts: [
+      { fileData: { mimeType: "text/markdown", fileUri } },
+      { text: `Based on the brewery histories document, answer: ${query}\n\nBe specific with brewery names, dates, and details.` }
+    ]
+  }] : [{
+    parts: [{ text: `You are a sake expert. Answer: ${query}` }]
+  }]
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents,
+      generationConfig: { temperature: 0.2, maxOutputTokens: 1500 },
+    }),
+  })
+
+  if (!response.ok) {
+    console.error("Gemini RAG error:", response.status)
+    return null
+  }
+
+  const result = await response.json()
+  return result.candidates?.[0]?.content?.parts?.[0]?.text || null
 }
