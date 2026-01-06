@@ -34,7 +34,6 @@ export const generateEpisode = action({
       })
 
       // 3. Research phase
-      console.log("Starting research phase...")
       const research = await gatherResearch(ctx, topic)
       
       await ctx.runMutation(internal.podcastEpisodes.updateResearch, {
@@ -43,7 +42,6 @@ export const generateEpisode = action({
       })
 
       // 4. Script generation
-      console.log("Generating script...")
       const script = await generateScript(ctx, topic, research)
       
       await ctx.runMutation(internal.podcastEpisodes.updateScript, {
@@ -52,11 +50,8 @@ export const generateEpisode = action({
       })
 
       // 5. Audio generation - schedule separately (can't nest actions)
-      if (generateAudio) {
-        console.log("Audio will be generated separately - use regenerate button")
-        // Audio must be triggered separately via the admin UI
-        // because Convex doesn't allow nested action calls
-      }
+      // Audio must be triggered separately via the admin UI
+      // because Convex doesn't allow nested action calls
 
       // 6. Update topic status
       await ctx.runMutation(internal.podcastTopics.updateStatus, {
@@ -103,12 +98,10 @@ async function gatherResearch(ctx: any, topic: any) {
   // 2. Perplexity queries for current news/trends
   const perplexityKey = process.env.PERPLEXITY_API_KEY
   const perplexityQueries = topic.researchQueries?.perplexity || []
-  console.log(`Perplexity: ${perplexityQueries.length} queries, key: ${perplexityKey ? "set" : "missing"}`)
   
   if (perplexityKey && perplexityQueries.length > 0) {
     for (const query of perplexityQueries.slice(0, 2)) {
       try {
-        console.log(`Perplexity query: ${query}`)
         const response = await fetch("https://api.perplexity.ai/chat/completions", {
           method: "POST",
           headers: {
@@ -126,13 +119,10 @@ async function gatherResearch(ctx: any, topic: any) {
           const content = data.choices?.[0]?.message?.content
           if (content) {
             results.perplexityResults.push(content)
-            console.log(`Perplexity result: ${content.substring(0, 100)}...`)
           }
-        } else {
-          console.error(`Perplexity error: ${response.status}`)
         }
       } catch (e) {
-        console.error("Perplexity query failed (continuing):", e)
+        // Perplexity query failed, continue with other sources
       }
     }
   }

@@ -12,8 +12,6 @@ interface C1MessageProps {
 
 export function C1Message({ content, isStreaming = false, onAction, onContinueConversation }: C1MessageProps) {
   const handleAction = (event: { type?: string; params?: Record<string, any> }) => {
-    console.log("C1 Action:", event)
-    
     switch (event.type) {
       case "open_url":
         // Open external links

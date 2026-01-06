@@ -31,8 +31,6 @@ export function VoiceChat() {
 
   // Handle C1 dynamic UI actions
   const handleC1Action = useCallback(async (action: { type: string; payload?: any }) => {
-    console.log('C1 Action:', action)
-    
     switch (action.type) {
       case 'add_to_cart':
         alert(`Added ${action.payload?.productName || 'item'} to cart!`)
@@ -51,7 +49,7 @@ export function VoiceChat() {
         }
         break
       case 'set_temperature':
-        console.log(`Temperature set to ${action.payload?.celsius}°C`)
+        // Temperature preference updated
         break
     }
   }, [])

@@ -14,6 +14,7 @@ Sakécosm is an AI-powered sake discovery platform featuring Kiki (利き酒 - "
 - **Voice-First Sommelier (Kiki)**: Real-time voice conversations using OpenAI Realtime API with WebRTC and function tools
 - **Dynamic UI Generation**: Thesys C1 creates React components (sake cards, temperature guides) during conversations
 - **Multi-Layer RAG System**: Vector search (104 Tippsy products), wine-to-sake knowledge (13 chunks), food pairing (9 chunks), Gemini PDF search (5 books), Perplexity live web
+- **Voice Disconnect**: Clean audio stop when ending voice sessions (stops all active AudioBufferSourceNodes)
 
 ### Learning System
 - **AI-Generated Courses**: Perplexity-powered course generation with chapters, quizzes
@@ -22,11 +23,16 @@ Sakécosm is an AI-powered sake discovery platform featuring Kiki (利き酒 - "
 - **Admin Course Generator**: `/admin/learn` for creating new courses
 
 ### AI Podcast Network
-- **4 Shows**: Sake Stories, Pairing Lab, The Bridge, Brewing Secrets
+- **4 Shows**: Sake Stories (Monday), Pairing Lab (Wednesday), The Bridge (Friday), Brewing Secrets (1st/15th)
 - **194 Topics**: Pre-defined topics across all series
+- **Sakécosm Branding**: Scripts open with "Welcome to [Show Name] from Sakécosm..."
 - **This American Life Style**: Two-host format with TOJI (master brewer guide) and KOJI (curious catalyst)
-- **Full Pipeline**: Research (Gemini RAG + Perplexity) → Script → Audio (Gemini TTS) → MP3 (lamejs)
-- **Admin Workflow**: Generate, preview, publish at `/admin/podcasts`
+- **3-5 Minute Episodes**: ~450-750 words, optimized for quick listening
+- **Full Pipeline**: Research (Gemini RAG + Perplexity) → Script → Audio (Gemini TTS) → WAV storage
+- **Admin Workflow**: Generate script, then generate audio (two-step process), preview, publish
+- **Cancel Generation**: Ability to cancel in-progress podcast generation
+- **Episode Player**: react-h5-audio-player with progress tracking, Tippsy product recommendations, formatted transcripts with speaker colors
+- **Series Pages**: `/podcasts/[series]` pages showing all episodes per show
 
 ### Discovery & Exploration
 - **Interactive Japan Map**: Mapbox GL with 47 clickable prefectures

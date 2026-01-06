@@ -33,12 +33,9 @@ export const generateAudio = action({
       return { success: false, error: "GEMINI_API_KEY not configured" }
     }
 
-    console.log("Generating audio for episode:", episode.title)
-
     try {
       // Chunk the entire script by character limit (preserving line breaks)
       const chunks = chunkScript(episode.script.content, 4000)
-      console.log(`Script chunked into ${chunks.length} parts: ${chunks.map(c => c.length).join(', ')} chars`)
 
       const audioChunks: Int16Array[] = []
       
@@ -46,11 +43,8 @@ export const generateAudio = action({
         // Check if cancelled before each chunk
         const cancelled = await ctx.runQuery(internal.podcastEpisodes.isCancelled, { episodeId })
         if (cancelled) {
-          console.log("Generation cancelled by user")
           return { success: false, error: "Cancelled by user" }
         }
-        
-        console.log(`Processing chunk ${i + 1}/${chunks.length} (${chunks[i].length} chars)`)
         
         const pcmData = await callTTS(chunks[i], VOICES.TOJI, geminiKey)
         if (pcmData) {
@@ -75,7 +69,6 @@ export const generateAudio = action({
         offset += chunk.length
       }
 
-      console.log("Creating WAV file...")
       const wavBuffer = createWavBuffer(combinedSamples, 24000)
 
       const blob = new Blob([wavBuffer], { type: "audio/wav" })

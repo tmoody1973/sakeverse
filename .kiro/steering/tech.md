@@ -8,7 +8,8 @@
 **Dynamic UI**: Thesys C1 with Claude Sonnet 4 (`c1/anthropic/claude-sonnet-4/v-20251130`)
 **RAG System**: OpenAI Embeddings (vector search), Gemini File Search (PDFs), Perplexity API (live web)
 **Maps**: Mapbox GL JS with react-map-gl
-**Podcast TTS**: Gemini 2.5 Flash TTS + lamejs MP3 encoding
+**Podcast TTS**: Gemini 2.5 Flash TTS with WAV output (switched from MP3 due to lamejs Node.js 22 issues)
+**Audio Player**: react-h5-audio-player for reliable playback with progress tracking
 **Styling**: RetroUI neobrutalism + cherry blossom theme
 
 ## Architecture Overview
@@ -19,7 +20,7 @@ User Interface
 ├── Voice Chat (OpenAI Realtime WebRTC with function tools)
 ├── C1 Chat (Thesys streaming with tool calling)
 ├── Learn Pages (courses, chapters, quizzes)
-├── Podcast Player (public episodes)
+├── Podcast Player (public episodes with react-h5-audio-player)
 ├── Japan Map (Mapbox GL with prefectures)
 ├── Library Page (Convex realtime)
 └── Admin Dashboard (course + podcast generation)
@@ -59,8 +60,11 @@ User Interface
 - **Two-host format**: TOJI (杜氏 master brewer) + KOJI (麹 catalyst) - sake terminology names
 - **This American Life style**: Acts, cold opens, reflective moments, natural conversation
 - **Gemini 2.5 Flash TTS**: Multi-voice support (Kore for TOJI, Puck for KOJI)
-- **lamejs for MP3**: Pure JS encoder works in Convex cloud (no ffmpeg binary needed)
-- **Pipeline**: Topic → Research (RAG + Perplexity) → Script → TTS segments → MP3 combine
+- **WAV format**: Switched from MP3 due to lamejs `MPEGMode is not defined` bug in Node.js 22
+- **Two-step generation**: Script and audio generation separated to avoid Convex nested action limitation
+- **4000 char chunking**: TTS requests chunked at newlines to preserve dialogue structure
+- **Cancel support**: Episodes can be cancelled mid-generation via status check before each TTS chunk
+- **Pipeline**: Topic → Research (RAG + Perplexity) → Script → TTS segments → WAV combine
 
 ### Interactive Map
 - Mapbox GL with GeoJSON prefecture polygons
@@ -72,6 +76,7 @@ User Interface
 - OpenAI Realtime API GA format with `session.type: 'realtime'`
 - Direct tool calling: `search_sake`, `get_food_pairing`, `wine_to_sake`
 - Voice API routes: `/api/voice/search`, `/api/voice/pairing`, `/api/voice/wine-to-sake`
+- **Clean disconnect**: Explicitly stops all AudioBufferSourceNodes on disconnect (closing AudioContext alone doesn't stop queued audio)
 
 ### C1Chat Integration
 - C1Chat component handles chat UI, streaming, and message history
@@ -88,6 +93,22 @@ User Interface
 - XP rewards: 25 (chapter), 50 (quiz pass), 100 (perfect score)
 - 10 levels: Sake Curious → Sake Grandmaster (0-10,000 XP)
 - Real-time XP display in header
+
+## Key Technical Learnings
+
+### Convex Limitations
+- **No nested actions**: Cannot call `ctx.runAction()` from within an action - causes cryptic "performAsyncSyscall" errors
+- **Solution**: Separate into distinct user-triggered steps (e.g., generate script, then generate audio)
+
+### Audio Processing
+- **lamejs Node.js 22 bug**: `MPEGMode is not defined` - no pure JS MP3 encoder works reliably in modern Node
+- **WAV vs MP3 tradeoff**: WAV files ~10x larger but 100% reliable; MP3 encoding requires native binaries
+- **Audio source cleanup**: Must explicitly call `source.stop()` on all AudioBufferSourceNodes to stop playback
+
+### TTS Rate Limits
+- **Gemini TTS**: ~4000-5000 character limit per request
+- **500 errors**: Indicate rate limiting or server overload
+- **Chunking strategy**: Split at newlines to preserve dialogue structure
 
 ## Environment Variables
 **Convex**: OPENAI_API_KEY, GEMINI_API_KEY, PERPLEXITY_API_KEY, GEMINI_FILE_URI

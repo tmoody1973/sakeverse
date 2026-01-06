@@ -18,7 +18,10 @@ sakecosm/
 │   │   └── [slug]/               # Course detail + chapters
 │   ├── podcasts/                 # Public podcast pages
 │   │   ├── page.tsx              # Podcast hub
+│   │   ├── [series]/             # Series detail page
+│   │   │   └── page.tsx
 │   │   └── [series]/[episodeId]/ # Episode player
+│   │       └── page.tsx
 │   ├── admin/                    # Admin dashboard
 │   │   ├── page.tsx              # Admin hub
 │   │   ├── learn/                # Course generator
@@ -26,6 +29,7 @@ sakecosm/
 │   │       ├── page.tsx          # Dashboard
 │   │       ├── generate/         # Topic selection
 │   │       └── episodes/         # Preview/publish
+│   │           └── [id]/         # Episode detail with cancel
 │   ├── settings/                 # User preferences
 │   ├── onboarding/               # 4-step flow
 │   ├── sign-in/[[...sign-in]]/   # Clerk auth
@@ -36,7 +40,8 @@ sakecosm/
 │       └── webhooks/clerk/       # User sync
 ├── components/
 │   ├── ui/                       # RetroUI components
-│   ├── voice/                    # Chat components
+│   ├── voice/                    # Chat components (KikiChat with disconnect fix)
+│   ├── audio/                    # GlobalAudioPlayer with react-h5-audio-player
 │   ├── map/                      # JapanMap, PrefecturePanel
 │   ├── landing/                  # Marketing page
 │   ├── onboarding/               # Onboarding flow
@@ -60,15 +65,15 @@ sakecosm/
 │   │   ├── generation.ts         # Perplexity course gen
 │   │   └── seed.ts
 │   ├── podcastTopics.ts          # Topic management
-│   ├── podcastEpisodes.ts        # Episode CRUD
-│   ├── podcastGeneration.ts      # Script generation
-│   ├── podcastTTS.ts             # Multi-voice TTS + MP3
+│   ├── podcastEpisodes.ts        # Episode CRUD + cancel + isCancelled query
+│   ├── podcastGeneration.ts      # Script generation (3-5 min, Sakécosm branding)
+│   ├── podcastTTS.ts             # Multi-voice TTS + WAV (not MP3)
 │   ├── podcastRAG.ts             # Gemini File API
 │   ├── userLibrary.ts
 │   ├── users.ts
 │   └── sakeBreweries.ts
 ├── hooks/
-│   ├── useVoiceChat.ts           # OpenAI Realtime
+│   ├── useVoiceChat.ts           # OpenAI Realtime with clean disconnect
 │   └── useVoiceToC1.ts           # Voice-to-C1 bridge
 ├── lib/
 │   ├── convex.tsx                # Providers
@@ -85,11 +90,14 @@ sakecosm/
 
 ## Key Files
 - `convex/schema.ts`: All database tables
-- `convex/podcastTTS.ts`: Multi-host TTS with TOJI/KOJI voices
-- `convex/podcastGeneration.ts`: This American Life style scripts
+- `convex/podcastTTS.ts`: Multi-host TTS with TOJI/KOJI voices, WAV output
+- `convex/podcastGeneration.ts`: This American Life style scripts (3-5 min)
+- `convex/podcastEpisodes.ts`: Episode CRUD with cancel support
 - `convex/learn/generation.ts`: Perplexity course generation
 - `convex/gamification.ts`: XP and level system
 - `convex/map.ts`: Prefecture descriptions with caching
+- `components/voice/KikiChat.tsx`: Voice chat with clean audio disconnect
+- `components/audio/GlobalAudioPlayer.tsx`: react-h5-audio-player integration
 - `app/admin/page.tsx`: Central admin dashboard
 
 ## Configuration

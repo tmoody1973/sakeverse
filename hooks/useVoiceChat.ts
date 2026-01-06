@@ -102,8 +102,6 @@ export function useVoiceChat() {
       ])
 
       ws.onopen = () => {
-        console.log('Connected to OpenAI Realtime API')
-        
         // Send session configuration with enhanced sommelier prompt
         ws.send(JSON.stringify({
           type: 'session.update',
@@ -178,7 +176,6 @@ You have access to specialized retrieval systems that provide you with:
       ws.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data)
-          console.log('Received:', data.type, data)
           
           switch (data.type) {
           case 'input_audio_buffer.speech_started':
@@ -380,8 +377,6 @@ You have access to specialized retrieval systems that provide you with:
             if (input.includes("rich")) preferences.tasteProfile = "rich"
             if (input.includes("niigata")) preferences.region = "niigata"
             
-            console.log("Search preferences:", preferences)
-            
             // Enhanced query routing with knowledge detection
             const isKnowledgeQuery = input.includes("how") || input.includes("what") || input.includes("why") || 
                                     input.includes("explain") || input.includes("tell me about") || 
@@ -409,26 +404,22 @@ You have access to specialized retrieval systems that provide you with:
             // Get wine-to-sake recommendations first (highest priority for wine lovers)
             if (isWineQuery) {
               try {
-                console.log("Searching wine-to-sake knowledge for:", text)
                 const wineResults = await searchWineToSake({ query: text, limit: 2 })
                 if (wineResults.length > 0) {
                   wineToSakeAnswer = wineResults.map((r: any) => r.content).join("\n\n")
-                  console.log("Wine-to-sake search returned:", wineResults.length, "results")
                 }
               } catch (error) {
-                console.log("Wine-to-sake search failed:", error)
+                // Wine-to-sake search failed, continue with other sources
               }
             }
             
             // Get deep knowledge for educational questions
             if (isKnowledgeQuery && !wineToSakeAnswer) {
               try {
-                console.log("Searching sake knowledge base for:", text)
                 const knowledgeResult = await searchSakeKnowledge({ query: text })
                 knowledgeAnswer = knowledgeResult.answer
-                console.log("Knowledge search returned:", knowledgeAnswer ? "answer found" : "no answer")
               } catch (error) {
-                console.log("Knowledge search failed:", error)
+                // Knowledge search failed, continue with other sources
               }
             }
             
