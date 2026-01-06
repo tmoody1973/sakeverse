@@ -66,6 +66,8 @@ function Dashboard({ userId }: { userId?: string }) {
     userId ? { clerkId: userId } : "skip"
   )
   
+  const latestEpisode = useQuery(api.podcastEpisodes.listPublished, { limit: 1 })
+  
   // Get first wine preference for the tip (case-insensitive matching)
   const winePrefs = preferences?.winePreferences || []
   const wineMapKeys = Object.keys(wineToSakeMap)
@@ -292,29 +294,39 @@ function Dashboard({ userId }: { userId?: string }) {
       </div>
 
       {/* Featured Podcast */}
-      <Card className="bg-plum-dark text-white">
-        <CardContent className="p-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-sake-warm rounded-lg flex items-center justify-center text-2xl">
-                🍽️
+      {latestEpisode && latestEpisode[0] && (
+        <Card className="bg-plum-dark text-white">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <div className="w-16 h-16 bg-sake-warm rounded-lg flex items-center justify-center text-2xl">
+                  {latestEpisode[0].series === "sake_stories" ? "📖" : 
+                   latestEpisode[0].series === "pairing_lab" ? "🍽️" :
+                   latestEpisode[0].series === "the_bridge" ? "🍷" : "🔬"}
+                </div>
+                <div>
+                  <Badge variant="secondary" className="mb-2">Latest Episode</Badge>
+                  <h3 className="text-xl font-bold mb-1">
+                    {latestEpisode[0].series === "sake_stories" ? "Sake Stories" : 
+                     latestEpisode[0].series === "pairing_lab" ? "Pairing Lab" :
+                     latestEpisode[0].series === "the_bridge" ? "The Bridge" : "Brewing Secrets"}
+                  </h3>
+                  <p className="text-gray-300">{latestEpisode[0].title}</p>
+                  <div className="text-sm text-gray-400 mt-1">
+                    {latestEpisode[0].audio?.duration ? `${Math.round(latestEpisode[0].audio.duration / 60)} min` : ""} • Episode {latestEpisode[0].episodeNumber}
+                  </div>
+                </div>
               </div>
-              <div>
-                <Badge variant="secondary" className="mb-2">Now Playing</Badge>
-                <h3 className="text-xl font-bold mb-1">Pairing Lab</h3>
-                <p className="text-gray-300">Korean BBQ and Sake—Why It Works</p>
-                <div className="text-sm text-gray-400 mt-1">15 min • Episode 12</div>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <Button variant="secondary" size="icon">
-                <Play className="h-4 w-4" />
+              <Button variant="secondary" asChild>
+                <Link href={`/podcasts/${latestEpisode[0].series}/${latestEpisode[0]._id}`}>
+                  <Play className="h-4 w-4 mr-2" />
+                  Listen
+                </Link>
               </Button>
-              <div className="text-sm text-gray-400">5:23 / 15:00</div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Kiki CTA */}
       <Card className="bg-sake-mist">
