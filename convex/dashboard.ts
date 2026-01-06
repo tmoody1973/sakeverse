@@ -1,11 +1,36 @@
 "use node"
 
 import { action } from "./_generated/server"
+import { internal } from "./_generated/api"
 
-// Get sake news from Perplexity with structured output
+type NewsHeadline = {
+  title: string
+  snippet: string
+  emoji: string
+  url: string
+}
+
+type NewsResult = {
+  headlines: NewsHeadline[]
+  error?: string
+}
+
+// Get today's date as YYYY-MM-DD
+function getTodayDate(): string {
+  return new Date().toISOString().split("T")[0]
+}
+
+// Get sake news - cached daily
 export const fetchSakeNews = action({
   args: {},
-  handler: async () => {
+  handler: async (ctx): Promise<NewsResult> => {
+    // Check cache first
+    const cached = await ctx.runQuery(internal.newsCache.getCachedNews)
+    if (cached) {
+      return { headlines: cached.headlines }
+    }
+
+    // Fetch fresh from Perplexity
     const apiKey = process.env.PERPLEXITY_API_KEY
     if (!apiKey) {
       return { headlines: [], error: "API key not configured" }
@@ -62,12 +87,20 @@ export const fetchSakeNews = action({
       const data = await response.json()
       const content = data.choices?.[0]?.message?.content
       if (content) {
-        return JSON.parse(content)
+        const parsed = JSON.parse(content) as NewsResult
+        
+        // Cache the result
+        await ctx.runMutation(internal.newsCache.saveCachedNews, {
+          date: getTodayDate(),
+          headlines: parsed.headlines,
+        })
+        
+        return parsed
       }
       return { headlines: [] }
-    } catch (e: any) {
+    } catch (e: unknown) {
       console.error("Sake news fetch error:", e)
-      return { headlines: [], error: e.message }
+      return { headlines: [], error: e instanceof Error ? e.message : "Unknown error" }
     }
   },
 })

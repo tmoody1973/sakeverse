@@ -1,0 +1,2607 @@
+{
+  "series": "pairing_lab",
+  "version": "2.0",
+  "last_updated": "2025-01-06",
+  
+  "curriculum_overview": {
+    "total_foundational_topics": 98,
+    "estimated_completion": "~24 months at weekly releases",
+    "progression_philosophy": "Start with approachable comfort foods, expand globally, celebrate cultural diversity, and have fun with snacks",
+    "diversity_commitment": "Showcasing how sake transcends cultural boundaries and pairs beautifully with cuisines from around the world"
+  },
+  
+  "topic_categories": [
+    {
+      "category_id": "western_comfort",
+      "category_name": "Western Comfort Foods",
+      "description": "Familiar foods that listeners eat regularly - removes intimidation",
+      "sequence_priority": 1,
+      "topics": [
+        {
+          "topic_id": "pl-topic-001",
+          "title": "The Pizza Problem",
+          "subtitle": "Why sake might be pizza's new best friend",
+          "food": "Pepperoni Pizza",
+          "foodCategory": "pizza",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "What if everything you knew about pizza and beverages was wrong?",
+          "pairingChallenge": "Tomato acidity, cheese fat, cured meat salt, crispy-chewy crust contrast",
+          "sakeSolutionType": "junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Medium-bodied Junmai",
+              "specificExample": "Hakkaisan Tokubetsu Junmai",
+              "why": "Rice umami amplifies cheese, acidity matches tomato"
+            },
+            "twist": {
+              "sakeType": "Aged Koshu",
+              "when": "Meat-heavy or white pizza",
+              "why": "Caramel notes complement charred pepperoni"
+            },
+            "whyWorks": "Umami harmony between rice and cheese; sake's clean finish refreshes"
+          },
+          "listenerAction": {
+            "easyExperiment": "Any Junmai with your next pizza night",
+            "budgetOption": "Ozeki Junmai",
+            "premiumOption": "Dewazakura Oka Ginjo"
+          },
+          "researchSeeds": {
+            "keyThemes": ["umami science", "tomato acidity", "cheese pairing"],
+            "notableFigures": []
+          },
+          "researchQueries": {
+            "geminiRag": ["sake umami cheese pairing", "tomato acidity sake balance"],
+            "perplexity": ["sake pizza pairing sommelier 2024", "unconventional sake food pairings"],
+            "firecrawlUrls": [],
+            "tippsyQuery": {
+              "category": "junmai",
+              "flavorProfile": ["umami", "clean"],
+              "priceMax": 40,
+              "available": true
+            }
+          },
+          "connections": {
+            "learningModule": "sake-food-pairing-basics",
+            "badge": "pairing-pioneer"
+          }
+        },
+        {
+          "topic_id": "pl-topic-002",
+          "title": "Burger Night Breakthrough",
+          "subtitle": "The ultimate American classic meets Japanese craft",
+          "food": "Classic Cheeseburger",
+          "foodCategory": "burger",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Beer and wine have had their turn. Time for a new contender.",
+          "pairingChallenge": "Beef fat, melted cheese, condiment sweetness, pickle tang",
+          "sakeSolutionType": "yamahai_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Yamahai Junmai",
+              "specificExample": "Tengumai Yamahai Junmai",
+              "why": "Lactic richness mirrors aged beef, robust enough for red meat"
+            },
+            "twist": {
+              "sakeType": "Slightly warmed Junmai",
+              "when": "Bacon burger or smash burger",
+              "why": "Warmth cuts through extra fat, enhances smokiness"
+            },
+            "whyWorks": "Yamahai's wild yeast character adds complexity; no tannins to fight the beef"
+          },
+          "listenerAction": {
+            "easyExperiment": "Warm your sake to 40°C with your next burger",
+            "budgetOption": "Gekkeikan Traditional",
+            "premiumOption": "Daishichi Kimoto Junmai"
+          }
+        },
+        {
+          "topic_id": "pl-topic-003",
+          "title": "Fried Chicken Freedom",
+          "subtitle": "Crispy, juicy, and absolutely sake-friendly",
+          "food": "Fried Chicken (any style)",
+          "foodCategory": "fried_chicken",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "From Nashville hot to Korean double-fried, one drink rules them all.",
+          "pairingChallenge": "Crispy coating, juicy meat, salt/spice variations",
+          "sakeSolutionType": "sparkling_or_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Sparkling sake",
+              "specificExample": "Mio Sparkling",
+              "why": "Carbonation lifts grease, refreshes between bites"
+            },
+            "twist": {
+              "sakeType": "Cold Honjozo",
+              "when": "Want a beer-like experience without the bloat",
+              "why": "Light body, clean finish, sessionable"
+            },
+            "whyWorks": "Bubbles and acidity cut through breading; no heavy tannins"
+          }
+        },
+        {
+          "topic_id": "pl-topic-004",
+          "title": "Pasta Possibilities",
+          "subtitle": "Cream sauces have met their match",
+          "food": "Cream-based Pasta (Alfredo, Carbonara)",
+          "foodCategory": "pasta",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Italian grandmothers might not approve, but your taste buds will.",
+          "pairingChallenge": "Rich cream, parmesan umami, pasta starch, egg yolk (carbonara)",
+          "sakeSolutionType": "junmai_ginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Aromatic Junmai Ginjo",
+              "specificExample": "Dassai 45",
+              "why": "Elegant acidity cuts cream; fruity notes lift richness"
+            },
+            "twist": {
+              "sakeType": "Kimoto style",
+              "when": "Carbonara with extra guanciale",
+              "why": "Lactic complexity echoes egg and pork fat"
+            },
+            "whyWorks": "Sake's acidity cuts cream; umami builds on parmesan"
+          }
+        },
+        {
+          "topic_id": "pl-topic-005",
+          "title": "Mac & Cheese Magic",
+          "subtitle": "America's favorite comfort food, elevated",
+          "food": "Mac and Cheese",
+          "foodCategory": "comfort_food",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The dish that hugs you back deserves a drink that does the same.",
+          "pairingChallenge": "Sharp cheddar intensity, creamy sauce, pasta starch, optional bacon/breadcrumb toppings",
+          "sakeSolutionType": "junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Rich Junmai",
+              "specificExample": "Tamagawa Heart of Oak",
+              "why": "Full body matches cheese intensity"
+            },
+            "twist": {
+              "sakeType": "Aged Koshu",
+              "when": "Baked mac with crispy top",
+              "why": "Caramelized notes mirror toasted cheese"
+            },
+            "whyWorks": "Umami synergy between rice and aged cheese; texture match"
+          }
+        },
+        {
+          "topic_id": "pl-topic-006",
+          "title": "Steak Night Stakes",
+          "subtitle": "Can sake handle the king of proteins?",
+          "food": "Grilled Ribeye Steak",
+          "foodCategory": "steak",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Red wine has owned steak night for centuries. Time to shake things up.",
+          "pairingChallenge": "Beef fat marbling, char, Maillard crust, mineral undertones",
+          "sakeSolutionType": "aged_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Aged Junmai or Yamahai",
+              "why": "Depth to match beef; warmth enhances"
+            },
+            "twist": {
+              "sakeType": "Warm Kimoto",
+              "when": "Wagyu or heavily marbled cuts",
+              "why": "Fat needs warmth and acidity to cut through"
+            },
+            "whyWorks": "No tannins competing with protein; umami amplification with beef"
+          }
+        }
+      ]
+    },
+    
+    {
+      "category_id": "soul_food",
+      "category_name": "Soul Food Celebrations",
+      "description": "The rich, comforting traditions of African American cuisine - perfect for sake's umami depth",
+      "sequence_priority": 2,
+      "topics": [
+        {
+          "topic_id": "pl-topic-050",
+          "title": "Catfish & Sake",
+          "subtitle": "Southern fried meets Japanese refinement",
+          "food": "Fried Catfish",
+          "foodCategory": "fried_fish",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Friday fish fry just got an unexpected upgrade.",
+          "pairingChallenge": "Delicate fish flavor, crispy cornmeal coating, hot sauce options",
+          "sakeSolutionType": "honjozo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Light Honjozo (chilled)",
+              "specificExample": "Hakutsuru Draft",
+              "why": "Clean and light, won't overwhelm delicate catfish"
+            },
+            "twist": {
+              "sakeType": "Sparkling Nigori",
+              "when": "With spicy remoulade or hot sauce",
+              "why": "Sweetness tames heat, bubbles cut grease"
+            },
+            "whyWorks": "Sake respects fish; cornmeal coating matches rice origin"
+          }
+        },
+        {
+          "topic_id": "pl-topic-051",
+          "title": "Collard Greens Connection",
+          "subtitle": "Bitter, smoky, and surprisingly sake-friendly",
+          "food": "Braised Collard Greens with Ham Hock",
+          "foodCategory": "braised_greens",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The vegetable that built the South has a new drinking partner.",
+          "pairingChallenge": "Bitter greens, smoky pork, pot liquor richness, vinegar tang",
+          "sakeSolutionType": "warm_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Warm Junmai",
+              "why": "Warmth echoes the dish; umami builds on ham hock"
+            },
+            "twist": {
+              "sakeType": "Yamahai",
+              "when": "Extra smoky preparation",
+              "why": "Funky complexity matches smoky depth"
+            },
+            "whyWorks": "Sake's sweetness balances bitter; pork umami meets rice umami"
+          }
+        },
+        {
+          "topic_id": "pl-topic-052",
+          "title": "Shrimp & Grits Glory",
+          "subtitle": "Lowcountry meets sake country",
+          "food": "Shrimp and Grits",
+          "foodCategory": "seafood",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Two cultures built on rice and seafood finally meet.",
+          "pairingChallenge": "Creamy grits, sautéed shrimp, bacon/andouille, rich gravy",
+          "sakeSolutionType": "junmai_ginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Junmai Ginjo",
+              "specificExample": "Kubota Senju",
+              "why": "Elegance for shrimp, body for grits"
+            },
+            "twist": {
+              "sakeType": "Muroka (unfiltered)",
+              "when": "Heavy on the gravy",
+              "why": "Texture matches creamy richness"
+            },
+            "whyWorks": "Rice meets corn; seafood harmony; gravy needs sake's cut"
+          }
+        },
+        {
+          "topic_id": "pl-topic-053",
+          "title": "Gumbo Gathering",
+          "subtitle": "Louisiana's melting pot meets Japan's liquid gold",
+          "food": "Chicken and Sausage Gumbo",
+          "foodCategory": "stew",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "A dish that took three continents to create deserves a fourth.",
+          "pairingChallenge": "Dark roux depth, okra texture, holy trinity, andouille spice, filé powder",
+          "sakeSolutionType": "aged_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Aged Junmai (1-3 years)",
+              "why": "Caramel notes match dark roux"
+            },
+            "twist": {
+              "sakeType": "Warm Yamahai",
+              "when": "Seafood gumbo",
+              "why": "Oceanic notes complement shellfish"
+            },
+            "whyWorks": "Complex dish needs complex sake; both are rice-based foundations"
+          }
+        },
+        {
+          "topic_id": "pl-topic-054",
+          "title": "BBQ Rib Rendezvous",
+          "subtitle": "Smoke, sweet, heat - the trinity of 'cue",
+          "food": "Smoked Pork Ribs",
+          "foodCategory": "bbq",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "From Memphis to Kansas City, one drink travels well.",
+          "pairingChallenge": "Sweet-smoky glaze, rendered fat, charred bark, tangy sauce",
+          "sakeSolutionType": "aged_yamahai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Aged Yamahai",
+              "specificExample": "Tengumai Yamahai aged",
+              "why": "Complexity matches smoke; funk meets char"
+            },
+            "twist": {
+              "sakeType": "Slightly sweet Junmai",
+              "when": "Heavy on the sweet sauce",
+              "why": "Mirror the sweetness, then cut through"
+            },
+            "whyWorks": "Aged sake's caramel notes echo BBQ sauce; no tannins fighting fat"
+          }
+        },
+        {
+          "topic_id": "pl-topic-055",
+          "title": "Cornbread Companion",
+          "subtitle": "Two grain cultures in harmony",
+          "food": "Skillet Cornbread",
+          "foodCategory": "bread",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Corn and rice: different grains, same soul.",
+          "pairingChallenge": "Sweet vs. savory style, butter richness, honey options",
+          "sakeSolutionType": "junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Room temperature Junmai",
+              "why": "Grain harmony; butter-friendly"
+            },
+            "twist": {
+              "sakeType": "Nigori",
+              "when": "Sweet, honey-drizzled style",
+              "why": "Creamy sweetness matches"
+            },
+            "whyWorks": "Both are grain-based traditions; umami meets natural corn sweetness"
+          }
+        },
+        {
+          "topic_id": "pl-topic-056",
+          "title": "Jambalaya Journey",
+          "subtitle": "Creole heat meets sake cool",
+          "food": "Jambalaya",
+          "foodCategory": "rice_dish",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Rice dish meets rice drink - it was always meant to be.",
+          "pairingChallenge": "Spicy andouille, tomato base, holy trinity, mixed proteins",
+          "sakeSolutionType": "sparkling_or_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Chilled Junmai",
+              "why": "Cool contrast to spice; rice harmony"
+            },
+            "twist": {
+              "sakeType": "Sparkling sake",
+              "when": "Extra spicy version",
+              "why": "Bubbles lift heat from palate"
+            },
+            "whyWorks": "Rice to rice connection; sake cools without competing"
+          }
+        },
+        {
+          "topic_id": "pl-topic-057",
+          "title": "Sweet Potato Pie Pairing",
+          "subtitle": "Dessert soul food gets a sake twist",
+          "food": "Sweet Potato Pie",
+          "foodCategory": "dessert",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Move over coffee - this pie has a new partner.",
+          "pairingChallenge": "Natural sweetness, warm spices, buttery crust",
+          "sakeSolutionType": "kijoshu",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Kijoshu (dessert sake)",
+              "why": "Sweetness balance; caramel notes complement"
+            },
+            "twist": {
+              "sakeType": "Aged Koshu",
+              "when": "Pecan-topped version",
+              "why": "Nutty notes match toasted pecans"
+            },
+            "whyWorks": "Sweet sake won't clash; spice notes align with koji complexity"
+          }
+        }
+      ]
+    },
+    
+    {
+      "category_id": "italian",
+      "category_name": "Italian Classics",
+      "description": "Beyond pasta - the full Italian table",
+      "sequence_priority": 3,
+      "topics": [
+        {
+          "topic_id": "pl-topic-060",
+          "title": "Osso Buco Odyssey",
+          "subtitle": "Milanese braised veal meets sake elegance",
+          "food": "Osso Buco",
+          "foodCategory": "braised_meat",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The marrow-rich masterpiece that proves sake isn't just for sushi.",
+          "pairingChallenge": "Rich marrow, gremolata brightness, braised meat depth, risotto Milanese",
+          "sakeSolutionType": "aged_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Aged Junmai (2+ years)",
+              "why": "Depth matches braised richness; umami on umami"
+            },
+            "twist": {
+              "sakeType": "Warm Kimoto",
+              "why": "Lactic notes complement marrow butter"
+            },
+            "whyWorks": "Both are patient crafts; umami harmony; warm sake echoes dish temperature"
+          }
+        },
+        {
+          "topic_id": "pl-topic-061",
+          "title": "Risotto Revelation",
+          "subtitle": "Rice meets rice in the most elegant way",
+          "food": "Risotto (Mushroom or Saffron)",
+          "foodCategory": "rice_dish",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Two cultures that worship rice, finally at the same table.",
+          "pairingChallenge": "Creamy arborio, parmesan umami, mushroom earthiness or saffron luxury",
+          "sakeSolutionType": "junmai_ginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Junmai Ginjo",
+              "specificExample": "Tedorigawa Kinka",
+              "why": "Rice affinity; elegant enough for saffron"
+            },
+            "twist": {
+              "sakeType": "Earthy Yamahai",
+              "when": "Wild mushroom risotto",
+              "why": "Funky notes match forest floor earthiness"
+            },
+            "whyWorks": "Rice respects rice; parmesan umami builds with sake amino acids"
+          }
+        },
+        {
+          "topic_id": "pl-topic-062",
+          "title": "Prosciutto & Melon Method",
+          "subtitle": "The classic antipasto gets a sake spin",
+          "food": "Prosciutto e Melone",
+          "foodCategory": "charcuterie",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Sweet, salty, simple - and surprisingly perfect with sake.",
+          "pairingChallenge": "Aged ham salinity, ripe melon sweetness, fat vs. fruit contrast",
+          "sakeSolutionType": "junmai_daiginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Fruity Junmai Daiginjo",
+              "specificExample": "Dassai 23",
+              "why": "Melon notes in sake echo the fruit; delicate enough"
+            },
+            "twist": {
+              "sakeType": "Sparkling sake",
+              "why": "Bubbles cut ham fat; festive match"
+            },
+            "whyWorks": "Aromatic sake has melon/fruit notes; salt brings out sake sweetness"
+          }
+        },
+        {
+          "topic_id": "pl-topic-063",
+          "title": "Lasagna Layers",
+          "subtitle": "Meat sauce, béchamel, cheese - sake handles it all",
+          "food": "Lasagna Bolognese",
+          "foodCategory": "pasta",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The ultimate layered dish needs a drink that can match its complexity.",
+          "pairingChallenge": "Meat ragù, béchamel cream, melted mozzarella, tomato acidity",
+          "sakeSolutionType": "full_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Full-bodied Junmai",
+              "why": "Stands up to meat; umami synergy"
+            },
+            "twist": {
+              "sakeType": "Warm Yamahai",
+              "why": "Extra depth for meat sauce richness"
+            },
+            "whyWorks": "Multiple umami sources unite; sake cuts through layers of richness"
+          }
+        },
+        {
+          "topic_id": "pl-topic-064",
+          "title": "Tiramisu Time",
+          "subtitle": "Coffee, mascarpone, and a sake surprise",
+          "food": "Tiramisu",
+          "foodCategory": "dessert",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "The pick-me-up dessert that pairs better than you'd expect.",
+          "pairingChallenge": "Espresso bitterness, mascarpone cream, cocoa, marsala-soaked ladyfingers",
+          "sakeSolutionType": "kijoshu_or_aged",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Kijoshu",
+              "why": "Sweetness matches; caramel complements coffee"
+            },
+            "twist": {
+              "sakeType": "Coffee-aged sake (if available)",
+              "why": "Modern sake innovation meets Italian classic"
+            },
+            "whyWorks": "Dessert sake balances bitter; both are crafted indulgences"
+          }
+        },
+        {
+          "topic_id": "pl-topic-065",
+          "title": "Caprese Simplicity",
+          "subtitle": "Three ingredients, one perfect sake",
+          "food": "Caprese Salad",
+          "foodCategory": "salad",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "When ingredients are this good, the drink must be flawless.",
+          "pairingChallenge": "Fresh mozzarella cream, ripe tomato acidity, basil aromatics, olive oil",
+          "sakeSolutionType": "junmai_ginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Light Junmai Ginjo",
+              "specificExample": "Hakkaisan Junmai Ginjo",
+              "why": "Delicate enough for fresh flavors"
+            },
+            "twist": {
+              "sakeType": "Nama (unpasteurized)",
+              "why": "Fresh sake for fresh ingredients"
+            },
+            "whyWorks": "Light sake respects simplicity; acidity matches tomato"
+          }
+        }
+      ]
+    },
+    
+    {
+      "category_id": "chinese",
+      "category_name": "Chinese Cuisine",
+      "description": "The world's most diverse cuisine meets sake's versatility",
+      "sequence_priority": 4,
+      "topics": [
+        {
+          "topic_id": "pl-topic-070",
+          "title": "Dim Sum Delight",
+          "subtitle": "The art of small bites, big sake moments",
+          "food": "Dim Sum Spread (har gow, siu mai, char siu bao)",
+          "foodCategory": "dumplings",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Yum cha tradition gets a Japanese twist.",
+          "pairingChallenge": "Varied flavors and textures, steamed vs. fried, sweet vs. savory",
+          "sakeSolutionType": "versatile_junmai_ginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Versatile Junmai Ginjo (room temp)",
+              "why": "Adaptable to the variety; elegant but not fussy"
+            },
+            "twist": {
+              "sakeType": "Different sakes for different courses",
+              "why": "Sparkling for fried, Daiginjo for delicate, Honjozo for heartier"
+            },
+            "whyWorks": "Sake's umami enhances all dumpling fillings; tea-like refreshment"
+          }
+        },
+        {
+          "topic_id": "pl-topic-071",
+          "title": "Peking Duck Perfection",
+          "subtitle": "Crispy skin, hoisin sweetness, sake elegance",
+          "food": "Peking Duck",
+          "foodCategory": "roast_poultry",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Imperial cuisine meets imperial-quality sake.",
+          "pairingChallenge": "Lacquered crispy skin, rich duck fat, sweet hoisin, fresh pancakes",
+          "sakeSolutionType": "aged_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Aged Junmai",
+              "why": "Complexity matches the dish; caramel notes echo lacquered skin"
+            },
+            "twist": {
+              "sakeType": "Off-dry Ginjo",
+              "why": "Sweetness plays with hoisin"
+            },
+            "whyWorks": "Both are celebrations of craft; rich sake for rich duck"
+          }
+        },
+        {
+          "topic_id": "pl-topic-072",
+          "title": "Mapo Tofu Mission",
+          "subtitle": "Sichuan spice meets sake's cool",
+          "food": "Mapo Tofu",
+          "foodCategory": "tofu",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Can sake survive the numbing heat of Sichuan peppercorns?",
+          "pairingChallenge": "Sichuan peppercorn mala, chili heat, silky tofu, fermented bean paste",
+          "sakeSolutionType": "chilled_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Well-chilled Junmai",
+              "why": "Cold soothes heat; rice complements tofu"
+            },
+            "twist": {
+              "sakeType": "Sparkling Nigori",
+              "why": "Sweetness and texture calm the fire"
+            },
+            "whyWorks": "Sake's protein-friendliness; cold temperature relief; no alcohol burn"
+          }
+        },
+        {
+          "topic_id": "pl-topic-073",
+          "title": "Kung Pao Kick",
+          "subtitle": "Sweet, sour, spicy - sake's triple test",
+          "food": "Kung Pao Chicken",
+          "foodCategory": "stir_fry",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The Chinese-American classic that tests any beverage.",
+          "pairingChallenge": "Dried chili heat, peanut crunch, sweet-sour glaze, wok hei",
+          "sakeSolutionType": "off_dry_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Slightly off-dry Junmai",
+              "why": "Sweetness tames heat; matches glaze"
+            },
+            "twist": {
+              "sakeType": "Sparkling sake",
+              "why": "Bubbles refresh; party match"
+            },
+            "whyWorks": "Balance of sake mirrors dish balance; peanuts love rice"
+          }
+        },
+        {
+          "topic_id": "pl-topic-074",
+          "title": "Char Siu Chronicles",
+          "subtitle": "Cantonese BBQ pork in sake harmony",
+          "food": "Char Siu (Chinese BBQ Pork)",
+          "foodCategory": "bbq",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Those red-glazed edges of perfection deserve equally perfect sake.",
+          "pairingChallenge": "Honey-maltose glaze, fatty pork, char edges, five-spice depth",
+          "sakeSolutionType": "aged_or_warm_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Lightly aged Junmai (warm)",
+              "why": "Caramel notes match glaze; warmth cuts fat"
+            },
+            "twist": {
+              "sakeType": "Plum sake (umeshu)",
+              "why": "Traditional pairing in some regions"
+            },
+            "whyWorks": "Maillard reaction in both; sweetness harmony"
+          }
+        },
+        {
+          "topic_id": "pl-topic-075",
+          "title": "Hot Pot Harmony",
+          "subtitle": "The ultimate interactive meal gets sake strategy",
+          "food": "Chinese Hot Pot",
+          "foodCategory": "hot_pot",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "One pot, many ingredients, infinite sake pairings.",
+          "pairingChallenge": "Varying broths (spicy vs. mild), raw ingredients cooked fresh, dipping sauces",
+          "sakeSolutionType": "multiple_styles",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Flight of 3 sakes",
+              "why": "Different sakes for different dips"
+            },
+            "twist": {
+              "sakeType": "Warm sake throughout",
+              "why": "Matches the warming nature of hot pot"
+            },
+            "whyWorks": "Communal drinking for communal eating; sake cleanses between bites"
+          }
+        },
+        {
+          "topic_id": "pl-topic-076",
+          "title": "XO Sauce Exploration",
+          "subtitle": "The umami bomb meets its match",
+          "food": "XO Sauce Noodles or Vegetables",
+          "foodCategory": "noodles",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Hong Kong's luxury condiment pairs with Japan's luxury drink.",
+          "pairingChallenge": "Dried seafood intensity, chili heat, extreme umami concentration",
+          "sakeSolutionType": "full_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Full-bodied Junmai",
+              "why": "Umami meets umami; stands up to intensity"
+            },
+            "twist": {
+              "sakeType": "Aged sake",
+              "why": "Complexity to match complexity"
+            },
+            "whyWorks": "Both are umami powerhouses; sake won't be overwhelmed"
+          }
+        }
+      ]
+    },
+    
+    {
+      "category_id": "mexican",
+      "category_name": "Mexican Cuisine",
+      "description": "Vibrant, bold flavors that sake surprisingly loves",
+      "sequence_priority": 5,
+      "topics": [
+        {
+          "topic_id": "pl-topic-080",
+          "title": "Tacos Al Pastor Paradise",
+          "subtitle": "The spit-roasted masterpiece meets sake",
+          "food": "Tacos Al Pastor",
+          "foodCategory": "tacos",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Lebanese-Mexican fusion already - why not add Japanese?",
+          "pairingChallenge": "Achiote-marinated pork, caramelized pineapple, cilantro-onion, salsa heat",
+          "sakeSolutionType": "fruity_junmai_ginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Fruity Junmai Ginjo",
+              "why": "Tropical notes match pineapple; fresh for cilantro"
+            },
+            "twist": {
+              "sakeType": "Sparkling sake",
+              "why": "Fiesta in a glass; cleanses between tacos"
+            },
+            "whyWorks": "Sake's fruit notes complement pineapple; acidity cuts pork fat"
+          }
+        },
+        {
+          "topic_id": "pl-topic-081",
+          "title": "Mole Mystery",
+          "subtitle": "30+ ingredients in mole, one perfect sake",
+          "food": "Mole Poblano",
+          "foodCategory": "sauce",
+          "difficulty": "advanced",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Mexico's most complex sauce finally finds its liquid soulmate.",
+          "pairingChallenge": "Chocolate depth, dried chili complexity, spice layers, chicken or turkey base",
+          "sakeSolutionType": "aged_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Aged Junmai (3+ years)",
+              "why": "Complexity to match complexity; earthy notes"
+            },
+            "twist": {
+              "sakeType": "Kijoshu",
+              "why": "Sweetness plays with chocolate elements"
+            },
+            "whyWorks": "Both are patient, layered crafts; sake won't fight the complexity"
+          }
+        },
+        {
+          "topic_id": "pl-topic-082",
+          "title": "Carnitas Crush",
+          "subtitle": "Braised pork perfection, sake style",
+          "food": "Carnitas",
+          "foodCategory": "braised_meat",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The crispy-tender pork that makes everything better.",
+          "pairingChallenge": "Rendered fat, citrus brightness, crispy edges, tender interior",
+          "sakeSolutionType": "warm_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Warm Junmai",
+              "why": "Cuts through fat; echoes braised warmth"
+            },
+            "twist": {
+              "sakeType": "Nigori",
+              "why": "Richness matches richness"
+            },
+            "whyWorks": "Warm sake dissolves fat on palate; orange notes in some sakes match citrus"
+          }
+        },
+        {
+          "topic_id": "pl-topic-083",
+          "title": "Ceviche Cool",
+          "subtitle": "Raw fish in citrus - a natural sake pairing",
+          "food": "Mexican Ceviche",
+          "foodCategory": "raw_seafood",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Japan and Mexico both worship fresh fish - time they met.",
+          "pairingChallenge": "Lime-cured fish, serrano heat, cilantro, red onion bite",
+          "sakeSolutionType": "crisp_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Crisp, dry Junmai",
+              "specificExample": "Masumi Okuden Kantsukuri",
+              "why": "Acidity matches citrus; clean for raw fish"
+            },
+            "twist": {
+              "sakeType": "Nama (unpasteurized)",
+              "why": "Fresh sake for fresh fish"
+            },
+            "whyWorks": "No tannins for fish; sake acidity echoes lime"
+          }
+        },
+        {
+          "topic_id": "pl-topic-084",
+          "title": "Elote Encounter",
+          "subtitle": "Street corn gets a sake upgrade",
+          "food": "Elote (Mexican Street Corn)",
+          "foodCategory": "vegetable",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The messy, magnificent street food that sake absolutely loves.",
+          "pairingChallenge": "Charred corn sweetness, mayo creaminess, cotija salt, chili-lime",
+          "sakeSolutionType": "junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Room temp Junmai",
+              "why": "Corn and rice are grain cousins; umami for cheese"
+            },
+            "twist": {
+              "sakeType": "Genshu (undiluted)",
+              "why": "Bold sake for bold flavors"
+            },
+            "whyWorks": "Grain affinity; sake cuts mayo; chili needs cooling"
+          }
+        },
+        {
+          "topic_id": "pl-topic-085",
+          "title": "Birria Bliss",
+          "subtitle": "The trending stew that sake was made for",
+          "food": "Birria (and Quesabirria Tacos)",
+          "foodCategory": "stew",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The internet's favorite stew has a sake secret.",
+          "pairingChallenge": "Braised beef/goat, dried chili broth, consommé dipping, melted cheese",
+          "sakeSolutionType": "warm_yamahai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Warm Yamahai",
+              "why": "Gamey notes match goat; warmth echoes consommé"
+            },
+            "twist": {
+              "sakeType": "Aged Koshu",
+              "why": "Deep flavors for deep stew"
+            },
+            "whyWorks": "Broth-like quality of warm sake; umami builds on braised meat"
+          }
+        },
+        {
+          "topic_id": "pl-topic-086",
+          "title": "Churros & Chocolate Challenge",
+          "subtitle": "Mexican dessert meets Japanese sweet sake",
+          "food": "Churros with Chocolate Sauce",
+          "foodCategory": "dessert",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Fried dough, cinnamon sugar, chocolate - sake handles it all.",
+          "pairingChallenge": "Crispy fried dough, cinnamon-sugar coating, rich chocolate dip",
+          "sakeSolutionType": "kijoshu",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Kijoshu",
+              "why": "Sweet for sweet; caramel notes for cinnamon"
+            },
+            "twist": {
+              "sakeType": "Aged Koshu",
+              "why": "Nutty notes with fried dough"
+            },
+            "whyWorks": "Dessert sake balances sweetness; no harsh alcohol"
+          }
+        }
+      ]
+    },
+    
+    {
+      "category_id": "caribbean",
+      "category_name": "Caribbean Cuisine",
+      "description": "Island flavors meet sake's island-friendly nature",
+      "sequence_priority": 6,
+      "topics": [
+        {
+          "topic_id": "pl-topic-090",
+          "title": "Jerk Chicken Journey",
+          "subtitle": "Scotch bonnet heat meets sake's cool",
+          "food": "Jamaican Jerk Chicken",
+          "foodCategory": "grilled_poultry",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The spice that built Jamaica, tamed by Japanese craft.",
+          "pairingChallenge": "Scotch bonnet fire, allspice warmth, charcoal smoke, sweet heat glaze",
+          "sakeSolutionType": "chilled_fruity_sake",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Well-chilled fruity Junmai Ginjo",
+              "why": "Cold soothes heat; fruit notes complement allspice"
+            },
+            "twist": {
+              "sakeType": "Sparkling Nigori",
+              "why": "Sweetness and bubbles calm the fire"
+            },
+            "whyWorks": "Sake's lower alcohol doesn't amplify heat; tropical notes match"
+          }
+        },
+        {
+          "topic_id": "pl-topic-091",
+          "title": "Oxtail Occasion",
+          "subtitle": "Caribbean comfort in every braised bite",
+          "food": "Jamaican Oxtail Stew",
+          "foodCategory": "braised_meat",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Slow-cooked tradition meets patient sake craft.",
+          "pairingChallenge": "Collagen-rich meat, butter bean starch, brown stew gravy",
+          "sakeSolutionType": "warm_aged_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Warm aged Junmai",
+              "why": "Depth matches braised richness; umami harmony"
+            },
+            "twist": {
+              "sakeType": "Yamahai",
+              "why": "Funky complexity for funky oxtail"
+            },
+            "whyWorks": "Both reward patience; gelatinous texture loves warm sake"
+          }
+        },
+        {
+          "topic_id": "pl-topic-092",
+          "title": "Curry Goat Quest",
+          "subtitle": "Bold Caribbean curry, sophisticated sake",
+          "food": "Curry Goat",
+          "foodCategory": "curry",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Goat's gaminess is sake's secret advantage.",
+          "pairingChallenge": "Gamey meat, Caribbean curry spices, Scotch bonnet, potato starch",
+          "sakeSolutionType": "robust_yamahai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Yamahai Junmai",
+              "why": "Wild yeast complexity matches wild meat"
+            },
+            "twist": {
+              "sakeType": "Warm Kimoto",
+              "why": "Lactic notes tame gaminess"
+            },
+            "whyWorks": "Complex sake for complex dish; no wine tannins fighting curry"
+          }
+        },
+        {
+          "topic_id": "pl-topic-093",
+          "title": "Ackee & Saltfish Adventure",
+          "subtitle": "Jamaica's national dish, sake edition",
+          "food": "Ackee and Saltfish",
+          "foodCategory": "breakfast",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "The breakfast that isn't breakfast, with sake.",
+          "pairingChallenge": "Creamy ackee, salt cod intensity, scotch bonnet, tomatoes",
+          "sakeSolutionType": "crisp_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Crisp Junmai (chilled)",
+              "why": "Cuts salt; fresh for fishy"
+            },
+            "twist": {
+              "sakeType": "Sparkling",
+              "why": "Brunch vibes; cleanses palate"
+            },
+            "whyWorks": "Sake loves salt cod; acidity balances richness"
+          }
+        },
+        {
+          "topic_id": "pl-topic-094",
+          "title": "Doubles Delight",
+          "subtitle": "Trinidad's street food star meets sake",
+          "food": "Doubles (Trinidadian)",
+          "foodCategory": "street_food",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "The curry-filled fried bread that's worth seeking out.",
+          "pairingChallenge": "Bara bread, curried chickpeas, tamarind, pepper sauce options",
+          "sakeSolutionType": "junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Junmai (room temp)",
+              "why": "Handles curry; cuts fried bread"
+            },
+            "twist": {
+              "sakeType": "Slightly sweet sake",
+              "why": "Plays with tamarind tang"
+            },
+            "whyWorks": "Street food loves unpretentious sake; curry-sake harmony"
+          }
+        },
+        {
+          "topic_id": "pl-topic-095",
+          "title": "Roti Roll Romance",
+          "subtitle": "Caribbean-Indian fusion gets a sake spin",
+          "food": "Roti (with Curry Filling)",
+          "foodCategory": "wrapped",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The wrap that tells the story of Caribbean immigration.",
+          "pairingChallenge": "Dhalpuri flatbread, curried fillings, potato, pepper sauce",
+          "sakeSolutionType": "versatile_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Medium-bodied Junmai",
+              "why": "Versatile for various fillings"
+            },
+            "twist": {
+              "sakeType": "Chilled for spicy versions",
+              "why": "Cool relief from pepper sauce"
+            },
+            "whyWorks": "Flatbread meets rice drink; curry loves sake"
+          }
+        }
+      ]
+    },
+    
+    {
+      "category_id": "african",
+      "category_name": "African Cuisine",
+      "description": "The world's most underrated cuisines deserve sake exploration",
+      "sequence_priority": 7,
+      "topics": [
+        {
+          "topic_id": "pl-topic-100",
+          "title": "Jollof Rice Jamboree",
+          "subtitle": "West Africa's beloved rice dish meets Japan's rice drink",
+          "food": "Jollof Rice",
+          "foodCategory": "rice_dish",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The dish that divides nations, united by sake.",
+          "pairingChallenge": "Tomato-stewed rice, party rice smokiness, protein toppings vary",
+          "sakeSolutionType": "junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Room temperature Junmai",
+              "why": "Rice respects rice; tomato umami builds"
+            },
+            "twist": {
+              "sakeType": "Smoky Yamahai",
+              "why": "Matches party jollof's bottom-pot smokiness"
+            },
+            "whyWorks": "Ultimate rice-to-rice pairing; both are celebration foods"
+          }
+        },
+        {
+          "topic_id": "pl-topic-101",
+          "title": "Suya Sensation",
+          "subtitle": "Nigerian street kebabs meet sake",
+          "food": "Suya (Spiced Beef Skewers)",
+          "foodCategory": "grilled_meat",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The spice rub that launched a thousand cravings.",
+          "pairingChallenge": "Yaji spice blend, peanut notes, charred beef, raw onion garnish",
+          "sakeSolutionType": "chilled_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Chilled Junmai",
+              "why": "Cools spice; clean for charred meat"
+            },
+            "twist": {
+              "sakeType": "Genshu",
+              "why": "Bold sake for bold spice"
+            },
+            "whyWorks": "Peanuts and rice are friends; sake cleanses between skewers"
+          }
+        },
+        {
+          "topic_id": "pl-topic-102",
+          "title": "Injera & Wot Wonder",
+          "subtitle": "Ethiopian spongy bread and stews, sake style",
+          "food": "Injera with Doro Wot",
+          "foodCategory": "bread_and_stew",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Two fermented traditions from opposite ends of the world.",
+          "pairingChallenge": "Sour injera, berbere-spiced chicken, boiled eggs, niter kibbeh",
+          "sakeSolutionType": "yamahai_or_kimoto",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Yamahai or Kimoto",
+              "why": "Fermented sake for fermented bread; lactic harmony"
+            },
+            "twist": {
+              "sakeType": "Aged sake",
+              "why": "Complexity for berbere complexity"
+            },
+            "whyWorks": "Both celebrate fermentation; sourness balances"
+          }
+        },
+        {
+          "topic_id": "pl-topic-103",
+          "title": "Tagine Treasure",
+          "subtitle": "Moroccan slow-cooked magic meets sake",
+          "food": "Lamb Tagine with Apricots",
+          "foodCategory": "stew",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The conical pot that creates culinary miracles.",
+          "pairingChallenge": "Braised lamb, dried fruit sweetness, warm spices, preserved lemon",
+          "sakeSolutionType": "aged_or_fruity_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Lightly aged Junmai",
+              "why": "Dried fruit notes in aged sake; complexity"
+            },
+            "twist": {
+              "sakeType": "Kijoshu",
+              "why": "Sweetness plays with apricots and honey"
+            },
+            "whyWorks": "Both are patience-rewarding; spice-friendly sake"
+          }
+        },
+        {
+          "topic_id": "pl-topic-104",
+          "title": "Peri Peri Power",
+          "subtitle": "Portuguese-African heat meets sake cool",
+          "food": "Peri Peri Chicken",
+          "foodCategory": "grilled_poultry",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The chili that traveled from the Americas to Africa to your plate.",
+          "pairingChallenge": "African bird's eye chili heat, garlic, lemon, charred chicken",
+          "sakeSolutionType": "chilled_junmai_ginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Very cold Junmai Ginjo",
+              "why": "Temperature contrast; fruit notes with lemon"
+            },
+            "twist": {
+              "sakeType": "Nigori",
+              "why": "Creaminess soothes heat"
+            },
+            "whyWorks": "Sake doesn't amplify heat like high-alcohol drinks; citrus harmony"
+          }
+        },
+        {
+          "topic_id": "pl-topic-105",
+          "title": "Egusi Exploration",
+          "subtitle": "Nigerian melon seed soup meets sake",
+          "food": "Egusi Soup",
+          "foodCategory": "soup",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "The soup that's really a stew, deserving of sake.",
+          "pairingChallenge": "Ground melon seeds, palm oil richness, bitter leaf, protein variety",
+          "sakeSolutionType": "full_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Full-bodied Junmai",
+              "why": "Stands up to richness; nutty notes match"
+            },
+            "twist": {
+              "sakeType": "Warm sake",
+              "why": "Cuts through palm oil"
+            },
+            "whyWorks": "Sake handles fermented flavors; umami powerhouse"
+          }
+        },
+        {
+          "topic_id": "pl-topic-106",
+          "title": "Bunny Chow Bravery",
+          "subtitle": "South African curry in a bread bowl, sake approved",
+          "food": "Bunny Chow",
+          "foodCategory": "curry",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Durban's iconic street food that breaks all the rules.",
+          "pairingChallenge": "Hollowed bread bowl, rich curry, mutton or chicken, raw salad",
+          "sakeSolutionType": "versatile_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Medium Junmai",
+              "why": "Handles curry complexity; bread-friendly"
+            },
+            "twist": {
+              "sakeType": "Slightly chilled",
+              "why": "Cool for curry heat"
+            },
+            "whyWorks": "Sake is curry's friend; starch harmony"
+          }
+        }
+      ]
+    },
+    
+    {
+      "category_id": "french",
+      "category_name": "French Classics",
+      "description": "The cuisine of wine country, surprisingly sake-friendly",
+      "sequence_priority": 8,
+      "topics": [
+        {
+          "topic_id": "pl-topic-110",
+          "title": "Coq au Vin Conversion",
+          "subtitle": "Wine-braised chicken meets sake",
+          "food": "Coq au Vin",
+          "foodCategory": "braised_poultry",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The ultimate irony: wine-cooked food, sake-paired.",
+          "pairingChallenge": "Red wine braise, lardons, mushrooms, pearl onions",
+          "sakeSolutionType": "aged_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Aged Junmai",
+              "why": "Depth matches braised; earthy notes for mushrooms"
+            },
+            "twist": {
+              "sakeType": "Warm Yamahai",
+              "why": "Funky complexity echoes wine reduction"
+            },
+            "whyWorks": "No fighting wine with wine; sake's umami enhances"
+          }
+        },
+        {
+          "topic_id": "pl-topic-111",
+          "title": "Beef Bourguignon Breakthrough",
+          "subtitle": "Burgundy's famous stew, Japan's famous drink",
+          "food": "Beef Bourguignon",
+          "foodCategory": "braised_meat",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The dish that made Julia Child famous deserves a new partner.",
+          "pairingChallenge": "Wine-braised beef, bacon, pearl onions, carrots, mushrooms",
+          "sakeSolutionType": "aged_yamahai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Aged Yamahai",
+              "why": "Gamey, earthy, complex - matches everything"
+            },
+            "twist": {
+              "sakeType": "Aged Koshu (5+ years)",
+              "why": "Sherry-like notes complement reduction"
+            },
+            "whyWorks": "Sake won't compete with wine in the sauce; umami builds"
+          }
+        },
+        {
+          "topic_id": "pl-topic-112",
+          "title": "French Onion Soul",
+          "subtitle": "The soup that warms everything",
+          "food": "French Onion Soup",
+          "foodCategory": "soup",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Caramelized onions, melted cheese, crusty bread - sake heaven.",
+          "pairingChallenge": "Deep onion sweetness, beef broth, Gruyère cheese, bread crust",
+          "sakeSolutionType": "warm_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Warm Junmai",
+              "why": "Warmth matches warmth; umami for cheese"
+            },
+            "twist": {
+              "sakeType": "Aged sake",
+              "why": "Caramel notes echo caramelized onions"
+            },
+            "whyWorks": "Temperature harmony; cheese loves sake; onion umami"
+          }
+        },
+        {
+          "topic_id": "pl-topic-113",
+          "title": "Duck Confit Discovery",
+          "subtitle": "Preserved duck legs, present-day sake",
+          "food": "Duck Confit",
+          "foodCategory": "preserved_meat",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "French preservation meets Japanese fermentation.",
+          "pairingChallenge": "Salt-cured duck, rendered fat, crispy skin, rich meat",
+          "sakeSolutionType": "yamahai_warm",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Warm Yamahai",
+              "why": "Cuts fat; gamey sake for gamey duck"
+            },
+            "twist": {
+              "sakeType": "Kimoto",
+              "why": "Lactic notes complement duck richness"
+            },
+            "whyWorks": "Both are preservation traditions; fat needs sake's cut"
+          }
+        },
+        {
+          "topic_id": "pl-topic-114",
+          "title": "Escargot Elegance",
+          "subtitle": "Butter, garlic, snails, and sake",
+          "food": "Escargots de Bourgogne",
+          "foodCategory": "appetizer",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "The French delicacy that's more butter than snail.",
+          "pairingChallenge": "Herb-garlic butter, chewy snails, bread for soaking",
+          "sakeSolutionType": "junmai_ginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Junmai Ginjo (chilled)",
+              "why": "Elegant match; cuts butter"
+            },
+            "twist": {
+              "sakeType": "Sparkling sake",
+              "why": "Bubbles lift butter; celebration match"
+            },
+            "whyWorks": "Garlic butter loves sake's clean finish; no wine-garlic clash"
+          }
+        },
+        {
+          "topic_id": "pl-topic-115",
+          "title": "Quiche Quest",
+          "subtitle": "The elegant egg pie meets sake",
+          "food": "Quiche Lorraine",
+          "foodCategory": "egg_dish",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Brunch, lunch, or dinner - quiche and sake work anytime.",
+          "pairingChallenge": "Egg custard, cream, bacon/lardons, Gruyère, butter crust",
+          "sakeSolutionType": "junmai_ginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Junmai Ginjo (room temp)",
+              "why": "Elegant for custard; bacon umami builds"
+            },
+            "twist": {
+              "sakeType": "Kimoto",
+              "why": "Lactic notes complement egg richness"
+            },
+            "whyWorks": "Eggs love sake; cream needs cutting; cheese harmony"
+          }
+        },
+        {
+          "topic_id": "pl-topic-116",
+          "title": "Crème Brûlée Climax",
+          "subtitle": "The torch-kissed dessert meets sweet sake",
+          "food": "Crème Brûlée",
+          "foodCategory": "dessert",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Crack, cream, and sake - the perfect finale.",
+          "pairingChallenge": "Caramelized sugar crust, vanilla custard, rich cream",
+          "sakeSolutionType": "kijoshu",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Kijoshu",
+              "why": "Sweet for sweet; caramel notes match"
+            },
+            "twist": {
+              "sakeType": "Aged Koshu",
+              "why": "Burnt sugar notes echo brûlée"
+            },
+            "whyWorks": "Dessert sake won't clash; vanilla-koji harmony"
+          }
+        },
+        {
+          "topic_id": "pl-topic-117",
+          "title": "Ratatouille Radiance",
+          "subtitle": "Provençal vegetables meet sake purity",
+          "food": "Ratatouille",
+          "foodCategory": "vegetable_stew",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The dish Pixar made famous, now sake-paired.",
+          "pairingChallenge": "Eggplant, zucchini, tomatoes, peppers, herbs de Provence",
+          "sakeSolutionType": "light_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Light Junmai (chilled)",
+              "why": "Respects vegetables; tomato-friendly"
+            },
+            "twist": {
+              "sakeType": "Nama",
+              "why": "Fresh sake for fresh vegetables"
+            },
+            "whyWorks": "Light sake doesn't overpower; herbal notes complement"
+          }
+        }
+      ]
+    },
+    
+    {
+      "category_id": "seafood",
+      "category_name": "Seafood Spectrum",
+      "description": "Beyond sashimi - sake's natural seafood affinity",
+      "sequence_priority": 9,
+      "topics": [
+        {
+          "topic_id": "pl-topic-120",
+          "title": "Lobster Luxury",
+          "subtitle": "The king of shellfish meets sake royalty",
+          "food": "Butter-Poached Lobster",
+          "foodCategory": "shellfish",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Champagne has had its day. Sake is the new celebration drink.",
+          "pairingChallenge": "Sweet lobster meat, drawn butter, delicate texture",
+          "sakeSolutionType": "junmai_daiginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Junmai Daiginjo (chilled)",
+              "specificExample": "Dassai 23",
+              "why": "Luxury for luxury; delicate enough for lobster"
+            },
+            "twist": {
+              "sakeType": "Sparkling Daiginjo",
+              "why": "Celebration in a glass; bubbles cut butter"
+            },
+            "whyWorks": "Premium sake respects premium seafood; no tannin clash"
+          }
+        },
+        {
+          "topic_id": "pl-topic-121",
+          "title": "Oyster Obsession",
+          "subtitle": "Raw, charred, or fried - sake loves them all",
+          "food": "Oysters (Various Preparations)",
+          "foodCategory": "shellfish",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The ocean's most sensual bivalve deserves sake's embrace.",
+          "pairingChallenge": "Briny minerals, creamy texture, mignonette or cocktail sauce options",
+          "sakeSolutionType": "crisp_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Crisp, mineral Junmai",
+              "specificExample": "Masumi Okuden Kantsukuri",
+              "why": "Mineral meets mineral; clean finish"
+            },
+            "twist": {
+              "sakeType": "Sparkling sake",
+              "why": "Classic Champagne alternative"
+            },
+            "whyWorks": "Sake's lack of tannins; oceanic affinity; citrus alternative"
+          }
+        },
+        {
+          "topic_id": "pl-topic-122",
+          "title": "Fish & Chips Freedom",
+          "subtitle": "British pub classic, Japanese precision",
+          "food": "Beer-Battered Fish & Chips",
+          "foodCategory": "fried_fish",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The pub favorite gets an unexpected upgrade.",
+          "pairingChallenge": "Crispy batter, flaky fish, malt vinegar, mushy peas",
+          "sakeSolutionType": "honjozo_or_sparkling",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Cold Honjozo",
+              "why": "Beer-like refreshment; cuts grease"
+            },
+            "twist": {
+              "sakeType": "Sparkling sake",
+              "why": "Bubbles lift batter; festive"
+            },
+            "whyWorks": "Fried food loves sake's clean finish; fish harmony"
+          }
+        },
+        {
+          "topic_id": "pl-topic-123",
+          "title": "Crab Cake Celebration",
+          "subtitle": "Maryland's pride meets Japanese craft",
+          "food": "Maryland Crab Cakes",
+          "foodCategory": "shellfish",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Old Bay seasoning and sake - the pairing you didn't know you needed.",
+          "pairingChallenge": "Sweet crab, Old Bay spice, crispy exterior, remoulade",
+          "sakeSolutionType": "junmai_ginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Junmai Ginjo",
+              "why": "Elegant enough for crab; handles spice"
+            },
+            "twist": {
+              "sakeType": "Dry Honjozo",
+              "why": "Beer alternative for pub-style"
+            },
+            "whyWorks": "Sweet crab meets sweet sake; Old Bay loves sake's cool"
+          }
+        },
+        {
+          "topic_id": "pl-topic-124",
+          "title": "Clam Chowder Comfort",
+          "subtitle": "New England's creamy classic meets sake",
+          "food": "New England Clam Chowder",
+          "foodCategory": "soup",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The soup that hugs from the inside out.",
+          "pairingChallenge": "Creamy base, tender clams, potatoes, salt pork",
+          "sakeSolutionType": "warm_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Warm Junmai",
+              "why": "Warmth echoes warmth; cuts cream"
+            },
+            "twist": {
+              "sakeType": "Muroka (unfiltered)",
+              "why": "Creamy sake for creamy soup"
+            },
+            "whyWorks": "Clam umami + sake umami; comforting pair"
+          }
+        },
+        {
+          "topic_id": "pl-topic-125",
+          "title": "Paella Perfection",
+          "subtitle": "Spain's rice masterpiece meets Japan's rice drink",
+          "food": "Seafood Paella",
+          "foodCategory": "rice_dish",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Two cultures that built empires on rice, finally united.",
+          "pairingChallenge": "Saffron rice, mixed seafood, socarrat crust, chorizo",
+          "sakeSolutionType": "full_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Full-bodied Junmai",
+              "why": "Rice for rice; handles complexity"
+            },
+            "twist": {
+              "sakeType": "Aged sake",
+              "why": "Caramel notes for socarrat"
+            },
+            "whyWorks": "Ultimate rice harmony; seafood is sake's friend"
+          }
+        },
+        {
+          "topic_id": "pl-topic-126",
+          "title": "Shrimp Cocktail Classic",
+          "subtitle": "The retro appetizer makes a sake comeback",
+          "food": "Shrimp Cocktail",
+          "foodCategory": "shellfish",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The steakhouse starter that deserves better than cheap wine.",
+          "pairingChallenge": "Poached shrimp, horseradish cocktail sauce, lemon",
+          "sakeSolutionType": "crisp_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Very cold, crisp Junmai",
+              "why": "Clean for clean shrimp; horseradish-friendly"
+            },
+            "twist": {
+              "sakeType": "Nama Genshu",
+              "why": "Bold sake for bold cocktail sauce"
+            },
+            "whyWorks": "Sake respects shrimp sweetness; cuts through spicy sauce"
+          }
+        }
+      ]
+    },
+    
+    {
+      "category_id": "snacks",
+      "category_name": "Snack Attack",
+      "description": "Fun, unexpected pairings with everyday snacks and brand-name favorites",
+      "sequence_priority": 10,
+      "topics": [
+        {
+          "topic_id": "pl-topic-130",
+          "title": "Doritos Dare",
+          "subtitle": "Can sake survive the nacho cheese assault?",
+          "food": "Doritos Nacho Cheese",
+          "foodCategory": "chips",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "The ultimate couch snack gets a sophisticated twist.",
+          "pairingChallenge": "Intense cheese powder, corn chip crunch, MSG-powered umami",
+          "sakeSolutionType": "cold_honjozo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Ice-cold Honjozo",
+              "why": "Beer replacement; handles bold flavor"
+            },
+            "twist": {
+              "sakeType": "Sparkling sake",
+              "why": "Cleanses cheese powder buildup"
+            },
+            "whyWorks": "Umami meets umami; sake's clean finish resets palate"
+          }
+        },
+        {
+          "topic_id": "pl-topic-131",
+          "title": "Hot Cheetos Challenge",
+          "subtitle": "Flamin' Hot meets cooling sake",
+          "food": "Flamin' Hot Cheetos",
+          "foodCategory": "chips",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "The snack that stains your fingers deserves a real drink.",
+          "pairingChallenge": "Intense chili heat, cheese powder, addictive crunch",
+          "sakeSolutionType": "chilled_nigori",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Very cold Nigori",
+              "why": "Creaminess soothes heat; sweetness balances"
+            },
+            "twist": {
+              "sakeType": "Sparkling Nigori",
+              "why": "Maximum cooling power"
+            },
+            "whyWorks": "Sake's lower alcohol won't amplify heat; milk-like effect"
+          }
+        },
+        {
+          "topic_id": "pl-topic-132",
+          "title": "Movie Popcorn Magic",
+          "subtitle": "The cinema classic gets a sake upgrade",
+          "food": "Buttered Popcorn",
+          "foodCategory": "popcorn",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Movie night just got more interesting.",
+          "pairingChallenge": "Butter, salt, corn puff texture",
+          "sakeSolutionType": "light_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Light, chilled Junmai",
+              "why": "Grain harmony; cuts butter"
+            },
+            "twist": {
+              "sakeType": "Honjozo",
+              "why": "Session-friendly for long movies"
+            },
+            "whyWorks": "Corn and rice are grain friends; salt enhances sake"
+          }
+        },
+        {
+          "topic_id": "pl-topic-133",
+          "title": "Pringles Pairing",
+          "subtitle": "Once you pop with sake, you can't stop",
+          "food": "Pringles (Original or Sour Cream & Onion)",
+          "foodCategory": "chips",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "The stackable chip that sake stacks up against.",
+          "pairingChallenge": "Potato starch, uniform texture, various flavors",
+          "sakeSolutionType": "versatile_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Room temp Junmai",
+              "why": "Starch harmony; versatile"
+            },
+            "twist": {
+              "sakeType": "Different sake for different flavors",
+              "why": "Sour cream needs lighter; BBQ needs fuller"
+            },
+            "whyWorks": "Potato and rice starch affinity; sake cleanses"
+          }
+        },
+        {
+          "topic_id": "pl-topic-134",
+          "title": "Takis Tornado",
+          "subtitle": "The rolled tortilla chip that tests any drink",
+          "food": "Takis Fuego",
+          "foodCategory": "chips",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Lime, chili, and corn in a roll - sake's triple challenge.",
+          "pairingChallenge": "Extreme lime tang, chili heat, corn crunch",
+          "sakeSolutionType": "chilled_fruity_sake",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Chilled fruity Ginjo",
+              "why": "Citrus notes complement lime; cools heat"
+            },
+            "twist": {
+              "sakeType": "Yuzu sake",
+              "why": "Citrus meets citrus"
+            },
+            "whyWorks": "Sake's acidity mirrors lime; cold soothes heat"
+          }
+        },
+        {
+          "topic_id": "pl-topic-135",
+          "title": "Charcuterie Board Bliss",
+          "subtitle": "The ultimate entertaining spread meets sake flight",
+          "food": "Charcuterie Board (Mixed)",
+          "foodCategory": "charcuterie",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Wine boards are everywhere. Time for a sake board.",
+          "pairingChallenge": "Varied cured meats, cheeses, pickles, crackers, honey",
+          "sakeSolutionType": "sake_flight",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Flight: Light Ginjo, Medium Junmai, Aged sake",
+              "why": "Different sakes for different components"
+            },
+            "twist": {
+              "sakeType": "Add a Nigori for honey/cheese",
+              "why": "Creamy pairing potential"
+            },
+            "whyWorks": "Sake's versatility shines; umami meets umami"
+          }
+        },
+        {
+          "topic_id": "pl-topic-136",
+          "title": "Nuts About Sake",
+          "subtitle": "The bar snack that makes sake taste better",
+          "food": "Mixed Roasted Nuts",
+          "foodCategory": "nuts",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The original bar snack finds its perfect partner.",
+          "pairingChallenge": "Various nut oils, roasted flavors, salt levels",
+          "sakeSolutionType": "warm_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Warm Junmai",
+              "why": "Warmth brings out nut oils; traditional pairing"
+            },
+            "twist": {
+              "sakeType": "Aged sake",
+              "why": "Nutty notes in aged sake mirror nuts"
+            },
+            "whyWorks": "Classic izakaya pairing; salt enhances sake"
+          }
+        },
+        {
+          "topic_id": "pl-topic-137",
+          "title": "Chocolate Bar Bonus",
+          "subtitle": "Candy aisle meets sake aisle",
+          "food": "Snickers/Twix/Kit Kat",
+          "foodCategory": "candy",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Your guilty pleasure just got more interesting.",
+          "pairingChallenge": "Chocolate, caramel, nougat, various textures",
+          "sakeSolutionType": "kijoshu_or_aged",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Kijoshu",
+              "why": "Sweet for sweet; caramel notes"
+            },
+            "twist": {
+              "sakeType": "Coffee-infused sake",
+              "why": "Mocha-like combination"
+            },
+            "whyWorks": "Dessert sake handles candy; no harsh contrast"
+          }
+        },
+        {
+          "topic_id": "pl-topic-138",
+          "title": "Pizza Roll Rebellion",
+          "subtitle": "Frozen snack meets fresh sake",
+          "food": "Totino's Pizza Rolls",
+          "foodCategory": "frozen_snacks",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Don't judge the snack - judge the pairing.",
+          "pairingChallenge": "Molten filling, crispy shell, tomato-cheese interior",
+          "sakeSolutionType": "cold_honjozo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Ice-cold Honjozo",
+              "why": "Temperature contrast; beer-like refresh"
+            },
+            "twist": {
+              "sakeType": "Sparkling",
+              "why": "Bubbles cut through richness"
+            },
+            "whyWorks": "Fun sake for fun food; no pretension"
+          }
+        }
+      ]
+    },
+    
+    {
+      "category_id": "cheese_expanded",
+      "category_name": "Cheese Explorations",
+      "description": "Deep dive into the underexplored world of sake and cheese",
+      "sequence_priority": 11,
+      "topics": [
+        {
+          "topic_id": "pl-topic-140",
+          "title": "Brie Brilliance",
+          "subtitle": "Soft, creamy, and sake's best friend",
+          "food": "Brie / Camembert",
+          "foodCategory": "soft_cheese",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The cheese that wine made famous, sake makes better.",
+          "pairingChallenge": "Creamy interior, earthy rind, mild flavor",
+          "sakeSolutionType": "junmai_daiginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Floral Junmai Daiginjo",
+              "specificExample": "Dewazakura Oka",
+              "why": "Delicate sake for delicate cheese"
+            },
+            "twist": {
+              "sakeType": "Nigori",
+              "why": "Creamy meets creamy"
+            },
+            "whyWorks": "Amino acids complement; no overpowering"
+          }
+        },
+        {
+          "topic_id": "pl-topic-141",
+          "title": "Blue Cheese Boldness",
+          "subtitle": "Can sake handle the funk?",
+          "food": "Roquefort / Gorgonzola / Stilton",
+          "foodCategory": "blue_cheese",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The cheese that divides tables, united by aged sake.",
+          "pairingChallenge": "Intense funk, salt crystals, creamy-crumbly texture",
+          "sakeSolutionType": "aged_koshu",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Aged Koshu (3+ years)",
+              "why": "Complexity matches complexity"
+            },
+            "twist": {
+              "sakeType": "Sweet Kijoshu",
+              "why": "Dessert-style pairing like port"
+            },
+            "whyWorks": "Both are acquired tastes; age handles funk"
+          }
+        },
+        {
+          "topic_id": "pl-topic-142",
+          "title": "Aged Cheddar Adventure",
+          "subtitle": "Sharp, crystalline, sake-perfect",
+          "food": "Aged Cheddar (2+ years)",
+          "foodCategory": "hard_cheese",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The cheese that gets better with age, like sake itself.",
+          "pairingChallenge": "Sharp tang, tyrosine crystals, rich fat",
+          "sakeSolutionType": "aged_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Aged Junmai",
+              "why": "Age meets age; umami harmony"
+            },
+            "twist": {
+              "sakeType": "Warm sake",
+              "why": "Melts fat; enhances crystals"
+            },
+            "whyWorks": "Both develop umami with age; perfect match"
+          }
+        },
+        {
+          "topic_id": "pl-topic-143",
+          "title": "Gouda Glory",
+          "subtitle": "Dutch classic meets Japanese craft",
+          "food": "Aged Gouda",
+          "foodCategory": "hard_cheese",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Caramel, butterscotch, and sake - unexpected harmony.",
+          "pairingChallenge": "Caramel sweetness, crystalline texture, butterscotch notes",
+          "sakeSolutionType": "aged_sake",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Aged sake (2+ years)",
+              "why": "Caramel notes in both"
+            },
+            "twist": {
+              "sakeType": "Koshu",
+              "why": "Sherry-like notes complement"
+            },
+            "whyWorks": "Maillard reaction flavors in both; sweet harmony"
+          }
+        },
+        {
+          "topic_id": "pl-topic-144",
+          "title": "Parmesan Power",
+          "subtitle": "The umami king meets its equal",
+          "food": "Parmigiano-Reggiano",
+          "foodCategory": "hard_cheese",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The most umami cheese on earth meets umami's liquid form.",
+          "pairingChallenge": "Intense umami, granular texture, salt crystals",
+          "sakeSolutionType": "full_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Full-bodied Junmai",
+              "why": "Umami powerhouses unite"
+            },
+            "twist": {
+              "sakeType": "Warm Yamahai",
+              "why": "Extra complexity for extra parmesan"
+            },
+            "whyWorks": "Maximum umami synergy; texture contrast"
+          }
+        },
+        {
+          "topic_id": "pl-topic-145",
+          "title": "Manchego Match",
+          "subtitle": "Spanish sheep's milk cheese, Japanese rice wine",
+          "food": "Manchego",
+          "foodCategory": "hard_cheese",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The cheese that launched a thousand tapas.",
+          "pairingChallenge": "Nutty, tangy, firm, sheep's milk character",
+          "sakeSolutionType": "junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Room temp Junmai",
+              "why": "Nutty notes complement; versatile"
+            },
+            "twist": {
+              "sakeType": "With membrillo (quince paste)",
+              "why": "Add sweet element for trio"
+            },
+            "whyWorks": "Mediterranean pairs with Asian; nut affinity"
+          }
+        },
+        {
+          "topic_id": "pl-topic-146",
+          "title": "Goat Cheese Gambit",
+          "subtitle": "Tangy, creamy, and surprisingly sake-friendly",
+          "food": "Fresh Chèvre",
+          "foodCategory": "soft_cheese",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The tang that makes taste buds sing.",
+          "pairingChallenge": "Bright acidity, creamy texture, earthy notes",
+          "sakeSolutionType": "crisp_junmai_ginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Crisp Junmai Ginjo",
+              "why": "Acidity matches acidity; fresh pairing"
+            },
+            "twist": {
+              "sakeType": "Nama",
+              "why": "Fresh sake for fresh cheese"
+            },
+            "whyWorks": "Acid balance; both are tangy-sweet"
+          }
+        },
+        {
+          "topic_id": "pl-topic-147",
+          "title": "Gruyère Greatness",
+          "subtitle": "The fondue cheese finds new warmth",
+          "food": "Gruyère",
+          "foodCategory": "hard_cheese",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Alpine cheese meets Pacific sake.",
+          "pairingChallenge": "Nutty, slightly sweet, excellent melter",
+          "sakeSolutionType": "warm_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Warm Junmai",
+              "why": "Warmth for melty cheese; nut harmony"
+            },
+            "twist": {
+              "sakeType": "In fondue",
+              "why": "Add sake to fondue itself"
+            },
+            "whyWorks": "Both love warmth; Swiss-Japanese fusion"
+          }
+        },
+        {
+          "topic_id": "pl-topic-148",
+          "title": "Feta Freshness",
+          "subtitle": "Mediterranean tang meets sake's clean",
+          "food": "Greek Feta",
+          "foodCategory": "brined_cheese",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The cheese that makes salads sing.",
+          "pairingChallenge": "Salty, tangy, crumbly, brined",
+          "sakeSolutionType": "light_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Light, chilled Junmai",
+              "why": "Clean sake for salty cheese"
+            },
+            "twist": {
+              "sakeType": "With olives and tomatoes",
+              "why": "Greek salad + sake = revelation"
+            },
+            "whyWorks": "Salt makes sake taste sweeter; refreshing"
+          }
+        }
+      ]
+    },
+    
+    {
+      "category_id": "japanese_classics",
+      "category_name": "Japanese Classics",
+      "description": "Traditional pairings done right - the foundation",
+      "sequence_priority": 12,
+      "topics": [
+        {
+          "topic_id": "pl-topic-150",
+          "title": "Sashimi Symphony",
+          "subtitle": "The obvious pairing, perfected",
+          "food": "Sashimi Platter (Various Fish)",
+          "foodCategory": "raw_fish",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The pairing that needs no introduction, but deserves explanation.",
+          "pairingChallenge": "Clean fish flavors, varying fat levels, soy sauce, wasabi",
+          "sakeSolutionType": "varies_by_fish",
+          "experimentSummary": {
+            "whitefish": {
+              "sakeType": "Light Junmai Ginjo",
+              "why": "Delicate fish needs delicate sake"
+            },
+            "fattyfish": {
+              "sakeType": "Fuller Junmai",
+              "why": "Fat needs more body"
+            },
+            "whyWorks": "No tannins to clash with fish oil; umami amplifies"
+          }
+        },
+        {
+          "topic_id": "pl-topic-151",
+          "title": "Ramen Revelation",
+          "subtitle": "Japan's comfort bowl meets its liquid companion",
+          "food": "Ramen (Various Styles)",
+          "foodCategory": "noodles",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The soup that conquered the world deserves the right drink.",
+          "pairingChallenge": "Rich broth (tonkotsu/shoyu/miso), noodle starch, varied toppings",
+          "sakeSolutionType": "warm_honjozo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Warm Honjozo for tonkotsu",
+              "why": "Warmth echoes broth; cuts pork fat"
+            },
+            "twist": {
+              "sakeType": "Sparkling for lighter shoyu",
+              "why": "Refreshes between slurps"
+            },
+            "whyWorks": "Temperature harmony; sake cleanses palate between bites"
+          }
+        },
+        {
+          "topic_id": "pl-topic-152",
+          "title": "Yakitori Tradition",
+          "subtitle": "Smoke, char, and sake - the izakaya way",
+          "food": "Yakitori (Grilled Chicken Skewers)",
+          "foodCategory": "grilled_meat",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The after-work tradition that runs on sake.",
+          "pairingChallenge": "Charcoal smoke, tare sweetness vs. shio salt, various cuts",
+          "sakeSolutionType": "warm_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Warm Junmai",
+              "why": "Traditional pairing; handles char"
+            },
+            "twist": {
+              "sakeType": "Cold for liver/heart (motsu)",
+              "why": "Cleaner sake for stronger flavors"
+            },
+            "whyWorks": "Smoke loves sake; traditional izakaya culture"
+          }
+        },
+        {
+          "topic_id": "pl-topic-153",
+          "title": "Tempura Timing",
+          "subtitle": "Crispy perfection needs the right refreshment",
+          "food": "Tempura (Mixed Vegetables and Shrimp)",
+          "foodCategory": "fried",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Light batter, hot oil, cold sake - the perfect balance.",
+          "pairingChallenge": "Light crispy batter, hot oil, delicate ingredients",
+          "sakeSolutionType": "cold_junmai_ginjo",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Well-chilled Junmai Ginjo",
+              "why": "Cold cuts hot; elegant for delicate"
+            },
+            "twist": {
+              "sakeType": "Sparkling",
+              "why": "Bubbles lift batter"
+            },
+            "whyWorks": "Temperature contrast; sake cleanses oil"
+          }
+        },
+        {
+          "topic_id": "pl-topic-154",
+          "title": "Tonkatsu Triumph",
+          "subtitle": "The crispy pork cutlet's perfect partner",
+          "food": "Tonkatsu (Breaded Pork Cutlet)",
+          "foodCategory": "fried_meat",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Crunch, juice, sauce - sake handles it all.",
+          "pairingChallenge": "Crispy panko, juicy pork, sweet-tangy sauce, shredded cabbage",
+          "sakeSolutionType": "junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Room temp Junmai",
+              "why": "Handles richness; versatile"
+            },
+            "twist": {
+              "sakeType": "Sparkling",
+              "why": "Extra grease-cutting power"
+            },
+            "whyWorks": "Classic pairing; sauce and sake harmony"
+          }
+        },
+        {
+          "topic_id": "pl-topic-155",
+          "title": "Okonomiyaki Obsession",
+          "subtitle": "The savory pancake that sake was made for",
+          "food": "Okonomiyaki",
+          "foodCategory": "savory_pancake",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Mayo, sauce, bonito - sake ties it all together.",
+          "pairingChallenge": "Umami-rich sauce, mayo, bonito flakes, varied fillings",
+          "sakeSolutionType": "honjozo_or_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Cold Honjozo",
+              "why": "Session-friendly; cuts richness"
+            },
+            "twist": {
+              "sakeType": "Hiroshima-style with local sake",
+              "why": "Regional pairing"
+            },
+            "whyWorks": "Umami overload needs sake's balance"
+          }
+        }
+      ]
+    },
+    
+    {
+      "category_id": "seasonal_special",
+      "category_name": "Seasonal Specials",
+      "description": "Holiday and seasonal food pairings released at the right time",
+      "sequence_priority": 13,
+      "topics": [
+        {
+          "topic_id": "pl-topic-160",
+          "title": "Thanksgiving Turkey Triumph",
+          "subtitle": "The annual feast gets a sake solution",
+          "food": "Roast Turkey with All the Fixings",
+          "foodCategory": "roast_poultry",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "seasonalWindow": "November (release 2 weeks before Thanksgiving)",
+          "narrativeHook": "Wine pairing with turkey is hard. Sake pairing is easy.",
+          "pairingChallenge": "Lean meat, rich gravy, sweet sides (cranberry, sweet potato), savory stuffing",
+          "sakeSolutionType": "versatile_junmai",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Room temp Junmai",
+              "why": "Handles variety; doesn't fight anything"
+            },
+            "twist": {
+              "sakeType": "Flight for different courses",
+              "why": "Ginjo for turkey, aged for gravy, Nigori for dessert"
+            },
+            "whyWorks": "Turkey is neutral; sake complements not competes"
+          }
+        },
+        {
+          "topic_id": "pl-topic-161",
+          "title": "Summer Grilling Guide",
+          "subtitle": "Backyard BBQ sake strategy",
+          "food": "Mixed BBQ Spread",
+          "foodCategory": "bbq",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "seasonalWindow": "May-August",
+          "narrativeHook": "Put down the beer, pick up the sake.",
+          "pairingChallenge": "Various grilled meats, smoke, sweet sauces, sides",
+          "sakeSolutionType": "chilled_session_sake",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Chilled Honjozo or light Junmai",
+              "why": "Session-friendly; refreshing"
+            },
+            "twist": {
+              "sakeType": "Sake slushie",
+              "why": "Frozen sake for hot days"
+            },
+            "whyWorks": "Cold sake for hot weather; smoke-friendly"
+          }
+        },
+        {
+          "topic_id": "pl-topic-162",
+          "title": "Super Bowl Sunday",
+          "subtitle": "Game day snacks, sake style",
+          "food": "Super Bowl Spread (Wings, Nachos, Dips)",
+          "foodCategory": "party_food",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "seasonalWindow": "Late January/Early February",
+          "narrativeHook": "The biggest eating day of the year needs sake strategy.",
+          "pairingChallenge": "Spicy wings, cheesy nachos, various dips, fried everything",
+          "sakeSolutionType": "cold_versatile",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Ice-cold Junmai",
+              "why": "Versatile; keeps up with variety"
+            },
+            "twist": {
+              "sakeType": "Sake punch",
+              "why": "Batch cocktail for crowds"
+            },
+            "whyWorks": "Party sake for party food; easy drinking"
+          }
+        },
+        {
+          "topic_id": "pl-topic-163",
+          "title": "Valentine's Dinner",
+          "subtitle": "The romantic dinner sake guide",
+          "food": "Romantic Dinner (Oysters, Filet, Chocolate)",
+          "foodCategory": "fine_dining",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "seasonalWindow": "Early February",
+          "narrativeHook": "Skip the Champagne clichés - surprise with sake.",
+          "pairingChallenge": "Multiple courses, need for elegance, progressive flavors",
+          "sakeSolutionType": "premium_flight",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Sparkling → Daiginjo → Kijoshu progression",
+              "why": "Builds through the meal"
+            },
+            "twist": {
+              "sakeType": "Aged sake for chocolate",
+              "why": "Unexpected romance"
+            },
+            "whyWorks": "Impressive; shows thought and care"
+          }
+        },
+        {
+          "topic_id": "pl-topic-164",
+          "title": "Holiday Ham Happiness",
+          "subtitle": "Christmas/Easter centerpiece, sake style",
+          "food": "Glazed Holiday Ham",
+          "foodCategory": "roast_meat",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "seasonalWindow": "December and March/April",
+          "narrativeHook": "Sweet, salty, smoky - sake's ideal playground.",
+          "pairingChallenge": "Honey/maple glaze, smoky ham, clove spices",
+          "sakeSolutionType": "aged_or_off_dry",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Lightly aged Junmai",
+              "why": "Caramel notes match glaze"
+            },
+            "twist": {
+              "sakeType": "Off-dry Ginjo",
+              "why": "Sweetness plays with honey"
+            },
+            "whyWorks": "Sweet sake for sweet glaze; smoke-friendly"
+          }
+        },
+        {
+          "topic_id": "pl-topic-165",
+          "title": "New Year's Eve Celebration",
+          "subtitle": "Ring in the year with sake, not just Champagne",
+          "food": "Celebration Spread (Caviar, Canapés, Desserts)",
+          "foodCategory": "celebration",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "seasonalWindow": "Late December",
+          "narrativeHook": "Champagne at midnight, sake all evening.",
+          "pairingChallenge": "Elegant bites, need for celebration, midnight toast",
+          "sakeSolutionType": "sparkling_premium",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Premium Sparkling sake",
+              "specificExample": "Dewazakura Awa",
+              "why": "Celebration in a glass"
+            },
+            "twist": {
+              "sakeType": "Countdown sake flight",
+              "why": "Different sake each hour"
+            },
+            "whyWorks": "Festive; elegant; memorable"
+          }
+        }
+      ]
+    },
+    
+    {
+      "category_id": "unexpected_desserts",
+      "category_name": "Sweet Endings",
+      "description": "Dessert pairings that surprise and delight",
+      "sequence_priority": 14,
+      "topics": [
+        {
+          "topic_id": "pl-topic-170",
+          "title": "Dark Chocolate Destiny",
+          "subtitle": "The bittersweet truth about sake and chocolate",
+          "food": "Dark Chocolate (70%+)",
+          "foodCategory": "chocolate",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The pairing that sounds wrong but tastes so right.",
+          "pairingChallenge": "Bitterness, fat content, intense flavor",
+          "sakeSolutionType": "kijoshu",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Sweet Kijoshu",
+              "why": "Sweetness balances bitter"
+            },
+            "twist": {
+              "sakeType": "Aged Koshu for 85%+",
+              "why": "Aged notes echo cacao"
+            },
+            "whyWorks": "Dessert sake balances bitter; no harsh contrast"
+          }
+        },
+        {
+          "topic_id": "pl-topic-171",
+          "title": "Ice Cream Dreams",
+          "subtitle": "Frozen treats, room temperature sake",
+          "food": "Vanilla Ice Cream",
+          "foodCategory": "ice_cream",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Affogato? Try a sake float.",
+          "pairingChallenge": "Cold temperature, cream fat, vanilla sweetness",
+          "sakeSolutionType": "nigori_or_kijoshu",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Nigori poured over ice cream",
+              "why": "Creamy on creamy; sake float"
+            },
+            "twist": {
+              "sakeType": "Aged sake drizzle",
+              "why": "Like a boozy caramel sauce"
+            },
+            "whyWorks": "Temperature play; cream harmony"
+          }
+        },
+        {
+          "topic_id": "pl-topic-172",
+          "title": "Cheesecake Companion",
+          "subtitle": "New York's finest meets Tokyo's finest",
+          "food": "New York Cheesecake",
+          "foodCategory": "cake",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "The dense, creamy classic deserves sake's cut.",
+          "pairingChallenge": "Dense cream cheese, graham crust, fruit topping options",
+          "sakeSolutionType": "crisp_ginjo_or_kijoshu",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Crisp Junmai Ginjo",
+              "why": "Cuts richness; not too sweet"
+            },
+            "twist": {
+              "sakeType": "Kijoshu with berry topping",
+              "why": "Sweet meets sweet"
+            },
+            "whyWorks": "Sake cuts cream; fruit notes complement"
+          }
+        },
+        {
+          "topic_id": "pl-topic-173",
+          "title": "Apple Pie Americana",
+          "subtitle": "As American as... sake?",
+          "food": "Apple Pie à la Mode",
+          "foodCategory": "pie",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "The most American dessert meets the most Japanese drink.",
+          "pairingChallenge": "Warm apple, cinnamon spice, flaky crust, vanilla ice cream",
+          "sakeSolutionType": "aged_or_kijoshu",
+          "experimentSummary": {
+            "primaryMatch": {
+              "sakeType": "Aged Junmai",
+              "why": "Apple notes in aged sake; warmth match"
+            },
+            "twist": {
+              "sakeType": "Warm Kijoshu",
+              "why": "Warm sweet sake for warm sweet pie"
+            },
+            "whyWorks": "Cinnamon loves sake; apple notes in both"
+          }
+        }
+      ]
+    }
+  ],
+  
+  "pairing_principles_reference": {
+    "description": "Core principles that guide all pairing episodes",
+    "principles": [
+      {
+        "name": "Umami Amplification",
+        "rule": "Sake's amino acids + food's glutamates = enhanced savory",
+        "applies_to": ["cheese", "aged meats", "soy-based dishes", "fermented foods", "mushrooms"]
+      },
+      {
+        "name": "Fat Cutting",
+        "rule": "Sake's acidity and carbonation cleanse rich palates",
+        "applies_to": ["fried foods", "cream sauces", "fatty meats", "cheese", "butter dishes"]
+      },
+      {
+        "name": "Temperature Matching",
+        "rule": "Warm sake with warm food, cold with cold or fried",
+        "applies_to": ["soups", "stews", "hot dishes", "fried items", "cold appetizers"]
+      },
+      {
+        "name": "No Tannin Clash",
+        "rule": "Unlike wine, sake won't fight fish oils or delicate proteins",
+        "applies_to": ["all seafood", "raw fish", "eggs", "light poultry"]
+      },
+      {
+        "name": "Heat Taming",
+        "rule": "Cold sake with lower alcohol soothes spicy heat without amplifying it",
+        "applies_to": ["spicy dishes", "chili-based foods", "hot sauces"]
+      },
+      {
+        "name": "Grain Harmony",
+        "rule": "Rice-based sake naturally complements other grain-based dishes",
+        "applies_to": ["rice dishes", "bread", "pasta", "corn dishes", "other grains"]
+      },
+      {
+        "name": "Fermentation Friends",
+        "rule": "Fermented sake pairs beautifully with other fermented foods",
+        "applies_to": ["cheese", "pickles", "miso", "kimchi", "sourdough", "charcuterie"]
+      }
+    ]
+  },
+  
+  "difficulty_guide": {
+    "beginner": "Familiar flavors, clear matches, easy-to-find sake",
+    "intermediate": "More complex dishes, nuanced pairings, specialty sake",
+    "advanced": "Challenging flavors, unexpected combinations, rare sake"
+  },
+  
+  "tier_guide": {
+    "1": "Foundational topics - release in first year",
+    "2": "Expansion topics - release as series matures",
+    "3": "Reactive topics - release based on trends/seasons"
+  },
+  
+  "scheduling": {
+    "release_cadence": "weekly",
+    "preferred_release_day": "Wednesday",
+    "seasonal_overrides": "Seasonal topics release 2 weeks before relevant holiday/season",
+    "suggested_release_order": [
+      "Start with Western Comfort (familiar)",
+      "Add Soul Food (diversity early)",
+      "Introduce Japanese Classics (foundation)",
+      "Expand to Global Cuisines",
+      "Mix in Snacks for fun variety",
+      "Cheese deep dives throughout",
+      "Seasonal specials on schedule"
+    ]
+  },
+  
+  "statistics": {
+    "total_topics": 98,
+    "by_category": {
+      "western_comfort": 6,
+      "soul_food": 8,
+      "italian": 6,
+      "chinese": 7,
+      "mexican": 7,
+      "caribbean": 6,
+      "african": 7,
+      "french": 8,
+      "seafood": 7,
+      "snacks": 9,
+      "cheese_expanded": 9,
+      "japanese_classics": 6,
+      "seasonal_special": 6,
+      "unexpected_desserts": 4
+    },
+    "by_difficulty": {
+      "beginner": 62,
+      "intermediate": 32,
+      "advanced": 4
+    },
+    "by_tier": {
+      "1": 78,
+      "2": 20
+    }
+  }
+}

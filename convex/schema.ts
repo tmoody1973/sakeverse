@@ -488,6 +488,19 @@ export default defineSchema({
     .index("by_region", ["region"])
     .index("by_name", ["breweryName"]),
 
+  // Cached sake news
+  sakeNewsCache: defineTable({
+    date: v.string(), // YYYY-MM-DD
+    headlines: v.array(v.object({
+      title: v.string(),
+      snippet: v.string(),
+      emoji: v.string(),
+      url: v.string(),
+    })),
+    createdAt: v.number(),
+  })
+    .index("by_date", ["date"]),
+
   // Cached prefecture descriptions from Perplexity
   prefectureDescriptions: defineTable({
     prefecture: v.string(),
@@ -499,4 +512,108 @@ export default defineSchema({
     createdAt: v.number(),
   })
     .index("by_prefecture", ["prefecture"]),
+
+  // ============================================
+  // PODCAST SYSTEM TABLES
+  // ============================================
+
+  // Podcast Topics (imported from JSON files)
+  podcastTopics: defineTable({
+    topicId: v.string(),
+    series: v.string(),
+    title: v.string(),
+    subtitle: v.optional(v.string()),
+    narrativeHook: v.string(),
+    difficulty: v.string(),
+    tier: v.number(),
+    status: v.string(),
+    metadata: v.any(),
+    researchSeeds: v.object({
+      keyThemes: v.array(v.string()),
+      historicalPeriod: v.optional(v.string()),
+      notableFigures: v.optional(v.array(v.string())),
+    }),
+    researchQueries: v.object({
+      geminiRag: v.array(v.string()),
+      perplexity: v.array(v.string()),
+      firecrawlUrls: v.array(v.string()),
+      tippsyQuery: v.optional(v.any()),
+    }),
+    connections: v.optional(v.any()),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_topicId", ["topicId"])
+    .index("by_series", ["series"])
+    .index("by_status", ["status"])
+    .index("by_series_tier", ["series", "tier"]),
+
+  // Podcast Episodes (generated content)
+  podcastEpisodes: defineTable({
+    topicId: v.string(),
+    series: v.string(),
+    episodeNumber: v.number(),
+    title: v.string(),
+    subtitle: v.optional(v.string()),
+    description: v.string(),
+    research: v.optional(v.any()),
+    script: v.optional(v.object({
+      content: v.string(),
+      wordCount: v.number(),
+      estimatedDuration: v.number(),
+      generatedAt: v.number(),
+    })),
+    audio: v.optional(v.object({
+      storageId: v.id("_storage"),
+      url: v.string(),
+      duration: v.number(),
+      format: v.string(),
+      generatedAt: v.number(),
+    })),
+    blogPost: v.optional(v.object({
+      title: v.string(),
+      slug: v.string(),
+      excerpt: v.string(),
+      content: v.string(),
+      metaDescription: v.string(),
+      keywords: v.array(v.string()),
+      wordCount: v.number(),
+      generatedAt: v.number(),
+    })),
+    recommendedProducts: v.optional(v.array(v.object({
+      productId: v.string(),
+      name: v.string(),
+      brewery: v.string(),
+      type: v.string(),
+      price: v.number(),
+      imageUrl: v.string(),
+      tippsyUrl: v.string(),
+      recommendationType: v.string(),
+      contextNote: v.string(),
+      displayOrder: v.number(),
+    }))),
+    status: v.string(),
+    approvedBy: v.optional(v.string()),
+    approvedAt: v.optional(v.number()),
+    publishedAt: v.optional(v.number()),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_topicId", ["topicId"])
+    .index("by_series", ["series"])
+    .index("by_status", ["status"])
+    .index("by_published", ["publishedAt"]),
+
+  // Generation Jobs (track async progress)
+  podcastGenerationJobs: defineTable({
+    episodeId: v.id("podcastEpisodes"),
+    status: v.string(),
+    currentStep: v.string(),
+    progress: v.number(),
+    error: v.optional(v.string()),
+    startedAt: v.number(),
+    completedAt: v.optional(v.number()),
+  })
+    .index("by_episode", ["episodeId"])
+    .index("by_status", ["status"]),
 });

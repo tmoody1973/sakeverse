@@ -209,3 +209,24 @@ export const getFeaturedTippsyProducts = query({
     }))
   },
 });
+
+
+// Search Tippsy products by brewery name
+export const searchByBrewery = query({
+  args: {
+    brewery: v.string(),
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, { brewery, limit = 5 }) => {
+    const products = await ctx.db
+      .query("tippsyProducts")
+      .collect()
+    
+    // Filter by brewery name (case-insensitive partial match)
+    const filtered = products.filter(p => 
+      p.brewery.toLowerCase().includes(brewery.toLowerCase())
+    )
+    
+    return filtered.slice(0, limit)
+  },
+})

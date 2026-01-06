@@ -1,0 +1,2385 @@
+{
+  "series": "sake_stories",
+  "version": "2.0",
+  "last_updated": "2025-01-06",
+  
+  "curriculum_overview": {
+    "total_foundational_topics": 85,
+    "estimated_completion": "~20 months at weekly releases",
+    "progression_philosophy": "Start with iconic breweries that listeners recognize, expand to regional champions, then deep-dive into craft innovators and American pioneers",
+    "source_note": "All brewery topics are based on actual Tippsy sake catalog inventory - listeners can purchase featured sakes directly",
+    "tier_breakdown": {
+      "tier_1_iconic": 15,
+      "tier_2_regional_champions": 25,
+      "tier_3_craft_innovators": 20,
+      "tier_4_american_and_international": 5,
+      "regional_deep_dives": 10,
+      "thematic_specials": 10
+    }
+  },
+  
+  "topic_categories": [
+    {
+      "category_id": "iconic_breweries",
+      "category_name": "Iconic Breweries",
+      "description": "Legendary breweries that have shaped sake history and are recognized worldwide",
+      "sequence_priority": 1,
+      "topics": [
+        {
+          "topic_id": "ss-topic-001",
+          "title": "Dassai: The Sake Revolution",
+          "subtitle": "How one brewery from rural Yamaguchi conquered the world",
+          "brewery": "DASSAI Inc.",
+          "brand": "Dassai",
+          "prefecture": "Yamaguchi prefecture",
+          "prefectureCode": "JP-35",
+          "region": "Chugoku",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "In the 1990s, a struggling brewery in rural Japan made a controversial decision: abandon everything traditional. The gamble created the world's most famous sake.",
+          "keyThemes": [
+            "Data-driven brewing revolution",
+            "23% polishing ratio innovation",
+            "Global expansion strategy",
+            "Rejection of traditional toji system"
+          ],
+          "historicalPeriod": "1990s revival to present",
+          "notableFigures": [
+            "Hiroshi Sakurai (4th generation president)",
+            "The 'salary-man toji' approach"
+          ],
+          "signatureProducts": [
+            "Dassai 23",
+            "Dassai 39",
+            "Dassai 45",
+            "Dassai Beyond"
+          ],
+          "tippsyProducts": [
+            "Dassai \"23\"",
+            "Dassai \"39\"",
+            "Dassai \"45\"",
+            "Dassai \"Beyond\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["sake revolution", "data-driven brewing", "global sake market", "Junmai Daiginjo focus"],
+            "historicalPeriod": "1990s-present",
+            "notableFigures": ["Hiroshi Sakurai", "Asahi Shuzo history"]
+          },
+          "researchQueries": {
+            "geminiRag": ["Dassai brewery history", "Asahi Shuzo Yamaguchi", "Dassai 23 polishing technique", "sake data-driven brewing"],
+            "perplexity": ["Dassai sake news 2024 2025", "Hiroshi Sakurai interviews", "Dassai New York expansion"],
+            "firecrawlUrls": ["https://www.dassai.co.jp/en/"],
+            "tippsyQuery": {
+              "brewery": "DASSAI Inc.",
+              "available": true
+            }
+          },
+          "connections": {
+            "learningModule": "sake-grades-explained",
+            "badge": "dassai-devotee",
+            "relatedEpisodes": ["ss-topic-regional-yamaguchi"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-002",
+          "title": "Hakkaisan: Snow Country Masters",
+          "subtitle": "The Niigata giant that defined 'tanrei karakuchi'",
+          "brewery": "Hakkaisan Brewery Company",
+          "brand": "Hakkaisan",
+          "prefecture": "Niigata prefecture",
+          "prefectureCode": "JP-15",
+          "region": "Chubu region",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Beneath Japan's heaviest snowfall lies a brewery that transformed its harsh winters into liquid gold. Hakkaisan didn't just adapt to snow country—they made it their superpower.",
+          "keyThemes": [
+            "Tanrei karakuchi (light and dry) style pioneer",
+            "Snow-melt water sourcing",
+            "Year-round brewing innovation",
+            "Honjozo advocacy"
+          ],
+          "historicalPeriod": "1922 founding to present",
+          "notableFigures": [
+            "Nagumo family legacy",
+            "Master brewers of Echigo tradition"
+          ],
+          "signatureProducts": [
+            "Hakkaisan Tokubetsu Junmai",
+            "Hakkaisan Junmai Ginjo",
+            "Hakkaisan Snow Aged"
+          ],
+          "tippsyProducts": [
+            "Hakkaisan \"Clear Sparkling Sake (AWA)\"",
+            "Hakkaisan \"Junmai Ginjo\"",
+            "Hakkaisan \"Sparkling Nigori\"",
+            "Hakkaisan \"Tokubetsu Junmai\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["Niigata sake", "tanrei karakuchi", "snow country brewing", "year-round production"],
+            "historicalPeriod": "1922-present",
+            "notableFigures": ["Nagumo family"]
+          },
+          "researchQueries": {
+            "geminiRag": ["Hakkaisan brewery history", "Niigata sake style tanrei", "snow melt water sake brewing"],
+            "perplexity": ["Hakkaisan sake awards 2024", "Niigata sake industry news"],
+            "firecrawlUrls": ["https://www.hakkaisan.com/"],
+            "tippsyQuery": {
+              "brewery": "Hakkaisan Brewery Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-003",
+          "title": "Hakutsuru: The White Crane's Flight",
+          "subtitle": "270 years of Nada tradition from Japan's largest sake producer",
+          "brewery": "Hakutsuru Brewing Company",
+          "brand": "Hakutsuru",
+          "prefecture": "Hyogo prefecture",
+          "prefectureCode": "JP-28",
+          "region": "Kinki region",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Before craft sake, before boutique breweries, there was Nada. And in Nada's heart, a white crane has been spreading its wings for nearly three centuries.",
+          "keyThemes": [
+            "Nada-gogo brewing district heritage",
+            "Miyamizu water discovery",
+            "Scale without sacrificing quality",
+            "Yamada Nishiki birthplace"
+          ],
+          "historicalPeriod": "1743 founding",
+          "notableFigures": [
+            "Kano family (13 generations)",
+            "Nada brewing guild masters"
+          ],
+          "signatureProducts": [
+            "Hakutsuru Taru Sake (barrel aged)",
+            "Hakutsuru Junmai Dai Ginjo"
+          ],
+          "tippsyProducts": [
+            "Hakutsuru \"Excellent Junmai\"",
+            "Hakutsuru \"Junmai Daiginjo\"",
+            "Hakutsuru \"Sayuri\"",
+            "Hakutsuru \"Superior\"",
+            "Hakutsuru \"Taru\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["Nada brewing district", "Miyamizu water", "Yamada Nishiki rice", "large-scale sake production"],
+            "historicalPeriod": "1743-present",
+            "notableFigures": ["Kano family", "Nada toji"]
+          },
+          "researchQueries": {
+            "geminiRag": ["Hakutsuru brewery Nada history", "Miyamizu water sake", "Nada-gogo brewing district"],
+            "perplexity": ["Hakutsuru sake exports 2024", "Nada sake district tourism"],
+            "firecrawlUrls": ["https://www.hakutsuru.co.jp/english/"],
+            "tippsyQuery": {
+              "brewery": "Hakutsuru Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-004",
+          "title": "Kubota: Niigata's Other Giant",
+          "subtitle": "Asahi-Shuzo's premium brand that redefined elegance",
+          "brewery": "Asahi-Shuzo Sake Brewing Co., Ltd. (Kubota)",
+          "brand": "Kubota",
+          "prefecture": "Niigata prefecture",
+          "prefectureCode": "JP-15",
+          "region": "Chubu region",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "In 1985, Asahi-Shuzo made a bet: create a sake so refined it would redefine what premium meant. They named it after their original founder, Kubota. That bet paid off spectacularly.",
+          "keyThemes": [
+            "1985 premium sake revolution",
+            "Multi-tier product line strategy",
+            "Niigata soft water advantage",
+            "Manju (10,000 trees) name origin"
+          ],
+          "historicalPeriod": "1830 founding, 1985 Kubota brand launch",
+          "notableFigures": [
+            "Original founder Kubota",
+            "Post-war revival architects"
+          ],
+          "signatureProducts": [
+            "Kubota Senju",
+            "Kubota Manju",
+            "Kubota Junmai Daiginjo"
+          ],
+          "tippsyProducts": [
+            "Kubota \"Junmai Daiginjo\"",
+            "Kubota \"Manju\"",
+            "Kubota \"Senju\"",
+            "Kubota \"Sparkling\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["Kubota brand history", "premium sake positioning", "Niigata tanrei karakuchi"],
+            "historicalPeriod": "1830-present",
+            "notableFigures": []
+          },
+          "researchQueries": {
+            "geminiRag": ["Kubota sake brand history", "Asahi-Shuzo Niigata brewery", "Kubota Manju characteristics"],
+            "perplexity": ["Kubota sake releases 2024", "Asahi-Shuzo Niigata news"],
+            "firecrawlUrls": [],
+            "tippsyQuery": {
+              "brewery": "Asahi-Shuzo Sake Brewing Co., Ltd. (Kubota)",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-005",
+          "title": "Ozeki: The Sake That Conquered America",
+          "subtitle": "How a 300-year-old brewery became California's sake pioneer",
+          "brewery": "Ozeki",
+          "brand": "Ozeki",
+          "prefecture": "Hyogo prefecture",
+          "prefectureCode": "JP-28",
+          "region": "Kinki region",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "In 1979, while Japanese breweries looked inward, Ozeki looked west—all the way to California. They didn't just export sake; they started brewing it on American soil.",
+          "keyThemes": [
+            "First Japanese brewery in US (1979)",
+            "California rice and water adaptation",
+            "Nada heritage meets American innovation",
+            "One Cup Ozeki culture"
+          ],
+          "historicalPeriod": "1711 founding, 1979 US expansion",
+          "notableFigures": [
+            "Ozeki family legacy",
+            "California brewery pioneers"
+          ],
+          "signatureProducts": [
+            "Ozeki Junmai",
+            "One Cup Ozeki",
+            "Ozeki Nigori"
+          ],
+          "tippsyProducts": [
+            "Ozeki \"Junmai\"",
+            "Ozeki \"Karatamba\"",
+            "Ozeki \"Nigori Sake\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["American sake production", "Ozeki California", "sake globalization"],
+            "historicalPeriod": "1711-present",
+            "notableFigures": []
+          },
+          "researchQueries": {
+            "geminiRag": ["Ozeki sake history", "American sake brewing", "sake California production"],
+            "perplexity": ["Ozeki USA sake production 2024", "Japanese sake breweries in America"],
+            "firecrawlUrls": ["https://www.ozeki.co.jp/english/"],
+            "tippsyQuery": {
+              "brewery": "Ozeki",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-006",
+          "title": "Kikumasamune: 350 Years of Innovation",
+          "subtitle": "The Nada pioneer that keeps reinventing tradition",
+          "brewery": "Kikumasamune Brewing Company",
+          "brand": "Kikumasamune",
+          "prefecture": "Hyogo prefecture",
+          "prefectureCode": "JP-28",
+          "region": "Kinki region",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Three and a half centuries. That's how long Kikumasamune has been perfecting sake while the world changed around them. Their secret? Never stop experimenting.",
+          "keyThemes": [
+            "Kimoto method preservation",
+            "Sake museum and education",
+            "Nada brewing innovation",
+            "Yamada Nishiki cultivation"
+          ],
+          "historicalPeriod": "1659 founding",
+          "notableFigures": [
+            "Kano family founders",
+            "Kimoto revival advocates"
+          ],
+          "signatureProducts": [
+            "Kikumasamune Kimoto Junmai",
+            "Kikumasamune Taru Sake"
+          ],
+          "tippsyProducts": [
+            "Kikumasamune \"Junmai\"",
+            "Kikumasamune \"Kimoto\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["kimoto method", "Nada heritage", "traditional brewing"],
+            "historicalPeriod": "1659-present",
+            "notableFigures": []
+          },
+          "researchQueries": {
+            "geminiRag": ["Kikumasamune history", "kimoto brewing method", "Nada sake tradition"],
+            "perplexity": ["Kikumasamune sake news 2024", "kimoto sake trend"],
+            "firecrawlUrls": [],
+            "tippsyQuery": {
+              "brewery": "Kikumasamune Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-007",
+          "title": "Kenbishi: Japan's Oldest Sake Brand",
+          "subtitle": "500+ years of unbroken brewing heritage",
+          "brewery": "Kenbishi Brewing Company",
+          "brand": "Kenbishi",
+          "prefecture": "Hyogo prefecture",
+          "prefectureCode": "JP-28",
+          "region": "Kinki region",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "When Kenbishi started brewing sake, Columbus hadn't reached America yet. Today, they still refuse to put grades on their bottles. Five centuries of confidence will do that.",
+          "keyThemes": [
+            "Japan's oldest continuous sake brand (1505)",
+            "Refuses sake grade labeling",
+            "Rich umami-forward style",
+            "Samurai sake history"
+          ],
+          "historicalPeriod": "1505 founding",
+          "notableFigures": [
+            "Founding family legacy",
+            "Historical daimyo patrons"
+          ],
+          "signatureProducts": [
+            "Kenbishi Kuromatsu",
+            "Kenbishi Mizuho"
+          ],
+          "tippsyProducts": [
+            "Kenbishi \"Kuromatsu\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["oldest sake brand", "sake history", "traditional brewing philosophy"],
+            "historicalPeriod": "1505-present",
+            "notableFigures": []
+          },
+          "researchQueries": {
+            "geminiRag": ["Kenbishi oldest sake brand", "sake history feudal Japan", "traditional sake brewing philosophy"],
+            "perplexity": ["Kenbishi sake heritage", "oldest Japanese breweries"],
+            "firecrawlUrls": [],
+            "tippsyQuery": {
+              "brewery": "Kenbishi Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-008",
+          "title": "Senkin: The Young Rebels of Tochigi",
+          "subtitle": "Eleventh generation brothers rewriting sake's future",
+          "brewery": "Senkin Brewing Company",
+          "brand": "Senkin",
+          "prefecture": "Tochigi prefecture",
+          "prefectureCode": "JP-09",
+          "region": "Kanto region",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "When the 11th generation took over Senkin, they threw out the playbook. Their motto? 'Sake should taste like where it's from.' The wine world calls it terroir. They call it revolution.",
+          "keyThemes": [
+            "Domain-sourced rice philosophy",
+            "Natural wine influence on sake",
+            "11th generation innovation",
+            "Acidity-forward modern style"
+          ],
+          "historicalPeriod": "1806 founding, 2000s revival",
+          "notableFigures": [
+            "Usui brothers (Kazuki and Masato)",
+            "11th generation transformation"
+          ],
+          "signatureProducts": [
+            "Senkin Modern",
+            "Senkin Classic",
+            "Senkin Mukai"
+          ],
+          "tippsyProducts": [
+            "Senkin \"Classic Junmai Super Dry\"",
+            "Senkin \"Modern Kamenoo Junmai Daiginjo\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["terroir in sake", "modern sake movement", "domain-sourced rice"],
+            "historicalPeriod": "1806-present, focus on 2000s revival",
+            "notableFigures": ["Usui brothers"]
+          },
+          "researchQueries": {
+            "geminiRag": ["Senkin brewery history", "terroir sake", "modern sake movement Japan"],
+            "perplexity": ["Senkin sake Usui brothers 2024", "Tochigi sake scene"],
+            "firecrawlUrls": ["https://www.senkin.co.jp/en/"],
+            "tippsyQuery": {
+              "brewery": "Senkin Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-009",
+          "title": "Daishichi: Kimoto Purists",
+          "subtitle": "The Fukushima brewery that never abandoned tradition",
+          "brewery": "Daishichi Brewing Company",
+          "brand": "Daishichi",
+          "prefecture": "Fukushima prefecture",
+          "prefectureCode": "JP-07",
+          "region": "Tohoku region",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "When everyone else modernized with fast yeasts, Daishichi said no. Their commitment to the ancient kimoto method wasn't stubbornness—it was foresight.",
+          "keyThemes": [
+            "Kimoto method specialists",
+            "Superflat rice polishing innovation",
+            "Rich, complex sake profiles",
+            "Post-Fukushima resilience"
+          ],
+          "historicalPeriod": "1752 founding",
+          "notableFigures": [
+            "10th generation leadership",
+            "Kimoto preservation advocates"
+          ],
+          "signatureProducts": [
+            "Daishichi Kimoto Junmai",
+            "Daishichi Minowamon"
+          ],
+          "tippsyProducts": [
+            "Daishichi \"Kimoto Junmai\"",
+            "Daishichi \"Minowamon\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["kimoto method", "traditional brewing", "Fukushima sake"],
+            "historicalPeriod": "1752-present",
+            "notableFigures": []
+          },
+          "researchQueries": {
+            "geminiRag": ["Daishichi kimoto brewing", "kimoto sake method history", "superflat rice polishing"],
+            "perplexity": ["Daishichi sake awards 2024", "Fukushima sake recovery"],
+            "firecrawlUrls": [],
+            "tippsyQuery": {
+              "brewery": "Daishichi Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-010",
+          "title": "Suigei: The Drunken Whale",
+          "subtitle": "Kochi's bold brewery with the unforgettable name",
+          "brewery": "Suigei Brewing Company",
+          "brand": "Suigei",
+          "prefecture": "Kochi prefecture",
+          "prefectureCode": "JP-39",
+          "region": "Shikoku region",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "In Kochi, they drink more sake per capita than anywhere else in Japan. And when they drink, they drink Suigei—the 'Drunken Whale.' There's a reason for that name.",
+          "keyThemes": [
+            "Kochi drinking culture",
+            "Extra-dry sake specialists",
+            "Whale festival traditions",
+            "High-volume drinking region"
+          ],
+          "historicalPeriod": "1872 founding",
+          "notableFigures": [
+            "Kochi toji traditions"
+          ],
+          "signatureProducts": [
+            "Suigei Tokubetsu Junmai",
+            "Suigei Daiginjo"
+          ],
+          "tippsyProducts": [
+            "Suigei \"Daiginjo\"",
+            "Suigei \"Junmai Ginjo Koiku 54\"",
+            "Suigei \"Tokubetsu Junmai\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["Kochi sake culture", "extra-dry sake", "regional drinking traditions"],
+            "historicalPeriod": "1872-present",
+            "notableFigures": []
+          },
+          "researchQueries": {
+            "geminiRag": ["Suigei brewery history", "Kochi sake drinking culture", "dry sake style Shikoku"],
+            "perplexity": ["Suigei sake popularity 2024", "Kochi sake scene"],
+            "firecrawlUrls": [],
+            "tippsyQuery": {
+              "brewery": "Suigei Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-011",
+          "title": "Otokoyama: Hokkaido's Northern Star",
+          "subtitle": "Brewing excellence at Japan's frozen frontier",
+          "brewery": "Otokoyama",
+          "brand": "Otokoyama",
+          "prefecture": "Hokkaido",
+          "prefectureCode": "JP-01",
+          "region": "Hokkaido",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Most sake is made in temperate Japan. Otokoyama chose the frozen north, where winter temperatures plunge below -20°C. That choice made them legends.",
+          "keyThemes": [
+            "Extreme cold brewing",
+            "Hokkaido pure water",
+            "Northern rice varieties",
+            "International Gold Medal legacy"
+          ],
+          "historicalPeriod": "1887 founding",
+          "notableFigures": [
+            "Asahikawa brewing pioneers"
+          ],
+          "signatureProducts": [
+            "Otokoyama Tokubetsu Junmai",
+            "Otokoyama Kimoto Junmai"
+          ],
+          "tippsyProducts": [
+            "Otokoyama \"Junmai\"",
+            "Otokoyama \"Tokubetsu Junmai\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["Hokkaido sake", "cold climate brewing", "northern sake region"],
+            "historicalPeriod": "1887-present",
+            "notableFigures": []
+          },
+          "researchQueries": {
+            "geminiRag": ["Otokoyama Hokkaido brewing", "cold climate sake production", "Hokkaido sake history"],
+            "perplexity": ["Otokoyama sake awards", "Hokkaido sake tourism"],
+            "firecrawlUrls": [],
+            "tippsyQuery": {
+              "brewery": "Otokoyama",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-012",
+          "title": "Kizakura: Kyoto's Fushimi Treasure",
+          "subtitle": "The 'Yellow Cherry Blossom' of Japan's ancient capital",
+          "brewery": "Kizakura",
+          "brand": "Kizakura",
+          "prefecture": "Kyoto prefecture",
+          "prefectureCode": "JP-26",
+          "region": "Kinki region",
+          "difficulty": "beginner",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Fushimi has been brewing sake since samurai ruled Japan. Among its legendary breweries, the Yellow Cherry Blossom—Kizakura—blooms with approachable innovation.",
+          "keyThemes": [
+            "Fushimi brewing district",
+            "Soft water sake style",
+            "Sake museum and tourism",
+            "Modern accessibility focus"
+          ],
+          "historicalPeriod": "1925 founding",
+          "notableFigures": [
+            "Matsumoto family"
+          ],
+          "signatureProducts": [
+            "Kizakura Yamahai",
+            "Kizakura Kappa"
+          ],
+          "tippsyProducts": [
+            "Kizakura \"Karakuchi Junmai\"",
+            "Kizakura \"Nigori Sake\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["Fushimi sake district", "Kyoto brewing", "soft water sake"],
+            "historicalPeriod": "1925-present",
+            "notableFigures": []
+          },
+          "researchQueries": {
+            "geminiRag": ["Kizakura Fushimi brewery", "Kyoto sake district history", "soft water brewing"],
+            "perplexity": ["Fushimi sake tourism 2024", "Kyoto sake scene"],
+            "firecrawlUrls": [],
+            "tippsyQuery": {
+              "brewery": "Kizakura",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-013",
+          "title": "Niizawa: The Art of 7%",
+          "subtitle": "Pushing rice polishing to the absolute limit",
+          "brewery": "Niizawa Brewing Company",
+          "brand": "Niizawa",
+          "prefecture": "Miyagi prefecture",
+          "prefectureCode": "JP-04",
+          "region": "Tohoku region",
+          "difficulty": "advanced",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "What happens when you polish rice down to 7% of its original size? It takes 200 hours. Only one brewery in the world does it. This is their story.",
+          "keyThemes": [
+            "Extreme rice polishing records",
+            "Reborn series innovation",
+            "Post-tsunami resilience",
+            "Ultra-premium positioning"
+          ],
+          "historicalPeriod": "1873 founding, 2011 tsunami survival",
+          "notableFigures": [
+            "Current toji and polishing innovations"
+          ],
+          "signatureProducts": [
+            "Niizawa Junmai Daiginjo 7%",
+            "Reborn from Ashes"
+          ],
+          "tippsyProducts": [
+            "Atagonomatsu \"Junmai Ginjo\"",
+            "Hakurakusei \"Junmai Ginjo\"",
+            "Niizawa \"Junmai Daiginjo Zankyo Super 7\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["extreme rice polishing", "premium sake innovation", "Tohoku sake"],
+            "historicalPeriod": "1873-present",
+            "notableFigures": []
+          },
+          "researchQueries": {
+            "geminiRag": ["rice polishing ratio limits", "Niizawa 7% sake", "ultra premium sake"],
+            "perplexity": ["Niizawa sake world record polishing", "most polished sake 2024"],
+            "firecrawlUrls": [],
+            "tippsyQuery": {
+              "brewery": "Niizawa Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-014",
+          "title": "Tatenokawa: Yamagata's Rising Star",
+          "subtitle": "The brewery that put mountain rice on the map",
+          "brewery": "Tatenokawa Brewing Company",
+          "brand": "Tatenokawa",
+          "prefecture": "Yamagata prefecture",
+          "prefectureCode": "JP-06",
+          "region": "Tohoku region",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "Nestled where rivers flow from sacred mountains, Tatenokawa has been quietly building a reputation that's now impossible to ignore.",
+          "keyThemes": [
+            "Dewasansan rice specialists",
+            "18% polishing achievements",
+            "Yamagata terroir expression",
+            "Quality-focused small production"
+          ],
+          "historicalPeriod": "1832 founding",
+          "notableFigures": [
+            "Sato family leadership"
+          ],
+          "signatureProducts": [
+            "Tatenokawa Junmai Daiginjo",
+            "Tatenokawa 18"
+          ],
+          "tippsyProducts": [
+            "Tatenokawa \"18\"",
+            "Tatenokawa \"Seiryu\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["Yamagata sake", "Dewasansan rice", "mountain terroir"],
+            "historicalPeriod": "1832-present",
+            "notableFigures": []
+          },
+          "researchQueries": {
+            "geminiRag": ["Tatenokawa brewery Yamagata", "Dewasansan sake rice", "Yamagata sake history"],
+            "perplexity": ["Tatenokawa sake awards 2024", "Yamagata sake tourism"],
+            "firecrawlUrls": [],
+            "tippsyQuery": {
+              "brewery": "Tatenokawa Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-015",
+          "title": "Born: Dreams Do Come True",
+          "subtitle": "Fukui's master of aged sake elegance",
+          "brewery": "Katoukichibee Shouten",
+          "brand": "Born",
+          "prefecture": "Fukui prefecture",
+          "prefectureCode": "JP-18",
+          "region": "Hokuriku region",
+          "difficulty": "intermediate",
+          "tier": 1,
+          "status": "ready",
+          "narrativeHook": "They say good sake needs to rest. Born took that philosophy to heart, aging their finest bottles until they achieved something extraordinary.",
+          "keyThemes": [
+            "Aged sake specialists",
+            "Dreams Come True flagship",
+            "Fukui brewing heritage",
+            "Premium gift market"
+          ],
+          "historicalPeriod": "1860 founding",
+          "notableFigures": [
+            "Kato family traditions"
+          ],
+          "signatureProducts": [
+            "Born Dreams Come True",
+            "Born Gold"
+          ],
+          "tippsyProducts": [
+            "Born \"Dreams Come True\"",
+            "Born \"Gold\""
+          ],
+          "researchSeeds": {
+            "keyThemes": ["aged sake koshu", "Fukui brewing", "premium sake aging"],
+            "historicalPeriod": "1860-present",
+            "notableFigures": []
+          },
+          "researchQueries": {
+            "geminiRag": ["Born sake aging technique", "koshu aged sake", "Fukui sake region"],
+            "perplexity": ["Born Dreams Come True sake review", "aged sake trend 2024"],
+            "firecrawlUrls": [],
+            "tippsyQuery": {
+              "brewery": "Katoukichibee Shouten",
+              "available": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category_id": "regional_champions",
+      "category_name": "Regional Champions",
+      "description": "Breweries that define their prefecture's sake identity",
+      "sequence_priority": 2,
+      "topics": [
+        {
+          "topic_id": "ss-topic-016",
+          "title": "Katsuyama: Sendai's Samurai Sake",
+          "subtitle": "The Date clan's official brewery still brewing for nobility",
+          "brewery": "Katsuyama Brewing Company",
+          "brand": "Katsuyama",
+          "prefecture": "Miyagi prefecture",
+          "prefectureCode": "JP-04",
+          "region": "Tohoku region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "For centuries, only the powerful Date clan could drink this sake. Now you can too—but the standards haven't dropped one bit.",
+          "keyThemes": [
+            "Date clan official brewery",
+            "Samurai sake heritage",
+            "Sendai brewing traditions",
+            "Noble clientele history"
+          ],
+          "historicalPeriod": "1688 founding",
+          "notableFigures": [
+            "Date clan lords",
+            "Historical court suppliers"
+          ],
+          "tippsyProducts": [
+            "Katsuyama \"Junmai Ginjo Ken\"",
+            "Katsuyama \"Lei\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Katsuyama Date clan sake", "samurai sake history", "Sendai brewing traditions"],
+            "perplexity": ["Katsuyama sake history", "Date clan sake brewery"],
+            "tippsyQuery": {
+              "brewery": "Katsuyama Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-017",
+          "title": "Ichinokura: Miyagi's Gift to the World",
+          "subtitle": "The brewery that made Tohoku sake famous abroad",
+          "brewery": "Ichinokura",
+          "brand": "Ichinokura",
+          "prefecture": "Miyagi prefecture",
+          "prefectureCode": "JP-04",
+          "region": "Tohoku region",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Ichinokura means 'number one storehouse.' Bold name. They've spent decades proving they deserve it.",
+          "keyThemes": [
+            "Tohoku export pioneer",
+            "Accessible premium sake",
+            "Multi-product range",
+            "International recognition"
+          ],
+          "historicalPeriod": "1973 founding (merger of older breweries)",
+          "tippsyProducts": [
+            "Ichinokura \"Himezen\"",
+            "Ichinokura \"Junmai Daiginjo Shizukushibori\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Ichinokura brewery history", "Miyagi sake exports", "Tohoku sake international"],
+            "perplexity": ["Ichinokura sake awards", "Miyagi sake tourism"],
+            "tippsyQuery": {
+              "brewery": "Ichinokura",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-018",
+          "title": "Okunomatsu: Fukushima's Phoenix",
+          "subtitle": "Rising from disaster to international acclaim",
+          "brewery": "Okunomatsu Brewing Company",
+          "brand": "Okunomatsu",
+          "prefecture": "Fukushima prefecture",
+          "prefectureCode": "JP-07",
+          "region": "Tohoku region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "After 2011, the world wrote off Fukushima sake. Okunomatsu wrote back—with some of the best sake they'd ever made.",
+          "keyThemes": [
+            "Post-disaster resilience",
+            "Quality over quantity philosophy",
+            "International Wine Challenge winner",
+            "Fukushima sake renaissance"
+          ],
+          "historicalPeriod": "1716 founding, 2011 recovery",
+          "tippsyProducts": [
+            "Okunomatsu \"Adatara Ginjo\"",
+            "Okunomatsu \"Junmai Daiginjo\"",
+            "Okunomatsu \"Tokubetsu Junmai\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Okunomatsu post-Fukushima", "Fukushima sake recovery", "sake industry resilience"],
+            "perplexity": ["Okunomatsu IWC winner", "Fukushima sake safety 2024"],
+            "tippsyQuery": {
+              "brewery": "Okunomatsu Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-019",
+          "title": "Homare: Aizu's Pride",
+          "subtitle": "Where samurai spirit meets brewing excellence",
+          "brewery": "Homare Brewing Company",
+          "brand": "Aizu Homare",
+          "prefecture": "Fukushima prefecture",
+          "prefectureCode": "JP-07",
+          "region": "Tohoku region",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Aizu was the last samurai stronghold. That fighting spirit lives on in their sake—bold, uncompromising, unforgettable.",
+          "keyThemes": [
+            "Aizu samurai heritage",
+            "Mountain water quality",
+            "Traditional Fukushima styles",
+            "Award-winning portfolio"
+          ],
+          "historicalPeriod": "1918 founding",
+          "tippsyProducts": [
+            "Homare \"Strawberry Nigori\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Aizu sake history", "Fukushima samurai brewing", "Homare brewery traditions"],
+            "perplexity": ["Aizu Homare sake awards", "Aizu sake region"],
+            "tippsyQuery": {
+              "brewery": "Homare Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-020",
+          "title": "Kikusui: Niigata's Bold Spirit",
+          "subtitle": "The brewery that created 'funaguchi' culture",
+          "brewery": "Kikusui Brewing Company",
+          "brand": "Kikusui",
+          "prefecture": "Niigata prefecture",
+          "prefectureCode": "JP-15",
+          "region": "Chubu region",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Before craft cans, before premixed drinks, Kikusui put fresh sake in aluminum and changed how Japan drinks.",
+          "keyThemes": [
+            "Funaguchi canned nama sake inventor",
+            "Convenience store revolution",
+            "Bold flavor profiles",
+            "Accessible premium sake"
+          ],
+          "historicalPeriod": "1881 founding",
+          "tippsyProducts": [
+            "Kikusui \"Junmai Ginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Kikusui funaguchi history", "canned sake innovation", "Niigata sake industry"],
+            "perplexity": ["Kikusui sake convenience stores", "funaguchi sake popularity"],
+            "tippsyQuery": {
+              "brewery": "Kikusui Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-021",
+          "title": "Shirataki: Joetsu Snow Magic",
+          "subtitle": "Another Niigata treasure from snow-buried mountains",
+          "brewery": "Shirataki Brewing Company",
+          "brand": "Jozen",
+          "prefecture": "Niigata prefecture",
+          "prefectureCode": "JP-15",
+          "region": "Chubu region",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "When snow buries your brewery for months each year, you learn to embrace it. Shirataki turned their frozen isolation into sake perfection.",
+          "keyThemes": [
+            "Extreme snow country brewing",
+            "Jozen Mizuno Gotoshi flagship",
+            "Pure spring water source",
+            "Natural cold storage"
+          ],
+          "historicalPeriod": "1855 founding",
+          "tippsyProducts": [
+            "Jozen \"Mizuno Gotoshi Junmai Daiginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Shirataki snow country brewing", "Jozen sake brand", "Niigata snow sake"],
+            "perplexity": ["Jozen Mizuno Gotoshi reviews", "snow country sake breweries"],
+            "tippsyQuery": {
+              "brewery": "Shirataki Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-022",
+          "title": "Takagi: Juyondai's Mystique",
+          "subtitle": "The cult sake you can't find—and why it matters",
+          "brewery": "Takagi Brewing Company",
+          "brand": "Juyondai",
+          "prefecture": "Yamagata prefecture",
+          "prefectureCode": "JP-06",
+          "region": "Tohoku region",
+          "difficulty": "advanced",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Some sake is hard to find. Juyondai is nearly impossible. Behind the hype is a tiny brewery that changed what premium sake could be.",
+          "keyThemes": [
+            "Ultra-limited production",
+            "Cult following phenomenon",
+            "Quality obsession",
+            "No-marketing strategy"
+          ],
+          "historicalPeriod": "1615 founding",
+          "tippsyProducts": [
+            "Juyondai \"Nakadori Junmai Ginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Juyondai cult sake", "Takagi brewery history", "limited production sake"],
+            "perplexity": ["Juyondai where to buy 2024", "most sought after sake"],
+            "tippsyQuery": {
+              "brewery": "Takagi Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-023",
+          "title": "Kamenoi: Kudoki Jozu's Seduction",
+          "subtitle": "The art of charming your palate",
+          "brewery": "Kamenoi Brewing Company",
+          "brand": "Kudoki Jozu",
+          "prefecture": "Yamagata prefecture",
+          "prefectureCode": "JP-06",
+          "region": "Tohoku region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Kudoki Jozu translates to 'skilled at seduction.' It's not just a name—it's a promise.",
+          "keyThemes": [
+            "Sensual branding approach",
+            "Aromatic sake specialists",
+            "Yamagata fruit-forward style",
+            "Modern marketing innovation"
+          ],
+          "historicalPeriod": "1875 founding",
+          "tippsyProducts": [
+            "Kudoki Jozu \"Junmai Ginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Kudoki Jozu sake brand", "Kamenoi brewery Yamagata", "aromatic sake style"],
+            "perplexity": ["Kudoki Jozu reviews 2024", "Yamagata fruity sake"],
+            "tippsyQuery": {
+              "brewery": "Kamenoi Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-024",
+          "title": "Nanbu Bijin: The Southern Beauty",
+          "subtitle": "Iwate's pride with international acclaim",
+          "brewery": "Nanbu Bijin",
+          "brand": "Nanbu Bijin",
+          "prefecture": "Iwate prefecture",
+          "prefectureCode": "JP-03",
+          "region": "Tohoku region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "They named their sake 'Southern Beauty' after the graceful women of old Nanbu province. The elegance carries through every sip.",
+          "keyThemes": [
+            "Organic sake pioneer",
+            "International awards",
+            "Iwate terroir expression",
+            "Sustainable brewing"
+          ],
+          "historicalPeriod": "1902 founding",
+          "tippsyProducts": [
+            "Nanbu Bijin \"Junmai Daiginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Nanbu Bijin organic sake", "Iwate sake region", "sustainable sake brewing"],
+            "perplexity": ["Nanbu Bijin international awards", "organic sake Japan"],
+            "tippsyQuery": {
+              "brewery": "Nanbu Bijin",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-025",
+          "title": "Asabiraki: Iwate's Morning Light",
+          "subtitle": "Where mountain water meets master craft",
+          "brewery": "Asabiraki",
+          "brand": "Asabiraki",
+          "prefecture": "Iwate prefecture",
+          "prefectureCode": "JP-03",
+          "region": "Tohoku region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Asabiraki means 'dawn.' Each morning, this brewery begins another day of perfecting what they've done for over a century.",
+          "keyThemes": [
+            "Premium Junmai Daiginjo focus",
+            "Drop-by-drop extraction method",
+            "Mountain spring water",
+            "Ginginga rice specialty"
+          ],
+          "historicalPeriod": "1871 founding",
+          "tippsyProducts": [
+            "Asabiraki \"Kyokusen\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Asabiraki shizuku brewing", "Iwate premium sake", "drop extraction sake"],
+            "perplexity": ["Asabiraki Kyokusen review", "Iwate sake tourism"],
+            "tippsyQuery": {
+              "brewery": "Asabiraki",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-026",
+          "title": "Rokka: Aomori's Apple Country Secret",
+          "subtitle": "Brewing excellence where apples rule",
+          "brewery": "Rokka Brewing Company",
+          "brand": "Joppari",
+          "prefecture": "Aomori prefecture",
+          "prefectureCode": "JP-02",
+          "region": "Tohoku region",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Aomori is famous for apples, but Rokka proves the region's water and climate make exceptional sake too.",
+          "keyThemes": [
+            "Aomori brewing traditions",
+            "Joppari 'stubborn' brand",
+            "Northern rice cultivation",
+            "Clean, crisp style"
+          ],
+          "historicalPeriod": "1972 founding (cooperative merger)",
+          "tippsyProducts": [
+            "Joppari \"Junmai Ginjo\"",
+            "Joppari \"Sparkling\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Aomori sake region", "Rokka Joppari brand", "northern Japan sake"],
+            "perplexity": ["Aomori sake scene 2024", "Joppari sake meaning"],
+            "tippsyQuery": {
+              "brewery": "Rokka Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-027",
+          "title": "Hachinohe: Mutsu Hassen's Eight",
+          "subtitle": "The northern tip brewery with cosmic ambitions",
+          "brewery": "Hachinohe Brewing Company",
+          "brand": "Mutsu Hassen",
+          "prefecture": "Aomori prefecture",
+          "prefectureCode": "JP-02",
+          "region": "Tohoku region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Mutsu Hassen means 'Eight Views of Mutsu.' Each sip is meant to reveal another dimension of their northern homeland.",
+          "keyThemes": [
+            "Far northern brewing",
+            "Eight views concept",
+            "Small batch production",
+            "Local rice commitment"
+          ],
+          "historicalPeriod": "1775 founding",
+          "tippsyProducts": [
+            "Mutsu Hassen \"Junmai Ginjo Namacho\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Mutsu Hassen sake", "Hachinohe brewery history", "Aomori northern sake"],
+            "perplexity": ["Mutsu Hassen reviews", "far north Japan sake"],
+            "tippsyQuery": {
+              "brewery": "Hachinohe Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-028",
+          "title": "Asamai: Heaven's Door Opens",
+          "subtitle": "Akita's gateway to sake enlightenment",
+          "brewery": "Asamai Brewing Company",
+          "brand": "Amanoto",
+          "prefecture": "Akita prefecture",
+          "prefectureCode": "JP-05",
+          "region": "Tohoku region",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Amanoto means 'Heaven's Door.' In Japan's northernmost sake region, this brewery opens the gates to pure brewing bliss.",
+          "keyThemes": [
+            "Akita terroir expression",
+            "Local rice only philosophy",
+            "Northern purity",
+            "Farm-to-bottle ethos"
+          ],
+          "historicalPeriod": "1917 founding",
+          "tippsyProducts": [
+            "Amanoto \"Heaven's Door\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Amanoto Asamai brewery", "Akita sake region", "local rice sake philosophy"],
+            "perplexity": ["Akita sake terroir", "Amanoto Heaven's Door reviews"],
+            "tippsyQuery": {
+              "brewery": "Asamai Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-029",
+          "title": "Imanishi: Nara's Ancient Root",
+          "subtitle": "Where sake was born, tradition lives on",
+          "brewery": "Imanishi Seibee Shoten",
+          "brand": "Mimurosugi",
+          "prefecture": "Nara prefecture",
+          "prefectureCode": "JP-29",
+          "region": "Kinki region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Nara is sake's birthplace. At Imanishi, they don't just remember that history—they brew it fresh every day.",
+          "keyThemes": [
+            "Sake birthplace heritage",
+            "Ancient shrine connections",
+            "Revival of forgotten techniques",
+            "Mimurosugi rebirth"
+          ],
+          "historicalPeriod": "1660 founding",
+          "tippsyProducts": [
+            "Mimurosugi \"Junmai Ginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Nara sake birthplace", "Imanishi Mimurosugi history", "ancient sake origins"],
+            "perplexity": ["Nara sake tourism", "sake history origins Nara"],
+            "tippsyQuery": {
+              "brewery": "Imanishi Seibee Shoten",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-030",
+          "title": "Konishi: Where Sake Met Science",
+          "subtitle": "The Nada innovator that never stopped experimenting",
+          "brewery": "Konishi Brewing Company",
+          "brand": "Konishi",
+          "prefecture": "Hyogo prefecture",
+          "prefectureCode": "JP-28",
+          "region": "Kinki region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "In 1550, Konishi started brewing. Five centuries later, they're still finding new ways to push boundaries.",
+          "keyThemes": [
+            "Nada pioneer status",
+            "Scientific approach to tradition",
+            "Historic site preservation",
+            "Innovation through centuries"
+          ],
+          "historicalPeriod": "1550 founding",
+          "tippsyProducts": [
+            "Shirayuki \"Junmai Ginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Konishi brewery Nada history", "Shirayuki sake brand", "oldest Nada breweries"],
+            "perplexity": ["Konishi brewery innovation", "Nada sake historic breweries"],
+            "tippsyQuery": {
+              "brewery": "Konishi Brewing Company",
+              "available": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category_id": "craft_innovators",
+      "category_name": "Craft Innovators",
+      "description": "Smaller breweries pushing boundaries and creating unique expressions",
+      "sequence_priority": 3,
+      "topics": [
+        {
+          "topic_id": "ss-topic-031",
+          "title": "Amabuki: Flower Power Revolution",
+          "subtitle": "The only brewery using flower yeasts",
+          "brewery": "Amabuki Brewing Company",
+          "brand": "Amabuki",
+          "prefecture": "Saga prefecture",
+          "prefectureCode": "JP-41",
+          "region": "Kyushu region",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "While every other brewery uses sake yeast, Amabuki went to the garden. Their flower yeasts create sakes unlike anything else on earth.",
+          "keyThemes": [
+            "Flower yeast innovation",
+            "Strawberry yeast breakthrough",
+            "Natural aromatics",
+            "Kyushu craft spirit"
+          ],
+          "historicalPeriod": "1688 founding",
+          "tippsyProducts": [
+            "Amabuki \"Strawberry\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["flower yeast sake", "Amabuki unique brewing", "natural yeast innovation"],
+            "perplexity": ["Amabuki flower yeast how made", "unusual sake yeasts 2024"],
+            "tippsyQuery": {
+              "brewery": "Amabuki Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-032",
+          "title": "Imada: Hiroshima's Hattanso Guardians",
+          "subtitle": "Saving a rice variety from extinction",
+          "brewery": "Imada Brewing Company",
+          "brand": "Fukucho",
+          "prefecture": "Hiroshima",
+          "prefectureCode": "JP-34",
+          "region": "Chugoku",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "When Hattanso rice nearly vanished, one woman brewer devoted her career to saving it. This is her story.",
+          "keyThemes": [
+            "Heritage rice preservation",
+            "Female toji leadership",
+            "Hattanso rice revival",
+            "Hiroshima soft water"
+          ],
+          "historicalPeriod": "1868 founding",
+          "notableFigures": [
+            "Miho Imada (female toji)"
+          ],
+          "tippsyProducts": [
+            "Fukucho \"Moon On The Water\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Hattanso sake rice", "female toji Japan", "Fukucho Imada brewery"],
+            "perplexity": ["Miho Imada brewer", "women in sake brewing 2024"],
+            "tippsyQuery": {
+              "brewery": "Imada Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-033",
+          "title": "Ippongi: Fukui's Comeback Kid",
+          "subtitle": "The small brewery with championship spirit",
+          "brewery": "Ippongi Kubohonten",
+          "brand": "Ippongi",
+          "prefecture": "Fukui prefecture",
+          "prefectureCode": "JP-18",
+          "region": "Hokuriku region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Small doesn't mean insignificant. Ippongi proves that heart and skill can outshine even the biggest producers.",
+          "keyThemes": [
+            "Small production excellence",
+            "Fukui sake renaissance",
+            "Traditional methods",
+            "Family dedication"
+          ],
+          "historicalPeriod": "1902 founding",
+          "tippsyProducts": [
+            "Ippongi \"Nama Junmai Daiginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Ippongi Fukui brewery", "small sake brewery Japan", "Fukui craft sake"],
+            "perplexity": ["Ippongi sake reviews", "Fukui sake region emerging"],
+            "tippsyQuery": {
+              "brewery": "Ippongi Kubohonten",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-034",
+          "title": "Chiyomusubi: Tottori's Sand Dune Spirit",
+          "subtitle": "Brewing excellence from Japan's desert coast",
+          "brewery": "Chiyomusubi Brewing Company",
+          "brand": "Chiyomusubi",
+          "prefecture": "Tottori",
+          "prefectureCode": "JP-31",
+          "region": "Chugoku",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "In the shadow of Japan's famous sand dunes, a brewery creates sake as unique as its landscape.",
+          "keyThemes": [
+            "Tottori unique terroir",
+            "Goriki rice specialty",
+            "Small prefecture pride",
+            "Clean coastal brewing"
+          ],
+          "historicalPeriod": "1865 founding",
+          "tippsyProducts": [
+            "Chiyomusubi \"Daiginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Tottori sake region", "Chiyomusubi brewery", "Goriki sake rice"],
+            "perplexity": ["Tottori sake scene", "sand dunes Japan sake"],
+            "tippsyQuery": {
+              "brewery": "Chiyomusubi Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-035",
+          "title": "Kikunosato: Tochigi's Hidden Gem",
+          "subtitle": "The small brewer with big ambitions",
+          "brewery": "Kikunosato Brewing Company",
+          "brand": "Okunokami",
+          "prefecture": "Tochigi prefecture",
+          "prefectureCode": "JP-09",
+          "region": "Kanto region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Not far from Tokyo, a tiny brewery is making some of the region's most exciting sake. Time to discover Kikunosato.",
+          "keyThemes": [
+            "Small batch production",
+            "Tochigi emerging scene",
+            "Quality over quantity",
+            "Local ingredients focus"
+          ],
+          "historicalPeriod": "1866 founding",
+          "tippsyProducts": [
+            "Okunokami \"Junmai Muroka Genshu\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Tochigi sake breweries", "Kikunosato Okunokami", "small sake producers Japan"],
+            "perplexity": ["Tochigi sake scene 2024", "emerging sake regions Japan"],
+            "tippsyQuery": {
+              "brewery": "Kikunosato Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-036",
+          "title": "Fuji Brewing: Yamagata's Eiko Legacy",
+          "subtitle": "Mountain water and meticulous craft",
+          "brewery": "Fuji Brewing Company (Eiko)",
+          "brand": "Eiko Fuji",
+          "prefecture": "Yamagata",
+          "prefectureCode": "JP-06",
+          "region": "Tohoku region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Named for Japan's sacred mountain, Eiko Fuji aspires to the same lofty heights in their sake.",
+          "keyThemes": [
+            "Yamagata terroir",
+            "Mountain namesake",
+            "Traditional techniques",
+            "Rising reputation"
+          ],
+          "historicalPeriod": "1778 founding",
+          "tippsyProducts": [
+            "Eiko Fuji \"Honkara\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Eiko Fuji sake Yamagata", "Fuji Brewing Company history", "mountain sake branding"],
+            "perplexity": ["Eiko Fuji sake reviews", "Yamagata sake discoveries"],
+            "tippsyQuery": {
+              "brewery": "Fuji Brewing Company (Eiko)",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-037",
+          "title": "Tsuji Honten: Okayama's Gozenshu Legacy",
+          "subtitle": "Brewing for lords, accessible to all",
+          "brewery": "Tsuji Honten",
+          "brand": "Gozenshu",
+          "prefecture": "Okayama prefecture",
+          "prefectureCode": "JP-33",
+          "region": "Chugoku",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Gozenshu means 'sake served before the lord.' That aristocratic pedigree now belongs to anyone who seeks it.",
+          "keyThemes": [
+            "Noble sake heritage",
+            "Omachi rice specialists",
+            "Okayama brewing traditions",
+            "Historical prestige"
+          ],
+          "historicalPeriod": "1804 founding",
+          "tippsyProducts": [
+            "Gozenshu \"Junmai\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Gozenshu sake history", "Okayama sake brewing", "Omachi rice sake"],
+            "perplexity": ["Okayama sake tourism", "Gozenshu lord's sake"],
+            "tippsyQuery": {
+              "brewery": "Tsuji Honten",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-038",
+          "title": "Kamikokoro: Heart Above All",
+          "subtitle": "Okayama's passion-driven perfectionist",
+          "brewery": "Kamikokoro Brewing Company",
+          "brand": "Kamikokoro",
+          "prefecture": "Okayama prefecture",
+          "prefectureCode": "JP-33",
+          "region": "Chugoku",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Kamikokoro translates to 'heart above.' Every bottle carries that emotional investment.",
+          "keyThemes": [
+            "Passion-first philosophy",
+            "Quality obsession",
+            "Okayama soft water",
+            "Thoughtful branding"
+          ],
+          "historicalPeriod": "1873 founding",
+          "tippsyProducts": [
+            "Kamikokoro \"Junmai Daiginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Kamikokoro sake meaning", "Okayama craft sake", "emotional branding sake"],
+            "perplexity": ["Kamikokoro brewery philosophy", "heart-focused brewing"],
+            "tippsyQuery": {
+              "brewery": "Kamikokoro Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-039",
+          "title": "Nakao: Hiroshima's Gentle Giant",
+          "subtitle": "Soft water, softer approach, stunning results",
+          "brewery": "Nakao Brewing Company",
+          "brand": "Seikyo",
+          "prefecture": "Hiroshima prefecture",
+          "prefectureCode": "JP-34",
+          "region": "Chugoku",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Hiroshima pioneered soft-water brewing. Nakao carries that legacy forward with quiet confidence.",
+          "keyThemes": [
+            "Hiroshima soft water method",
+            "Gentle sake profiles",
+            "Regional style champion",
+            "Accessible elegance"
+          ],
+          "historicalPeriod": "1871 founding",
+          "tippsyProducts": [
+            "Seikyo \"Omachi Junmai Ginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Hiroshima soft water sake", "Nakao Seikyo brewery", "gentle sake brewing"],
+            "perplexity": ["Hiroshima sake style", "soft water brewing technique"],
+            "tippsyQuery": {
+              "brewery": "Nakao Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-040",
+          "title": "Sekiya: Aichi's Fermentation Masters",
+          "subtitle": "Where hatcho miso meets sake craft",
+          "brewery": "Sekiya Brewing Company",
+          "brand": "Houraisen",
+          "prefecture": "Aichi",
+          "prefectureCode": "JP-23",
+          "region": "Chubu region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "In Aichi, fermentation is an art form. Sekiya applies that same mastery to sake.",
+          "keyThemes": [
+            "Aichi fermentation culture",
+            "Houraisen craftsmanship",
+            "Regional food pairing",
+            "Technical excellence"
+          ],
+          "historicalPeriod": "1864 founding",
+          "tippsyProducts": [
+            "Houraisen \"Wa\"",
+            "Houraisen \"Wa\" 300ml"
+          ],
+          "researchQueries": {
+            "geminiRag": ["Aichi sake brewing", "Houraisen sake brand", "fermentation culture Japan"],
+            "perplexity": ["Aichi sake scene", "Nagoya sake recommendations"],
+            "tippsyQuery": {
+              "brewery": "Sekiya Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-041",
+          "title": "Izumibashi: Kanagawa's Farm-to-Bottle Pioneer",
+          "subtitle": "Growing their own rice, making their own future",
+          "brewery": "Izumibashi Brewing Company",
+          "brand": "Izumibashi",
+          "prefecture": "Kanagawa prefecture",
+          "prefectureCode": "JP-14",
+          "region": "Kanto region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Most breweries buy rice. Izumibashi grows it. That hands-on approach creates something special.",
+          "keyThemes": [
+            "Brewery-grown rice",
+            "Sustainable farming",
+            "Tokyo-adjacent accessibility",
+            "Dragonfly ecosystem branding"
+          ],
+          "historicalPeriod": "1857 founding",
+          "tippsyProducts": [
+            "Izumibashi \"Pink Label\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Izumibashi rice farming", "estate-grown sake rice", "sustainable sake brewing"],
+            "perplexity": ["Kanagawa sake breweries", "farm-to-bottle sake Japan"],
+            "tippsyQuery": {
+              "brewery": "Izumibashi Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-042",
+          "title": "Fukumitsuya: Kanazawa's Living Legend",
+          "subtitle": "400 years in Japan's most beautiful city",
+          "brewery": "Fukumitsuya",
+          "brand": "Fukumitsuya",
+          "prefecture": "Ishikawa prefecture",
+          "prefectureCode": "JP-17",
+          "region": "Hokuriku region",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Kanazawa survived WWII untouched. So did Fukumitsuya, preserving four centuries of brewing wisdom.",
+          "keyThemes": [
+            "Kanazawa cultural preservation",
+            "Historic city brewing",
+            "Pure rice commitment",
+            "Tourist destination brewery"
+          ],
+          "historicalPeriod": "1625 founding",
+          "tippsyProducts": [
+            "Fukumitsuya \"Kagatobi Junmai\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Fukumitsuya Kanazawa history", "Ishikawa sake brewing", "historic brewery preservation"],
+            "perplexity": ["Kanazawa sake tourism", "Fukumitsuya brewery tour"],
+            "tippsyQuery": {
+              "brewery": "Fukumitsuya",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-043",
+          "title": "Kurosawa: Nagano's Mountain Artisan",
+          "subtitle": "High altitude brewing with sky-high standards",
+          "brewery": "Kurosawa Brewing Company",
+          "brand": "Kurosawa",
+          "prefecture": "Nagano prefecture",
+          "prefectureCode": "JP-20",
+          "region": "Chubu region",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Nagano's mountains demand resilience. Kurosawa's sake reflects that alpine determination.",
+          "keyThemes": [
+            "Mountain brewing conditions",
+            "Nagano ski country",
+            "Clean alpine water",
+            "Robust sake profiles"
+          ],
+          "historicalPeriod": "1858 founding",
+          "tippsyProducts": [
+            "Kurosawa \"Junmai Kimoto\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Nagano mountain sake", "Kurosawa brewery history", "high altitude brewing"],
+            "perplexity": ["Nagano sake ski resorts", "mountain sake Japan"],
+            "tippsyQuery": {
+              "brewery": "Kurosawa Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-044",
+          "title": "Shiraiwa: Toyama's Crystal Waters",
+          "subtitle": "Pure snowmelt, pure intention",
+          "brewery": "Shiraiwa K. K.",
+          "brand": "Maboroshi",
+          "prefecture": "Toyama prefecture",
+          "prefectureCode": "JP-16",
+          "region": "Hokuriku region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Maboroshi means 'illusion.' But there's nothing illusory about the quality in every bottle.",
+          "keyThemes": [
+            "Toyama pure water",
+            "Hokuriku region character",
+            "Ethereal branding",
+            "Small production focus"
+          ],
+          "historicalPeriod": "1868 founding",
+          "tippsyProducts": [
+            "Maboroshi \"Junmai Ginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Toyama sake water quality", "Maboroshi sake brand", "Hokuriku regional sake"],
+            "perplexity": ["Toyama sake scene", "purest water sake brewing"],
+            "tippsyQuery": {
+              "brewery": "Shiraiwa K. K.",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-045",
+          "title": "Kita: Shiga's Ambitious Newcomer",
+          "subtitle": "The brewery breathing new life into Lake Biwa country",
+          "brewery": "Kita Brewing Company",
+          "brand": "Kita",
+          "prefecture": "Shiga prefecture",
+          "prefectureCode": "JP-25",
+          "region": "Kinki region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Near Japan's largest lake, a young brewery is making waves with ambitious, modern sake.",
+          "keyThemes": [
+            "Lake Biwa terroir",
+            "Modern approach",
+            "Emerging brewery",
+            "Regional revival"
+          ],
+          "historicalPeriod": "Modern revival brewery",
+          "tippsyProducts": [
+            "Kitajima \"Junmai Ginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Shiga sake region", "Lake Biwa brewing", "emerging Japanese breweries"],
+            "perplexity": ["Shiga sake scene 2024", "new sake breweries Japan"],
+            "tippsyQuery": {
+              "brewery": "Kita Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-046",
+          "title": "Higashiyama: Kyoto's Other Treasure",
+          "subtitle": "In Fushimi's shadow, crafting quiet excellence",
+          "brewery": "Higashiyama Brewing Company",
+          "brand": "Higashiyama",
+          "prefecture": "Kyoto prefecture",
+          "prefectureCode": "JP-26",
+          "region": "Kinki region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Everyone knows Fushimi's giants. Higashiyama proves that Kyoto's smaller breweries deserve attention too.",
+          "keyThemes": [
+            "Kyoto craft identity",
+            "Away from mainstream",
+            "Traditional Kyoto style",
+            "Understated excellence"
+          ],
+          "historicalPeriod": "1870s founding",
+          "tippsyProducts": [
+            "Higashiyama \"Junmai Daiginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Kyoto sake beyond Fushimi", "small Kyoto breweries", "traditional Kyoto sake"],
+            "perplexity": ["Kyoto hidden sake gems", "craft sake Kyoto"],
+            "tippsyQuery": {
+              "brewery": "Higashiyama Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-047",
+          "title": "Nanbu: Fukui's Dual Tradition",
+          "subtitle": "Not to be confused with Nanbu Bijin—equally excellent",
+          "brewery": "Nanbu Brewing Company",
+          "brand": "Hanagaki",
+          "prefecture": "Fukui",
+          "prefectureCode": "JP-18",
+          "region": "Hokuriku region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Two Nanbu breweries, different regions, both exceptional. Fukui's version crafts Hanagaki with local pride.",
+          "keyThemes": [
+            "Fukui regional identity",
+            "Hanagaki brand heritage",
+            "Local rice commitment",
+            "Hokuriku style"
+          ],
+          "historicalPeriod": "1733 founding",
+          "tippsyProducts": [
+            "Hanagaki \"Junmai Daiginjo 50\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Hanagaki sake Fukui", "Nanbu Brewing Company Fukui", "Hokuriku regional sake"],
+            "perplexity": ["Fukui sake discoveries", "Hanagaki sake reviews"],
+            "tippsyQuery": {
+              "brewery": "Nanbu Brewing Company",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-048",
+          "title": "Kiyashou: Mie's Kokyu Heritage",
+          "subtitle": "Where Ise shrine pilgrims have refreshed for centuries",
+          "brewery": "Kiyashou Sake Brewery",
+          "brand": "Kokyu",
+          "prefecture": "Mie prefecture",
+          "prefectureCode": "JP-24",
+          "region": "Tokai region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Near Japan's holiest shrine, pilgrims have drunk Kokyu sake for generations. The spiritual connection runs deep.",
+          "keyThemes": [
+            "Ise shrine proximity",
+            "Pilgrim tradition",
+            "Spiritual sake connection",
+            "Mie regional identity"
+          ],
+          "historicalPeriod": "1869 founding",
+          "tippsyProducts": [
+            "Kokyu \"Junmai Ginjo Yamadanishiki\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Ise shrine sake history", "Mie sake region", "pilgrimage sake traditions"],
+            "perplexity": ["Ise shrine area sake", "spiritual sake brewing Japan"],
+            "tippsyQuery": {
+              "brewery": "Kiyashou Sake Brewery",
+              "available": true
+            }
+          }
+        },
+        {
+          "topic_id": "ss-topic-049",
+          "title": "Toshimaya: Tokyo's Urban Brewery",
+          "subtitle": "Surviving and thriving in Japan's biggest city",
+          "brewery": "Toshimaya Honten",
+          "brand": "Kinkon",
+          "prefecture": "Tokyo prefecture",
+          "prefectureCode": "JP-13",
+          "region": "Kanto region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Brewing sake in Tokyo seems impossible. Toshimaya has been doing it since the Edo period.",
+          "keyThemes": [
+            "Urban brewing survival",
+            "Tokyo sake identity",
+            "Historical persistence",
+            "Metropolitan terroir"
+          ],
+          "historicalPeriod": "1596 founding",
+          "tippsyProducts": [
+            "Kinkon \"Junmai Ginjo\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["Tokyo sake breweries history", "urban sake brewing", "Edo period sake"],
+            "perplexity": ["Tokyo sake scene 2024", "sake breweries in Tokyo"],
+            "tippsyQuery": {
+              "brewery": "Toshimaya Honten",
+              "available": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category_id": "american_pioneers",
+      "category_name": "American & International Pioneers",
+      "description": "Breweries making sake outside Japan, proving the craft travels well",
+      "sequence_priority": 4,
+      "topics": [
+        {
+          "topic_id": "ss-topic-050",
+          "title": "Brooklyn Kura: New York State of Sake",
+          "subtitle": "America's urban craft sake movement",
+          "brewery": "Brooklyn Kura",
+          "brand": "Brooklyn Kura",
+          "prefecture": "New York",
+          "region": "United States",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "In a Williamsburg warehouse, two Americans are proving that great sake doesn't need a Japanese address.",
+          "keyThemes": [
+            "American craft sake movement",
+            "Urban brewery innovation",
+            "Local ingredients adaptation",
+            "Cross-cultural brewing"
+          ],
+          "historicalPeriod": "2018 founding",
+          "notableFigures": [
+            "Brandon Doughan",
+            "Brian Polen"
+          ],
+          "tippsyProducts": [
+            "Brooklyn Kura \"Number Fourteen\""
+          ],
+          "researchQueries": {
+            "geminiRag": ["American sake brewing", "craft sake USA", "sake outside Japan"],
+            "perplexity": ["Brooklyn Kura founders interview", "American sake breweries 2024"],
+            "firecrawlUrls": ["https://brooklynkura.com/"],
+            "tippsyQuery": {
+              "brewery": "Brooklyn Kura",
+              "available": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category_id": "regional_deep_dives",
+      "category_name": "Regional Deep Dives",
+      "description": "Episodes exploring entire sake regions and their unique characteristics",
+      "sequence_priority": 5,
+      "topics": [
+        {
+          "topic_id": "ss-topic-regional-001",
+          "title": "Niigata: The Tanrei Karakuchi Kingdom",
+          "subtitle": "How snow country defined modern sake",
+          "region": "Niigata prefecture",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Niigata makes more sake than any other prefecture. Understanding why reveals sake's modern evolution.",
+          "keyThemes": [
+            "Tanrei karakuchi style origins",
+            "Snow country brewing advantages",
+            "Koshihikari rice connection",
+            "Multi-brewery excellence"
+          ],
+          "featuredBreweries": [
+            "Hakkaisan Brewery Company",
+            "Asahi-Shuzo Sake Brewing Co., Ltd. (Kubota)",
+            "Shirataki Brewing Company",
+            "Kikusui Brewing Company"
+          ],
+          "researchQueries": {
+            "geminiRag": ["Niigata sake history", "tanrei karakuchi style", "snow country brewing"],
+            "perplexity": ["Niigata sake tourism 2024", "best Niigata breweries to visit"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-regional-002",
+          "title": "Nada: The Birthplace of Scale",
+          "subtitle": "Hyogo's brewing district that fed a nation",
+          "region": "Hyogo prefecture (Nada-gogo)",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Before modern distribution, Nada's sake traveled by ship to Edo. That maritime heritage shaped Japan's drinking culture.",
+          "keyThemes": [
+            "Miyamizu water discovery",
+            "Yamada Nishiki birthplace",
+            "Shipping to Edo history",
+            "Large-scale brewing origins"
+          ],
+          "featuredBreweries": [
+            "Hakutsuru Brewing Company",
+            "Kikumasamune Brewing Company",
+            "Kenbishi Brewing Company",
+            "Ozeki"
+          ],
+          "researchQueries": {
+            "geminiRag": ["Nada sake district history", "Miyamizu water sake", "Edo period sake trade"],
+            "perplexity": ["Nada sake tourism 2024", "Hyogo sake museum"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-regional-003",
+          "title": "Fushimi: Kyoto's Soft Water Secret",
+          "subtitle": "Where emperors drank and traditions formed",
+          "region": "Kyoto prefecture (Fushimi)",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "While Nada brewed for the masses, Fushimi brewed for the court. That elegant heritage persists today.",
+          "keyThemes": [
+            "Soft water brewing techniques",
+            "Imperial sake connections",
+            "Contrast with Nada style",
+            "Tourism and sake culture"
+          ],
+          "featuredBreweries": [
+            "Kizakura",
+            "Higashiyama Brewing Company"
+          ],
+          "researchQueries": {
+            "geminiRag": ["Fushimi sake history", "soft water brewing Kyoto", "imperial sake traditions"],
+            "perplexity": ["Fushimi sake district tourism", "Kyoto sake walking tour"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-regional-004",
+          "title": "Tohoku: The Frozen North's Gift",
+          "subtitle": "Six prefectures, endless discovery",
+          "region": "Tohoku region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Japan's northeast was once considered sake's frontier. Now it's the heartland of quality.",
+          "keyThemes": [
+            "Cold climate advantages",
+            "Post-disaster resilience",
+            "Regional rice varieties",
+            "Emerging craft breweries"
+          ],
+          "featuredBreweries": [
+            "Niizawa Brewing Company",
+            "Okunomatsu Brewing Company",
+            "Daishichi Brewing Company",
+            "Nanbu Bijin",
+            "Rokka Brewing Company"
+          ],
+          "researchQueries": {
+            "geminiRag": ["Tohoku sake region", "cold climate sake brewing", "Fukushima sake recovery"],
+            "perplexity": ["Tohoku sake tourism 2024", "best Tohoku breweries"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-regional-005",
+          "title": "Yamagata: The Connoisseur's Prefecture",
+          "subtitle": "Where cult sake and innovation collide",
+          "region": "Yamagata prefecture",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Yamagata breweries win more competitions per capita than anywhere else. There's a reason for that.",
+          "keyThemes": [
+            "Competition dominance",
+            "Dewasansan rice excellence",
+            "Mountain water quality",
+            "Quality-focused culture"
+          ],
+          "featuredBreweries": [
+            "Tatenokawa Brewing Company",
+            "Takagi Brewing Company",
+            "Kamenoi Brewing Company",
+            "Fuji Brewing Company (Eiko)"
+          ],
+          "researchQueries": {
+            "geminiRag": ["Yamagata sake competition success", "Dewasansan rice", "Yamagata brewing culture"],
+            "perplexity": ["Yamagata sake awards 2024", "Yamagata sake tourism"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-regional-006",
+          "title": "Hiroshima: The Soft Water Revolution",
+          "subtitle": "How one discovery changed brewing forever",
+          "region": "Hiroshima prefecture",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Everyone said soft water couldn't make good sake. Hiroshima proved everyone wrong.",
+          "keyThemes": [
+            "Soft water brewing breakthrough",
+            "Senzo Miura's discovery",
+            "Gentle sake profiles",
+            "Technical innovation"
+          ],
+          "featuredBreweries": [
+            "Imada Brewing Company",
+            "Nakao Brewing Company"
+          ],
+          "researchQueries": {
+            "geminiRag": ["Hiroshima soft water sake", "Senzo Miura brewing", "soft water brewing technique"],
+            "perplexity": ["Hiroshima sake scene 2024", "soft water sake characteristics"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-regional-007",
+          "title": "Hokuriku: Japan's Sake Coast",
+          "subtitle": "Ishikawa, Toyama, and Fukui's liquid treasures",
+          "region": "Hokuriku region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Japan's Sea of Japan coast creates unique conditions. The sake reflects that maritime character.",
+          "keyThemes": [
+            "Coastal terroir",
+            "Historical trading ports",
+            "Distinct regional styles",
+            "Seafood pairing mastery"
+          ],
+          "featuredBreweries": [
+            "Fukumitsuya",
+            "Katoukichibee Shouten",
+            "Ippongi Kubohonten",
+            "Nanbu Brewing Company"
+          ],
+          "researchQueries": {
+            "geminiRag": ["Hokuriku sake region", "Sea of Japan coast brewing", "Ishikawa Toyama Fukui sake"],
+            "perplexity": ["Hokuriku sake tourism", "best Kanazawa sake"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-regional-008",
+          "title": "Shikoku: The Island Secret",
+          "subtitle": "Four prefectures, unlimited personality",
+          "region": "Shikoku region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Shikoku's isolation created distinct brewing traditions. Now the world is discovering what locals always knew.",
+          "keyThemes": [
+            "Island brewing identity",
+            "Kochi drinking culture",
+            "Regional sake diversity",
+            "Pilgrimage route connections"
+          ],
+          "featuredBreweries": [
+            "Suigei Brewing Company"
+          ],
+          "researchQueries": {
+            "geminiRag": ["Shikoku sake region", "Kochi sake culture", "88 temple pilgrimage sake"],
+            "perplexity": ["Shikoku sake discoveries 2024", "Kochi drinking customs"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-regional-009",
+          "title": "Kyushu: The Southern Frontier",
+          "subtitle": "Where sake meets shochu territory",
+          "region": "Kyushu region",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "In shochu country, sake breweries fight for attention. Those that survive make something special.",
+          "keyThemes": [
+            "Sake vs shochu culture",
+            "Innovation for survival",
+            "Unique yeast experiments",
+            "Southern terroir"
+          ],
+          "featuredBreweries": [
+            "Amabuki Brewing Company"
+          ],
+          "researchQueries": {
+            "geminiRag": ["Kyushu sake brewing", "sake shochu competition", "southern Japan sake"],
+            "perplexity": ["Kyushu sake vs shochu", "Saga sake scene"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-regional-010",
+          "title": "Sake Beyond Japan",
+          "subtitle": "The global craft sake movement",
+          "region": "International",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "From Brooklyn to Berlin, sake is going global. But can it retain its soul outside Japan?",
+          "keyThemes": [
+            "American craft sake",
+            "European sake production",
+            "Local ingredient adaptation",
+            "Cultural translation challenges"
+          ],
+          "featuredBreweries": [
+            "Brooklyn Kura",
+            "Ozeki (California)"
+          ],
+          "researchQueries": {
+            "geminiRag": ["sake brewing outside Japan", "craft sake USA", "global sake movement"],
+            "perplexity": ["international sake breweries 2024", "sake production non-Japan"]
+          }
+        }
+      ]
+    },
+    {
+      "category_id": "thematic_specials",
+      "category_name": "Thematic Specials",
+      "description": "Episodes exploring specific themes across multiple breweries",
+      "sequence_priority": 6,
+      "topics": [
+        {
+          "topic_id": "ss-topic-theme-001",
+          "title": "The Kimoto Revival",
+          "subtitle": "Why ancient methods are trending again",
+          "theme": "Traditional brewing methods",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "For decades, kimoto was considered obsolete. Now it's the hottest trend in sake. What changed?",
+          "featuredBreweries": [
+            "Daishichi Brewing Company",
+            "Kikumasamune Brewing Company"
+          ],
+          "researchQueries": {
+            "geminiRag": ["kimoto sake method revival", "traditional sake brewing trends", "yamahai vs kimoto"],
+            "perplexity": ["kimoto sake trend 2024", "natural sake movement Japan"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-theme-002",
+          "title": "Women Who Brew",
+          "subtitle": "Female toji breaking barriers",
+          "theme": "Gender in brewing",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Sake brewing was once forbidden to women. Now they're leading some of Japan's most innovative breweries.",
+          "featuredBreweries": [
+            "Imada Brewing Company"
+          ],
+          "notableFigures": [
+            "Miho Imada",
+            "Rie Yoshida",
+            "Rumiko Moriki"
+          ],
+          "researchQueries": {
+            "geminiRag": ["female toji Japan", "women sake brewing history", "gender brewing traditions"],
+            "perplexity": ["women sake brewers 2024", "female toji breaking barriers"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-theme-003",
+          "title": "After the Earthquake",
+          "subtitle": "Tohoku's sake resilience story",
+          "theme": "Disaster recovery",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "March 11, 2011 devastated Tohoku's sake industry. What happened next is a story of remarkable resilience.",
+          "featuredBreweries": [
+            "Okunomatsu Brewing Company",
+            "Niizawa Brewing Company"
+          ],
+          "researchQueries": {
+            "geminiRag": ["Tohoku earthquake sake recovery", "Fukushima sake safety", "disaster recovery brewing"],
+            "perplexity": ["Tohoku sake recovery 2024", "Fukushima sake reputation"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-theme-004",
+          "title": "The Rice Whisperers",
+          "subtitle": "Breweries growing their own sake rice",
+          "theme": "Rice cultivation and terroir",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Most breweries buy rice. Some grow it themselves. That choice changes everything.",
+          "featuredBreweries": [
+            "Izumibashi Brewing Company",
+            "Senkin Brewing Company"
+          ],
+          "researchQueries": {
+            "geminiRag": ["estate grown sake rice", "terroir in sake", "brewery rice farming"],
+            "perplexity": ["farm to bottle sake Japan", "sake rice terroir"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-theme-005",
+          "title": "The Polishing Wars",
+          "subtitle": "How low can you go—and should you?",
+          "theme": "Rice polishing extremes",
+          "difficulty": "advanced",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Some breweries polish rice to 7%. Others say that's wasteful. The debate reveals deep philosophical divides.",
+          "featuredBreweries": [
+            "Niizawa Brewing Company",
+            "Tatenokawa Brewing Company",
+            "DASSAI Inc."
+          ],
+          "researchQueries": {
+            "geminiRag": ["extreme rice polishing sake", "polishing ratio debate", "junmai daiginjo standards"],
+            "perplexity": ["most polished sake world", "rice polishing limits"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-theme-006",
+          "title": "Aging Gracefully",
+          "subtitle": "The koshu (aged sake) renaissance",
+          "theme": "Sake aging",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Most sake is drunk young. But a quiet movement is proving that patience pays off in unexpected ways.",
+          "featuredBreweries": [
+            "Katoukichibee Shouten"
+          ],
+          "researchQueries": {
+            "geminiRag": ["koshu aged sake", "sake aging techniques", "mature sake flavors"],
+            "perplexity": ["aged sake trend 2024", "koshu sake popularity"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-theme-007",
+          "title": "Bubbles Rising",
+          "subtitle": "Sparkling sake's moment",
+          "theme": "Sparkling sake",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Once dismissed as gimmicky, sparkling sake is now serious business. The bubbles tell a bigger story.",
+          "featuredBreweries": [
+            "Hakkaisan Brewery Company"
+          ],
+          "researchQueries": {
+            "geminiRag": ["sparkling sake production", "AWA sake standards", "champagne method sake"],
+            "perplexity": ["sparkling sake trend 2024", "best sparkling sake"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-theme-008",
+          "title": "The Export Revolution",
+          "subtitle": "How sake conquered the world",
+          "theme": "Global expansion",
+          "difficulty": "beginner",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Japanese sake consumption is declining. But exports are booming. The future of sake might be abroad.",
+          "featuredBreweries": [
+            "DASSAI Inc.",
+            "Hakkaisan Brewery Company",
+            "Ozeki"
+          ],
+          "researchQueries": {
+            "geminiRag": ["sake export history", "global sake market", "sake international growth"],
+            "perplexity": ["sake exports 2024 statistics", "sake popularity worldwide"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-theme-009",
+          "title": "Sacred Sake",
+          "subtitle": "Breweries and shrines—an ancient bond",
+          "theme": "Religious connections",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "Before sake was a beverage, it was an offering to the gods. That spiritual connection still shapes the industry.",
+          "featuredBreweries": [
+            "Kiyashou Sake Brewery",
+            "Imanishi Seibee Shoten"
+          ],
+          "researchQueries": {
+            "geminiRag": ["sake shrine offerings", "sacred sake Japan", "religious sake history"],
+            "perplexity": ["sake Shinto traditions", "shrine sake offerings"]
+          }
+        },
+        {
+          "topic_id": "ss-topic-theme-010",
+          "title": "Generation Next",
+          "subtitle": "Young brewers reinventing tradition",
+          "theme": "New generation leadership",
+          "difficulty": "intermediate",
+          "tier": 2,
+          "status": "ready",
+          "narrativeHook": "As master brewers age out, their children and successors are asking: what should sake become?",
+          "featuredBreweries": [
+            "Senkin Brewing Company"
+          ],
+          "notableFigures": [
+            "Usui brothers (Senkin)"
+          ],
+          "researchQueries": {
+            "geminiRag": ["young sake brewers Japan", "next generation toji", "sake innovation young brewers"],
+            "perplexity": ["young sake makers 2024", "sake industry future leaders"]
+          }
+        }
+      ]
+    }
+  ],
+  
+  "scheduling": {
+    "release_cadence": "weekly",
+    "preferred_release_day": "Tuesday",
+    "sequence_strategy": "Alternate between Iconic/Regional/Craft/Thematic to maintain variety",
+    "regional_deep_dives": "Release one per month as a special feature",
+    "thematic_specials": "Release quarterly or tie to relevant events"
+  },
+  
+  "production_notes": {
+    "audio_length_target": "15-25 minutes",
+    "tone": "Storytelling narrative with educational substance",
+    "music_style": "Traditional Japanese instruments, modern ambient blend",
+    "interview_clips": "Include when available from news sources"
+  },
+  
+  "tippsy_integration": {
+    "product_links": "Each episode links to featured brewery products on Tippsy",
+    "affiliate_disclosure": "Clear disclosure in show notes",
+    "availability_check": "Verify product availability before featuring prominently"
+  }
+}

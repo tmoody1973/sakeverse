@@ -1,0 +1,623 @@
+{
+  "series": "the_bridge",
+  "version": "1.0",
+  "lastUpdated": "2025-01-06",
+  
+  "curriculumOverview": {
+    "totalFoundationalTopics": 24,
+    "estimatedCompletion": "~6 months at weekly releases",
+    "progressionPhilosophy": "Start with popular white wines (most sake-adjacent), move to reds, then specialty wines"
+  },
+  
+  "translationMatrix": {
+    "keyTranslations": [
+      {
+        "wineConcept": "Terroir",
+        "sakeEquivalent": "Water source + regional style",
+        "explanation": "Both express place through flavor"
+      },
+      {
+        "wineConcept": "Oak aging",
+        "sakeEquivalent": "Kimoto/Yamahai or wood barrel aging",
+        "explanation": "Both add complexity, texture, secondary flavors"
+      },
+      {
+        "wineConcept": "Tannins",
+        "sakeEquivalent": "Umami + amino acid bitterness",
+        "explanation": "Both provide structure and mouthfeel"
+      },
+      {
+        "wineConcept": "Residual sugar",
+        "sakeEquivalent": "Nihonshudo (SMV)",
+        "explanation": "Lower SMV = sweeter perception"
+      },
+      {
+        "wineConcept": "Acidity",
+        "sakeEquivalent": "Sando (acidity level)",
+        "explanation": "Both create freshness and food-pairing ability"
+      }
+    ]
+  },
+  
+  "vocabularyGlossary": [
+    {"wineTerm": "Crisp", "sakeTerm": "Tanrei (淡麗)", "meaning": "Light and dry"},
+    {"wineTerm": "Full-bodied", "sakeTerm": "Noujun (濃醇)", "meaning": "Rich and full"},
+    {"wineTerm": "Mineral", "sakeTerm": "Kire (切れ)", "meaning": "Sharp, clean finish"},
+    {"wineTerm": "Fruity", "sakeTerm": "Ginjo-ka (吟醸香)", "meaning": "Ginjo aroma (fruity/floral)"},
+    {"wineTerm": "Oaky", "sakeTerm": "Taruzake-like", "meaning": "Cedar/wood notes"},
+    {"wineTerm": "Yeasty", "sakeTerm": "Koji-ka", "meaning": "Koji aroma (chestnut/grain)"}
+  ],
+  
+  "topics": [
+    {
+      "topicId": "br-topic-001",
+      "title": "Chablis to Niigata",
+      "subtitle": "For lovers of crisp, mineral French whites",
+      "category": "crisp_whites",
+      "narrativeHook": "Your favorite unoaked Chardonnay has a Japanese cousin",
+      "difficulty": "beginner",
+      "tier": 1,
+      "status": "ready",
+      "metadata": {
+        "wineAnchor": {
+          "wine": "Chablis (unoaked Chardonnay)",
+          "region": "Burgundy, France",
+          "grape": "Chardonnay",
+          "characteristics": ["mineral", "crisp", "citrus", "no oak", "elegant"]
+        },
+        "sakeDestination": {
+          "style": "Junmai Ginjo",
+          "region": "Niigata",
+          "matchPoints": ["soft water = mineral elegance", "tanrei karakuchi = crisp dry", "clean finish"]
+        }
+      },
+      "evolutionPath": {
+        "nextStep": {"sake": "Hakkaisan Junmai Ginjo", "why": "Slightly more aromatic, like moving to Puligny-Montrachet"},
+        "advanced": {"sake": "Born Gold Junmai Daiginjo", "why": "Maximum refinement - like Grand Cru Chablis"}
+      },
+      "researchSeeds": {
+        "keyThemes": ["mineral character", "soft water", "clean finish", "food pairing"]
+      },
+      "researchQueries": {
+        "geminiRag": [
+          "Niigata sake characteristics",
+          "sake water hardness flavor impact",
+          "tanrei karakuchi style"
+        ],
+        "perplexity": [
+          "wine to sake pairing sommelier guide",
+          "Chablis lovers sake recommendations"
+        ],
+        "firecrawlUrls": [],
+        "tippsyQuery": {
+          "region": "niigata",
+          "type": ["junmai_ginjo", "junmai_daiginjo"],
+          "flavorProfile": ["dry", "clean"]
+        }
+      },
+      "connections": {
+        "learningModule": "niigata-style",
+        "relatedEpisodes": ["ss-topic-002", "ss-topic-010"]
+      }
+    },
+    {
+      "topicId": "br-topic-002",
+      "title": "Sauvignon Blanc to Aromatic Ginjo",
+      "subtitle": "For fans of herbaceous, citrus-forward wines",
+      "category": "crisp_whites",
+      "narrativeHook": "That grassy, zesty wine you love? Sake can do that too",
+      "difficulty": "beginner",
+      "tier": 1,
+      "status": "ready",
+      "metadata": {
+        "wineAnchor": {
+          "wine": "Sauvignon Blanc",
+          "region": "Loire Valley / New Zealand",
+          "grape": "Sauvignon Blanc",
+          "characteristics": ["herbaceous", "citrus", "high acid", "grassy", "bright"]
+        },
+        "sakeDestination": {
+          "style": "Junmai Ginjo with Association #9 yeast",
+          "matchPoints": ["aromatic yeast = herbal/citrus notes", "high sando = zippy acidity", "bright finish"]
+        }
+      },
+      "evolutionPath": {
+        "nextStep": {"sake": "Dewazakura Oka", "why": "Classic aromatic ginjo with floral lift"},
+        "advanced": {"sake": "Jikon Junmai Ginjo", "why": "More complexity while keeping brightness"}
+      },
+      "researchSeeds": {
+        "keyThemes": ["aromatic yeast", "citrus notes", "acidity", "bright sake"]
+      },
+      "researchQueries": {
+        "geminiRag": [
+          "Association Yeast #9 characteristics",
+          "aromatic sake production",
+          "sando acidity in sake"
+        ],
+        "perplexity": [
+          "Sauvignon Blanc sake alternative",
+          "aromatic sake recommendations"
+        ],
+        "firecrawlUrls": [],
+        "tippsyQuery": {
+          "type": ["junmai_ginjo"],
+          "flavorProfile": ["fruity", "floral"]
+        }
+      },
+      "connections": {
+        "learningModule": "yeast-strains"
+      }
+    },
+    {
+      "topicId": "br-topic-003",
+      "title": "Pinot Grigio to Honjozo",
+      "subtitle": "For those who love light, easy-drinking whites",
+      "category": "crisp_whites",
+      "narrativeHook": "The 'I'll have a glass of whatever's light' crowd, this is for you",
+      "difficulty": "beginner",
+      "tier": 1,
+      "status": "ready",
+      "metadata": {
+        "wineAnchor": {
+          "wine": "Pinot Grigio",
+          "region": "Northern Italy",
+          "grape": "Pinot Grigio",
+          "characteristics": ["light", "neutral", "refreshing", "easy-drinking", "versatile"]
+        },
+        "sakeDestination": {
+          "style": "Honjozo",
+          "matchPoints": ["light body", "clean finish", "sessionable", "food-friendly"]
+        }
+      },
+      "evolutionPath": {
+        "nextStep": {"sake": "Kubota Senju", "why": "Slightly more character while staying approachable"},
+        "advanced": {"sake": "Light Junmai Ginjo", "why": "Step up in complexity"}
+      },
+      "researchSeeds": {
+        "keyThemes": ["light sake", "honjozo style", "sessionable"]
+      },
+      "researchQueries": {
+        "geminiRag": [
+          "honjozo sake characteristics",
+          "light bodied sake styles",
+          "everyday drinking sake"
+        ],
+        "perplexity": [
+          "easy drinking sake recommendations",
+          "honjozo vs junmai comparison"
+        ],
+        "firecrawlUrls": [],
+        "tippsyQuery": {
+          "type": ["honjozo"],
+          "priceMax": 30
+        }
+      },
+      "connections": {
+        "learningModule": "sake-categories"
+      }
+    },
+    {
+      "topicId": "br-topic-010",
+      "title": "Oaked Chardonnay to Kimoto",
+      "subtitle": "For lovers of buttery, full-bodied whites",
+      "category": "rich_whites",
+      "narrativeHook": "That creamy California Chard? There's a sake for that",
+      "difficulty": "intermediate",
+      "tier": 1,
+      "status": "ready",
+      "metadata": {
+        "wineAnchor": {
+          "wine": "Oaked Chardonnay",
+          "region": "California / Burgundy",
+          "grape": "Chardonnay",
+          "characteristics": ["buttery", "vanilla", "full body", "creamy texture", "rich"]
+        },
+        "sakeDestination": {
+          "style": "Kimoto Junmai",
+          "matchPoints": ["lactic richness = buttery notes", "fuller body", "complexity from traditional method"]
+        }
+      },
+      "evolutionPath": {
+        "nextStep": {"sake": "Daishichi Kimoto", "why": "Classic kimoto with textbook richness"},
+        "advanced": {"sake": "Aged Kimoto", "why": "Even more developed, oaky-like complexity"}
+      },
+      "researchSeeds": {
+        "keyThemes": ["kimoto method", "lactic character", "full body", "traditional brewing"]
+      },
+      "researchQueries": {
+        "geminiRag": [
+          "kimoto brewing method",
+          "lactic acid in sake production",
+          "full bodied sake styles"
+        ],
+        "perplexity": [
+          "kimoto sake recommendations",
+          "buttery sake like Chardonnay"
+        ],
+        "firecrawlUrls": [],
+        "tippsyQuery": {
+          "type": ["junmai"],
+          "flavorProfile": ["rich", "umami"]
+        }
+      },
+      "connections": {
+        "learningModule": "traditional-brewing-methods"
+      }
+    },
+    {
+      "topicId": "br-topic-011",
+      "title": "Viognier to Yamahai Daiginjo",
+      "subtitle": "For those who love aromatic, textured whites",
+      "category": "rich_whites",
+      "narrativeHook": "Stone fruit and flowers in your glass, sake style",
+      "difficulty": "intermediate",
+      "tier": 1,
+      "status": "ready",
+      "metadata": {
+        "wineAnchor": {
+          "wine": "Viognier",
+          "region": "Rhône / California",
+          "grape": "Viognier",
+          "characteristics": ["floral", "stone fruit", "rich texture", "low acid", "perfumed"]
+        },
+        "sakeDestination": {
+          "style": "Yamahai Junmai Daiginjo",
+          "matchPoints": ["aromatic complexity", "textural richness", "peach/apricot notes"]
+        }
+      },
+      "evolutionPath": {
+        "nextStep": {"sake": "Tedorigawa Yamahai Junmai", "why": "Classic yamahai aromatics"},
+        "advanced": {"sake": "Aged Yamahai Daiginjo", "why": "Maximum complexity"}
+      },
+      "researchSeeds": {
+        "keyThemes": ["yamahai method", "aromatic sake", "texture", "stone fruit"]
+      },
+      "researchQueries": {
+        "geminiRag": [
+          "yamahai sake characteristics",
+          "aromatic sake premium styles",
+          "texture in sake"
+        ],
+        "perplexity": [
+          "Viognier sake comparison",
+          "perfumed sake recommendations"
+        ],
+        "firecrawlUrls": [],
+        "tippsyQuery": {
+          "type": ["junmai_daiginjo"],
+          "flavorProfile": ["rich", "fruity"]
+        }
+      },
+      "connections": {
+        "learningModule": "traditional-brewing-methods"
+      }
+    },
+    {
+      "topicId": "br-topic-020",
+      "title": "Off-Dry Riesling to Nigori",
+      "subtitle": "For lovers of sweet-tart balance",
+      "category": "off_dry",
+      "narrativeHook": "That Spätlese you can't stop drinking? Meet nigori",
+      "difficulty": "beginner",
+      "tier": 1,
+      "status": "ready",
+      "metadata": {
+        "wineAnchor": {
+          "wine": "Off-Dry Riesling",
+          "region": "Germany / Alsace",
+          "grape": "Riesling",
+          "characteristics": ["residual sweetness", "high acid balance", "fruity", "slightly viscous"]
+        },
+        "sakeDestination": {
+          "style": "Nigori (cloudy sake)",
+          "matchPoints": ["creamy sweetness", "fruity perception", "textural interest", "refreshing despite sweetness"]
+        }
+      },
+      "evolutionPath": {
+        "nextStep": {"sake": "Sho Chiku Bai Nigori", "why": "Classic accessible nigori"},
+        "advanced": {"sake": "Premium Nigori", "why": "More refined while keeping creamy texture"}
+      },
+      "researchSeeds": {
+        "keyThemes": ["nigori production", "sweetness in sake", "texture", "unfiltered"]
+      },
+      "researchQueries": {
+        "geminiRag": [
+          "nigori sake production",
+          "sake sweetness perception",
+          "unfiltered sake characteristics"
+        ],
+        "perplexity": [
+          "nigori sake recommendations",
+          "sweet sake for wine drinkers"
+        ],
+        "firecrawlUrls": [],
+        "tippsyQuery": {
+          "type": ["nigori"]
+        }
+      },
+      "connections": {
+        "learningModule": "sake-styles"
+      }
+    },
+    {
+      "topicId": "br-topic-021",
+      "title": "Moscato to Sparkling Sake",
+      "subtitle": "For fans of light, bubbly, sweet wines",
+      "category": "off_dry",
+      "narrativeHook": "Brunch just got an upgrade",
+      "difficulty": "beginner",
+      "tier": 1,
+      "status": "ready",
+      "metadata": {
+        "wineAnchor": {
+          "wine": "Moscato d'Asti",
+          "region": "Piedmont, Italy",
+          "grape": "Moscato",
+          "characteristics": ["low alcohol", "sweet", "fizzy", "floral", "approachable"]
+        },
+        "sakeDestination": {
+          "style": "Sparkling Sake (Awa-sake)",
+          "matchPoints": ["refreshing bubbles", "lower alcohol options", "festive", "fruity"]
+        }
+      },
+      "evolutionPath": {
+        "nextStep": {"sake": "Mio Sparkling", "why": "Easy entry sparkling sake"},
+        "advanced": {"sake": "Premium Awa-sake", "why": "Champagne-method elegance"}
+      },
+      "researchSeeds": {
+        "keyThemes": ["sparkling sake", "low alcohol", "celebration", "bubbles"]
+      },
+      "researchQueries": {
+        "geminiRag": [
+          "sparkling sake production methods",
+          "awa-sake characteristics",
+          "low alcohol sake"
+        ],
+        "perplexity": [
+          "sparkling sake recommendations 2024",
+          "sake for champagne lovers"
+        ],
+        "firecrawlUrls": [],
+        "tippsyQuery": {
+          "type": ["sparkling"]
+        }
+      },
+      "connections": {
+        "learningModule": "sparkling-sake"
+      }
+    },
+    {
+      "topicId": "br-topic-030",
+      "title": "Pinot Noir to Aged Junmai",
+      "subtitle": "For lovers of earthy, complex reds",
+      "category": "red_wine",
+      "narrativeHook": "The hardest wine-to-sake bridge, but the most rewarding",
+      "difficulty": "intermediate",
+      "tier": 1,
+      "status": "ready",
+      "metadata": {
+        "wineAnchor": {
+          "wine": "Pinot Noir",
+          "region": "Burgundy / Oregon",
+          "grape": "Pinot Noir",
+          "characteristics": ["earthy", "red fruit", "silky texture", "complexity", "umami with age"]
+        },
+        "sakeDestination": {
+          "style": "Aged Junmai (Koshu, 3-5 years)",
+          "matchPoints": ["developed complexity", "earthy/savory notes", "smooth texture", "contemplative"]
+        }
+      },
+      "evolutionPath": {
+        "nextStep": {"sake": "3-year Koshu", "why": "Gentle introduction to aged sake"},
+        "advanced": {"sake": "10-year Koshu", "why": "Full aged character development"}
+      },
+      "researchSeeds": {
+        "keyThemes": ["aged sake", "koshu development", "complexity", "savory notes"]
+      },
+      "researchQueries": {
+        "geminiRag": [
+          "koshu aged sake flavor development",
+          "sake aging process",
+          "savory sake characteristics"
+        ],
+        "perplexity": [
+          "Pinot Noir sake alternative",
+          "aged sake for wine lovers"
+        ],
+        "firecrawlUrls": [],
+        "tippsyQuery": {
+          "type": ["koshu"]
+        }
+      },
+      "connections": {
+        "learningModule": "aged-sake"
+      }
+    },
+    {
+      "topicId": "br-topic-031",
+      "title": "Full-Bodied Reds to Yamahai",
+      "subtitle": "For Cabernet and Syrah devotees",
+      "category": "red_wine",
+      "narrativeHook": "You want bold? Sake can be bold",
+      "difficulty": "advanced",
+      "tier": 1,
+      "status": "ready",
+      "metadata": {
+        "wineAnchor": {
+          "wine": "Syrah / Cabernet Sauvignon",
+          "region": "Various",
+          "characteristics": ["bold", "tannic", "dark fruit", "structured", "powerful"]
+        },
+        "sakeDestination": {
+          "style": "Robust Yamahai Junmai (served warm)",
+          "matchPoints": ["bold flavor", "structural umami replaces tannin", "stands up to rich food"]
+        }
+      },
+      "evolutionPath": {
+        "nextStep": {"sake": "Tamagawa Yamahai", "why": "Unapologetically bold"},
+        "advanced": {"sake": "Warm aged Yamahai", "why": "Maximum intensity and complexity"}
+      },
+      "researchSeeds": {
+        "keyThemes": ["bold sake", "yamahai power", "warm serving", "food pairing"]
+      },
+      "researchQueries": {
+        "geminiRag": [
+          "bold sake styles",
+          "yamahai robust character",
+          "sake serving temperature impact"
+        ],
+        "perplexity": [
+          "sake for red wine drinkers",
+          "bold powerful sake"
+        ],
+        "firecrawlUrls": [],
+        "tippsyQuery": {
+          "type": ["junmai"],
+          "flavorProfile": ["rich", "umami"]
+        }
+      },
+      "connections": {
+        "learningModule": "serving-temperature"
+      }
+    },
+    {
+      "topicId": "br-topic-040",
+      "title": "Fino Sherry to Aged Koshu",
+      "subtitle": "For lovers of nutty, oxidative wines",
+      "category": "specialty",
+      "narrativeHook": "The most underrated wine pairing translates perfectly",
+      "difficulty": "advanced",
+      "tier": 1,
+      "status": "ready",
+      "metadata": {
+        "wineAnchor": {
+          "wine": "Fino Sherry",
+          "region": "Jerez, Spain",
+          "characteristics": ["nutty", "saline", "bone dry", "oxidative notes", "umami"]
+        },
+        "sakeDestination": {
+          "style": "Long-aged Koshu (10+ years)",
+          "matchPoints": ["oxidative character", "nutty complexity", "savory depth", "similar umami"]
+        }
+      },
+      "evolutionPath": {
+        "nextStep": {"sake": "5-year Koshu", "why": "Introduction to oxidative character"},
+        "advanced": {"sake": "15-year Daruma Masamune", "why": "Full sherry-like complexity"}
+      },
+      "researchSeeds": {
+        "keyThemes": ["long-aged sake", "oxidative aging", "nutty character", "umami"]
+      },
+      "researchQueries": {
+        "geminiRag": [
+          "long aged koshu characteristics",
+          "oxidative aging sake",
+          "sake maillard reaction"
+        ],
+        "perplexity": [
+          "sherry like sake",
+          "very old aged sake"
+        ],
+        "firecrawlUrls": [],
+        "tippsyQuery": {
+          "type": ["koshu"]
+        }
+      },
+      "connections": {
+        "learningModule": "aged-sake"
+      }
+    },
+    {
+      "topicId": "br-topic-041",
+      "title": "Champagne to Awa-sake",
+      "subtitle": "For celebration-worthy bubbles",
+      "category": "specialty",
+      "narrativeHook": "New Year's Eve, meet your new tradition",
+      "difficulty": "intermediate",
+      "tier": 1,
+      "status": "ready",
+      "metadata": {
+        "wineAnchor": {
+          "wine": "Champagne",
+          "region": "Champagne, France",
+          "characteristics": ["fine bubbles", "toasty", "celebratory", "complex", "elegant"]
+        },
+        "sakeDestination": {
+          "style": "Premium Awa-sake (traditional method)",
+          "matchPoints": ["fine persistent bubbles", "celebration worthy", "craftsmanship", "elegance"]
+        }
+      },
+      "evolutionPath": {
+        "nextStep": {"sake": "Certified Awa-sake", "why": "Guaranteed quality and method"},
+        "advanced": {"sake": "Vintage Awa-sake", "why": "Maximum complexity"}
+      },
+      "researchSeeds": {
+        "keyThemes": ["traditional method sparkling", "celebration", "fine bubbles", "prestige"]
+      },
+      "researchQueries": {
+        "geminiRag": [
+          "awa-sake certification standards",
+          "traditional method sparkling sake",
+          "premium sparkling sake"
+        ],
+        "perplexity": [
+          "best sparkling sake like champagne",
+          "awa-sake association"
+        ],
+        "firecrawlUrls": [],
+        "tippsyQuery": {
+          "type": ["sparkling"],
+          "priceMin": 40
+        }
+      },
+      "connections": {
+        "learningModule": "sparkling-sake"
+      }
+    },
+    {
+      "topicId": "br-topic-042",
+      "title": "Natural Wine to Unpasteurized Sake",
+      "subtitle": "For the funky, living wine crowd",
+      "category": "specialty",
+      "narrativeHook": "You love natural wine? You'll love namazake",
+      "difficulty": "intermediate",
+      "tier": 1,
+      "status": "ready",
+      "metadata": {
+        "wineAnchor": {
+          "wine": "Natural Wine",
+          "region": "Various",
+          "characteristics": ["funky", "living", "minimal intervention", "unpredictable", "artisanal"]
+        },
+        "sakeDestination": {
+          "style": "Namazake (unpasteurized) + Muroka (unfiltered)",
+          "matchPoints": ["living product", "fresh/funky", "minimal processing", "artisanal character"]
+        }
+      },
+      "evolutionPath": {
+        "nextStep": {"sake": "Fresh Namazake", "why": "Experience the living sake character"},
+        "advanced": {"sake": "Yamahai Namazake", "why": "Maximum wild character"}
+      },
+      "researchSeeds": {
+        "keyThemes": ["unpasteurized sake", "living sake", "minimal intervention", "funky"]
+      },
+      "researchQueries": {
+        "geminiRag": [
+          "namazake characteristics",
+          "muroka unfiltered sake",
+          "unpasteurized sake storage"
+        ],
+        "perplexity": [
+          "natural wine sake equivalent",
+          "funky sake recommendations"
+        ],
+        "firecrawlUrls": [],
+        "tippsyQuery": {
+          "flavorProfile": ["fresh"]
+        }
+      },
+      "connections": {
+        "learningModule": "fresh-sake-styles"
+      }
+    }
+  ]
+}
