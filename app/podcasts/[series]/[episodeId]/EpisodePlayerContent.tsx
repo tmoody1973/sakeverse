@@ -4,9 +4,10 @@ import { useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import { useParams } from "next/navigation"
 import Link from "next/link"
-import { useState, useRef, useEffect } from "react"
+import { useEffect } from "react"
 import { ArrowLeft, Play, Pause, SkipBack, SkipForward } from "lucide-react"
 import { Id } from "@/convex/_generated/dataModel"
+import { useAudioPlayer } from "@/hooks/useAudioPlayer"
 
 export function EpisodePlayerContent() {
   const params = useParams()
@@ -14,25 +15,11 @@ export function EpisodePlayerContent() {
   const series = params.series as string
   
   const episode = useQuery(api.podcastEpisodes.getById, { episodeId })
-  
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [currentTime, setCurrentTime] = useState(0)
-  const [duration, setDuration] = useState(0)
-  const audioRef = useRef<HTMLAudioElement>(null)
+  const { currentEpisode, isPlaying, currentTime, duration, setEpisode, toggle, setCurrentTime } = useAudioPlayer()
 
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.addEventListener("timeupdate", () => {
-        setCurrentTime(audioRef.current?.currentTime || 0)
-      })
-      audioRef.current.addEventListener("loadedmetadata", () => {
-        setDuration(audioRef.current?.duration || 0)
-      })
-      audioRef.current.addEventListener("ended", () => {
-        setIsPlaying(false)
-      })
-    }
-  }, [episode?.audio?.url])
+  // Check if this episode is currently playing
+  const isThisEpisode = currentEpisode?.id === episodeId
+  const isThisPlaying = isThisEpisode && isPlaying
 
   if (!episode) {
     return <div className="p-6">Loading...</div>
@@ -49,27 +36,19 @@ export function EpisodePlayerContent() {
     )
   }
 
-  const handlePlayPause = () => {
-    if (!audioRef.current) return
-    if (isPlaying) {
-      audioRef.current.pause()
+  const handlePlay = () => {
+    if (!episode.audio?.url) return
+    
+    if (isThisEpisode) {
+      toggle()
     } else {
-      audioRef.current.play()
-    }
-    setIsPlaying(!isPlaying)
-  }
-
-  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const time = parseFloat(e.target.value)
-    if (audioRef.current) {
-      audioRef.current.currentTime = time
-    }
-    setCurrentTime(time)
-  }
-
-  const skip = (seconds: number) => {
-    if (audioRef.current) {
-      audioRef.current.currentTime += seconds
+      setEpisode({
+        id: episodeId,
+        title: episode.title,
+        series: episode.series,
+        audioUrl: episode.audio.url,
+        duration: episode.audio.duration,
+      })
     }
   }
 
@@ -79,8 +58,11 @@ export function EpisodePlayerContent() {
     return `${mins}:${secs.toString().padStart(2, "0")}`
   }
 
+  const displayTime = isThisEpisode ? currentTime : 0
+  const displayDuration = isThisEpisode ? duration : (episode.audio?.duration || 0)
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sakura-light to-white pb-24">
+    <div className="min-h-screen bg-gradient-to-b from-sakura-light to-white pb-32">
       {/* Header */}
       <div className="p-4">
         <Link href="/podcasts" className="flex items-center gap-2 text-gray-600 hover:text-ink">
@@ -92,7 +74,7 @@ export function EpisodePlayerContent() {
       {/* Episode Info */}
       <div className="px-4 pb-6">
         <p className="text-sm text-plum-dark font-medium uppercase tracking-wide">
-          {series.replace("_", " ")}
+          {series.replace(/_/g, " ")}
         </p>
         <h1 className="text-2xl font-bold mt-1">{episode.title}</h1>
         {episode.subtitle && (
@@ -100,54 +82,44 @@ export function EpisodePlayerContent() {
         )}
       </div>
 
-      {/* Audio Player */}
+      {/* Play Button Card */}
       {episode.audio && (
         <div className="mx-4 bg-white rounded-2xl border-2 border-ink shadow-[4px_4px_0px_#2D2D2D] p-6">
-          <audio ref={audioRef} src={episode.audio.url} preload="metadata" />
-          
-          {/* Progress Bar */}
-          <div className="mb-4">
-            <input
-              type="range"
-              min={0}
-              max={duration || episode.audio.duration}
-              value={currentTime}
-              onChange={handleSeek}
-              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-sakura-pink"
-            />
-            <div className="flex justify-between text-xs text-gray-500 mt-1">
-              <span>{formatTime(currentTime)}</span>
-              <span>{formatTime(duration || episode.audio.duration)}</span>
+          {/* Progress (if playing this episode) */}
+          {isThisEpisode && (
+            <div className="mb-4">
+              <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-sakura-pink transition-all"
+                  style={{ width: `${(displayTime / displayDuration) * 100}%` }}
+                />
+              </div>
+              <div className="flex justify-between text-xs text-gray-500 mt-1">
+                <span>{formatTime(displayTime)}</span>
+                <span>{formatTime(displayDuration)}</span>
+              </div>
             </div>
-          </div>
+          )}
 
-          {/* Controls */}
-          <div className="flex items-center justify-center gap-6">
+          {/* Play Button */}
+          <div className="flex items-center justify-center">
             <button
-              onClick={() => skip(-15)}
-              className="p-3 hover:bg-gray-100 rounded-full transition-colors"
+              onClick={handlePlay}
+              className="w-20 h-20 bg-sakura-pink rounded-full border-2 border-ink shadow-[3px_3px_0px_#2D2D2D] flex items-center justify-center hover:shadow-[4px_4px_0px_#2D2D2D] hover:-translate-y-0.5 transition-all"
             >
-              <SkipBack className="w-6 h-6" />
-            </button>
-            
-            <button
-              onClick={handlePlayPause}
-              className="w-16 h-16 bg-sakura-pink rounded-full border-2 border-ink shadow-[3px_3px_0px_#2D2D2D] flex items-center justify-center hover:shadow-[4px_4px_0px_#2D2D2D] transition-all"
-            >
-              {isPlaying ? (
-                <Pause className="w-8 h-8" />
+              {isThisPlaying ? (
+                <Pause className="w-10 h-10" />
               ) : (
-                <Play className="w-8 h-8 ml-1" />
+                <Play className="w-10 h-10 ml-1" />
               )}
             </button>
-            
-            <button
-              onClick={() => skip(30)}
-              className="p-3 hover:bg-gray-100 rounded-full transition-colors"
-            >
-              <SkipForward className="w-6 h-6" />
-            </button>
           </div>
+
+          {!isThisEpisode && (
+            <p className="text-center text-sm text-gray-500 mt-3">
+              {formatTime(episode.audio.duration)} • Tap to play
+            </p>
+          )}
         </div>
       )}
 
@@ -156,6 +128,18 @@ export function EpisodePlayerContent() {
         <h2 className="font-semibold mb-2">About this episode</h2>
         <p className="text-gray-600">{episode.description}</p>
       </div>
+
+      {/* Script Preview */}
+      {episode.script && (
+        <div className="p-4">
+          <h2 className="font-semibold mb-2">Transcript</h2>
+          <div className="bg-white rounded-xl border border-gray-200 p-4 max-h-96 overflow-y-auto">
+            <pre className="whitespace-pre-wrap font-sans text-sm text-gray-700 leading-relaxed">
+              {episode.script.content}
+            </pre>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

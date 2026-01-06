@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useState } from "react"
 import { Providers } from "@/lib/convex"
 import { Header } from "@/components/layout/Header"
 import { BottomNav } from "@/components/layout/BottomNav"
+import { GlobalAudioPlayer } from "@/components/audio/GlobalAudioPlayer"
 
 export function AppShell({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false)
@@ -29,6 +30,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           {children}
         </main>
         <BottomNav />
+        <GlobalAudioPlayer />
       </div>
     </Providers>
   )
