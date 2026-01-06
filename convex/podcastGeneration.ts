@@ -51,14 +51,11 @@ export const generateEpisode = action({
         script,
       })
 
-      // 5. Audio generation (optional)
+      // 5. Audio generation - schedule separately (can't nest actions)
       if (generateAudio) {
-        console.log("Generating audio...")
-        const audioResult = await ctx.runAction(api.podcastTTS.generateAudio, { episodeId })
-        if (!audioResult.success) {
-          console.error("Audio generation failed:", audioResult.error)
-          // Continue without audio - can retry later
-        }
+        console.log("Audio will be generated separately - use regenerate button")
+        // Audio must be triggered separately via the admin UI
+        // because Convex doesn't allow nested action calls
       }
 
       // 6. Update topic status
