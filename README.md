@@ -18,27 +18,42 @@ Sakécosm solves a real problem: wine enthusiasts curious about sake are overwhe
 ### 🎤 Voice-First Sommelier (Kiki)
 Real-time voice conversations using OpenAI Realtime API with WebRTC for sub-200ms latency. Ask questions naturally and get personalized recommendations.
 
+### 🎙️ AI Podcast Network
+Four AI-generated podcast shows with **This American Life**-inspired storytelling:
+
+| Show | Schedule | Focus |
+|------|----------|-------|
+| 📖 Sake Stories | Monday | Brewery histories, regional tales |
+| 🍽️ Pairing Lab | Wednesday | Food pairing deep dives |
+| 🍷 The Bridge | Friday | Wine-to-sake translations |
+| 🔬 Brewing Secrets | 1st/15th | Technical brewing science |
+
+**Two-Host Format:**
+- **TOJI** (杜氏 - master brewer): The storyteller and guide
+- **KOJI** (麹 - the catalyst): The curious everyman who asks great questions
+
+**Full Pipeline:** Topic → Research (Gemini RAG + Perplexity) → Script → Multi-voice TTS (Gemini 2.5 Flash) → MP3 (lamejs)
+
 ### 🗾 Interactive Japan Map
 Explore sake regions with an interactive Mapbox-powered map of Japan's 47 prefectures:
 - Click any prefecture to see local breweries and products
 - AI-generated regional descriptions via Perplexity (cached for all users)
 - Color-coded prefectures showing which have brewery data
-- Regional sake styles, key characteristics, and famous breweries
 
 ### 📚 Learning System with Gamification
 Complete sake courses with AI-generated content:
 - **Courses & Chapters**: Structured learning paths on sake fundamentals, brewing, tasting
 - **Quizzes**: Test knowledge with chapter quizzes and final exams
 - **XP & Levels**: Earn 25 XP per chapter, 50-100 XP per quiz
-- **10 Badge Levels**: From "Sake Curious" to "Sake Grandmaster" with Stardew Valley-style artwork
+- **10 Badge Levels**: From "Sake Curious" to "Sake Grandmaster"
 - **Progress Tracking**: Dashboard shows real stats from Convex
 
 ### 🧠 Multi-Layer RAG System
 - **Vector Search**: 104 Tippsy products with semantic matching (OpenAI embeddings)
 - **Wine-to-Sake Knowledge**: 13 pre-chunked wine preference translations
 - **Food Pairing RAG**: 9 knowledge chunks for pairing recommendations
-- **Gemini File Search**: 5 PDF sake books for deep expertise
-- **Perplexity API**: Real-time web search for current trends and prefecture descriptions
+- **Gemini File Search**: 5 PDF sake books + 68 brewery histories for deep expertise
+- **Perplexity API**: Real-time web search for current trends
 
 ### 🎨 Dynamic UI Generation
 Thesys C1 generates React components during conversations—sake cards with images, temperature guides, comparison tables, and more.
@@ -48,24 +63,18 @@ Thesys C1 generates React components during conversations—sake cards with imag
 - Wine-to-sake recommendations based on preferences
 - Food pairing of the day
 - Course progress tracking
-- Personalized sake recommendations based on taste preferences
-
-### 📚 User Sake Library
-Save favorite sake to your personal library with Clerk authentication.
-
-### 🛒 Tippsy Integration
-Product cards link directly to Tippsy for purchase, with real images and pricing from 104 imported products.
 
 ## Tech Stack
 
 | Layer | Technology |
 |-------|------------|
 | Frontend | Next.js 15, TypeScript, React 19, Tailwind CSS |
-| Backend | Convex (realtime database, serverless functions) |
+| Backend | Convex (realtime database, serverless functions, file storage) |
 | Voice | OpenAI Realtime API (WebRTC) |
 | Dynamic UI | Thesys C1 with Claude Sonnet 4 |
 | Maps | Mapbox GL JS, react-map-gl |
 | RAG | Gemini File Search, Perplexity API, OpenAI Embeddings |
+| Podcast TTS | Gemini 2.5 Flash TTS + lamejs MP3 encoding |
 | Auth | Clerk |
 | Styling | RetroUI neobrutalism + cherry blossom theme |
 
@@ -80,9 +89,13 @@ Product cards link directly to Tippsy for purchase, with real images and pricing
 | `/learn` | Course catalog with progress tracking |
 | `/learn/[slug]` | Course detail with chapter list |
 | `/learn/[slug]/[chapter]` | Chapter content with quiz |
+| `/podcasts` | Podcast hub with all shows |
+| `/podcasts/[series]/[id]` | Episode player |
 | `/library` | Saved sake collection |
 | `/settings` | Edit taste preferences |
-| `/admin/learn` | AI course generator (admin only) |
+| `/admin` | Admin dashboard hub |
+| `/admin/learn` | AI course generator |
+| `/admin/podcasts` | Podcast generator and management |
 
 ## Getting Started
 
@@ -134,6 +147,7 @@ Set Convex environment variables:
 npx convex env set OPENAI_API_KEY sk-...
 npx convex env set GEMINI_API_KEY ...
 npx convex env set PERPLEXITY_API_KEY ...
+npx convex env set GEMINI_FILE_URI https://generativelanguage.googleapis.com/v1beta/files/...
 ```
 
 ### Running Locally
@@ -163,9 +177,11 @@ npx convex run foodPairing:importFoodPairingKnowledge
 # Import brewery data
 npx convex run sakeBreweries:importBreweries
 
-# Seed learning categories and sample course
+# Import podcast topics (194 topics)
+npx convex run podcastImport:importAllTopics
+
+# Seed learning categories
 npx convex run learn/seed:seedCategories
-npx convex run learn/seed:seedSampleCourse
 ```
 
 ## Architecture
@@ -174,7 +190,7 @@ npx convex run learn/seed:seedSampleCourse
 ┌─────────────────────────────────────────────────────────────────┐
 │                        User Interface                            │
 │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────┐ │
-│  │Dashboard │ │Voice Chat│ │Japan Map │ │ Learning │ │Library │ │
+│  │Dashboard │ │Voice Chat│ │ Podcasts │ │ Learning │ │  Map   │ │
 │  └────┬─────┘ └────┬─────┘ └────┬─────┘ └────┬─────┘ └───┬────┘ │
 └───────┼────────────┼────────────┼────────────┼───────────┼──────┘
         │            │            │            │           │
@@ -185,7 +201,8 @@ npx convex run learn/seed:seedSampleCourse
 │  Product search?  → Vector Search (104 products)                │
 │  Food pairing?    → Food Pairing RAG                            │
 │  Prefecture info? → Perplexity API (cached)                     │
-│  Knowledge?       → Gemini File Search (5 PDFs)                 │
+│  Podcast research?→ Gemini RAG + Perplexity                     │
+│  Knowledge?       → Gemini File Search (5 PDFs + breweries)     │
 │  Visual UI?       → Thesys C1                                   │
 └─────────────────────────────────────────────────────────────────┘
         │
@@ -197,10 +214,28 @@ npx convex run learn/seed:seedSampleCourse
 │  │ (Vector)  │ │ (50+)     │ │ Chapters  │ │ XP, Levels      │  │
 │  └───────────┘ └───────────┘ │ Quizzes   │ │ Quiz Attempts   │  │
 │  ┌───────────┐ ┌───────────┐ └───────────┘ └─────────────────┘  │
-│  │ Knowledge │ │Prefecture │ ┌───────────┐ ┌─────────────────┐  │
-│  │ Chunks    │ │Descriptions│ │  Users    │ │ Recommendations │  │
-│  └───────────┘ └───────────┘ └───────────┘ └─────────────────┘  │
+│  │ Podcast   │ │ Podcast   │ ┌───────────┐ ┌─────────────────┐  │
+│  │ Topics    │ │ Episodes  │ │  Users    │ │ Recommendations │  │
+│  │ (194)     │ │ (Audio)   │ └───────────┘ └─────────────────┘  │
+│  └───────────┘ └───────────┘                                    │
 └─────────────────────────────────────────────────────────────────┘
+```
+
+## AI Podcast Pipeline
+
+```
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│   Topic     │ ──▶ │  Research   │ ──▶ │   Script    │ ──▶ │   Audio     │
+│  Selection  │     │ Gemini RAG  │     │ This Am Life│     │ Multi-voice │
+│             │     │ + Perplexity│     │   Style     │     │ TTS + MP3   │
+└─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
+                                               │
+                                               ▼
+                                        ┌─────────────┐
+                                        │ TOJI: Kore  │
+                                        │ KOJI: Puck  │
+                                        │ (Gemini TTS)│
+                                        └─────────────┘
 ```
 
 ## Gamification System
@@ -239,6 +274,7 @@ This project was built entirely with Kiro CLI, demonstrating AI-assisted develop
 | `@execute` | Systematic task execution |
 | `@code-review` | Technical code review pre-commit |
 | `@update-devlog` | Maintain development documentation |
+| `@update-steering` | Keep steering docs current |
 
 ### Steering Documents
 
@@ -249,8 +285,18 @@ This project was built entirely with Kiro CLI, demonstrating AI-assisted develop
 ### Development Pattern
 
 ```
-@prime → @plan-feature → @execute → @code-review → commit
+@prime → @plan-feature → @execute → @code-review → @update-steering → commit
 ```
+
+### Time Savings
+
+| Metric | Value |
+|--------|-------|
+| Total Development Time | ~20 hours |
+| Estimated Manual Time | 60-80 hours |
+| **Time Saved** | **65-75%** |
+| Features Built | 15+ major features |
+| Lines of Code | ~8,000+ |
 
 ## Project Structure
 
@@ -261,10 +307,13 @@ sakecosm/
 │   ├── kiki/                 # Voice chat
 │   ├── map/                  # Japan prefecture map
 │   ├── learn/                # Learning system
+│   ├── podcasts/             # Public podcast player
 │   ├── discover/             # Product catalog
 │   ├── library/              # Saved sake
 │   ├── settings/             # User preferences
-│   └── admin/learn/          # Course generator
+│   └── admin/                # Admin dashboard
+│       ├── learn/            # Course generator
+│       └── podcasts/         # Podcast generator
 ├── components/
 │   ├── map/                  # JapanMap, PrefecturePanel
 │   ├── voice/                # KikiChat, VoiceControls
@@ -272,10 +321,11 @@ sakecosm/
 │   └── layout/               # Header, BottomNav
 ├── convex/
 │   ├── schema.ts             # Database schema
-│   ├── map.ts                # Prefecture queries + Perplexity
+│   ├── podcastGeneration.ts  # This American Life scripts
+│   ├── podcastTTS.ts         # Multi-voice TTS + MP3
+│   ├── podcastRAG.ts         # Gemini File API
 │   ├── learn/                # Courses, progress, quizzes
 │   ├── gamification.ts       # XP, levels, badges
-│   ├── recommendations.ts    # Personalized sake recs
 │   └── embeddings.ts         # Vector search
 └── public/
     ├── badges/               # 10 level badge images
@@ -292,4 +342,4 @@ MIT
 
 ---
 
-Built with 🍶 and Kiro CLI for the Dynamous Hackathon 2026
+Built with 🍶 and Kiro CLI for the Kiro Hackathon 2026
