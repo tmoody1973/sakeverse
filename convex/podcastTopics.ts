@@ -148,3 +148,21 @@ export const updateStatus = internalMutation({
     }
   },
 })
+
+// Reset topic to ready (public - for admin use)
+export const resetToReady = mutation({
+  args: { topicId: v.string() },
+  handler: async (ctx, { topicId }) => {
+    const topic = await ctx.db
+      .query("podcastTopics")
+      .withIndex("by_topicId", q => q.eq("topicId", topicId))
+      .first()
+    
+    if (topic) {
+      await ctx.db.patch(topic._id, {
+        status: "ready",
+        updatedAt: Date.now(),
+      })
+    }
+  },
+})

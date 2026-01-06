@@ -2,23 +2,26 @@
 
 import { useQuery, useMutation, useAction } from "convex/react"
 import { api } from "@/convex/_generated/api"
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import { useState } from "react"
-import { ArrowLeft, Play, Pause, CheckCircle, RefreshCw, Globe, EyeOff } from "lucide-react"
+import { ArrowLeft, Play, Pause, CheckCircle, RefreshCw, Globe, EyeOff, Trash2 } from "lucide-react"
 import { Id } from "@/convex/_generated/dataModel"
 
 export function EpisodeDetailContent() {
   const params = useParams()
+  const router = useRouter()
   const episodeId = params.id as Id<"podcastEpisodes">
   
   const episode = useQuery(api.podcastEpisodes.getById, { episodeId })
   const publish = useMutation(api.podcastEpisodes.publish)
   const unpublish = useMutation(api.podcastEpisodes.unpublish)
+  const deleteEpisode = useMutation(api.podcastEpisodes.deleteEpisode)
   const regenerateAudio = useAction(api.podcastTTS.generateAudio)
   
   const [isPlaying, setIsPlaying] = useState(false)
   const [isRegenerating, setIsRegenerating] = useState(false)
+  const [isDeleting, setIsDeleting] = useState(false)
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null)
 
   if (!episode) {
@@ -49,6 +52,13 @@ export function EpisodeDetailContent() {
 
   const handleUnpublish = async () => {
     await unpublish({ episodeId })
+  }
+
+  const handleDelete = async () => {
+    if (!confirm("Delete this episode? This cannot be undone.")) return
+    setIsDeleting(true)
+    await deleteEpisode({ episodeId })
+    router.push("/admin/podcasts/episodes")
   }
 
   const handleRegenerateAudio = async () => {
@@ -182,6 +192,16 @@ export function EpisodeDetailContent() {
             </Link>
           </>
         )}
+
+        {/* Delete Button */}
+        <button
+          onClick={handleDelete}
+          disabled={isDeleting}
+          className="flex items-center gap-2 px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors ml-auto"
+        >
+          <Trash2 className="w-4 h-4" />
+          {isDeleting ? "Deleting..." : "Delete"}
+        </button>
       </div>
 
       {/* Research Data (collapsed) */}

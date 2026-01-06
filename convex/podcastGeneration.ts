@@ -127,17 +127,31 @@ async function gatherResearch(ctx: any, topic: any) {
     }
   }
 
-  // 3. Tippsy products (if brewery specified)
-  if (topic.metadata?.brewery) {
-    try {
-      const products = await ctx.runQuery(api.sake.searchByBrewery, { 
+  // 3. Tippsy products - search by brewery, brand, or topic keywords
+  try {
+    let products: any[] = []
+    
+    // Try brewery first
+    if (topic.metadata?.brewery) {
+      products = await ctx.runQuery(api.sake.searchByBrewery, { 
         brewery: topic.metadata.brewery,
         limit: 5,
-      })
-      results.tippsyProducts = products || []
-    } catch (e) {
-      console.error("Tippsy query failed:", e)
+      }) || []
     }
+    
+    // If no products, try semantic search with topic title
+    if (products.length === 0) {
+      const searchQuery = topic.metadata?.brand || topic.metadata?.sakeSolutionType || topic.title
+      products = await ctx.runQuery(api.sake.searchSake, { 
+        query: searchQuery,
+        limit: 5,
+      }) || []
+    }
+    
+    results.tippsyProducts = products
+    console.log(`Found ${products.length} Tippsy products for topic`)
+  } catch (e) {
+    console.error("Tippsy query failed:", e)
   }
 
   return results
@@ -157,8 +171,8 @@ async function generateScript(ctx: any, topic: any, research: any) {
 - Use "acts" to structure the story (Act One, Act Two, etc.)
 - Mix personal stories with broader themes
 - Include moments of surprise, humor, and genuine emotion
-- The host (YUKI) guides us through with warmth and curiosity
-- Co-host (KAI) represents the listener - asks the questions we're all thinking
+- The host (TOJI) guides us through with warmth and curiosity
+- Co-host (KOJI) represents the listener - asks the questions we're all thinking
 - Pause for reflection. Let moments breathe.
 - End with a takeaway that resonates beyond just sake
 
@@ -173,6 +187,13 @@ async function generateScript(ctx: any, topic: any, research: any) {
 - Include [PAUSE] for dramatic beats
 - Pronunciation guides: "Junmai (JOON-my)"
 
+**IMPORTANT - SAKE RECOMMENDATIONS:**
+You MUST naturally weave in specific sake recommendations from the products below. When mentioning a sake:
+- Say the full product name
+- Mention the price so listeners know it's accessible
+- Describe the tasting notes in conversational language
+- Explain WHY this sake relates to the topic
+
 TOPIC: ${topic.title}
 SUBTITLE: ${topic.subtitle || ""}
 NARRATIVE HOOK: ${topic.narrativeHook}
@@ -182,9 +203,22 @@ ${research.geminiResults.join("\n\n---\n\n")}
 
 ${research.perplexityResults.length > 0 ? `CURRENT CONTEXT:\n${research.perplexityResults.join("\n\n")}` : ""}
 
-${research.tippsyProducts.length > 0 ? `PRODUCTS TO MENTION:\n${research.tippsyProducts.map((p: any) => `- ${p.productName} (${p.brewery}) - $${p.price}`).join("\n")}` : ""}
+${research.tippsyProducts.length > 0 ? `
+**SAKE PRODUCTS TO RECOMMEND (use these exact details):**
+${research.tippsyProducts.map((p: any) => `
+• ${p.productName || p.name}
+  - Brewery: ${p.brewery}
+  - Category: ${p.category}
+  - Price: $${p.price}
+  - Alcohol: ${p.alcohol}%
+  - Description: ${p.description}
+  - Rating: ${p.averageRating}/5
+`).join("\n")}
+` : ""}
 
-Write the script. Each line must start with either "TOJI:" or "KOJI:". Make it feel like a real conversation between two people who genuinely care about this topic.`
+Write the script. Each line must start with either "TOJI:" or "KOJI:". 
+
+CRITICAL: Include at least 2-3 specific sake recommendations from the products above, with their prices and tasting notes woven naturally into the conversation. Make listeners want to try these sakes!`
 
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`,

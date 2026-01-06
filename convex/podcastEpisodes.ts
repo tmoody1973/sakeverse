@@ -187,3 +187,15 @@ export const listBySeries = query({
       .collect()
   },
 })
+
+// Delete episode
+export const deleteEpisode = mutation({
+  args: { episodeId: v.id("podcastEpisodes") },
+  handler: async (ctx, { episodeId }) => {
+    const episode = await ctx.db.get(episodeId)
+    if (episode?.audio?.storageId) {
+      await ctx.storage.delete(episode.audio.storageId)
+    }
+    await ctx.db.delete(episodeId)
+  },
+})
