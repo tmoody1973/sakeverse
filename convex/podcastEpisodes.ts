@@ -105,9 +105,55 @@ export const updateAudio = internalMutation({
   handler: async (ctx, { episodeId, audio }) => {
     await ctx.db.patch(episodeId, {
       audio,
-      status: "review",
+      status: "review", // Ready for admin review
       updatedAt: Date.now(),
     })
+  },
+})
+
+// Publish episode
+export const publish = mutation({
+  args: {
+    episodeId: v.id("podcastEpisodes"),
+  },
+  handler: async (ctx, { episodeId }) => {
+    await ctx.db.patch(episodeId, {
+      status: "published",
+      publishedAt: Date.now(),
+      updatedAt: Date.now(),
+    })
+  },
+})
+
+// Unpublish episode
+export const unpublish = mutation({
+  args: {
+    episodeId: v.id("podcastEpisodes"),
+  },
+  handler: async (ctx, { episodeId }) => {
+    await ctx.db.patch(episodeId, {
+      status: "review",
+      publishedAt: undefined,
+      updatedAt: Date.now(),
+    })
+  },
+})
+
+// Get published episodes for public view
+export const listPublished = query({
+  args: { 
+    series: v.optional(v.string()),
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, { series, limit = 20 }) => {
+    let q = ctx.db.query("podcastEpisodes")
+      .filter(q => q.eq(q.field("status"), "published"))
+    
+    if (series) {
+      q = q.filter(q => q.eq(q.field("series"), series))
+    }
+    
+    return await q.order("desc").take(limit)
   },
 })
 

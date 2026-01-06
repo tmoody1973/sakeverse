@@ -4,12 +4,19 @@ import { action } from "./_generated/server"
 import { api, internal } from "./_generated/api"
 import { v } from "convex/values"
 
-// Main episode generation action
+type GenerationResult = {
+  success: boolean
+  episodeId?: string
+  error?: string
+}
+
+// Main episode generation action - full pipeline
 export const generateEpisode = action({
   args: {
     topicId: v.string(),
+    generateAudio: v.optional(v.boolean()), // Default true
   },
-  handler: async (ctx, { topicId }): Promise<{ success: boolean; episodeId?: string; error?: string }> => {
+  handler: async (ctx, { topicId, generateAudio = true }): Promise<GenerationResult> => {
     try {
       // 1. Get topic
       const topic = await ctx.runQuery(api.podcastTopics.getByTopicId, { topicId })
@@ -44,11 +51,15 @@ export const generateEpisode = action({
         script,
       })
 
-      // 5. Mark as generated (audio/blog can be added later)
-      await ctx.runMutation(internal.podcastEpisodes.updateStatus, {
-        episodeId,
-        status: "review",
-      })
+      // 5. Audio generation (optional)
+      if (generateAudio) {
+        console.log("Generating audio...")
+        const audioResult = await ctx.runAction(api.podcastTTS.generateAudio, { episodeId })
+        if (!audioResult.success) {
+          console.error("Audio generation failed:", audioResult.error)
+          // Continue without audio - can retry later
+        }
+      }
 
       // 6. Update topic status
       await ctx.runMutation(internal.podcastTopics.updateStatus, {
@@ -56,10 +67,11 @@ export const generateEpisode = action({
         status: "generated",
       })
 
-      return { success: true, episodeId }
-    } catch (error: any) {
+      // Episode stays in "review" status until admin approves
+      return { success: true, episodeId: episodeId as string }
+    } catch (error: unknown) {
       console.error("Generation error:", error)
-      return { success: false, error: error.message }
+      return { success: false, error: error instanceof Error ? error.message : "Unknown error" }
     }
   },
 })
