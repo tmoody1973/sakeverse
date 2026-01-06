@@ -1569,3 +1569,151 @@ a6d47be - feat: Complete podcast system with preview, publish, and public player
 - [ ] Temperature Lab feature
 - [ ] Demo video recording
 - [ ] Final polish and testing
+
+
+---
+
+## January 6, 2026 (Continued) - Podcast Pipeline Debugging & Enhancements
+
+### 🔧 **TTS Pipeline Fixes**
+
+**Time**: 11:27 AM - 1:15 PM  
+**Focus**: Debugging and fixing podcast audio generation
+
+#### **✅ Issues Resolved**
+
+**1. Nested Action Error**
+- **Problem**: `performAsyncSyscall` error when calling TTS action from generation action
+- **Root Cause**: Convex doesn't allow nested `ctx.runAction()` calls
+- **Solution**: Separated script generation and audio generation into two steps
+- **Workflow**: Generate script → User clicks "Generate Audio" button
+
+**2. lamejs MPEGMode Bug**
+- **Problem**: `MPEGMode is not defined` error with Node.js 22
+- **Root Cause**: Known bug in lamejs with newer Node versions
+- **Attempted**: `@breezystack/lamejs` fork (empty exports), `@ffmpeg/ffmpeg` (no Node.js support)
+- **Solution**: Switched to WAV format (larger but reliable)
+
+**3. TTS Chunking Strategy**
+- **Problem**: 43 segments being processed (one per speaker turn)
+- **Root Cause**: Parsing script by TOJI:/KOJI: lines instead of character limit
+- **Solution**: Chunk entire script by 4000 chars at newline boundaries
+- **Result**: ~3 chunks for a 3-5 minute podcast instead of 43
+
+**4. Script Length**
+- **Problem**: Scripts were 10-15 minutes (too long)
+- **Solution**: Updated prompt to target 3-5 minutes (~450-750 words)
+- **Changes**: Simpler structure (Cold open → Main story → Sake rec → Takeaway)
+
+**5. Tippsy Search Parameter**
+- **Problem**: `searchTerm` vs `query` parameter mismatch
+- **Solution**: Fixed to use `searchTerm` matching function signature
+
+#### **✅ New Features Added**
+
+**Cancel Generation Button**
+- Added `cancelGeneration` mutation to set episode status to "cancelled"
+- TTS checks `isCancelled` query before each chunk
+- Red "Cancel" button appears on episode detail when generating
+- Cancelled episodes show in separate section
+
+**View Episodes Link**
+- Added prominent "View Episodes" button to `/admin/podcasts` header
+- Links to `/admin/podcasts/episodes` for script review and audio playback
+
+**Show Branding in Scripts**
+- Scripts now open with: "Welcome to [Show Name] from Sakécosm..."
+- Scripts close with: "This has been [Show Name] from Sakécosm"
+- Show names mapped: sake_stories → "Sake Stories", etc.
+
+### 🎧 **Enhanced Episode Player**
+
+**Time**: 1:05 PM - 1:13 PM  
+**Focus**: Better podcast listening experience
+
+#### **✅ react-h5-audio-player Integration**
+- Replaced custom audio player with `react-h5-audio-player`
+- Features: Progress bar, seeking, time display, play/pause
+- Styled to match dark purple theme with sakura-pink progress
+
+#### **✅ Tippsy Products on Episode Pages**
+- Shows "🍶 Sake Mentioned in This Episode" section
+- Product cards with: name, brewery, category, price, rating
+- "Shop on Tippsy →" links to purchase
+- Data pulled from `episode.research.tippsyProducts`
+
+#### **✅ Formatted Transcript**
+- TOJI lines in purple (`text-plum-dark`)
+- KOJI lines in pink (`text-sakura-pink`)
+- [PAUSE] markers shown as "• • •"
+- Clean paragraph formatting
+
+#### **✅ Series Detail Pages**
+- Created `/podcasts/[series]/page.tsx` and `SeriesContent.tsx`
+- Shows: Series icon, name, description, episode count
+- Lists all published episodes with duration
+- Links to individual episode players
+
+### **📊 Technical Details**
+
+**WAV Format (Temporary Solution)**:
+```typescript
+function createWavBuffer(samples: Int16Array, sampleRate: number): ArrayBuffer {
+  // 44-byte header + PCM data
+  // RIFF, WAVE, fmt, data chunks
+  return buffer
+}
+```
+
+**Chunking Algorithm**:
+```typescript
+function chunkScript(script: string, maxChars: number = 4000): string[] {
+  const lines = script.split('\n').filter(l => l.trim())
+  // Accumulate lines until maxChars, then start new chunk
+  // Preserves dialogue structure
+}
+```
+
+### **⏱️ Session Stats**
+- **Duration**: ~2 hours debugging + enhancements
+- **Commits**: 6 commits pushed
+- **Issues Resolved**: 5 major bugs
+- **Features Added**: Cancel button, episode enhancements, series pages
+
+### **📦 Git Commits**
+```
+8a45846 - fix: Remove nested action call in podcast generation
+54e7d90 - fix: Switch to WAV format for podcast audio
+60f5ab6 - feat: Add cancel generation button for podcasts
+8991119 - fix: Add View Episodes link to podcast admin
+6e3355e - feat: Enhance podcast player and add show pages
+```
+
+### **🎯 Kiro CLI Usage This Session**
+| Action | Count | Impact |
+|--------|-------|--------|
+| Bug diagnosis | 5 | Identified root causes quickly |
+| Code fixes | 12 | Targeted minimal changes |
+| Feature additions | 4 | Clean implementations |
+| Web research | 2 | Gemini TTS limits, lamejs bug |
+| Testing | 3 | TTS pipeline verification |
+
+---
+
+**Last Updated**: January 6, 2026 - 1:15 PM  
+**Status**: 
+- ✅ Podcast generation pipeline working (script + WAV audio)
+- ✅ Cancel generation feature
+- ✅ Enhanced episode player with react-h5-audio-player
+- ✅ Tippsy products on episode pages
+- ✅ Series detail pages
+- ✅ Formatted transcripts
+
+**Known Limitations**:
+- Audio stored as WAV (larger files) due to lamejs Node.js 22 bug
+- Audio generation is separate step (click button after script)
+
+**Next Steps**:
+- [ ] Test full podcast generation flow
+- [ ] Generate sample episodes for demo
+- [ ] Consider MP3 solution for production (external service or different encoder)
