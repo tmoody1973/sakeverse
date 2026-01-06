@@ -137,7 +137,7 @@ export function EpisodePlayerContent() {
             {episode.research.tippsyProducts.map((product: any) => (
               <a
                 key={product._id}
-                href={product.tippsyUrl || `https://www.tippsy.com/search?q=${encodeURIComponent(product.productName || product.name)}`}
+                href={product.url || `https://www.tippsysake.com/search?q=${encodeURIComponent(product.productName || product.name)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block bg-white rounded-xl border-2 border-ink shadow-[3px_3px_0px_#2D2D2D] p-4 hover:shadow-[4px_4px_0px_#2D2D2D] hover:-translate-y-0.5 transition-all"
