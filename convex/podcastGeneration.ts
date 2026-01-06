@@ -177,11 +177,22 @@ async function generateScript(ctx: any, topic: any, research: any) {
     throw new Error("GEMINI_API_KEY not configured")
   }
 
-  const prompt = `You are writing a podcast script in the style of "This American Life" - intimate, narrative-driven storytelling about sake.
+  // Map series ID to display name
+  const seriesNames: Record<string, string> = {
+    sake_stories: "Sake Stories",
+    pairing_lab: "Pairing Lab", 
+    the_bridge: "The Bridge",
+    brewing_secrets: "Brewing Secrets",
+  }
+  const showName = seriesNames[topic.series] || "Sake Stories"
+
+  const prompt = `You are writing a podcast script for "${showName}" from Sakécosm - intimate, narrative-driven storytelling about sake in the style of "This American Life".
+
+**SHOW INTRO:**
+Start with: "Welcome to ${showName} from Sakécosm..." or similar natural greeting that mentions both the show name and Sakécosm.
 
 **STYLE GUIDE (This American Life inspired):**
 - Open with a compelling anecdote or moment that hooks the listener
-- Use "acts" to structure the story (Act One, Act Two, etc.)
 - Mix personal stories with broader themes
 - Include moments of surprise, humor, and genuine emotion
 - The host (TOJI) guides us through with warmth and curiosity
@@ -199,6 +210,7 @@ async function generateScript(ctx: any, topic: any, research: any) {
 - Natural conversation, not scripted Q&A
 - Include [PAUSE] for dramatic beats
 - Pronunciation guides: "Junmai (JOON-my)"
+- End with: "This has been ${showName} from Sakécosm" or similar sign-off
 
 **IMPORTANT - SAKE RECOMMENDATIONS:**
 You MUST naturally weave in 1-2 specific sake recommendations from the products below. When mentioning a sake:

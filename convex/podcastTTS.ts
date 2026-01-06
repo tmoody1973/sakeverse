@@ -4,9 +4,6 @@ import { action } from "./_generated/server"
 import { internal } from "./_generated/api"
 import { v } from "convex/values"
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const lamejs = require("lamejs")
-
 type AudioResult = {
   success: boolean
   duration?: number
@@ -78,10 +75,10 @@ export const generateAudio = action({
         offset += chunk.length
       }
 
-      console.log("Encoding to MP3...")
-      const mp3Buffer = encodeMp3(combinedSamples, 24000)
+      console.log("Creating WAV file...")
+      const wavBuffer = createWavBuffer(combinedSamples, 24000)
 
-      const blob = new Blob([mp3Buffer.buffer as ArrayBuffer], { type: "audio/mpeg" })
+      const blob = new Blob([wavBuffer], { type: "audio/wav" })
       const storageId = await ctx.storage.store(blob)
       const url = await ctx.storage.getUrl(storageId)
 
@@ -97,12 +94,12 @@ export const generateAudio = action({
           storageId,
           url,
           duration: Math.round(durationSeconds),
-          format: "mp3",
+          format: "wav",
           generatedAt: Date.now(),
         },
       })
 
-      console.log("Audio saved: MP3,", Math.round(durationSeconds), "seconds")
+      console.log("Audio saved: WAV,", Math.round(durationSeconds), "seconds")
       return { success: true, duration: Math.round(durationSeconds), url }
     } catch (e: unknown) {
       const error = e instanceof Error ? e.message : "Unknown error"
@@ -211,31 +208,45 @@ async function callTTS(text: string, voice: string, apiKey: string, retries = 3)
   return null
 }
 
-function encodeMp3(samples: Int16Array, sampleRate: number): Uint8Array {
-  const mp3encoder = new lamejs.Mp3Encoder(1, sampleRate, 128)
-  const mp3Data: Uint8Array[] = []
+function createWavBuffer(samples: Int16Array, sampleRate: number): ArrayBuffer {
+  const numChannels = 1
+  const bitsPerSample = 16
+  const byteRate = sampleRate * numChannels * (bitsPerSample / 8)
+  const blockAlign = numChannels * (bitsPerSample / 8)
+  const dataSize = samples.length * (bitsPerSample / 8)
+  const headerSize = 44
   
-  const blockSize = 1152
-  for (let i = 0; i < samples.length; i += blockSize) {
-    const chunk = samples.subarray(i, i + blockSize)
-    const mp3buf = mp3encoder.encodeBuffer(chunk)
-    if (mp3buf.length > 0) {
-      mp3Data.push(new Uint8Array(mp3buf))
-    }
+  const buffer = new ArrayBuffer(headerSize + dataSize)
+  const view = new DataView(buffer)
+  
+  // RIFF header
+  writeString(view, 0, "RIFF")
+  view.setUint32(4, 36 + dataSize, true)
+  writeString(view, 8, "WAVE")
+  
+  // fmt chunk
+  writeString(view, 12, "fmt ")
+  view.setUint32(16, 16, true) // chunk size
+  view.setUint16(20, 1, true) // PCM format
+  view.setUint16(22, numChannels, true)
+  view.setUint32(24, sampleRate, true)
+  view.setUint32(28, byteRate, true)
+  view.setUint16(32, blockAlign, true)
+  view.setUint16(34, bitsPerSample, true)
+  
+  // data chunk
+  writeString(view, 36, "data")
+  view.setUint32(40, dataSize, true)
+  
+  // Write samples
+  const dataView = new Int16Array(buffer, headerSize)
+  dataView.set(samples)
+  
+  return buffer
+}
+
+function writeString(view: DataView, offset: number, str: string) {
+  for (let i = 0; i < str.length; i++) {
+    view.setUint8(offset + i, str.charCodeAt(i))
   }
-  
-  const end = mp3encoder.flush()
-  if (end.length > 0) {
-    mp3Data.push(new Uint8Array(end))
-  }
-  
-  const totalLength = mp3Data.reduce((acc, arr) => acc + arr.length, 0)
-  const result = new Uint8Array(totalLength)
-  let offset = 0
-  for (const chunk of mp3Data) {
-    result.set(chunk, offset)
-    offset += chunk.length
-  }
-  
-  return result
 }
