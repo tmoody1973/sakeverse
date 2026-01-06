@@ -150,31 +150,28 @@ async function generateScript(ctx: any, topic: any, research: any) {
     throw new Error("GEMINI_API_KEY not configured")
   }
 
-  const seriesPrompts: Record<string, string> = {
-    sake_stories: `You are writing a podcast script for "Sake Stories" - a show about legendary sake breweries.
-Tone: Warm, narrative, like a documentary. Single host speaking directly to listener.
-Format: 8-12 minute episode (~1200-1800 words)
-Structure: Hook → History → Transformation → Tasting notes → Conclusion`,
+  const prompt = `You are writing a podcast script in the style of "This American Life" - intimate, narrative-driven storytelling about sake.
 
-    pairing_lab: `You are writing a podcast script for "Pairing Lab" - a show about sake and food pairings.
-Tone: Playful, experimental, practical. Single host.
-Format: 6-10 minute episode (~900-1500 words)
-Structure: Hook → The Challenge → The Solution → Experiment → Listener Action`,
+**STYLE GUIDE (This American Life inspired):**
+- Open with a compelling anecdote or moment that hooks the listener
+- Use "acts" to structure the story (Act One, Act Two, etc.)
+- Mix personal stories with broader themes
+- Include moments of surprise, humor, and genuine emotion
+- The host (YUKI) guides us through with warmth and curiosity
+- Co-host (KAI) represents the listener - asks the questions we're all thinking
+- Pause for reflection. Let moments breathe.
+- End with a takeaway that resonates beyond just sake
 
-    the_bridge: `You are writing a podcast script for "The Bridge" - helping wine lovers discover sake.
-Tone: Sophisticated, approachable, comparative. Single host.
-Format: 8-12 minute episode (~1200-1800 words)
-Structure: Wine Anchor → Translation → Sake Destination → Tasting Journey`,
+**TWO HOSTS:**
+- TOJI (杜氏 - master brewer): The storyteller and guide. Warm, thoughtful, occasionally wry. Like Ira Glass meets a sake sommelier.
+- KOJI (麹 - the catalyst): The everyman. Curious, sometimes skeptical, brings levity. Asks "wait, really?" and "but why?"
 
-    brewing_secrets: `You are writing a podcast script for "Brewing Secrets" - technical sake education.
-Tone: Educational, clear, detailed. Single host.
-Format: 10-15 minute episode (~1500-2200 words)
-Structure: Concept Introduction → Science → Practical Impact → Tasting Examples`,
-  }
-
-  const systemPrompt = seriesPrompts[topic.series] || seriesPrompts.sake_stories
-
-  const prompt = `${systemPrompt}
+**FORMAT:**
+- 10-15 minutes (~1500-2000 words)
+- Structure: Cold open → Theme introduction → Act One → Act Two → Conclusion
+- Natural conversation, not scripted Q&A
+- Include [PAUSE] for dramatic beats
+- Pronunciation guides: "Junmai (JOON-my)"
 
 TOPIC: ${topic.title}
 SUBTITLE: ${topic.subtitle || ""}
@@ -183,18 +180,11 @@ NARRATIVE HOOK: ${topic.narrativeHook}
 RESEARCH DATA:
 ${research.geminiResults.join("\n\n---\n\n")}
 
-${research.perplexityResults.length > 0 ? `CURRENT NEWS/TRENDS:\n${research.perplexityResults.join("\n\n")}` : ""}
+${research.perplexityResults.length > 0 ? `CURRENT CONTEXT:\n${research.perplexityResults.join("\n\n")}` : ""}
 
-${research.tippsyProducts.length > 0 ? `AVAILABLE PRODUCTS:\n${research.tippsyProducts.map((p: any) => `- ${p.productName} (${p.brewery}) - $${p.price}`).join("\n")}` : ""}
+${research.tippsyProducts.length > 0 ? `PRODUCTS TO MENTION:\n${research.tippsyProducts.map((p: any) => `- ${p.productName} (${p.brewery}) - $${p.price}`).join("\n")}` : ""}
 
-Write a complete podcast script. Include:
-1. Natural conversational flow (single host speaking to listener)
-2. Pronunciation guides for Japanese terms in parentheses, e.g., "Junmai (JOON-my)"
-3. Pauses marked with [PAUSE]
-4. Emphasis marked with *asterisks*
-5. Product mentions woven naturally
-
-Return ONLY the script text, no metadata or formatting instructions.`
+Write the script. Each line must start with either "TOJI:" or "KOJI:". Make it feel like a real conversation between two people who genuinely care about this topic.`
 
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`,

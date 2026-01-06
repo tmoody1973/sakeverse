@@ -13,6 +13,13 @@ type AudioResult = {
   error?: string
 }
 
+// Voice assignments for multi-host
+const VOICES = {
+  TOJI: "Kore",    // The master brewer - warm, knowledgeable guide
+  KOJI: "Puck",    // The catalyst - curious, energetic co-host
+  NARRATOR: "Kore" // Default/narrator voice
+}
+
 export const generateAudio = action({
   args: {
     episodeId: v.id("podcastEpisodes"),
@@ -28,66 +35,48 @@ export const generateAudio = action({
       return { success: false, error: "GEMINI_API_KEY not configured" }
     }
 
-    console.log("Generating audio for episode:", episode.title)
+    console.log("Generating multi-host audio for episode:", episode.title)
 
     try {
-      // 1. Generate audio with Gemini TTS
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${geminiKey}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [{
-              parts: [{
-                text: `Read this podcast script in a warm, engaging voice suitable for an educational sake podcast. 
-Speak clearly with good pacing, emphasizing Japanese terms.
+      // Parse script into segments by speaker
+      const segments = parseScriptSegments(episode.script.content)
+      console.log(`Parsed ${segments.length} segments`)
 
-${episode.script.content}`
-              }]
-            }],
-            generationConfig: {
-              responseModalities: ["AUDIO"],
-              speechConfig: {
-                voiceConfig: {
-                  prebuiltVoiceConfig: {
-                    voiceName: "Kore"
-                  }
-                }
-              }
-            }
-          }),
-        }
-      )
-
-      if (!response.ok) {
-        const errorText = await response.text()
-        console.error("TTS API error:", errorText)
-        return { success: false, error: `TTS generation failed: ${response.status}` }
-      }
-
-      const result = await response.json()
-      const audioData = result.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data as string | undefined
-
-      if (!audioData) {
-        return { success: false, error: "No audio data returned from TTS" }
-      }
-
-      // 2. Convert base64 to PCM bytes (16-bit signed)
-      const binaryString = atob(audioData)
-      const pcmBytes = new Uint8Array(binaryString.length)
-      for (let i = 0; i < binaryString.length; i++) {
-        pcmBytes[i] = binaryString.charCodeAt(i)
-      }
-
-      // 3. Convert PCM to Int16Array for lamejs
-      const samples = new Int16Array(pcmBytes.buffer)
+      // Generate audio for each segment
+      const audioChunks: Int16Array[] = []
       
-      // 4. Encode to MP3 using lamejs
-      const mp3Buffer = encodeMp3(samples, 24000)
+      for (let i = 0; i < segments.length; i++) {
+        const segment = segments[i]
+        console.log(`Generating segment ${i + 1}/${segments.length}: ${segment.speaker}`)
+        
+        const pcmData = await generateSegmentAudio(segment.text, segment.voice, geminiKey)
+        if (pcmData) {
+          audioChunks.push(pcmData)
+          // Add small pause between speakers (0.3 sec of silence at 24kHz)
+          if (i < segments.length - 1) {
+            audioChunks.push(new Int16Array(7200)) // 0.3s silence
+          }
+        }
+      }
+
+      if (audioChunks.length === 0) {
+        return { success: false, error: "No audio generated" }
+      }
+
+      // Combine all chunks
+      const totalLength = audioChunks.reduce((acc, chunk) => acc + chunk.length, 0)
+      const combinedSamples = new Int16Array(totalLength)
+      let offset = 0
+      for (const chunk of audioChunks) {
+        combinedSamples.set(chunk, offset)
+        offset += chunk.length
+      }
+
+      console.log("Encoding to MP3...")
+      const mp3Buffer = encodeMp3(combinedSamples, 24000)
       console.log("MP3 encoded, size:", mp3Buffer.length)
 
-      // 5. Upload to Convex storage
+      // Upload to Convex storage
       const blob = new Blob([mp3Buffer.buffer as ArrayBuffer], { type: "audio/mpeg" })
       const storageId = await ctx.storage.store(blob)
       const url = await ctx.storage.getUrl(storageId)
@@ -97,9 +86,9 @@ ${episode.script.content}`
       }
 
       // Duration: samples / sampleRate
-      const durationSeconds = samples.length / 24000
+      const durationSeconds = combinedSamples.length / 24000
 
-      // 6. Update episode
+      // Update episode
       await ctx.runMutation(internal.podcastEpisodes.updateAudio, {
         episodeId,
         audio: {
@@ -125,6 +114,114 @@ ${episode.script.content}`
     }
   },
 })
+
+// Parse script into speaker segments
+function parseScriptSegments(script: string): { speaker: string; voice: string; text: string }[] {
+  const segments: { speaker: string; voice: string; text: string }[] = []
+  const lines = script.split('\n')
+  
+  let currentSpeaker = "NARRATOR"
+  let currentText = ""
+  
+  for (const line of lines) {
+    const trimmed = line.trim()
+    if (!trimmed) continue
+    
+    // Check for speaker prefix
+    const tojiMatch = trimmed.match(/^TOJI:\s*(.*)$/i)
+    const kojiMatch = trimmed.match(/^KOJI:\s*(.*)$/i)
+    
+    if (tojiMatch) {
+      // Save previous segment
+      if (currentText.trim()) {
+        segments.push({
+          speaker: currentSpeaker,
+          voice: VOICES[currentSpeaker as keyof typeof VOICES] || VOICES.NARRATOR,
+          text: currentText.trim()
+        })
+      }
+      currentSpeaker = "TOJI"
+      currentText = tojiMatch[1]
+    } else if (kojiMatch) {
+      // Save previous segment
+      if (currentText.trim()) {
+        segments.push({
+          speaker: currentSpeaker,
+          voice: VOICES[currentSpeaker as keyof typeof VOICES] || VOICES.NARRATOR,
+          text: currentText.trim()
+        })
+      }
+      currentSpeaker = "KOJI"
+      currentText = kojiMatch[1]
+    } else {
+      // Continue current speaker's text
+      currentText += " " + trimmed
+    }
+  }
+  
+  // Don't forget last segment
+  if (currentText.trim()) {
+    segments.push({
+      speaker: currentSpeaker,
+      voice: VOICES[currentSpeaker as keyof typeof VOICES] || VOICES.NARRATOR,
+      text: currentText.trim()
+    })
+  }
+  
+  return segments
+}
+
+// Generate audio for a single segment
+async function generateSegmentAudio(text: string, voice: string, apiKey: string): Promise<Int16Array | null> {
+  try {
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{ text }]
+          }],
+          generationConfig: {
+            responseModalities: ["AUDIO"],
+            speechConfig: {
+              voiceConfig: {
+                prebuiltVoiceConfig: {
+                  voiceName: voice
+                }
+              }
+            }
+          }
+        }),
+      }
+    )
+
+    if (!response.ok) {
+      console.error("TTS API error:", response.status)
+      return null
+    }
+
+    const result = await response.json()
+    const audioData = result.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data as string | undefined
+
+    if (!audioData) {
+      return null
+    }
+
+    // Convert base64 to Int16Array
+    const binaryString = atob(audioData)
+    const bytes = new Uint8Array(binaryString.length)
+    for (let i = 0; i < binaryString.length; i++) {
+      bytes[i] = binaryString.charCodeAt(i)
+    }
+    
+    return new Int16Array(bytes.buffer)
+  } catch (e) {
+    console.error("Segment TTS error:", e)
+    return null
+  }
+}
 
 // Encode PCM samples to MP3 using lamejs
 function encodeMp3(samples: Int16Array, sampleRate: number): Uint8Array {
