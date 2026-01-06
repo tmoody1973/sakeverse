@@ -55,7 +55,7 @@ export const queryBreweryKnowledge = action({
     try {
       // Use Gemini with the uploaded file as context
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiApiKey}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -108,7 +108,7 @@ Be specific and cite brewery names, founding dates, and key details from the doc
 // Fallback to general Gemini knowledge
 async function queryGeneralKnowledge(apiKey: string, query: string) {
   const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
