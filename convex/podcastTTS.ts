@@ -45,6 +45,13 @@ export const generateAudio = action({
       const audioChunks: Int16Array[] = []
       
       for (let i = 0; i < chunks.length; i++) {
+        // Check if cancelled before each chunk
+        const cancelled = await ctx.runQuery(internal.podcastEpisodes.isCancelled, { episodeId })
+        if (cancelled) {
+          console.log("Generation cancelled by user")
+          return { success: false, error: "Cancelled by user" }
+        }
+        
         console.log(`Processing chunk ${i + 1}/${chunks.length} (${chunks[i].length} chars)`)
         
         const pcmData = await callTTS(chunks[i], VOICES.TOJI, geminiKey)

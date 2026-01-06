@@ -199,3 +199,28 @@ export const deleteEpisode = mutation({
     await ctx.db.delete(episodeId)
   },
 })
+
+// Cancel generation (sets status to cancelled)
+export const cancelGeneration = mutation({
+  args: { episodeId: v.id("podcastEpisodes") },
+  handler: async (ctx, { episodeId }) => {
+    const episode = await ctx.db.get(episodeId)
+    if (episode && episode.status === "generating") {
+      await ctx.db.patch(episodeId, {
+        status: "cancelled",
+        updatedAt: Date.now(),
+      })
+      return { success: true }
+    }
+    return { success: false, reason: "Episode not in generating state" }
+  },
+})
+
+// Check if cancelled (for TTS to poll)
+export const isCancelled = internalQuery({
+  args: { episodeId: v.id("podcastEpisodes") },
+  handler: async (ctx, { episodeId }) => {
+    const episode = await ctx.db.get(episodeId)
+    return episode?.status === "cancelled"
+  },
+})

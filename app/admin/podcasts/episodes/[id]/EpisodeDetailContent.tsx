@@ -5,7 +5,7 @@ import { api } from "@/convex/_generated/api"
 import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import { useState } from "react"
-import { ArrowLeft, Play, Pause, CheckCircle, RefreshCw, Globe, EyeOff, Trash2 } from "lucide-react"
+import { ArrowLeft, Play, Pause, CheckCircle, RefreshCw, Globe, EyeOff, Trash2, XCircle } from "lucide-react"
 import { Id } from "@/convex/_generated/dataModel"
 
 export function EpisodeDetailContent() {
@@ -17,11 +17,13 @@ export function EpisodeDetailContent() {
   const publish = useMutation(api.podcastEpisodes.publish)
   const unpublish = useMutation(api.podcastEpisodes.unpublish)
   const deleteEpisode = useMutation(api.podcastEpisodes.deleteEpisode)
+  const cancelGeneration = useMutation(api.podcastEpisodes.cancelGeneration)
   const regenerateAudio = useAction(api.podcastTTS.generateAudio)
   
   const [isPlaying, setIsPlaying] = useState(false)
   const [isRegenerating, setIsRegenerating] = useState(false)
   const [isDeleting, setIsDeleting] = useState(false)
+  const [isCancelling, setIsCancelling] = useState(false)
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null)
 
   if (!episode) {
@@ -59,6 +61,12 @@ export function EpisodeDetailContent() {
     setIsDeleting(true)
     await deleteEpisode({ episodeId })
     router.push("/admin/podcasts/episodes")
+  }
+
+  const handleCancel = async () => {
+    setIsCancelling(true)
+    await cancelGeneration({ episodeId })
+    setIsCancelling(false)
   }
 
   const handleRegenerateAudio = async () => {
@@ -122,8 +130,33 @@ export function EpisodeDetailContent() {
         </div>
       )}
 
+      {/* Generating Status with Cancel */}
+      {episode.status === "generating" && (
+        <div className="bg-yellow-50 border-2 border-yellow-400 rounded-xl p-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <RefreshCw className="w-5 h-5 text-yellow-600 animate-spin" />
+            <p className="text-yellow-800 font-medium">Generating episode...</p>
+          </div>
+          <button
+            onClick={handleCancel}
+            disabled={isCancelling}
+            className="px-4 py-2 bg-red-500 text-white rounded-lg font-medium flex items-center gap-2 hover:bg-red-600"
+          >
+            <XCircle className="w-4 h-4" />
+            {isCancelling ? "Cancelling..." : "Cancel"}
+          </button>
+        </div>
+      )}
+
+      {/* Cancelled Status */}
+      {episode.status === "cancelled" && (
+        <div className="bg-gray-100 border-2 border-gray-400 rounded-xl p-4">
+          <p className="text-gray-700">Generation was cancelled. You can delete this episode or try regenerating.</p>
+        </div>
+      )}
+
       {/* No Audio Warning */}
-      {!episode.audio && episode.script && (
+      {!episode.audio && episode.script && episode.status !== "generating" && episode.status !== "cancelled" && (
         <div className="bg-yellow-50 border-2 border-yellow-400 rounded-xl p-4 flex items-center justify-between">
           <p className="text-yellow-800">Audio not generated yet</p>
           <button
