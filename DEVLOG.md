@@ -1412,3 +1412,160 @@ Solution: `normalizePrefecture()` function strips suffixes for matching
 - [ ] Temperature Lab
 - [ ] More courses via admin generator
 - [ ] Polish and bug fixes
+
+
+---
+
+## January 6, 2026 - AI Podcast Network & Admin Dashboard
+
+### 🎙️ **AI Podcast Network Complete**
+
+**Time**: 8:00 AM - 10:30 AM  
+**Focus**: Full podcast generation pipeline with MP3 output
+
+#### **✅ Podcast System Architecture**
+Built complete AI podcast generation system with 4 shows:
+
+| Show | Schedule | Focus | Icon |
+|------|----------|-------|------|
+| Sake Stories | Monday | Brewery histories, regional tales | 📖 |
+| Pairing Lab | Wednesday | Food pairing deep dives | 🍽️ |
+| The Bridge | Friday | Wine-to-sake translations | 🍷 |
+| Brewing Secrets | 1st/15th | Technical brewing science | 🔬 |
+
+#### **✅ Database Schema**
+```typescript
+podcastTopics - 194 imported topics across 4 series
+podcastEpisodes - Generated episodes with script, audio, status
+podcastGenerationJobs - Track async generation progress
+```
+
+**Topic Counts by Series**:
+- sake_stories: 70 topics
+- pairing_lab: 96 topics  
+- the_bridge: 12 topics
+- brewing_secrets: 16 topics
+
+#### **✅ Generation Pipeline**
+```
+Topic → Research (Gemini RAG + Perplexity) → Script (Gemini 2.5 Flash) → Audio (Gemini TTS) → MP3 (lamejs) → Review → Publish
+```
+
+**Key Functions** (`convex/`):
+- `podcastGeneration.ts` - Full pipeline orchestration
+- `podcastRAG.ts` - Gemini File API queries (218KB brewery histories)
+- `podcastTTS.ts` - Gemini 2.5 Flash TTS + lamejs MP3 encoding
+- `podcastEpisodes.ts` - CRUD with publish/unpublish
+- `podcastTopics.ts` - Topic import and queries
+
+#### **✅ Gemini RAG Setup**
+- Uploaded `brewery_histories_only.md` (68 breweries, 218KB) to Gemini File API
+- Script: `scripts/upload-to-gemini.mjs`
+- File URI stored in `GEMINI_FILE_URI` env var
+- Semantic search during episode research phase
+
+#### **✅ MP3 Encoding Solution**
+**Challenge**: Convex cloud doesn't have ffmpeg installed
+**Attempted**: CloudConvert API (requires paid key)
+**Solution**: `lamejs` - pure JavaScript MP3 encoder
+
+```typescript
+// No external dependencies needed!
+import lamejs from "lamejs"
+
+function encodeMp3(samples: Int16Array, sampleRate: number): Uint8Array {
+  const mp3encoder = new lamejs.Mp3Encoder(1, sampleRate, 128)
+  // ... encode chunks
+  return result
+}
+```
+
+**Benefits**:
+- Works in Convex cloud (no binary dependencies)
+- ~10x smaller files than WAV
+- 128kbps quality suitable for voice podcasts
+
+#### **✅ Admin UI Pages**
+- `/admin/podcasts` - Dashboard with series stats
+- `/admin/podcasts/generate` - Topic selection and generation trigger
+- `/admin/podcasts/episodes` - Episodes list by status (draft/published)
+- `/admin/podcasts/episodes/[id]` - Preview script, play audio, publish
+
+#### **✅ Public Podcast Pages**
+- `/podcasts` - Podcast hub with all shows and latest episodes
+- `/podcasts/[series]/[episodeId]` - Episode player with audio controls
+
+### 🏠 **Admin Dashboard Hub**
+
+**Time**: 10:29 AM  
+**Focus**: Central admin navigation
+
+#### **✅ Created `/admin` Page**
+Simple dashboard linking to:
+- 📚 Learning System → `/admin/learn`
+- 🎙️ Podcast Network → `/admin/podcasts`
+
+RetroUI styled cards with hover effects and clear descriptions.
+
+### 📊 **Technical Decisions**
+
+#### **1. lamejs over ffmpeg**
+- **Decision**: Use pure JS MP3 encoder instead of ffmpeg
+- **Rationale**: Convex cloud environment doesn't have ffmpeg binary
+- **Trade-off**: Slightly slower encoding, but works everywhere
+- **Impact**: Zero external dependencies for audio processing
+
+#### **2. Gemini 2.5 Flash for TTS**
+- **Model**: `gemini-2.5-flash-preview-tts`
+- **Voice**: "Kore" (firm, clear - good for educational content)
+- **Output**: 24kHz, 16-bit mono PCM → MP3
+
+#### **3. Topic-Based Generation**
+- **Decision**: Pre-define 194 topics, generate on-demand
+- **Rationale**: Quality control over fully automated generation
+- **Workflow**: Admin selects topic → AI generates → Admin reviews → Publish
+
+### **⏱️ Session Stats**
+- **Duration**: ~2.5 hours
+- **Commits**: 3 commits pushed
+- **Files Created**: 15+ new files
+- **Dependencies Added**: `lamejs`, `fluent-ffmpeg` (removed), `@ffmpeg-installer/ffmpeg` (removed)
+
+### **🔧 Kiro CLI Usage**
+- Systematic file creation following podcast plan
+- Quick iteration on MP3 encoding solutions
+- Context7 verification for Gemini TTS API format
+- Efficient debugging of Convex cloud limitations
+
+### **📦 Git Commits**
+```
+f8fbd73 - feat: Add MP3 encoding for podcast TTS using lamejs
+a6d47be - feat: Complete podcast system with preview, publish, and public player
+[earlier] - feat: Add Gemini 2.5 Flash TTS audio generation
+```
+
+---
+
+**Last Updated**: January 6, 2026 - 10:30 AM  
+**Status**: 
+- ✅ AI Podcast Network (4 shows, 194 topics)
+- ✅ Gemini TTS + lamejs MP3 encoding
+- ✅ Admin preview/publish workflow
+- ✅ Public podcast player
+- ✅ Central admin dashboard
+
+**Cumulative Kiro CLI Impact**:
+| Metric | Value |
+|--------|-------|
+| Total Development Time | ~20 hours |
+| Estimated Manual Time | 60-80 hours |
+| **Time Saved** | **40-60 hours (65-75%)** |
+| Features Built | 15+ major features |
+| Lines of Code | ~8,000+ |
+| Commits | 50+ |
+
+**Remaining for Hackathon**:
+- [ ] Generate sample podcast episodes
+- [ ] Temperature Lab feature
+- [ ] Demo video recording
+- [ ] Final polish and testing
