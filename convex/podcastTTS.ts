@@ -3,6 +3,8 @@
 import { action } from "./_generated/server"
 import { internal } from "./_generated/api"
 import { v } from "convex/values"
+// @ts-ignore - lamejs doesn't have types
+import lamejs from "lamejs"
 
 type AudioResult = {
   success: boolean
@@ -11,7 +13,6 @@ type AudioResult = {
   error?: string
 }
 
-// Generate audio from script using Gemini TTS
 export const generateAudio = action({
   args: {
     episodeId: v.id("podcastEpisodes"),
@@ -28,10 +29,9 @@ export const generateAudio = action({
     }
 
     console.log("Generating audio for episode:", episode.title)
-    console.log("Script length:", episode.script.content.length, "characters")
 
     try {
-      // Use Gemini 2.5 Flash TTS
+      // 1. Generate audio with Gemini TTS
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${geminiKey}`,
         {
@@ -73,19 +73,22 @@ ${episode.script.content}`
         return { success: false, error: "No audio data returned from TTS" }
       }
 
-      console.log("Audio generated, uploading to storage...")
-
-      // Convert base64 to Uint8Array
+      // 2. Convert base64 to PCM bytes (16-bit signed)
       const binaryString = atob(audioData)
-      const bytes = new Uint8Array(binaryString.length)
+      const pcmBytes = new Uint8Array(binaryString.length)
       for (let i = 0; i < binaryString.length; i++) {
-        bytes[i] = binaryString.charCodeAt(i)
+        pcmBytes[i] = binaryString.charCodeAt(i)
       }
 
-      // Create WAV file with proper headers
-      const wavBuffer = createWavFile(bytes)
-      const blob = new Blob([new Uint8Array(wavBuffer).buffer], { type: "audio/wav" })
+      // 3. Convert PCM to Int16Array for lamejs
+      const samples = new Int16Array(pcmBytes.buffer)
       
+      // 4. Encode to MP3 using lamejs
+      const mp3Buffer = encodeMp3(samples, 24000)
+      console.log("MP3 encoded, size:", mp3Buffer.length)
+
+      // 5. Upload to Convex storage
+      const blob = new Blob([mp3Buffer.buffer as ArrayBuffer], { type: "audio/mpeg" })
       const storageId = await ctx.storage.store(blob)
       const url = await ctx.storage.getUrl(storageId)
 
@@ -93,22 +96,22 @@ ${episode.script.content}`
         return { success: false, error: "Failed to get storage URL" }
       }
 
-      // Calculate duration (24000 Hz, 16-bit mono = 48000 bytes per second)
-      const durationSeconds = bytes.length / 48000
+      // Duration: samples / sampleRate
+      const durationSeconds = samples.length / 24000
 
-      // Update episode with audio info
+      // 6. Update episode
       await ctx.runMutation(internal.podcastEpisodes.updateAudio, {
         episodeId,
         audio: {
           storageId,
           url,
           duration: Math.round(durationSeconds),
-          format: "wav",
+          format: "mp3",
           generatedAt: Date.now(),
         },
       })
 
-      console.log("Audio saved, duration:", Math.round(durationSeconds), "seconds")
+      console.log("Audio saved: MP3,", Math.round(durationSeconds), "seconds")
 
       return { 
         success: true, 
@@ -123,45 +126,33 @@ ${episode.script.content}`
   },
 })
 
-// Create WAV file from PCM data
-function createWavFile(pcmData: Uint8Array): Uint8Array {
-  const sampleRate = 24000
-  const numChannels = 1
-  const bitsPerSample = 16
-  const byteRate = sampleRate * numChannels * (bitsPerSample / 8)
-  const blockAlign = numChannels * (bitsPerSample / 8)
-  const dataSize = pcmData.length
-  const headerSize = 44
+// Encode PCM samples to MP3 using lamejs
+function encodeMp3(samples: Int16Array, sampleRate: number): Uint8Array {
+  const mp3encoder = new lamejs.Mp3Encoder(1, sampleRate, 128)
+  const mp3Data: Uint8Array[] = []
   
-  const buffer = new ArrayBuffer(headerSize + dataSize)
-  const view = new DataView(buffer)
-  const uint8 = new Uint8Array(buffer)
-  
-  // RIFF header
-  writeString(uint8, 0, "RIFF")
-  view.setUint32(4, 36 + dataSize, true)
-  writeString(uint8, 8, "WAVE")
-  
-  // fmt chunk
-  writeString(uint8, 12, "fmt ")
-  view.setUint32(16, 16, true)
-  view.setUint16(20, 1, true)
-  view.setUint16(22, numChannels, true)
-  view.setUint32(24, sampleRate, true)
-  view.setUint32(28, byteRate, true)
-  view.setUint16(32, blockAlign, true)
-  view.setUint16(34, bitsPerSample, true)
-  
-  // data chunk
-  writeString(uint8, 36, "data")
-  view.setUint32(40, dataSize, true)
-  uint8.set(pcmData, 44)
-  
-  return uint8
-}
-
-function writeString(buffer: Uint8Array, offset: number, str: string) {
-  for (let i = 0; i < str.length; i++) {
-    buffer[offset + i] = str.charCodeAt(i)
+  const blockSize = 1152
+  for (let i = 0; i < samples.length; i += blockSize) {
+    const chunk = samples.subarray(i, i + blockSize)
+    const mp3buf = mp3encoder.encodeBuffer(chunk)
+    if (mp3buf.length > 0) {
+      mp3Data.push(new Uint8Array(mp3buf))
+    }
   }
+  
+  const end = mp3encoder.flush()
+  if (end.length > 0) {
+    mp3Data.push(new Uint8Array(end))
+  }
+  
+  // Combine all chunks
+  const totalLength = mp3Data.reduce((acc, arr) => acc + arr.length, 0)
+  const result = new Uint8Array(totalLength)
+  let offset = 0
+  for (const chunk of mp3Data) {
+    result.set(chunk, offset)
+    offset += chunk.length
+  }
+  
+  return result
 }
