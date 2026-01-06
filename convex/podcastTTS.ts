@@ -3,8 +3,9 @@
 import { action } from "./_generated/server"
 import { internal } from "./_generated/api"
 import { v } from "convex/values"
-// @ts-ignore - lamejs doesn't have types
-import lamejs from "lamejs"
+
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const lamejs = require("lamejs")
 
 type AudioResult = {
   success: boolean

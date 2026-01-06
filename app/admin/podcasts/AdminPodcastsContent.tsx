@@ -52,14 +52,23 @@ export function AdminPodcastsContent() {
             <p className="text-sm text-gray-600">{totalTopics} topics ready for generation</p>
           </div>
         </div>
-        <button
-          onClick={handleTestRAG}
-          disabled={testingRAG}
-          className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-ink rounded-lg shadow-[3px_3px_0px_#2D2D2D] hover:shadow-[4px_4px_0px_#2D2D2D] transition-all disabled:opacity-50"
-        >
-          <RefreshCw className={`w-4 h-4 ${testingRAG ? "animate-spin" : ""}`} />
+        <div className="flex items-center gap-3">
+          <Link
+            href="/admin/podcasts/episodes"
+            className="flex items-center gap-2 px-4 py-2 bg-sakura-pink border-2 border-ink rounded-lg shadow-[3px_3px_0px_#2D2D2D] hover:shadow-[4px_4px_0px_#2D2D2D] transition-all font-medium"
+          >
+            <Play className="w-4 h-4" />
+            View Episodes
+          </Link>
+          <button
+            onClick={handleTestRAG}
+            disabled={testingRAG}
+            className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-ink rounded-lg shadow-[3px_3px_0px_#2D2D2D] hover:shadow-[4px_4px_0px_#2D2D2D] transition-all disabled:opacity-50"
+          >
+            <RefreshCw className={`w-4 h-4 ${testingRAG ? "animate-spin" : ""}`} />
           Test RAG
         </button>
+        </div>
       </div>
 
       {/* RAG Test Result */}

@@ -11,6 +11,7 @@ export function EpisodePreviewContent() {
   const reviewEpisodes = episodes?.filter(e => e.status === "review") || []
   const publishedEpisodes = episodes?.filter(e => e.status === "published") || []
   const generatingEpisodes = episodes?.filter(e => e.status === "generating" || e.status === "scripting") || []
+  const cancelledEpisodes = episodes?.filter(e => e.status === "cancelled") || []
 
   return (
     <div className="p-6 space-y-6 pb-24">
@@ -25,6 +26,15 @@ export function EpisodePreviewContent() {
       {generatingEpisodes.length > 0 && (
         <Section title="Generating" icon={<Clock className="w-5 h-5 text-yellow-600" />}>
           {generatingEpisodes.map(ep => (
+            <EpisodeRow key={ep._id} episode={ep} />
+          ))}
+        </Section>
+      )}
+
+      {/* Cancelled */}
+      {cancelledEpisodes.length > 0 && (
+        <Section title="Cancelled" icon={<Clock className="w-5 h-5 text-gray-400" />}>
+          {cancelledEpisodes.map(ep => (
             <EpisodeRow key={ep._id} episode={ep} />
           ))}
         </Section>
