@@ -35,29 +35,26 @@ export const generateAudio = action({
       return { success: false, error: "GEMINI_API_KEY not configured" }
     }
 
-    console.log("Generating multi-host audio for episode:", episode.title)
+    console.log("Generating audio for episode:", episode.title)
 
     try {
-      const segments = parseScriptSegments(episode.script.content)
-      console.log(`Parsed ${segments.length} segments`)
+      // Chunk the entire script by character limit (preserving line breaks)
+      const chunks = chunkScript(episode.script.content, 4000)
+      console.log(`Script chunked into ${chunks.length} parts: ${chunks.map(c => c.length).join(', ')} chars`)
 
       const audioChunks: Int16Array[] = []
       
-      for (let i = 0; i < segments.length; i++) {
-        const segment = segments[i]
-        console.log(`Segment ${i + 1}/${segments.length}: ${segment.speaker} (${segment.text.length} chars)`)
+      for (let i = 0; i < chunks.length; i++) {
+        console.log(`Processing chunk ${i + 1}/${chunks.length} (${chunks[i].length} chars)`)
         
-        const pcmData = await generateSegmentAudio(segment.text, segment.voice, geminiKey)
+        const pcmData = await callTTS(chunks[i], VOICES.TOJI, geminiKey)
         if (pcmData) {
           audioChunks.push(pcmData)
-          if (i < segments.length - 1) {
-            audioChunks.push(new Int16Array(7200)) // 0.3s silence
-          }
         }
         
-        // Rate limiting - wait between segments to avoid 500 errors
-        if (i < segments.length - 1) {
-          await new Promise(r => setTimeout(r, 1000))
+        // Rate limiting between chunks
+        if (i < chunks.length - 1) {
+          await new Promise(r => setTimeout(r, 1500))
         }
       }
 
@@ -107,94 +104,28 @@ export const generateAudio = action({
   },
 })
 
-function parseScriptSegments(script: string): { speaker: string; voice: string; text: string }[] {
-  const segments: { speaker: string; voice: string; text: string }[] = []
-  const lines = script.split('\n')
-  
-  let currentSpeaker = "NARRATOR"
-  let currentText = ""
-  
-  for (const line of lines) {
-    const trimmed = line.trim()
-    if (!trimmed) continue
-    
-    const tojiMatch = trimmed.match(/^TOJI:\s*(.*)$/i)
-    const kojiMatch = trimmed.match(/^KOJI:\s*(.*)$/i)
-    
-    if (tojiMatch) {
-      if (currentText.trim()) {
-        segments.push({
-          speaker: currentSpeaker,
-          voice: VOICES[currentSpeaker as keyof typeof VOICES] || VOICES.NARRATOR,
-          text: currentText.trim()
-        })
-      }
-      currentSpeaker = "TOJI"
-      currentText = tojiMatch[1]
-    } else if (kojiMatch) {
-      if (currentText.trim()) {
-        segments.push({
-          speaker: currentSpeaker,
-          voice: VOICES[currentSpeaker as keyof typeof VOICES] || VOICES.NARRATOR,
-          text: currentText.trim()
-        })
-      }
-      currentSpeaker = "KOJI"
-      currentText = kojiMatch[1]
-    } else {
-      currentText += " " + trimmed
-    }
-  }
-  
-  if (currentText.trim()) {
-    segments.push({
-      speaker: currentSpeaker,
-      voice: VOICES[currentSpeaker as keyof typeof VOICES] || VOICES.NARRATOR,
-      text: currentText.trim()
-    })
-  }
-  
-  return segments
-}
-
-async function generateSegmentAudio(text: string, voice: string, apiKey: string): Promise<Int16Array | null> {
-  const MAX_CHARS = 3000 // Conservative limit
-  
-  if (text.length <= MAX_CHARS) {
-    return await callTTS(text, voice, apiKey)
-  }
-  
-  // Split long text into chunks by sentences
-  const sentences = text.match(/[^.!?]+[.!?]+/g) || [text]
+// Chunk script by character limit, splitting at line breaks
+function chunkScript(script: string, maxChars: number = 4000): string[] {
+  const lines = script.split('\n').filter(l => l.trim())
   const chunks: string[] = []
-  let currentChunk = ""
-  
-  for (const sentence of sentences) {
-    if ((currentChunk + sentence).length > MAX_CHARS) {
-      if (currentChunk) chunks.push(currentChunk.trim())
-      currentChunk = sentence
-    } else {
-      currentChunk += sentence
+  let currentChunk: string[] = []
+  let currentSize = 0
+
+  for (const line of lines) {
+    if (currentSize + line.length + 1 > maxChars && currentChunk.length > 0) {
+      chunks.push(currentChunk.join('\n'))
+      currentChunk = []
+      currentSize = 0
     }
+    currentChunk.push(line)
+    currentSize += line.length + 1
   }
-  if (currentChunk) chunks.push(currentChunk.trim())
-  
-  const audioChunks: Int16Array[] = []
-  for (const chunk of chunks) {
-    const audio = await callTTS(chunk, voice, apiKey)
-    if (audio) audioChunks.push(audio)
+
+  if (currentChunk.length > 0) {
+    chunks.push(currentChunk.join('\n'))
   }
-  
-  if (audioChunks.length === 0) return null
-  
-  const totalLength = audioChunks.reduce((acc, c) => acc + c.length, 0)
-  const combined = new Int16Array(totalLength)
-  let offset = 0
-  for (const chunk of audioChunks) {
-    combined.set(chunk, offset)
-    offset += chunk.length
-  }
-  return combined
+
+  return chunks
 }
 
 async function callTTS(text: string, voice: string, apiKey: string, retries = 3): Promise<Int16Array | null> {
@@ -234,10 +165,24 @@ async function callTTS(text: string, voice: string, apiKey: string, retries = 3)
       }
 
       const result = await response.json()
+      
+      // Debug: log response structure
+      console.log("TTS response keys:", Object.keys(result))
+      if (result.candidates?.[0]) {
+        console.log("Candidate keys:", Object.keys(result.candidates[0]))
+        if (result.candidates[0].content) {
+          console.log("Content keys:", Object.keys(result.candidates[0].content))
+          console.log("Parts count:", result.candidates[0].content.parts?.length)
+          if (result.candidates[0].content.parts?.[0]) {
+            console.log("Part 0 keys:", Object.keys(result.candidates[0].content.parts[0]))
+          }
+        }
+      }
+      
       const audioData = result.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data
 
       if (!audioData) {
-        console.error("No audio data in response")
+        console.error("No audio data in response, full response:", JSON.stringify(result).substring(0, 500))
         return null
       }
 

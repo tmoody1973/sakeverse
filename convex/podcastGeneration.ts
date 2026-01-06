@@ -156,7 +156,7 @@ async function gatherResearch(ctx: any, topic: any) {
     if (products.length === 0) {
       const searchQuery = topic.metadata?.brand || topic.metadata?.sakeSolutionType || topic.title
       products = await ctx.runQuery(api.sake.searchSake, { 
-        query: searchQuery,
+        searchTerm: searchQuery,
         limit: 5,
       }) || []
     }
@@ -194,14 +194,14 @@ async function generateScript(ctx: any, topic: any, research: any) {
 - KOJI (麹 - the catalyst): The everyman. Curious, sometimes skeptical, brings levity. Asks "wait, really?" and "but why?"
 
 **FORMAT:**
-- 10-15 minutes (~1500-2000 words)
-- Structure: Cold open → Theme introduction → Act One → Act Two → Conclusion
+- 3-5 minutes (~450-750 words)
+- Structure: Cold open → Main story → Sake recommendation → Takeaway
 - Natural conversation, not scripted Q&A
 - Include [PAUSE] for dramatic beats
 - Pronunciation guides: "Junmai (JOON-my)"
 
 **IMPORTANT - SAKE RECOMMENDATIONS:**
-You MUST naturally weave in specific sake recommendations from the products below. When mentioning a sake:
+You MUST naturally weave in 1-2 specific sake recommendations from the products below. When mentioning a sake:
 - Say the full product name
 - Mention the price so listeners know it's accessible
 - Describe the tasting notes in conversational language
@@ -286,7 +286,7 @@ async function queryGeminiRAG(apiKey: string, fileUri: string | undefined, query
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       contents,
-      generationConfig: { temperature: 0.2, maxOutputTokens: 1500 },
+      generationConfig: { temperature: 0.2, maxOutputTokens: 1000 },
     }),
   })
 
