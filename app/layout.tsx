@@ -28,6 +28,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Sakécosm Team" }],
   creator: "Sakécosm",
   publisher: "Sakécosm",
+  icons: {
+    icon: "/sakecosm.ico",
+  },
   formatDetection: {
     email: false,
     address: false,
