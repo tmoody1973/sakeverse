@@ -207,6 +207,7 @@ function CourseCard({
     estimatedMinutes: number
     chapterCount: number
     enrollmentCount: number
+    coverImage?: string
   }
   progress?: number 
 }) {
@@ -223,9 +224,19 @@ function CourseCard({
     <Link href={`/learn/${course.slug}`}>
       <div className="bg-white border-3 border-ink rounded-xl shadow-retro hover:shadow-retro-lg hover:-translate-y-1 transition-all cursor-pointer overflow-hidden">
         {/* Cover */}
-        <div className="h-32 bg-gradient-to-br from-sakura-pink to-sakura-light flex items-center justify-center">
-          <span className="text-5xl">{categoryIcons[course.category] || "📚"}</span>
-        </div>
+        {course.coverImage ? (
+          <div className="h-40 overflow-hidden">
+            <img 
+              src={course.coverImage} 
+              alt={course.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ) : (
+          <div className="h-32 bg-gradient-to-br from-sakura-pink to-sakura-light flex items-center justify-center">
+            <span className="text-5xl">{categoryIcons[course.category] || "📚"}</span>
+          </div>
+        )}
         
         {/* Content */}
         <div className="p-4 space-y-3">

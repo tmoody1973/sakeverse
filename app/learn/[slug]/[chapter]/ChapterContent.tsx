@@ -244,7 +244,8 @@ function QuizPlayer({
     questions: Array<{
       _id: Id<"questions">
       question: string
-      options: Array<{ id: string; text: string }>
+      type?: "multiple_choice" | "true_false"
+      options?: Array<{ id: string; text: string }>
       correctAnswers: string[]
       explanation: string
       points: number
@@ -262,6 +263,12 @@ function QuizPlayer({
 
   const question = quiz.questions[currentQ]
   const selectedAnswers = answers[question._id] || []
+  
+  // For true/false questions, generate options if not provided
+  const displayOptions = question.options || [
+    { id: "true", text: "True" },
+    { id: "false", text: "False" }
+  ]
 
   const handleSelect = (optionId: string) => {
     setAnswers(prev => ({
@@ -336,7 +343,7 @@ function QuizPlayer({
         <h3 className="text-lg font-bold text-ink">{question.question}</h3>
         
         <div className="space-y-2">
-          {question.options.map((opt) => (
+          {displayOptions.map((opt) => (
             <button
               key={opt.id}
               onClick={() => handleSelect(opt.id)}
