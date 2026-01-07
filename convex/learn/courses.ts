@@ -130,6 +130,7 @@ export const createCourse = mutation({
     learningOutcomes: v.array(v.string()),
     generatedBy: v.union(v.literal("ai"), v.literal("manual")),
     aiPrompt: v.optional(v.string()),
+    coverImage: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     return await ctx.db.insert("courses", {
@@ -143,6 +144,17 @@ export const createCourse = mutation({
       createdAt: Date.now(),
       updatedAt: Date.now(),
     })
+  },
+})
+
+// Admin: Update course cover image
+export const updateCoverImage = mutation({
+  args: { 
+    courseId: v.id("courses"),
+    coverImage: v.string(),
+  },
+  handler: async (ctx, { courseId, coverImage }) => {
+    await ctx.db.patch(courseId, { coverImage, updatedAt: Date.now() })
   },
 })
 
@@ -230,5 +242,55 @@ export const publishAllDrafts = mutation({
       })
     }
     return { published: drafts.length }
+  },
+})
+
+
+// Admin: Delete course and all related data
+export const deleteCourse = mutation({
+  args: { courseId: v.id("courses") },
+  handler: async (ctx, { courseId }) => {
+    // Get all chapters
+    const chapters = await ctx.db
+      .query("chapters")
+      .withIndex("by_course", (q) => q.eq("courseId", courseId))
+      .collect()
+    
+    // Get all quizzes
+    const quizzes = await ctx.db
+      .query("quizzes")
+      .withIndex("by_course", (q) => q.eq("courseId", courseId))
+      .collect()
+    
+    // Delete questions for each quiz
+    for (const quiz of quizzes) {
+      const questions = await ctx.db
+        .query("questions")
+        .withIndex("by_quiz", (q) => q.eq("quizId", quiz._id))
+        .collect()
+      for (const q of questions) {
+        await ctx.db.delete(q._id)
+      }
+      await ctx.db.delete(quiz._id)
+    }
+    
+    // Delete chapters
+    for (const chapter of chapters) {
+      await ctx.db.delete(chapter._id)
+    }
+    
+    // Delete user progress
+    const progress = await ctx.db
+      .query("userCourseProgress")
+      .withIndex("by_course", (q) => q.eq("courseId", courseId))
+      .collect()
+    for (const p of progress) {
+      await ctx.db.delete(p._id)
+    }
+    
+    // Delete course
+    await ctx.db.delete(courseId)
+    
+    return { deleted: true }
   },
 })

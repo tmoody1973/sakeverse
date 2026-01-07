@@ -251,10 +251,10 @@ export default defineSchema({
     order: v.number(),
     type: v.union(v.literal("multiple_choice"), v.literal("true_false")),
     question: v.string(),
-    options: v.array(v.object({
+    options: v.optional(v.array(v.object({
       id: v.string(),
       text: v.string(),
-    })),
+    }))),
     correctAnswers: v.array(v.string()),
     explanation: v.string(),
     points: v.number(),
@@ -274,7 +274,8 @@ export default defineSchema({
     updatedAt: v.number(),
   })
     .index("by_user", ["clerkId"])
-    .index("by_user_course", ["clerkId", "courseId"]),
+    .index("by_user_course", ["clerkId", "courseId"])
+    .index("by_course", ["courseId"]),
 
   quizAttempts: defineTable({
     clerkId: v.string(),

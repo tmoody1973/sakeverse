@@ -26,6 +26,57 @@ async function callPerplexity(apiKey: string, prompt: string): Promise<string> {
   return result.choices?.[0]?.message?.content || ""
 }
 
+// Generate Stardew Valley style course cover image using Gemini
+// Returns the raw base64 data and mimeType
+async function generateCourseImage(apiKey: string, courseTitle: string, category: string): Promise<{ data: string; mimeType: string } | undefined> {
+  try {
+    const { GoogleGenAI } = await import("@google/genai")
+    
+    const ai = new GoogleGenAI({ apiKey })
+    
+    console.log("Generating image for:", courseTitle)
+    
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash-image",
+      config: {
+        responseModalities: ["IMAGE", "TEXT"],
+      },
+      contents: [{
+        role: "user",
+        parts: [{
+          text: `Create a cozy Stardew Valley pixel art style illustration for a sake education course titled "${courseTitle}". 
+Category: ${category}
+
+Style requirements:
+- Pixel art aesthetic like Stardew Valley
+- Warm, inviting colors (soft pinks, warm browns, gentle greens)
+- Cozy Japanese sake brewery or tasting scene
+- Include sake bottles, cups, or brewing elements
+- Soft lighting, peaceful atmosphere
+- 16-bit retro game aesthetic
+- No text in the image`
+        }]
+      }]
+    })
+
+    const parts = response.candidates?.[0]?.content?.parts
+    if (parts) {
+      for (const part of parts) {
+        if (part.inlineData?.data) {
+          const mimeType = part.inlineData.mimeType || "image/png"
+          console.log("Got image, mimeType:", mimeType, "data length:", part.inlineData.data.length)
+          return { data: part.inlineData.data, mimeType }
+        }
+      }
+    }
+    console.log("No image found in response")
+    return undefined
+  } catch (error) {
+    console.error("Image generation failed:", error)
+    return undefined
+  }
+}
+
 // Generate course outline using Perplexity
 export const generateCourseOutline = action({
   args: {
@@ -158,6 +209,8 @@ export const generateFullCourse = action({
     category: v.string(),
   },
   handler: async (ctx, { topic, chapterCount, category }): Promise<{ courseId: string; title: string; slug: string }> => {
+    const geminiKey = process.env.GEMINI_API_KEY
+
     // Step 1: Generate outline
     const outline = await ctx.runAction(api.learn.generation.generateCourseOutline, {
       topic, chapterCount, category
@@ -175,7 +228,27 @@ export const generateFullCourse = action({
       }>
     }
 
-    // Step 2: Create course in DB
+    // Step 2: Generate cover image (Stardew Valley style) and store in file storage
+    let coverImage: string | undefined
+    if (geminiKey) {
+      const imageResult = await generateCourseImage(geminiKey, outline.title, category)
+      if (imageResult) {
+        // Convert base64 to Uint8Array
+        const binaryString = atob(imageResult.data)
+        const bytes = new Uint8Array(binaryString.length)
+        for (let i = 0; i < binaryString.length; i++) {
+          bytes[i] = binaryString.charCodeAt(i)
+        }
+        
+        // Store in Convex file storage
+        const blob = new Blob([bytes], { type: imageResult.mimeType })
+        const storageId = await ctx.storage.store(blob)
+        const url = await ctx.storage.getUrl(storageId)
+        coverImage = url || undefined
+      }
+    }
+
+    // Step 3: Create course in DB
     const slug = outline.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 50)
     const courseId = await ctx.runMutation(api.learn.courses.createCourse, {
       title: outline.title,
@@ -186,9 +259,10 @@ export const generateFullCourse = action({
       learningOutcomes: outline.learningOutcomes,
       generatedBy: "ai",
       aiPrompt: topic,
+      coverImage,
     })
 
-    // Step 3: Generate each chapter
+    // Step 4: Generate each chapter
     for (const ch of outline.chapters) {
       // Generate content
       const contentBlocks = await ctx.runAction(api.learn.generation.generateChapterContent, {
@@ -261,9 +335,60 @@ export const generateFullCourse = action({
       }
     }
 
-    // Step 4: Update chapter count
+    // Step 5: Update chapter count
     await ctx.runMutation(api.learn.courses.updateChapterCount, { courseId })
 
     return { courseId: courseId as unknown as string, title: outline.title, slug }
+  },
+})
+
+
+// Backfill cover images for existing courses
+export const backfillCourseImages = action({
+  handler: async (ctx) => {
+    const geminiKey = process.env.GEMINI_API_KEY
+    if (!geminiKey) throw new Error("GEMINI_API_KEY not found")
+
+    // Get all courses without cover images
+    const courses = await ctx.runQuery(api.learn.courses.listPublishedCourses, {})
+    const coursesWithoutImages = courses.filter((c: { coverImage?: string }) => !c.coverImage)
+
+    const results: Array<{ title: string; success: boolean }> = []
+
+    for (const course of coursesWithoutImages) {
+      try {
+        const imageResult = await generateCourseImage(geminiKey, course.title, course.category)
+        if (imageResult) {
+          // Convert base64 to Uint8Array
+          const binaryString = atob(imageResult.data)
+          const bytes = new Uint8Array(binaryString.length)
+          for (let i = 0; i < binaryString.length; i++) {
+            bytes[i] = binaryString.charCodeAt(i)
+          }
+          
+          // Store in Convex file storage
+          const blob = new Blob([bytes], { type: imageResult.mimeType })
+          const storageId = await ctx.storage.store(blob)
+          const url = await ctx.storage.getUrl(storageId)
+          
+          if (url) {
+            await ctx.runMutation(api.learn.courses.updateCoverImage, {
+              courseId: course._id,
+              coverImage: url,
+            })
+            results.push({ title: course.title, success: true })
+          } else {
+            results.push({ title: course.title, success: false })
+          }
+        } else {
+          results.push({ title: course.title, success: false })
+        }
+      } catch (error) {
+        console.error("Error for", course.title, error)
+        results.push({ title: course.title, success: false })
+      }
+    }
+
+    return results
   },
 })
