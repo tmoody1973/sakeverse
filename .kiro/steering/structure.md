@@ -86,10 +86,15 @@ sakecosm/
 │   ├── pairing-lab.jpg           # Podcast show thumbnail
 │   ├── the-bridge.jpg            # Podcast show thumbnail
 │   ├── brewing-secrets.jpg       # Podcast show thumbnail
+│   ├── robots.txt                # SEO crawler rules
+│   ├── sitemap.xml               # Static XML sitemap
 │   └── japan-prefectures.geojson
+├── components/
+│   └── seo/                      # SEO components
+│       └── StructuredData.tsx    # JSON-LD schemas
 └── .kiro/
     ├── steering/                 # product.md, tech.md, structure.md
-    └── prompts/                  # Custom dev prompts
+    └── prompts/                  # Custom dev prompts (seo-optimize.md)
 ```
 
 ## Key Files
@@ -98,6 +103,9 @@ sakecosm/
 - `convex/podcastGeneration.ts`: This American Life style scripts (3-5 min)
 - `convex/podcastEpisodes.ts`: Episode CRUD with cancel support
 - `convex/learn/generation.ts`: Perplexity course generation with AI cover images
+- `convex/discover.ts`: Product search with multi-field filtering
+- `app/sitemap.ts`: Dynamic sitemap generation
+- `components/seo/StructuredData.tsx`: JSON-LD schemas for rich snippets
 - `convex/gamification.ts`: XP and level system
 - `convex/map.ts`: Prefecture descriptions with caching
 - `convex/pairingTips.ts`: Enhanced expert tips with structured prompts

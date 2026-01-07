@@ -44,12 +44,21 @@ Sakécosm is an AI-powered sake discovery platform featuring Kiki (利き酒 - "
 - **User Sake Library**: Save/view favorite sake with Tippsy links
 - **4-Step Onboarding**: Experience level, taste preferences, food preferences, wine preferences
 - **Settings Page**: Edit preferences anytime at `/settings`
-- **Dashboard Widgets**: Wine-to-Sake tip, Food Pairing of the Day, Library preview, Course progress
+- **Dashboard Widgets**: Wine-to-Sake tip, Food Pairing of the Day, Library preview, Course progress with cover images, Featured podcast with thumbnails
+- **Header Search**: Global search bar connects to /discover with results
 
 ### Authentication & Admin
 - **Clerk Authentication**: Sign-in/sign-up with RetroUI styling
 - **Admin Dashboard**: Central hub at `/admin` linking to Learn and Podcasts
 - **Clerk Webhook**: User sync to Convex on create/update/delete
+
+### SEO & Discoverability
+- **Custom Domain**: https://sakecosm.com with proper DNS configuration
+- **Structured Data**: Organization, WebSite, WebApplication schemas for rich snippets
+- **XML Sitemap**: Dynamic and static sitemaps for search engines
+- **Meta Tags**: Comprehensive Open Graph and Twitter Card optimization
+- **Target Keywords**: 15+ sake-related keywords for search visibility
+- **robots.txt**: Proper crawler configuration
 
 ## User Journey
 1. **Landing**: Marketing page introduces Kiki and value proposition

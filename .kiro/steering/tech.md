@@ -127,6 +127,15 @@ User Interface
 - **Perplexity images**: Use `result.images[0].image_url` (not `.url`)
 - **Gemini Image**: Extract from `response.candidates[0].content.parts[].inlineData.data`
 
+### SEO & Discoverability
+- **Custom Domain**: sakecosm.com configured with Vercel
+- **Structured Data**: JSON-LD schemas (Organization, WebSite, WebApplication)
+- **Dual Sitemap**: Dynamic (`app/sitemap.ts`) + Static (`public/sitemap.xml`)
+- **Meta Tags**: Title templates, Open Graph, Twitter Cards
+- **Target Keywords**: 15+ sake-related keywords
+- **robots.txt**: Crawler rules with sitemap reference
+- **Search Integration**: Header search connects to /discover with query params
+
 ## Environment Variables
 **Convex**: OPENAI_API_KEY, GEMINI_API_KEY, PERPLEXITY_API_KEY, GEMINI_FILE_URI
 **Next.js**: NEXT_PUBLIC_CONVEX_URL, NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY, CLERK_SECRET_KEY, THESYS_API_KEY, NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
@@ -134,6 +143,7 @@ User Interface
 ## Development Environment
 **Required**: Node.js 18+, Convex CLI
 **Local Dev**: `npx convex dev` + `npm run dev`
+**Production**: https://sakecosm.com (Vercel deployment)
 
 ## Code Standards
 - TypeScript strict mode
@@ -141,3 +151,5 @@ User Interface
 - Server Components where appropriate
 - RetroUI CSS classes for consistent styling
 - Dynamic imports with `ssr: false` for auth-dependent components
+- Proper image aspect ratios for visual consistency
+- Alt text for all images (accessibility)
