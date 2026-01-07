@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter, Space_Grotesk, Noto_Sans_JP } from "next/font/google"
+import { Inter, Space_Grotesk, Noto_Sans_JP, Silkscreen } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { AppShell } from "@/components/layout/AppShell"
 import "./globals.css"
@@ -19,6 +19,13 @@ const spaceGrotesk = Space_Grotesk({
 const notoSansJP = Noto_Sans_JP({ 
   subsets: ["latin"],
   variable: "--font-noto-sans-jp",
+  display: "swap",
+})
+
+const silkscreen = Silkscreen({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-silkscreen",
   display: "swap",
 })
 
@@ -82,7 +89,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${notoSansJP.variable}`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${notoSansJP.variable} ${silkscreen.variable}`}>
       <body className="min-h-screen bg-sakura-white font-body antialiased" suppressHydrationWarning={true}>
         <AppShell>
           {children}

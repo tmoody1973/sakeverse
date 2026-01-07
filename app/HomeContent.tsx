@@ -132,20 +132,28 @@ function Dashboard({ userId }: { userId?: string }) {
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-plum-dark">{sakeTried}</div>
-                <div className="text-sm text-gray-600">Sake Saved</div>
+                <div className="w-20 h-20 mx-auto mb-2 rounded-full bg-white border-3 border-ink shadow-retro flex items-center justify-center">
+                  <div className="text-3xl font-bold text-plum-dark font-pixel">{sakeTried}</div>
+                </div>
+                <div className="text-sm text-gray-600 font-medium">Sake Saved</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-plum-dark">{stats?.level || 1}</div>
-                <div className="text-sm text-gray-600">Level</div>
+                <div className="w-20 h-20 mx-auto mb-2 rounded-full bg-white border-3 border-ink shadow-retro flex items-center justify-center">
+                  <div className="text-3xl font-bold text-plum-dark font-pixel">{stats?.level || 1}</div>
+                </div>
+                <div className="text-sm text-gray-600 font-medium">Level</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-plum-dark">{coursesInProgress}</div>
-                <div className="text-sm text-gray-600">Courses</div>
+                <div className="w-20 h-20 mx-auto mb-2 rounded-full bg-white border-3 border-ink shadow-retro flex items-center justify-center">
+                  <div className="text-3xl font-bold text-plum-dark font-pixel">{coursesInProgress}</div>
+                </div>
+                <div className="text-sm text-gray-600 font-medium">Courses</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-plum-dark">{currentCourse?.progress || 0}%</div>
-                <div className="text-sm text-gray-600">Progress</div>
+                <div className="w-20 h-20 mx-auto mb-2 rounded-full bg-white border-3 border-ink shadow-retro flex items-center justify-center">
+                  <div className="text-2xl font-bold text-plum-dark font-pixel">{currentCourse?.progress || 0}%</div>
+                </div>
+                <div className="text-sm text-gray-600 font-medium">Progress</div>
               </div>
             </div>
             

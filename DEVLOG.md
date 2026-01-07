@@ -1821,3 +1821,271 @@ b2a7c2b - docs: Update DEVLOG with podcast debugging
 
 **Last Updated**: January 6, 2026 - 1:21 PM  
 **Project Status**: Feature Complete ✅ | Ready for Demo 🎬
+
+
+---
+
+## January 6-7, 2026 (Evening/Night) - Learning System Polish & Visual Enhancements
+
+### 🎓 **Expert Tips Enhancement**
+
+**Time**: Evening session  
+**Focus**: Improving food pairing expert tips quality
+
+#### **✅ Perplexity Max Tokens Increase**
+- **Problem**: Expert tips were too short, lacking depth
+- **Solution**: Increased `max_tokens` from 400 to 1000 in `convex/pairingTips.ts`
+- **Impact**: Tips now have room for comprehensive content
+
+#### **✅ Structured Prompt Rewrite**
+Enhanced prompt to generate structured content with headers:
+- **Why This Pairing Works**: Scientific/cultural explanation
+- **Tasting Notes**: What to expect flavor-wise
+- **Serving Suggestions**: Temperature, vessel, timing
+- **Pro Tips**: Expert-level advice
+
+```typescript
+// Before: Generic "explain why this pairing works"
+// After: Structured prompt with specific sections
+const prompt = `You are a sake sommelier expert...
+Generate a detailed pairing guide with these sections:
+## Why This Pairing Works
+## Tasting Notes
+## Serving Suggestions
+## Pro Tips`
+```
+
+#### **✅ Perplexity Image URL Fix**
+- **Problem**: Images not displaying in pairing tips
+- **Root Cause**: Extracting `result.images[0].url` but API returns `result.images[0].image_url`
+- **Fix**: Changed extraction to match actual Perplexity API response structure
+- **Steering Reference**: `tech.md` documents Perplexity API integration patterns
+
+### 📝 **Quiz System Fixes**
+
+**Time**: Evening session  
+**Focus**: True/False question handling
+
+#### **✅ Schema Update for Optional Options**
+- **Problem**: True/False questions don't need options array
+- **Solution**: Made `options` field optional in `convex/schema.ts`
+
+```typescript
+// Before
+options: v.array(v.object({ id: v.string(), text: v.string() }))
+
+// After
+options: v.optional(v.array(v.object({ id: v.string(), text: v.string() })))
+```
+
+#### **✅ QuizPlayer True/False Handling**
+- **Problem**: QuizPlayer crashed when `options` was undefined
+- **Solution**: Generate default True/False options when not provided
+
+```typescript
+const displayOptions = question.options || [
+  { id: "true", text: "True" },
+  { id: "false", text: "False" }
+]
+```
+
+- **Steering Reference**: `structure.md` defines quiz component location in `app/learn/[slug]/[chapter]/ChapterContent.tsx`
+
+### 🗑️ **Course Management**
+
+**Time**: Evening session  
+**Focus**: Admin course deletion capability
+
+#### **✅ Delete Course Mutation**
+- Added `deleteCourse` mutation to `convex/learn/courses.ts`
+- Cascades deletion to: chapters, quizzes, questions, user progress
+- Added `by_course` index to `userCourseProgress` table for efficient cascade
+- Deleted "Science of Sake Pairing" course that had generation issues
+
+```bash
+npx convex run learn/courses:deleteCourse '{"courseId": "kh79g0qkt48rh8gb90w0c1jq057ysbfs"}'
+```
+
+### 🎨 **AI-Generated Course Cover Images**
+
+**Time**: Late evening session  
+**Focus**: Stardew Valley pixel art style course images
+
+#### **✅ Gemini 2.5 Flash Image Model Discovery**
+- **Research**: Used `curl` to list available Gemini models
+- **Finding**: `gemini-2.5-flash-image` supports image generation
+- **Not**: `gemini-2.0-flash-exp-image-generation` or preview versions
+
+```bash
+curl "https://generativelanguage.googleapis.com/v1beta/models?key=$GEMINI_API_KEY" 2>/dev/null | grep -i "flash"
+```
+
+#### **✅ @google/genai SDK Integration**
+Implemented image generation in `convex/learn/generation.ts`:
+
+```typescript
+const { GoogleGenAI } = await import("@google/genai")
+const ai = new GoogleGenAI({ apiKey })
+
+const response = await ai.models.generateContent({
+  model: "gemini-2.5-flash-image",
+  config: { responseModalities: ["IMAGE", "TEXT"] },
+  contents: [{ role: "user", parts: [{ text: prompt }] }]
+})
+
+// Extract image from response
+const parts = response.candidates?.[0]?.content?.parts
+for (const part of parts) {
+  if (part.inlineData?.data) {
+    return { data: part.inlineData.data, mimeType: part.inlineData.mimeType }
+  }
+}
+```
+
+#### **✅ Convex Runtime Limitation: No Buffer**
+- **Problem**: `Buffer.from(base64, 'base64')` doesn't work in Convex actions
+- **Solution**: Use `atob()` and `Uint8Array` for base64 decoding
+
+```typescript
+// Convex-compatible base64 to Blob conversion
+const binaryString = atob(imageResult.data)
+const bytes = new Uint8Array(binaryString.length)
+for (let i = 0; i < binaryString.length; i++) {
+  bytes[i] = binaryString.charCodeAt(i)
+}
+const blob = new Blob([bytes], { type: imageResult.mimeType })
+```
+
+#### **✅ Convex File Storage for Images**
+- **Problem**: Base64 images (~2MB) too large for Convex string fields
+- **Solution**: Store in Convex file storage, save URL to course
+
+```typescript
+const storageId = await ctx.storage.store(blob)
+const url = await ctx.storage.getUrl(storageId)
+await ctx.runMutation(internal.learn.courses.updateCoverImage, {
+  courseId,
+  coverImage: url
+})
+```
+
+#### **✅ Backfill Existing Courses**
+Created `backfillCourseImages` action to generate images for existing courses:
+
+```bash
+npx convex run learn/generation:backfillCourseImages
+# Result: Generated Stardew Valley style images for 2 courses
+```
+
+#### **✅ Course Card Display Update**
+Updated `app/learn/LearnContent.tsx` to display cover images:
+
+```tsx
+{course.coverImage ? (
+  <img src={course.coverImage} alt={course.title} className="w-full h-full object-cover" />
+) : (
+  <div className="text-6xl">{getCategoryIcon(course.category)}</div>
+)}
+```
+
+### 🎙️ **Podcast Thumbnail Images**
+
+**Time**: Late night session  
+**Focus**: Custom show artwork for podcast pages
+
+#### **✅ Four Custom Thumbnails Added**
+Created/added images to `/public/`:
+- `sake-stories.jpg` - Sake Stories show
+- `pairing-lab.jpg` - Pairing Lab show
+- `the-bridge.jpg` - The Bridge show
+- `brewing-secrets.jpg` - Brewing Secrets show
+
+#### **✅ File Rename Fix**
+- **Problem**: "brewing secrets.jpg" had space in filename
+- **Solution**: Renamed to "brewing-secrets.jpg"
+
+```bash
+mv "public/brewing secrets.jpg" "public/brewing-secrets.jpg"
+```
+
+#### **✅ Podcast Pages Updated**
+- `app/podcasts/PodcastsContent.tsx`: Shows use thumbnail images
+- `app/podcasts/[series]/SeriesContent.tsx`: Hero image and episode thumbnails
+
+```typescript
+const SHOWS = [
+  { id: "sake_stories", name: "Sake Stories", image: "/sake-stories.jpg", desc: "..." },
+  { id: "pairing_lab", name: "Pairing Lab", image: "/pairing-lab.jpg", desc: "..." },
+  { id: "the_bridge", name: "The Bridge", image: "/the-bridge.jpg", desc: "..." },
+  { id: "brewing_secrets", name: "Brewing Secrets", image: "/brewing-secrets.jpg", desc: "..." },
+]
+```
+
+### 📊 **Session Technical Insights**
+
+#### **Convex Runtime Limitations Learned**
+| Limitation | Workaround |
+|------------|------------|
+| No `Buffer` class | Use `atob()` + `Uint8Array` |
+| String field size limits | Use Convex file storage |
+| No nested `ctx.runAction()` | Separate into user-triggered steps |
+
+#### **API Response Structures**
+| API | Image Field |
+|-----|-------------|
+| Perplexity | `result.images[0].image_url` (not `.url`) |
+| Gemini Image | `response.candidates[0].content.parts[].inlineData.data` |
+
+### 📦 **Git Commits This Session**
+
+```bash
+git add -A && git commit -m "fix: Increase max_tokens and improve expert tips prompt"
+git add -A && git commit -m "feat: Add Stardew Valley style AI-generated course cover images"
+git add -A && git commit -m "fix: Display course cover images and handle true/false quiz questions"
+git add -A && git commit -m "feat: Add podcast show thumbnails to /podcasts and series detail pages"
+```
+
+### 🎯 **Kiro CLI Usage This Session**
+
+| Action | Count | Impact |
+|--------|-------|--------|
+| API research (curl) | 3 | Found correct Gemini model |
+| Bug diagnosis | 4 | Image URL, Buffer, options |
+| Code fixes | 8 | Targeted minimal changes |
+| Feature additions | 3 | Cover images, thumbnails |
+| Convex deployments | 6+ | Schema + function updates |
+| Build verifications | 4 | All passing |
+
+### ⏱️ **Time Investment**
+
+| Task | Time | Manual Estimate |
+|------|------|-----------------|
+| Expert tips enhancement | 20 min | 45 min |
+| Quiz schema fix | 15 min | 30 min |
+| Course deletion | 10 min | 25 min |
+| AI cover images | 45 min | 2+ hours |
+| Podcast thumbnails | 20 min | 40 min |
+| **Total** | **~2 hours** | **~4+ hours** |
+| **Time Saved** | **~50%** | |
+
+### 🏆 **Steering Document Alignment**
+
+| Decision | Steering Reference |
+|----------|-------------------|
+| Stardew Valley art style | `product.md` - unique visual identity |
+| Convex file storage | `tech.md` - Convex architecture |
+| Quiz component location | `structure.md` - file organization |
+| Perplexity for tips | `tech.md` - RAG system design |
+
+---
+
+**Last Updated**: January 7, 2026 - 3:33 AM  
+**Session Status**: ✅ All fixes deployed and committed
+
+**Cumulative Stats**:
+- **Total Development Time**: ~26 hours
+- **Estimated Manual Time**: 74-94 hours
+- **Time Saved with Kiro**: ~65-72%
+- **Features Built**: 20+ major features
+- **Bugs Fixed**: 26+
+- **Git Commits**: 40+

@@ -73,6 +73,10 @@ module.exports = {
   			japanese: [
   				'Noto Sans JP',
   				'sans-serif'
+  			],
+  			pixel: [
+  				'var(--font-silkscreen)',
+  				'monospace'
   			]
   		},
   		fontSize: {
