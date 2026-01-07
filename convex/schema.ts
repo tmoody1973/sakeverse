@@ -2,6 +2,17 @@ import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
 export default defineSchema({
+  // Rate Limiting
+  rateLimits: defineTable({
+    userId: v.string(), // Clerk ID
+    type: v.union(v.literal("voice"), v.literal("text")),
+    count: v.number(),
+    windowStart: v.number(), // Timestamp of current window
+    lastRequest: v.number(),
+  })
+    .index("by_user_type", ["userId", "type"])
+    .index("by_window", ["windowStart"]),
+
   // Cached pairing tips from Perplexity
   pairingTipsCache: defineTable({
     dishId: v.string(),

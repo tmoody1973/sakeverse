@@ -32,6 +32,7 @@ import type * as podcastImport from "../podcastImport.js";
 import type * as podcastRAG from "../podcastRAG.js";
 import type * as podcastTTS from "../podcastTTS.js";
 import type * as podcastTopics from "../podcastTopics.js";
+import type * as rateLimit from "../rateLimit.js";
 import type * as recommendations from "../recommendations.js";
 import type * as sake from "../sake.js";
 import type * as sakeBreweries from "../sakeBreweries.js";
@@ -70,6 +71,7 @@ declare const fullApi: ApiFromModules<{
   podcastRAG: typeof podcastRAG;
   podcastTTS: typeof podcastTTS;
   podcastTopics: typeof podcastTopics;
+  rateLimit: typeof rateLimit;
   recommendations: typeof recommendations;
   sake: typeof sake;
   sakeBreweries: typeof sakeBreweries;
