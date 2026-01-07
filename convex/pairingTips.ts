@@ -71,10 +71,24 @@ export const getPairingTips = action({
           messages: [
             {
               role: "user",
-              content: `Show me a photo of ${dishName} and explain how to pair ${sakeType} sake with it. What flavors complement each other?`
+              content: `Write a detailed guide for pairing ${sakeType} sake with ${dishName}. Include:
+
+## Why This Pairing Works
+Explain the flavor science behind why ${sakeType} complements ${dishName}.
+
+## Tasting Notes
+Describe the specific flavors in both the sake and dish that harmonize.
+
+## Serving Suggestions
+- Ideal sake temperature
+- Portion recommendations
+- Timing tips
+
+## Pro Tips
+Share 2-3 expert tips for maximizing this pairing experience.`
             }
           ],
-          max_tokens: 1000,
+          max_tokens: 1500,
           temperature: 0.3,
           return_images: true
         })
@@ -87,19 +101,14 @@ export const getPairingTips = action({
       }
 
       const result = await response.json();
-      console.log("Perplexity response:", JSON.stringify(result, null, 2));
       
       const tips = result.choices?.[0]?.message?.content || `${sakeType} pairs well with ${dishName}.`;
       
-      // Extract image URL from response - check multiple possible locations
+      // Extract image URL - Perplexity uses "image_url" not "url"
       let imageUrl: string | undefined;
       if (result.images && result.images.length > 0) {
-        imageUrl = result.images[0].url || result.images[0];
-      } else if (result.choices?.[0]?.message?.images?.length > 0) {
-        imageUrl = result.choices[0].message.images[0].url || result.choices[0].message.images[0];
+        imageUrl = result.images[0].image_url || result.images[0].url || result.images[0];
       }
-      
-      console.log("Extracted imageUrl:", imageUrl);
 
       // Cache the result
       if (tips && !tips.includes("cannot provide")) {
