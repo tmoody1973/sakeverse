@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /settings/
+Disallow: /onboarding/
+
+Sitemap: https://dynamous-kiro-hackathon.vercel.app/sitemap.xml

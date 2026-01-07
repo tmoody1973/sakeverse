@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter, Space_Grotesk, Noto_Sans_JP, Silkscreen } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { AppShell } from "@/components/layout/AppShell"
+import { OrganizationSchema, WebSiteSchema, WebApplicationSchema } from "@/components/seo/StructuredData"
 import "./globals.css"
 
 const inter = Inter({ 
@@ -30,10 +31,30 @@ const silkscreen = Silkscreen({
 })
 
 export const metadata: Metadata = {
-  title: "Sakécosm - AI-Powered Sake Discovery",
-  description: "Discover Japanese sake through AI-powered conversations with Kiki (利き酒), your personal sake sommelier. Explore breweries, learn about regional styles, and find your perfect sake match.",
-  keywords: ["sake", "japanese", "alcohol", "sommelier", "AI", "discovery", "brewery", "tasting"],
-  authors: [{ name: "Sakécosm Team" }],
+  metadataBase: new URL("https://dynamous-kiro-hackathon.vercel.app"),
+  title: {
+    default: "Sakécosm - AI-Powered Sake Discovery & Learning Platform",
+    template: "%s | Sakécosm"
+  },
+  description: "Discover Japanese sake with Kiki, your AI sommelier. Learn sake fundamentals, get personalized recommendations, explore breweries, and master food pairings. Perfect for wine lovers and sake beginners.",
+  keywords: [
+    "sake",
+    "sake discovery",
+    "sake AI",
+    "sake sommelier",
+    "learn sake",
+    "sake recommendations",
+    "sake pairing",
+    "Japanese sake",
+    "sake for wine lovers",
+    "sake courses",
+    "sake podcast",
+    "sake map Japan",
+    "AI sake recommendations",
+    "sake tasting notes",
+    "sake brewery map"
+  ],
+  authors: [{ name: "Sakécosm", url: "https://dynamous-kiro-hackathon.vercel.app" }],
   creator: "Sakécosm",
   publisher: "Sakécosm",
   icons: {
@@ -44,28 +65,31 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://sakecosm.app"),
   openGraph: {
-    title: "Sakécosm - AI-Powered Sake Discovery",
-    description: "Discover Japanese sake through AI-powered conversations with Kiki (利き酒), your personal sake sommelier.",
-    url: "https://sakecosm.app",
+    type: "website",
+    locale: "en_US",
+    alternateLocale: ["ja_JP"],
+    url: "https://dynamous-kiro-hackathon.vercel.app",
     siteName: "Sakécosm",
+    title: "Sakécosm - AI-Powered Sake Discovery & Learning",
+    description: "Discover Japanese sake with AI-powered recommendations, interactive learning, and expert guidance. Perfect for wine lovers exploring sake.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Sakécosm - AI-Powered Sake Discovery",
+        alt: "Sakécosm - AI Sake Discovery Platform",
+        type: "image/jpeg",
       },
     ],
-    locale: "en_US",
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
+    site: "@sakecosm",
+    creator: "@sakecosm",
     title: "Sakécosm - AI-Powered Sake Discovery",
-    description: "Discover Japanese sake through AI-powered conversations with Kiki (利き酒), your personal sake sommelier.",
-    images: ["/og-image.jpg"],
+    description: "Discover Japanese sake with AI-powered recommendations and interactive learning.",
+    images: ["/twitter-image.jpg"],
   },
   robots: {
     index: true,
@@ -77,6 +101,9 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  alternates: {
+    canonical: "https://dynamous-kiro-hackathon.vercel.app",
   },
   verification: {
     google: "your-google-verification-code",
@@ -90,6 +117,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${notoSansJP.variable} ${silkscreen.variable}`}>
+      <head>
+        <OrganizationSchema />
+        <WebSiteSchema />
+        <WebApplicationSchema />
+      </head>
       <body className="min-h-screen bg-sakura-white font-body antialiased" suppressHydrationWarning={true}>
         <AppShell>
           {children}
