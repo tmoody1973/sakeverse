@@ -10,6 +10,8 @@
 **Maps**: Mapbox GL JS with react-map-gl
 **Podcast TTS**: Gemini 2.5 Flash TTS with WAV output (switched from MP3 due to lamejs Node.js 22 issues)
 **Audio Player**: react-h5-audio-player for reliable playback with progress tracking
+**Image Generation**: Gemini 2.5 Flash Image for AI-generated course covers (Stardew Valley pixel art style)
+**Fonts**: Inter (body), Space Grotesk (display), Noto Sans JP (Japanese), Silkscreen (pixel stats)
 **Styling**: RetroUI neobrutalism + cherry blossom theme
 
 ## Architecture Overview
@@ -55,6 +57,9 @@ User Interface
 - Content blocks system for flexible chapter content (text, callouts, wine bridges, key terms)
 - XP awarded on first completion only (prevents gaming)
 - Auto-publish courses for better demo UX
+- **AI-generated course covers**: Gemini 2.5 Flash Image creates Stardew Valley pixel art style images
+- **Convex file storage**: Images stored in Convex storage (base64 too large for string fields)
+- **Expert tips enhancement**: Perplexity max_tokens increased to 1000, structured prompts with headers
 
 ### AI Podcast Network
 - **Two-host format**: TOJI (杜氏 master brewer) + KOJI (麹 catalyst) - sake terminology names
@@ -93,12 +98,20 @@ User Interface
 - XP rewards: 25 (chapter), 50 (quiz pass), 100 (perfect score)
 - 10 levels: Sake Curious → Sake Grandmaster (0-10,000 XP)
 - Real-time XP display in header
+- **Silkscreen pixel font**: Dashboard stats use retro pixel font for numbers
+- **Circular stat badges**: Stats displayed in white circles with RetroUI borders and shadows
 
 ## Key Technical Learnings
 
 ### Convex Limitations
 - **No nested actions**: Cannot call `ctx.runAction()` from within an action - causes cryptic "performAsyncSyscall" errors
 - **Solution**: Separate into distinct user-triggered steps (e.g., generate script, then generate audio)
+
+### Convex Runtime Limitations
+- **No Buffer class**: `Buffer.from(base64, 'base64')` doesn't work in Convex actions
+- **Solution**: Use `atob()` and `Uint8Array` for base64 decoding
+- **String field size limits**: Base64 images (~2MB) too large for string fields
+- **Solution**: Use Convex file storage for large binary data
 
 ### Audio Processing
 - **lamejs Node.js 22 bug**: `MPEGMode is not defined` - no pure JS MP3 encoder works reliably in modern Node
@@ -109,6 +122,10 @@ User Interface
 - **Gemini TTS**: ~4000-5000 character limit per request
 - **500 errors**: Indicate rate limiting or server overload
 - **Chunking strategy**: Split at newlines to preserve dialogue structure
+
+### API Response Structures
+- **Perplexity images**: Use `result.images[0].image_url` (not `.url`)
+- **Gemini Image**: Extract from `response.candidates[0].content.parts[].inlineData.data`
 
 ## Environment Variables
 **Convex**: OPENAI_API_KEY, GEMINI_API_KEY, PERPLEXITY_API_KEY, GEMINI_FILE_URI

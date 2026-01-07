@@ -82,6 +82,10 @@ sakecosm/
 │   └── upload-to-gemini.mjs      # RAG file upload
 ├── public/
 │   ├── badges/                   # 10 level badge images
+│   ├── sake-stories.jpg          # Podcast show thumbnail
+│   ├── pairing-lab.jpg           # Podcast show thumbnail
+│   ├── the-bridge.jpg            # Podcast show thumbnail
+│   ├── brewing-secrets.jpg       # Podcast show thumbnail
 │   └── japan-prefectures.geojson
 └── .kiro/
     ├── steering/                 # product.md, tech.md, structure.md
@@ -93,15 +97,18 @@ sakecosm/
 - `convex/podcastTTS.ts`: Multi-host TTS with TOJI/KOJI voices, WAV output
 - `convex/podcastGeneration.ts`: This American Life style scripts (3-5 min)
 - `convex/podcastEpisodes.ts`: Episode CRUD with cancel support
-- `convex/learn/generation.ts`: Perplexity course generation
+- `convex/learn/generation.ts`: Perplexity course generation with AI cover images
 - `convex/gamification.ts`: XP and level system
 - `convex/map.ts`: Prefecture descriptions with caching
+- `convex/pairingTips.ts`: Enhanced expert tips with structured prompts
 - `components/voice/KikiChat.tsx`: Voice chat with clean audio disconnect
 - `components/audio/GlobalAudioPlayer.tsx`: react-h5-audio-player integration
 - `app/admin/page.tsx`: Central admin dashboard
+- `app/HomeContent.tsx`: Dashboard with Silkscreen pixel font stats
+- `app/layout.tsx`: Root layout with all font imports (Inter, Space Grotesk, Noto Sans JP, Silkscreen)
 
 ## Configuration
 - `next.config.js`: `serverExternalPackages: ['convex']`
-- `tailwind.config.js`: RetroUI + cherry blossom theme
+- `tailwind.config.js`: RetroUI + cherry blossom theme, Silkscreen pixel font
 - `.npmrc`: `legacy-peer-deps=true`
 - Convex env: OPENAI_API_KEY, GEMINI_API_KEY, PERPLEXITY_API_KEY, GEMINI_FILE_URI
