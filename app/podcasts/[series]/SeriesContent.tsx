@@ -4,31 +4,28 @@ import { useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import { useParams } from "next/navigation"
 import Link from "next/link"
-import { ArrowLeft, Play, Clock, BookOpen, Utensils, Wine, FlaskConical } from "lucide-react"
+import Image from "next/image"
+import { ArrowLeft, Play, Clock } from "lucide-react"
 
-const SERIES_INFO: Record<string, { name: string; icon: any; color: string; description: string }> = {
+const SERIES_INFO: Record<string, { name: string; image: string; description: string }> = {
   sake_stories: {
     name: "Sake Stories",
-    icon: BookOpen,
-    color: "bg-sakura-pink",
+    image: "/sake-stories.jpg",
     description: "Deep dives into legendary breweries, the people behind the sake, and the stories that shaped Japanese brewing culture."
   },
   pairing_lab: {
     name: "Pairing Lab",
-    icon: Utensils,
-    color: "bg-amber-200",
+    image: "/pairing-lab.jpg",
     description: "Exploring unexpected food and sake combinations. From pizza to tacos, discover how sake pairs with cuisines around the world."
   },
   the_bridge: {
     name: "The Bridge",
-    icon: Wine,
-    color: "bg-purple-200",
+    image: "/the-bridge.jpg",
     description: "For wine lovers curious about sake. We translate wine knowledge into sake discoveries you'll love."
   },
   brewing_secrets: {
     name: "Brewing Secrets",
-    icon: FlaskConical,
-    color: "bg-blue-200",
+    image: "/brewing-secrets.jpg",
     description: "The science and craft behind sake making. Kimoto, yamahai, polishing ratios - demystified."
   },
 }
@@ -41,7 +38,6 @@ export function SeriesContent() {
   const publishedEpisodes = episodes?.filter(e => e.status === "published") || []
   
   const info = SERIES_INFO[series]
-  const Icon = info?.icon || BookOpen
 
   if (!info) {
     return (
@@ -64,10 +60,15 @@ export function SeriesContent() {
         </Link>
       </div>
 
-      {/* Show Info */}
+      {/* Show Hero */}
       <div className="px-4 pb-6">
-        <div className={`w-16 h-16 ${info.color} rounded-2xl border-2 border-ink shadow-[3px_3px_0px_#2D2D2D] flex items-center justify-center mb-4`}>
-          <Icon className="w-8 h-8" />
+        <div className="relative w-full h-48 rounded-2xl border-3 border-ink shadow-[4px_4px_0px_#2D2D2D] overflow-hidden mb-4">
+          <Image
+            src={info.image}
+            alt={info.name}
+            fill
+            className="object-cover"
+          />
         </div>
         <h1 className="text-3xl font-bold">{info.name}</h1>
         <p className="text-gray-600 mt-2">{info.description}</p>
@@ -93,8 +94,16 @@ export function SeriesContent() {
                 className="block bg-white rounded-xl border-2 border-ink shadow-[3px_3px_0px_#2D2D2D] p-4 hover:shadow-[4px_4px_0px_#2D2D2D] hover:-translate-y-0.5 transition-all"
               >
                 <div className="flex items-start gap-4">
-                  <div className={`w-12 h-12 ${info.color} rounded-lg border-2 border-ink flex items-center justify-center flex-shrink-0`}>
-                    <Play className="w-5 h-5" />
+                  <div className="relative w-14 h-14 rounded-lg overflow-hidden border-2 border-ink flex-shrink-0">
+                    <Image
+                      src={info.image}
+                      alt={info.name}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                      <Play className="w-5 h-5 text-white" fill="white" />
+                    </div>
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs text-gray-500 mb-1">Episode {episode.episodeNumber}</p>

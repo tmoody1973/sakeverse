@@ -3,13 +3,14 @@
 import { useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import Link from "next/link"
-import { Headphones, BookOpen, Utensils, Wine, FlaskConical, Play } from "lucide-react"
+import { Headphones, Play } from "lucide-react"
+import Image from "next/image"
 
 const SHOWS = [
-  { id: "sake_stories", name: "Sake Stories", icon: BookOpen, color: "bg-sakura-pink", desc: "Legendary breweries and their stories" },
-  { id: "pairing_lab", name: "Pairing Lab", icon: Utensils, color: "bg-amber-200", desc: "Unexpected sake & food combinations" },
-  { id: "the_bridge", name: "The Bridge", icon: Wine, color: "bg-purple-200", desc: "From wine lover to sake enthusiast" },
-  { id: "brewing_secrets", name: "Brewing Secrets", icon: FlaskConical, color: "bg-blue-200", desc: "The science of sake making" },
+  { id: "sake_stories", name: "Sake Stories", image: "/sake-stories.jpg", desc: "Legendary breweries and their stories" },
+  { id: "pairing_lab", name: "Pairing Lab", image: "/pairing-lab.jpg", desc: "Unexpected sake & food combinations" },
+  { id: "the_bridge", name: "The Bridge", image: "/the-bridge.jpg", desc: "From wine lover to sake enthusiast" },
+  { id: "brewing_secrets", name: "Brewing Secrets", image: "/brewing-secrets.jpg", desc: "The science of sake making" },
 ]
 
 export function PodcastsContent() {
@@ -29,19 +30,27 @@ export function PodcastsContent() {
       {/* Shows */}
       <div className="grid grid-cols-2 gap-3">
         {SHOWS.map(show => {
-          const Icon = show.icon
           const showEpisodes = episodes?.filter(e => e.series === show.id) || []
           
           return (
             <Link
               key={show.id}
               href={`/podcasts/${show.id}`}
-              className={`p-4 rounded-xl border-2 border-ink shadow-[3px_3px_0px_#2D2D2D] ${show.color} hover:shadow-[4px_4px_0px_#2D2D2D] transition-all`}
+              className="rounded-xl border-2 border-ink shadow-[3px_3px_0px_#2D2D2D] overflow-hidden bg-white hover:shadow-[4px_4px_0px_#2D2D2D] hover:-translate-y-0.5 transition-all"
             >
-              <Icon className="w-6 h-6 mb-2" />
-              <p className="font-semibold">{show.name}</p>
-              <p className="text-xs text-gray-700 mt-1">{show.desc}</p>
-              <p className="text-xs text-gray-600 mt-2">{showEpisodes.length} episodes</p>
+              <div className="relative h-28">
+                <Image
+                  src={show.image}
+                  alt={show.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-3">
+                <p className="font-semibold">{show.name}</p>
+                <p className="text-xs text-gray-600 mt-1 line-clamp-2">{show.desc}</p>
+                <p className="text-xs text-gray-500 mt-2">{showEpisodes.length} episodes</p>
+              </div>
             </Link>
           )
         })}
@@ -58,16 +67,20 @@ export function PodcastsContent() {
           <div className="space-y-3">
             {episodes.map(episode => {
               const show = SHOWS.find(s => s.id === episode.series)
-              const Icon = show?.icon || BookOpen
               
               return (
                 <Link
                   key={episode._id}
                   href={`/podcasts/${episode.series}/${episode._id}`}
-                  className="flex items-center gap-4 p-4 bg-white rounded-xl border-2 border-ink shadow-[2px_2px_0px_#2D2D2D] hover:shadow-[3px_3px_0px_#2D2D2D] transition-all"
+                  className="flex items-center gap-4 p-3 bg-white rounded-xl border-2 border-ink shadow-[2px_2px_0px_#2D2D2D] hover:shadow-[3px_3px_0px_#2D2D2D] transition-all"
                 >
-                  <div className={`p-3 rounded-lg ${show?.color || "bg-gray-100"}`}>
-                    <Icon className="w-5 h-5" />
+                  <div className="relative w-14 h-14 rounded-lg overflow-hidden border-2 border-ink flex-shrink-0">
+                    <Image
+                      src={show?.image || "/sake-stories.jpg"}
+                      alt={show?.name || "Podcast"}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-medium truncate">{episode.title}</p>
@@ -78,7 +91,7 @@ export function PodcastsContent() {
                       </p>
                     )}
                   </div>
-                  <button className="p-3 bg-sakura-pink rounded-full border-2 border-ink">
+                  <button className="p-3 bg-sakura-pink rounded-full border-2 border-ink flex-shrink-0">
                     <Play className="w-4 h-4" />
                   </button>
                 </Link>
