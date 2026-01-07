@@ -48,7 +48,7 @@ npx convex env set GEMINI_FILE_URI https://generativelanguage.googleapis.com/v1b
 
 3. **Verify Deployment**
    - Check Vercel dashboard for build status
-   - Visit https://dynamous-kiro-hackathon.vercel.app
+   - Visit https://sakecosm.com
 
 ## Post-Deployment Verification
 

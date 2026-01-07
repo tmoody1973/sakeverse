@@ -31,7 +31,7 @@ const silkscreen = Silkscreen({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dynamous-kiro-hackathon.vercel.app"),
+  metadataBase: new URL("https://sakecosm.com"),
   title: {
     default: "Sakécosm - AI-Powered Sake Discovery & Learning Platform",
     template: "%s | Sakécosm"
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     "sake tasting notes",
     "sake brewery map"
   ],
-  authors: [{ name: "Sakécosm", url: "https://dynamous-kiro-hackathon.vercel.app" }],
+  authors: [{ name: "Sakécosm", url: "https://sakecosm.com" }],
   creator: "Sakécosm",
   publisher: "Sakécosm",
   icons: {
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     alternateLocale: ["ja_JP"],
-    url: "https://dynamous-kiro-hackathon.vercel.app",
+    url: "https://sakecosm.com",
     siteName: "Sakécosm",
     title: "Sakécosm - AI-Powered Sake Discovery & Learning",
     description: "Discover Japanese sake with AI-powered recommendations, interactive learning, and expert guidance. Perfect for wine lovers exploring sake.",
@@ -103,7 +103,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://dynamous-kiro-hackathon.vercel.app",
+    canonical: "https://sakecosm.com",
   },
   verification: {
     google: "your-google-verification-code",

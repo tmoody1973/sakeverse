@@ -7,8 +7,8 @@ export function OrganizationSchema() {
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Sakécosm",
-          url: "https://dynamous-kiro-hackathon.vercel.app",
-          logo: "https://dynamous-kiro-hackathon.vercel.app/sakecosm-logo.svg",
+          url: "https://sakecosm.com",
+          logo: "https://sakecosm.com/sakecosm-logo.svg",
           description: "AI-powered sake discovery and learning platform with voice sommelier, interactive courses, and personalized recommendations",
           foundingDate: "2026",
           sameAs: [
@@ -29,13 +29,13 @@ export function WebSiteSchema() {
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "Sakécosm",
-          url: "https://dynamous-kiro-hackathon.vercel.app",
+          url: "https://sakecosm.com",
           description: "AI-powered sake discovery platform with voice sommelier, learning courses, and interactive Japan map",
           potentialAction: {
             "@type": "SearchAction",
             target: {
               "@type": "EntryPoint",
-              urlTemplate: "https://dynamous-kiro-hackathon.vercel.app/discover?search={search_term_string}"
+              urlTemplate: "https://sakecosm.com/discover?search={search_term_string}"
             },
             "query-input": "required name=search_term_string",
           },
@@ -54,7 +54,7 @@ export function WebApplicationSchema() {
           "@context": "https://schema.org",
           "@type": "WebApplication",
           name: "Sakécosm",
-          url: "https://dynamous-kiro-hackathon.vercel.app",
+          url: "https://sakecosm.com",
           applicationCategory: "EducationalApplication",
           operatingSystem: "Web Browser",
           offers: {

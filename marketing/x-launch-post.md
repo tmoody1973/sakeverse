@@ -24,7 +24,7 @@ Other stuff I crammed in:
 
 Tech stack for the nerds: Next.js 15, Convex, OpenAI Realtime, Thesys C1, Mapbox, Perplexity API. All built with @KiroDev CLI for the hackathon.
 
-Try it: https://dynamous-kiro-hackathon.vercel.app
+Try it: https://sakecosm.com
 
 Ask Kiki something like "what sake pairs with ramen?" or "I like Sauvignon Blanc, help me out"
 
@@ -48,7 +48,7 @@ Connected to @TippsySake's catalog for real products. Interactive Japan map. Gam
 
 Built with @OpenAI realtime API + @KiroDev CLI for the hackathon.
 
-Try it: https://dynamous-kiro-hackathon.vercel.app
+Try it: https://sakecosm.com
 
 🍶
 
@@ -78,7 +78,7 @@ Built on @OpenAI's realtime API.
 
 Built entirely with @KiroDev CLI for the hackathon. AI-assisted dev that actually works.
 
-**6/** Try it: https://dynamous-kiro-hackathon.vercel.app
+**6/** Try it: https://sakecosm.com
 
 Ask Kiki:
 - "what sake pairs with sushi?"

@@ -19,7 +19,7 @@ The sake industry has an accessibility problem—not because the product isn't a
 
 **Sakécosm** is an AI-powered sake discovery platform featuring **Kiki** (利き酒 - "sake tasting"), a voice-first sommelier that helps users discover sake through natural conversation.
 
-🌐 **Live Demo:** https://dynamous-kiro-hackathon.vercel.app
+🌐 **Live Demo:** https://sakecosm.com
 
 ### How Tippsy Products Are Integrated
 
@@ -64,7 +64,7 @@ Best regards,
 **Tarik Moody**  
 Developer & Sake Enthusiast  
 [GitHub: tmoody1973](https://github.com/tmoody1973)  
-[Live Demo: Sakécosm](https://dynamous-kiro-hackathon.vercel.app)
+[Live Demo: Sakécosm](https://sakecosm.com)
 
 ---
 

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://dynamous-kiro-hackathon.vercel.app'
+  const baseUrl = 'https://sakecosm.com'
   
   return [
     {

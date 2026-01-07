@@ -403,7 +403,7 @@ This systematic approach enabled rapid feature development while maintaining cod
 
 ## Live Demo
 
-🌐 **Production**: [https://dynamous-kiro-hackathon.vercel.app](https://dynamous-kiro-hackathon.vercel.app)
+🌐 **Production**: [https://sakecosm.com](https://sakecosm.com)
 
 ## License
 

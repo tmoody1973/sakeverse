@@ -63,7 +63,7 @@ GitHub: [@tmoody1973](https://github.com/tmoody1973)
 
 **Resources:**  
 - Live Platform: https://sakecosm.com
-- Product Demo: https://dynamous-kiro-hackathon.vercel.app
+- Product Demo: https://sakecosm.com
 
 ---
 

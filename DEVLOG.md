@@ -1133,7 +1133,7 @@ Updated `app/page.tsx`:
 
 ### **🚀 Deployment**
 - **GitHub**: Pushed to `master` branch
-- **Vercel**: Deployed to https://dynamous-kiro-hackathon.vercel.app
+- **Vercel**: Deployed to https://sakecosm.com
 - **Status**: Landing page, auth, and conditional nav all working
 
 ### **⏱️ Session Stats**
@@ -1393,7 +1393,7 @@ Solution: `normalizePrefecture()` function strips suffixes for matching
 ### **📦 Deployments**
 - Multiple Vercel deployments for testing
 - Added `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` to Vercel env vars
-- All features live at https://dynamous-kiro-hackathon.vercel.app
+- All features live at https://sakecosm.com
 
 ---
 
@@ -2564,7 +2564,7 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 Disallow: /settings/
-Sitemap: https://dynamous-kiro-hackathon.vercel.app/sitemap.xml
+Sitemap: https://sakecosm.com/sitemap.xml
 ```
 
 **4. XML Sitemap** (`app/sitemap.ts`)
