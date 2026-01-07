@@ -10,69 +10,105 @@ export const getCachedTips = query({
       .query("pairingTipsCache")
       .withIndex("by_dish", (q) => q.eq("dishId", dishId))
       .first();
-    return cached?.tips || null;
+    return cached ? { tips: cached.tips, imageUrl: cached.imageUrl } : null;
   },
 });
 
 // Save tips to cache
 export const saveTips = mutation({
-  args: { dishId: v.string(), tips: v.string() },
-  handler: async (ctx, { dishId, tips }) => {
-    // Check if already exists
+  args: { 
+    dishId: v.string(), 
+    tips: v.string(),
+    imageUrl: v.optional(v.string())
+  },
+  handler: async (ctx, { dishId, tips, imageUrl }) => {
     const existing = await ctx.db
       .query("pairingTipsCache")
       .withIndex("by_dish", (q) => q.eq("dishId", dishId))
       .first();
     
     if (existing) {
-      await ctx.db.patch(existing._id, { tips, createdAt: Date.now() });
+      await ctx.db.patch(existing._id, { tips, imageUrl, createdAt: Date.now() });
     } else {
       await ctx.db.insert("pairingTipsCache", {
         dishId,
         tips,
+        imageUrl,
         createdAt: Date.now(),
       });
     }
   },
 });
 
-// Get tips - check cache first, then fetch from Perplexity
+// Get tips with image - check cache first, then fetch from Perplexity
 export const getPairingTips = action({
   args: { 
     dishId: v.string(),
     dishName: v.string(),
     sakeType: v.string()
   },
-  handler: async (ctx, { dishId, dishName, sakeType }): Promise<string> => {
+  handler: async (ctx, { dishId, dishName, sakeType }): Promise<{ tips: string; imageUrl?: string }> => {
     // Check cache first
-    const cached: string | null = await ctx.runQuery(api.pairingTips.getCachedTips, { dishId });
+    const cached = await ctx.runQuery(api.pairingTips.getCachedTips, { dishId });
     if (cached) {
       return cached;
     }
 
-    // Fetch from Perplexity
-    const result: { answer: string } = await ctx.runAction(api.perplexityAPI.searchWebContent, {
-      query: `Japanese sake pairing tips: How to pair ${sakeType} sake with ${dishName}. What flavors complement each other?`,
-      focus: "reviews"
-    });
-
-    // Cache the result if successful (and not an error response)
-    if (result.answer && 
-        !result.answer.includes("cannot provide") && 
-        !result.answer.includes("couldn't access") &&
-        !result.answer.includes("no data")) {
-      await ctx.runMutation(api.pairingTips.saveTips, {
-        dishId,
-        tips: result.answer
-      });
-      return result.answer;
+    const perplexityApiKey = process.env.PERPLEXITY_API_KEY;
+    if (!perplexityApiKey) {
+      return { tips: `${sakeType} sake pairs wonderfully with ${dishName}.` };
     }
 
-    // Fallback response if Perplexity fails
-    return `${sakeType} sake pairs wonderfully with ${dishName}. The umami and subtle sweetness of sake complements the dish's flavors, creating a harmonious balance.`;
+    try {
+      const response = await fetch("https://api.perplexity.ai/chat/completions", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${perplexityApiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "sonar",
+          messages: [
+            {
+              role: "system",
+              content: "You are a sake and food pairing expert. Provide concise, practical pairing tips."
+            },
+            {
+              role: "user",
+              content: `Show me ${dishName} dish and explain how to pair ${sakeType} sake with it. What flavors complement each other?`
+            }
+          ],
+          max_tokens: 400,
+          temperature: 0.3,
+          return_images: true,
+          image_domain_filter: ["-gettyimages.com", "-shutterstock.com"]
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Perplexity API error: ${response.status}`);
+      }
+
+      const result = await response.json();
+      const tips = result.choices?.[0]?.message?.content || `${sakeType} pairs well with ${dishName}.`;
+      
+      // Extract image URL from response
+      let imageUrl: string | undefined;
+      if (result.images && result.images.length > 0) {
+        imageUrl = result.images[0].url || result.images[0];
+      }
+
+      // Cache the result
+      if (tips && !tips.includes("cannot provide")) {
+        await ctx.runMutation(api.pairingTips.saveTips, { dishId, tips, imageUrl });
+      }
+
+      return { tips, imageUrl };
+    } catch (error) {
+      return { tips: `${sakeType} sake pairs wonderfully with ${dishName}. The umami and subtle sweetness of sake complements the dish's flavors.` };
+    }
   },
 });
-
 
 // Clear all cached tips (admin use)
 export const clearAllTips = mutation({

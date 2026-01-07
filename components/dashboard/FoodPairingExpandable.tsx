@@ -53,6 +53,7 @@ function PairingModal({
   onClose: () => void;
 }) {
   const [tips, setTips] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string | undefined>();
   const [loading, setLoading] = useState(true);
   const getPairingTips = useAction(api.pairingTips.getPairingTips);
 
@@ -65,7 +66,10 @@ function PairingModal({
       dishName: pairing.dish.name,
       sakeType
     })
-      .then((r) => setTips(r || ""))
+      .then((r) => {
+        setTips(r?.tips || "");
+        setImageUrl(r?.imageUrl);
+      })
       .catch(() => setTips(""))
       .finally(() => setLoading(false));
 
@@ -135,14 +139,30 @@ function PairingModal({
               borderRadius: "9999px",
               border: "2px solid #2D2D2D",
               cursor: "pointer",
-              display: "flex"
+              display: "flex",
+              zIndex: 10
             }}
           >
             <X size={16} />
           </button>
-          <span style={{ fontSize: "2.5rem" }}>
-            {cuisineEmoji[cuisine.id] || "🍽️"}
-          </span>
+          {imageUrl ? (
+            <img 
+              src={imageUrl} 
+              alt={dish.name}
+              style={{
+                width: "80px",
+                height: "80px",
+                objectFit: "cover",
+                borderRadius: "12px",
+                border: "3px solid #2D2D2D",
+                boxShadow: "3px 3px 0px #2D2D2D"
+              }}
+            />
+          ) : (
+            <span style={{ fontSize: "2.5rem" }}>
+              {cuisineEmoji[cuisine.id] || "🍽️"}
+            </span>
+          )}
           <div>
             <h3 style={{ fontWeight: "bold", fontSize: "1.25rem", margin: 0 }}>{dish.name}</h3>
             <p style={{ color: "#666", margin: 0, fontSize: "0.875rem" }}>{cuisine.name}</p>

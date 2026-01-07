@@ -6,6 +6,7 @@ export default defineSchema({
   pairingTipsCache: defineTable({
     dishId: v.string(),
     tips: v.string(),
+    imageUrl: v.optional(v.string()),
     createdAt: v.number(),
   }).index("by_dish", ["dishId"]),
 
