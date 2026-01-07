@@ -106,8 +106,8 @@ function PairingModal({
           border: "3px solid #2D2D2D",
           boxShadow: "6px 6px 0px #2D2D2D",
           width: "100%",
-          maxWidth: "480px",
-          maxHeight: "80vh",
+          maxWidth: "600px",
+          maxHeight: "85vh",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden"
@@ -208,9 +208,11 @@ function PairingModal({
                 <span style={{ fontSize: "0.875rem" }}>Finding tips...</span>
               </div>
             ) : tips ? (
-              <p style={{ color: "#374151", fontSize: "0.875rem", lineHeight: 1.5, margin: 0 }}>
-                {tips.slice(0, 300)}{tips.length > 300 && "..."}
-              </p>
+              <div style={{ color: "#374151", fontSize: "0.875rem", lineHeight: 1.6, margin: 0, whiteSpace: "pre-wrap" }}>
+                {tips.split(/\*\*([^*]+)\*\*/g).map((part, i) => 
+                  i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+                )}
+              </div>
             ) : (
               <p style={{ color: "#6B7280", fontSize: "0.875rem", fontStyle: "italic", margin: 0 }}>
                 Tips unavailable
