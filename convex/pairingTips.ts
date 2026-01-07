@@ -70,33 +70,36 @@ export const getPairingTips = action({
           model: "sonar",
           messages: [
             {
-              role: "system",
-              content: "You are a sake and food pairing expert. Provide concise, practical pairing tips."
-            },
-            {
               role: "user",
-              content: `Show me ${dishName} dish and explain how to pair ${sakeType} sake with it. What flavors complement each other?`
+              content: `Show me a photo of ${dishName} and explain how to pair ${sakeType} sake with it. What flavors complement each other?`
             }
           ],
-          max_tokens: 400,
+          max_tokens: 1000,
           temperature: 0.3,
-          return_images: true,
-          image_domain_filter: ["-gettyimages.com", "-shutterstock.com"]
+          return_images: true
         })
       });
 
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Perplexity error:", response.status, errorText);
         throw new Error(`Perplexity API error: ${response.status}`);
       }
 
       const result = await response.json();
+      console.log("Perplexity response:", JSON.stringify(result, null, 2));
+      
       const tips = result.choices?.[0]?.message?.content || `${sakeType} pairs well with ${dishName}.`;
       
-      // Extract image URL from response
+      // Extract image URL from response - check multiple possible locations
       let imageUrl: string | undefined;
       if (result.images && result.images.length > 0) {
         imageUrl = result.images[0].url || result.images[0];
+      } else if (result.choices?.[0]?.message?.images?.length > 0) {
+        imageUrl = result.choices[0].message.images[0].url || result.choices[0].message.images[0];
       }
+      
+      console.log("Extracted imageUrl:", imageUrl);
 
       // Cache the result
       if (tips && !tips.includes("cannot provide")) {
