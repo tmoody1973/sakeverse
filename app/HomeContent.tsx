@@ -361,19 +361,28 @@ function Dashboard({ userId }: { userId?: string }) {
       )}
 
       {/* Kiki CTA */}
-      <Card className="bg-sake-mist">
+      <Card className="bg-gradient-to-br from-sake-mist to-sakura-light border-3 border-ink shadow-retro-lg hover:shadow-retro-pink hover:-translate-y-1 transition-all">
         <CardContent className="p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-2xl border-2 border-ink shadow-retro">
-                🎤
+              <div className="relative">
+                <div className="w-20 h-20 rounded-full overflow-hidden border-3 border-ink shadow-retro-lg bg-white p-1">
+                  <img 
+                    src="/kiki-avatar2.png" 
+                    alt="Kiki - AI Sake Sommelier"
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
+                <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-matcha rounded-full border-2 border-white flex items-center justify-center">
+                  <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-1">Chat with Kiki</h3>
+                <h3 className="text-2xl font-bold mb-1 text-plum-dark">Chat with Kiki</h3>
                 <p className="text-gray-600">Your AI sake sommelier (利き酒) is ready to help you discover new flavors</p>
               </div>
             </div>
-            <Button variant="accent" size="lg" className="voice-pulse" asChild>
+            <Button variant="accent" size="lg" className="voice-pulse shadow-retro hover:shadow-retro-lg" asChild>
               <Link href="/kiki">
                 <Mic className="h-5 w-5 mr-2" />
                 Start Conversation
