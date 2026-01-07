@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Badge } from "@/components/ui/Badge"
@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils"
 import { UserButton, useUser } from "@clerk/nextjs"
 import { useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
+import { useState, FormEvent } from "react"
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -21,11 +22,20 @@ const navigation = [
 
 export function Header() {
   const pathname = usePathname()
+  const router = useRouter()
   const { isSignedIn, isLoaded, user } = useUser()
+  const [searchQuery, setSearchQuery] = useState("")
   const stats = useQuery(
     api.gamification.getUserStats,
     user?.id ? { clerkId: user.id } : "skip"
   )
+
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      router.push(`/discover?search=${encodeURIComponent(searchQuery.trim())}`)
+    }
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b-3 border-ink bg-sakura-pink">
@@ -65,15 +75,17 @@ export function Header() {
 
         {/* Search Bar (Desktop) - only for logged-in */}
         {isSignedIn && (
-          <div className="hidden lg:flex items-center flex-1 max-w-sm ml-12">
+          <form onSubmit={handleSearch} className="hidden lg:flex items-center flex-1 max-w-sm ml-12">
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
               <Input
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search sake, breweries, regions..."
                 className="pl-10 bg-white"
               />
             </div>
-          </div>
+          </form>
         )}
 
         {/* Actions */}
@@ -147,13 +159,15 @@ export function Header() {
       {/* Mobile Search Bar - only for logged-in */}
       {isSignedIn && (
         <div className="lg:hidden border-t-2 border-ink bg-sakura-light p-4">
-          <div className="relative">
+          <form onSubmit={handleSearch} className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
             <Input
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search sake..."
               className="pl-10 bg-white"
             />
-          </div>
+          </form>
         </div>
       )}
     </header>

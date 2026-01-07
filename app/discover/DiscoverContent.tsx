@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { useQuery, useMutation } from "convex/react"
 import { useUser } from "@clerk/nextjs"
+import { useSearchParams } from "next/navigation"
 import { api } from "@/convex/_generated/api"
 import { Card, CardContent } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
@@ -20,6 +21,8 @@ const sortOptions = [
 export default function DiscoverContent() {
   const { user } = useUser()
   const clerkId = user?.id
+  const searchParams = useSearchParams()
+  const searchQuery = searchParams.get("search") || ""
 
   const [category, setCategory] = useState("All")
   const [minPrice, setMinPrice] = useState(0)
@@ -37,6 +40,7 @@ export default function DiscoverContent() {
     region: region !== "All" ? region : undefined,
     sort,
     limit: 24,
+    search: searchQuery || undefined,
   })
 
   const saveSake = useMutation(api.userLibrary.saveSake)

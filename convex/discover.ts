@@ -10,9 +10,23 @@ export const getDiscoverProducts = query({
     sort: v.optional(v.string()),
     limit: v.optional(v.number()),
     offset: v.optional(v.number()),
+    search: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     let products = await ctx.db.query("tippsyProducts").collect();
+
+    // Filter by search query
+    if (args.search) {
+      const searchLower = args.search.toLowerCase();
+      products = products.filter(p => 
+        p.productName.toLowerCase().includes(searchLower) ||
+        p.brand.toLowerCase().includes(searchLower) ||
+        p.category.toLowerCase().includes(searchLower) ||
+        p.prefecture.toLowerCase().includes(searchLower) ||
+        p.region.toLowerCase().includes(searchLower) ||
+        (p.description && p.description.toLowerCase().includes(searchLower))
+      );
+    }
 
     // Filter by category
     if (args.category && args.category !== "All") {
