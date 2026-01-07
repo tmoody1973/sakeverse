@@ -68,6 +68,21 @@ function Dashboard({ userId }: { userId?: string }) {
   
   const latestEpisode = useQuery(api.podcastEpisodes.listPublished, { limit: 1 })
   
+  // Get podcast show image mapping
+  const podcastImages: Record<string, string> = {
+    sake_stories: "/sake-stories.jpg",
+    pairing_lab: "/pairing-lab.jpg",
+    the_bridge: "/the-bridge.jpg",
+    brewing_secrets: "/brewing-secrets.jpg",
+  }
+  
+  const podcastNames: Record<string, string> = {
+    sake_stories: "Sake Stories",
+    pairing_lab: "Pairing Lab",
+    the_bridge: "The Bridge",
+    brewing_secrets: "Brewing Secrets",
+  }
+  
   // Get first wine preference for the tip (case-insensitive matching)
   const winePrefs = preferences?.winePreferences || []
   const wineMapKeys = Object.keys(wineToSakeMap)
@@ -86,7 +101,7 @@ function Dashboard({ userId }: { userId?: string }) {
   const inProgressCourses = allInProgress.filter(
     (c) => c && c.progress !== undefined && c.progress < 100
   )
-  const currentCourse = inProgressCourses[0] as { _id: string; title: string; slug: string; progress: number } | undefined
+  const currentCourse = inProgressCourses[0] as { _id: string; title: string; slug: string; progress: number; coverImage?: string; category?: string } | undefined
   const coursesInProgress = inProgressCourses.length
   const displayWine = matchedKey || primaryWine
 
@@ -207,12 +222,18 @@ function Dashboard({ userId }: { userId?: string }) {
             <CardContent>
               {currentCourse ? (
                 <div className="space-y-3">
-                  <div className="flex items-center space-x-2">
-                    <div className="text-2xl">🌱</div>
-                    <div>
-                      <div className="font-semibold">{currentCourse.title}</div>
-                      <div className="text-sm text-gray-600">{currentCourse.progress}% complete</div>
+                  {currentCourse.coverImage && (
+                    <div className="aspect-video rounded-lg overflow-hidden border-2 border-ink shadow-retro-sm">
+                      <img 
+                        src={currentCourse.coverImage} 
+                        alt={currentCourse.title}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
+                  )}
+                  <div>
+                    <div className="font-semibold text-ink">{currentCourse.title}</div>
+                    <div className="text-sm text-gray-600">{currentCourse.progress}% complete</div>
                   </div>
                   <div className="progress-bar">
                     <div className="progress-fill" style={{ width: `${currentCourse.progress}%` }}></div>
@@ -303,34 +324,37 @@ function Dashboard({ userId }: { userId?: string }) {
 
       {/* Featured Podcast */}
       {latestEpisode && latestEpisode[0] && (
-        <Card className="bg-plum-dark text-white">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-sake-warm rounded-lg flex items-center justify-center text-2xl">
-                  {latestEpisode[0].series === "sake_stories" ? "📖" : 
-                   latestEpisode[0].series === "pairing_lab" ? "🍽️" :
-                   latestEpisode[0].series === "the_bridge" ? "🍷" : "🔬"}
-                </div>
+        <Card className="bg-plum-dark text-white overflow-hidden">
+          <CardContent className="p-0">
+            <div className="grid md:grid-cols-[200px_1fr] gap-0">
+              {/* Podcast Thumbnail */}
+              <div className="relative aspect-square md:aspect-auto">
+                <img 
+                  src={podcastImages[latestEpisode[0].series] || "/sake-stories.jpg"}
+                  alt={podcastNames[latestEpisode[0].series]}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              
+              {/* Podcast Info */}
+              <div className="p-6 flex items-center justify-between">
                 <div>
                   <Badge variant="secondary" className="mb-2">Latest Episode</Badge>
                   <h3 className="text-xl font-bold mb-1">
-                    {latestEpisode[0].series === "sake_stories" ? "Sake Stories" : 
-                     latestEpisode[0].series === "pairing_lab" ? "Pairing Lab" :
-                     latestEpisode[0].series === "the_bridge" ? "The Bridge" : "Brewing Secrets"}
+                    {podcastNames[latestEpisode[0].series]}
                   </h3>
-                  <p className="text-gray-300">{latestEpisode[0].title}</p>
-                  <div className="text-sm text-gray-400 mt-1">
+                  <p className="text-gray-300 mb-2">{latestEpisode[0].title}</p>
+                  <div className="text-sm text-gray-400">
                     {latestEpisode[0].audio?.duration ? `${Math.round(latestEpisode[0].audio.duration / 60)} min` : ""} • Episode {latestEpisode[0].episodeNumber}
                   </div>
                 </div>
+                <Button variant="secondary" asChild className="ml-4">
+                  <Link href={`/podcasts/${latestEpisode[0].series}/${latestEpisode[0]._id}`}>
+                    <Play className="h-4 w-4 mr-2" />
+                    Listen
+                  </Link>
+                </Button>
               </div>
-              <Button variant="secondary" asChild>
-                <Link href={`/podcasts/${latestEpisode[0].series}/${latestEpisode[0]._id}`}>
-                  <Play className="h-4 w-4 mr-2" />
-                  Listen
-                </Link>
-              </Button>
             </div>
           </CardContent>
         </Card>
