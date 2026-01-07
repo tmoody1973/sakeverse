@@ -32,7 +32,7 @@ Four AI-generated podcast shows with **This American Life**-inspired storytellin
 - **TOJI** (杜氏 - master brewer): The storyteller and guide
 - **KOJI** (麹 - the catalyst): The curious everyman who asks great questions
 
-**Full Pipeline:** Topic → Research (Gemini RAG + Perplexity) → Script → Multi-voice TTS (Gemini 2.5 Flash) → MP3 (lamejs)
+**Full Pipeline:** Topic → Research (Gemini RAG + Perplexity) → Script → Multi-voice TTS (Gemini 2.5 Flash) → WAV storage
 
 ### 🗾 Interactive Japan Map
 Explore sake regions with an interactive Mapbox-powered map of Japan's 47 prefectures:
@@ -43,10 +43,12 @@ Explore sake regions with an interactive Mapbox-powered map of Japan's 47 prefec
 ### 📚 Learning System with Gamification
 Complete sake courses with AI-generated content:
 - **Courses & Chapters**: Structured learning paths on sake fundamentals, brewing, tasting
+- **AI-Generated Course Covers**: Stardew Valley pixel art style images via Gemini 2.5 Flash Image
 - **Quizzes**: Test knowledge with chapter quizzes and final exams
 - **XP & Levels**: Earn 25 XP per chapter, 50-100 XP per quiz
 - **10 Badge Levels**: From "Sake Curious" to "Sake Grandmaster"
-- **Progress Tracking**: Dashboard shows real stats from Convex
+- **Progress Tracking**: Dashboard shows real stats with Silkscreen pixel font
+- **Enhanced Expert Tips**: Structured pairing recommendations with images
 
 ### 🧠 Multi-Layer RAG System
 - **Vector Search**: 104 Tippsy products with semantic matching (OpenAI embeddings)
@@ -74,8 +76,11 @@ Thesys C1 generates React components during conversations—sake cards with imag
 | Dynamic UI | Thesys C1 with Claude Sonnet 4 |
 | Maps | Mapbox GL JS, react-map-gl |
 | RAG | Gemini File Search, Perplexity API, OpenAI Embeddings |
-| Podcast TTS | Gemini 2.5 Flash TTS + lamejs MP3 encoding |
+| Podcast TTS | Gemini 2.5 Flash TTS + WAV output |
+| Image Generation | Gemini 2.5 Flash Image (Stardew Valley style) |
+| Audio Player | react-h5-audio-player |
 | Auth | Clerk |
+| Fonts | Inter, Space Grotesk, Noto Sans JP, Silkscreen (pixel) |
 | Styling | RetroUI neobrutalism + cherry blossom theme |
 
 ## Pages & Routes
@@ -227,7 +232,7 @@ npx convex run learn/seed:seedCategories
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 │   Topic     │ ──▶ │  Research   │ ──▶ │   Script    │ ──▶ │   Audio     │
 │  Selection  │     │ Gemini RAG  │     │ This Am Life│     │ Multi-voice │
-│             │     │ + Perplexity│     │   Style     │     │ TTS + MP3   │
+│             │     │ + Perplexity│     │   Style     │     │ TTS + WAV   │
 └─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
                                                │
                                                ▼
@@ -237,6 +242,8 @@ npx convex run learn/seed:seedCategories
                                         │ (Gemini TTS)│
                                         └─────────────┘
 ```
+
+**Note**: WAV format used due to lamejs Node.js 22 compatibility issues. WAV files are ~10x larger but 100% reliable.
 
 ## Gamification System
 
@@ -292,11 +299,12 @@ This project was built entirely with Kiro CLI, demonstrating AI-assisted develop
 
 | Metric | Value |
 |--------|-------|
-| Total Development Time | ~20 hours |
-| Estimated Manual Time | 60-80 hours |
-| **Time Saved** | **65-75%** |
-| Features Built | 15+ major features |
+| Total Development Time | ~26.75 hours |
+| Estimated Manual Time | 75.5-95.5 hours |
+| **Time Saved** | **65-72%** |
+| Features Built | 22+ major features |
 | Lines of Code | ~8,000+ |
+| Git Commits | 43+ |
 
 ## Project Structure
 
@@ -322,15 +330,76 @@ sakecosm/
 ├── convex/
 │   ├── schema.ts             # Database schema
 │   ├── podcastGeneration.ts  # This American Life scripts
-│   ├── podcastTTS.ts         # Multi-voice TTS + MP3
+│   ├── podcastTTS.ts         # Multi-voice TTS + WAV
 │   ├── podcastRAG.ts         # Gemini File API
 │   ├── learn/                # Courses, progress, quizzes
+│   │   └── generation.ts     # AI course + image generation
 │   ├── gamification.ts       # XP, levels, badges
+│   ├── pairingTips.ts        # Enhanced expert tips
 │   └── embeddings.ts         # Vector search
 └── public/
     ├── badges/               # 10 level badge images
+    ├── sake-stories.jpg      # Podcast thumbnails
+    ├── pairing-lab.jpg
+    ├── the-bridge.jpg
+    ├── brewing-secrets.jpg
     └── japan-prefectures.geojson
 ```
+
+## Development Journey
+
+### Key Challenges Overcome
+
+**1. Convex Runtime Limitations**
+- **Challenge**: `Buffer` class not available in Convex actions
+- **Solution**: Used `atob()` and `Uint8Array` for base64 decoding
+- **Learning**: Convex has different runtime constraints than Node.js
+
+**2. Audio Format Selection**
+- **Challenge**: lamejs MP3 encoder has `MPEGMode is not defined` bug in Node.js 22
+- **Solution**: Switched to WAV format for 100% reliability
+- **Trade-off**: WAV files ~10x larger but guaranteed to work
+
+**3. Nested Actions Limitation**
+- **Challenge**: Cannot call `ctx.runAction()` from within an action
+- **Solution**: Separated podcast generation into two user-triggered steps (script, then audio)
+- **Learning**: Convex enforces clear separation of concerns
+
+**4. Image Storage**
+- **Challenge**: Base64 images (~2MB) too large for Convex string fields
+- **Solution**: Used Convex file storage for generated course covers
+- **Learning**: Choose appropriate storage for data size
+
+### Development Velocity
+
+The project was built in **~26.75 hours** over 4 days using Kiro CLI:
+
+| Day | Focus | Hours | Features |
+|-----|-------|-------|----------|
+| Day 1 | Foundation, Voice Agent | 8h | Next.js setup, Convex, Voice chat |
+| Day 2 | Learning System, Map | 7h | Courses, Quizzes, Japan map |
+| Day 3 | Podcasts, Polish | 8h | AI podcasts, TTS, Player |
+| Day 4 | Enhancements | 3.75h | Images, Search, UI polish |
+
+**Estimated manual development time**: 75.5-95.5 hours  
+**Time saved with Kiro CLI**: 65-72%
+
+### Kiro CLI Impact
+
+**Custom Prompts Created**:
+- `@prime`: Load project context
+- `@plan-feature`: Create implementation plans
+- `@execute`: Systematic execution
+- `@code-review`: Pre-commit review
+- `@update-devlog`: Documentation maintenance
+- `@update-steering`: Keep steering docs current
+
+**Development Pattern**:
+```
+@prime → @plan-feature → @execute → @code-review → @update-steering → commit
+```
+
+This systematic approach enabled rapid feature development while maintaining code quality and comprehensive documentation.
 
 ## Live Demo
 
