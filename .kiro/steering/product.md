@@ -15,6 +15,8 @@ Sakécosm is an AI-powered sake discovery platform featuring Kiki (利き酒 - "
 - **Dynamic UI Generation**: Thesys C1 creates React components (sake cards, temperature guides) during conversations
 - **Multi-Layer RAG System**: Vector search (104 Tippsy products), wine-to-sake knowledge (13 chunks), food pairing (9 chunks), Gemini PDF search (5 books), Perplexity live web
 - **Voice Disconnect**: Clean audio stop when ending voice sessions (stops all active AudioBufferSourceNodes)
+- **Rate Limiting**: 20 voice requests/hour, 50 text messages/hour per user for cost control
+- **Kiki Avatar**: Branded character with online status indicator on dashboard
 
 ### Learning System
 - **AI-Generated Courses**: Perplexity-powered course generation with chapters, quizzes
@@ -39,6 +41,11 @@ Sakécosm is an AI-powered sake discovery platform featuring Kiki (利き酒 - "
 - **Prefecture Descriptions**: AI-generated via Perplexity, cached for performance
 - **Brewery Data**: 50+ breweries with regional information
 - **Personalized Recommendations**: Based on wine preferences, taste sliders, food preferences
+- **Menu Scanner (Planned)**: Snap sake menu or bottle label, get instant personalized recommendations
+  - Dual mode: Menu (multiple sake ranked) and Bottle (details + similar recommendations)
+  - Gemini Vision API for OCR (handles Japanese text)
+  - Mobile-first with camera capture
+  - 5 scans per day rate limit
 
 ### User Features
 - **User Sake Library**: Save/view favorite sake with Tippsy links
@@ -46,6 +53,7 @@ Sakécosm is an AI-powered sake discovery platform featuring Kiki (利き酒 - "
 - **Settings Page**: Edit preferences anytime at `/settings`
 - **Dashboard Widgets**: Wine-to-Sake tip, Food Pairing of the Day, Library preview, Course progress with cover images, Featured podcast with thumbnails
 - **Header Search**: Global search bar connects to /discover with results
+- **Kiki Avatar**: Branded character with online status indicator, gradient background, hover effects
 
 ### Authentication & Admin
 - **Clerk Authentication**: Sign-in/sign-up with RetroUI styling
@@ -59,16 +67,26 @@ Sakécosm is an AI-powered sake discovery platform featuring Kiki (利き酒 - "
 - **Meta Tags**: Comprehensive Open Graph and Twitter Card optimization
 - **Target Keywords**: 15+ sake-related keywords for search visibility
 - **robots.txt**: Proper crawler configuration
+- **Search Integration**: Header search connects to /discover with query params
+
+### Cost Control
+- **Rate Limiting System**: Prevents API cost overruns
+  - Voice chat: 20 requests per hour per user (~$0.50/hour max)
+  - Text chat: 50 messages per hour per user
+  - Sliding 1-hour windows from first request
+  - Color-coded UI feedback (green/orange/red)
+  - Admin override capability for support cases
 
 ## User Journey
 1. **Landing**: Marketing page introduces Kiki and value proposition
 2. **Sign Up**: Clerk authentication with RetroUI styling
 3. **Onboarding**: 4-step flow to capture preferences for personalization
 4. **Discovery**: Voice or text conversation with Kiki about sake preferences
-5. **Learning**: Take courses, earn XP, unlock badges
-6. **Listening**: AI-generated podcasts with TOJI and KOJI hosts
-7. **Exploration**: Interactive Japan map, prefecture deep-dives
-8. **Saving**: Favorite sake saved to personal library
+5. **Menu Scanning (Planned)**: Snap menu or bottle at restaurant/store for instant recommendations
+6. **Learning**: Take courses, earn XP, unlock badges
+7. **Listening**: AI-generated podcasts with TOJI and KOJI hosts
+8. **Exploration**: Interactive Japan map, prefecture deep-dives
+9. **Saving**: Favorite sake saved to personal library
 
 ## Success Criteria
 - **Engagement**: Voice conversation quality, course completion rates, podcast listens

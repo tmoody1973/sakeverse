@@ -58,6 +58,7 @@ sakecosm/
 │   ├── map.ts                    # Prefecture queries
 │   ├── recommendations.ts        # Personalized recs
 │   ├── gamification.ts           # XP, levels
+│   ├── rateLimit.ts              # Cost control rate limiting
 │   ├── learn/                    # Learning system
 │   │   ├── courses.ts
 │   │   ├── progress.ts
@@ -74,7 +75,8 @@ sakecosm/
 │   └── sakeBreweries.ts
 ├── hooks/
 │   ├── useVoiceChat.ts           # OpenAI Realtime with clean disconnect
-│   └── useVoiceToC1.ts           # Voice-to-C1 bridge
+│   ├── useVoiceToC1.ts           # Voice-to-C1 bridge
+│   └── useRateLimit.ts           # Rate limit React hook
 ├── lib/
 │   ├── convex.tsx                # Providers
 │   └── thesys/                   # C1 client
@@ -82,6 +84,7 @@ sakecosm/
 │   └── upload-to-gemini.mjs      # RAG file upload
 ├── public/
 │   ├── badges/                   # 10 level badge images
+│   ├── kiki-avatar2.png          # Kiki character avatar
 │   ├── sake-stories.jpg          # Podcast show thumbnail
 │   ├── pairing-lab.jpg           # Podcast show thumbnail
 │   ├── the-bridge.jpg            # Podcast show thumbnail
@@ -90,11 +93,16 @@ sakecosm/
 │   ├── sitemap.xml               # Static XML sitemap
 │   └── japan-prefectures.geojson
 ├── components/
-│   └── seo/                      # SEO components
-│       └── StructuredData.tsx    # JSON-LD schemas
+│   ├── seo/                      # SEO components
+│   │   └── StructuredData.tsx    # JSON-LD schemas
+│   └── RateLimitDisplay.tsx      # Rate limit UI component
+├── docs/
+│   └── rate-limiting.md          # Rate limiting documentation
 └── .kiro/
     ├── steering/                 # product.md, tech.md, structure.md
-    └── prompts/                  # Custom dev prompts (seo-optimize.md)
+    ├── prompts/                  # Custom dev prompts (seo-optimize.md)
+    └── plans/                    # Implementation plans
+        └── menu-scanner-feature.md  # Menu/bottle scanner plan (14,000+ words)
 ```
 
 ## Key Files
@@ -104,16 +112,20 @@ sakecosm/
 - `convex/podcastEpisodes.ts`: Episode CRUD with cancel support
 - `convex/learn/generation.ts`: Perplexity course generation with AI cover images
 - `convex/discover.ts`: Product search with multi-field filtering
+- `convex/rateLimit.ts`: Cost control rate limiting system
 - `app/sitemap.ts`: Dynamic sitemap generation
 - `components/seo/StructuredData.tsx`: JSON-LD schemas for rich snippets
+- `components/RateLimitDisplay.tsx`: Rate limit UI component
 - `convex/gamification.ts`: XP and level system
 - `convex/map.ts`: Prefecture descriptions with caching
 - `convex/pairingTips.ts`: Enhanced expert tips with structured prompts
 - `components/voice/KikiChat.tsx`: Voice chat with clean audio disconnect
 - `components/audio/GlobalAudioPlayer.tsx`: react-h5-audio-player integration
+- `hooks/useRateLimit.ts`: Rate limit React hook
 - `app/admin/page.tsx`: Central admin dashboard
-- `app/HomeContent.tsx`: Dashboard with Silkscreen pixel font stats
+- `app/HomeContent.tsx`: Dashboard with Silkscreen pixel font stats, Kiki avatar
 - `app/layout.tsx`: Root layout with all font imports (Inter, Space Grotesk, Noto Sans JP, Silkscreen)
+- `docs/rate-limiting.md`: Complete rate limiting documentation
 
 ## Configuration
 - `next.config.js`: `serverExternalPackages: ['convex']`

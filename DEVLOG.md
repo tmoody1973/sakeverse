@@ -2934,3 +2934,608 @@ cbb5c75 - feat: Add course cover images and podcast thumbnails to dashboard
 - **Git Commits**: 49+
 - **SEO**: Fully optimized with custom domain
 - **UX**: Professional dashboard with real images
+
+
+---
+
+## January 7, 2026 (Early Morning) - Dashboard Polish & Marketing Materials
+
+### 🎨 **Kiki Avatar Enhancement**
+
+**Time**: 4:53 AM - 4:54 AM  
+**Focus**: Replace microphone emoji with Kiki character avatar
+
+#### **✅ Visual Enhancement**
+
+Replaced generic emoji with branded character:
+
+```tsx
+<div className="relative">
+  <div className="w-20 h-20 rounded-full overflow-hidden border-3 border-ink shadow-retro-lg bg-white p-1">
+    <img 
+      src="/kiki-avatar2.png" 
+      alt="Kiki - AI Sake Sommelier"
+      className="w-full h-full object-cover rounded-full"
+    />
+  </div>
+  <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-matcha rounded-full border-2 border-white flex items-center justify-center">
+    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+  </div>
+</div>
+```
+
+**Enhancements**:
+- Larger avatar (20x20 vs 16x16)
+- 3px border with RetroUI shadow-lg
+- Online status indicator (green dot with pulse)
+- Gradient card background (sake-mist → sakura-light)
+- Hover effects (lift + shadow color change)
+- Larger heading (text-2xl) in plum-dark
+
+**UX Impact**:
+- More personal and engaging
+- Shows Kiki is "online" and available
+- Professional appearance vs emoji
+- Draws user attention effectively
+
+### 📱 **Instagram Marketing Content**
+
+**Time**: 4:59 AM - 5:14 AM  
+**Focus**: Create Instagram post in Tarik's authentic voice
+
+#### **✅ Research Phase**
+
+Analyzed Tarik's Substack writing style:
+- Personal and authentic tone
+- Problem-solution framing
+- Technical but accessible
+- Mission-driven narrative
+- "Building in public" approach
+
+**Key Article**: "Building in Public — 37 Days to a Culturally Inclusive Food App"
+
+**Style Characteristics**:
+- Opens with personal context
+- Explains the "why" deeply
+- Technical details without jargon
+- Community-focused
+- Transparent about process
+
+#### **✅ Content Created** (`marketing/instagram-post-tarik.md`)
+
+**Main Caption Structure**:
+1. **Hook**: "I just built something I wish existed..."
+2. **Credentials**: "As a Certified Sake Professional..."
+3. **Problem**: Barriers to sake discovery
+4. **Solution**: Sakécosm features explained
+5. **Tech Stack**: 27 hours with Kiro CLI
+6. **Mission**: "Sake is gatekept by complexity. I want to change that."
+7. **CTA**: "Try it free: sakecosm.com"
+
+**Complete Package**:
+- Main caption (authentic voice)
+- Carousel post (8 slides)
+- Story series (9 slides)
+- Reel script (30 seconds)
+- Engagement hooks
+- Cross-promotion (LinkedIn, Twitter)
+- Hashtag strategy
+- Posting times
+- 14-day content calendar
+
+### 🚀 **Product Hunt Launch Guide**
+
+**Time**: 5:14 AM - 5:33 AM  
+**Focus**: Comprehensive Product Hunt launch strategy
+
+#### **✅ Launch Materials Created** (`marketing/product-hunt-launch.md`)
+
+**Product Details**:
+- Name, tagline (60 char max)
+- Description (260 char max)
+- Full description with problem/solution
+- Category selection (Food & Drink, AI, Education)
+- Maker bio emphasizing Certified Sake Professional
+
+**Media Assets Specified**:
+- Thumbnail: 240x240px (Kiki avatar + logo)
+- Gallery: 8 images at 1270x760px
+  1. Hero shot
+  2. Voice chat interface
+  3. Interactive map
+  4. Learning dashboard
+  5. Podcast player
+  6. Food pairing
+  7. Wine-to-sake bridge
+  8. Mobile view
+- Video script: 30-60 seconds with timestamps
+
+**Launch Strategy**:
+- **Pre-launch**: 1 week preparation
+- **Launch timing**: 12:01 AM PST (critical)
+- **First hour**: Share everywhere, respond immediately
+- **Throughout day**: Check every 30 min, engage constantly
+- **Evening push**: 6-8 PM PST final reminder
+
+**Engagement Tools**:
+- First comment template (pin immediately)
+- Q&A responses (8 common questions)
+- Social media posts (Twitter thread, Instagram, LinkedIn)
+- Reddit outreach (r/sake, r/SideProject)
+- Email template for supporters
+
+**Success Metrics**:
+- Top 5 Product of the Day
+- 200+ upvotes
+- 50+ comments
+- 500+ website visits
+- 100+ sign-ups
+
+### 💰 **Rate Limiting System**
+
+**Time**: 5:54 AM - 5:57 AM  
+**Focus**: Implement cost control for API usage
+
+#### **✅ Problem Statement**
+
+**Risk**: Unlimited voice/text chat = unpredictable API costs
+- OpenAI Realtime API: ~$0.06/minute
+- Thesys C1: Per-message costs
+- Potential for abuse or runaway costs
+
+#### **✅ Solution Implemented**
+
+**Rate Limits Set**:
+- **Voice Chat**: 20 requests per hour per user
+- **Text Chat**: 50 messages per hour per user
+- **Window**: Sliding 1-hour window from first request
+
+**Architecture**:
+
+```typescript
+// Database schema
+rateLimits: {
+  userId: string,
+  type: "voice" | "text",
+  count: number,
+  windowStart: number,
+  lastRequest: number,
+}
+```
+
+**Functions Created** (`convex/rateLimit.ts`):
+1. `checkRateLimit` - Check and consume a request
+2. `getRateLimitStatus` - Check without consuming
+3. `resetRateLimit` - Admin override
+
+**React Integration** (`hooks/useRateLimit.ts`):
+```typescript
+const { status, checkAndConsume } = useRateLimit("voice")
+
+const handleRequest = async () => {
+  const result = await checkAndConsume()
+  if (!result.allowed) {
+    alert(result.message)
+    return
+  }
+  // Proceed with request
+}
+```
+
+**UI Component** (`components/RateLimitDisplay.tsx`):
+- Color-coded status (green/orange/red)
+- Shows remaining requests
+- Shows time until reset
+- Clear error messages
+
+#### **✅ Cost Savings**
+
+| Scenario | Without Limits | With Limits | Savings |
+|----------|----------------|-------------|---------|
+| Voice (per user/hour) | Unlimited | ~$0.50 max | Predictable |
+| Voice (per user/month) | Unlimited | ~$360 max | Capped |
+| Text (per user/hour) | Unlimited | Controlled | Predictable |
+
+**Protection Against**:
+- Accidental infinite loops
+- Malicious usage
+- Runaway costs
+- API abuse
+
+### 📊 **Technical Decisions**
+
+| Decision | Rationale | Steering Reference |
+|----------|-----------|-------------------|
+| Hourly windows | Balance UX and cost control | `tech.md` - Cost management |
+| Per-user limits | Fair usage, prevents abuse | `product.md` - User experience |
+| Sliding windows | Better UX than fixed resets | Best practices |
+| Color-coded UI | Clear visual feedback | `tech.md` - RetroUI design |
+| Admin override | Support flexibility | `product.md` - Admin features |
+
+### 📦 **Git Commits This Session**
+
+```bash
+d2b74a9 - feat: Replace microphone emoji with Kiki avatar on dashboard CTA
+# 2 files changed, 14 insertions, 5 deletions
+
+fe78e86 - docs: Add promotional flyer copy with 5 versions
+# 1 file changed, 278 insertions
+
+0698aaa - docs: Add Instagram post in Tarik's writing style
+# 1 file changed, 233 insertions
+
+1303f9e - docs: Add comprehensive Product Hunt launch guide
+# 1 file changed, 543 insertions
+
+f9b7c16 - feat: Implement rate limiting for voice and text chat
+# 6 files changed, 453 insertions
+```
+
+### 🎯 **Kiro CLI Usage This Session**
+
+| Action | Count | Impact |
+|--------|-------|--------|
+| Web research | 2 | Analyzed Tarik's writing style |
+| Content creation | 3 | Marketing materials |
+| Code implementation | 4 | Rate limiting system |
+| Documentation | 1 | Complete usage guide |
+| Build verifications | 2 | All successful |
+| Git operations | 5 | Clean commits |
+
+### ⏱️ **Time Investment**
+
+| Task | Time | Manual Estimate |
+|------|------|-----------------|
+| Kiki avatar enhancement | 1 min | 15 min |
+| Instagram post creation | 15 min | 60 min |
+| Product Hunt guide | 19 min | 90 min |
+| Rate limiting system | 3 min | 45 min |
+| **Total** | **38 min** | **210 min** |
+| **Time Saved** | **~82%** | |
+
+### 💡 **Key Insights**
+
+**Marketing Content Creation**:
+- AI analyzed writing style from Substack
+- Generated authentic voice content
+- Multiple format variations (carousel, story, reel)
+- Complete launch strategy in minutes
+- Manual would require hours of writing/editing
+
+**Rate Limiting Architecture**:
+- Simple sliding window algorithm
+- Per-user tracking prevents global impact
+- Color-coded UI provides clear feedback
+- Admin override for flexibility
+- Protects against cost overruns
+
+**Kiro CLI Acceleration**:
+- Content creation: 82% time saved
+- Code implementation: Instant boilerplate
+- Documentation: Auto-generated from code
+- Testing: Built-in verification
+
+**Product Hunt Strategy**:
+- Complete launch playbook
+- Timing optimization (12:01 AM PST)
+- Engagement tactics
+- Media asset specifications
+- Success metrics defined
+
+---
+
+**Last Updated**: January 7, 2026 - 5:57 AM  
+**Session Status**: ✅ Dashboard polished, marketing ready, costs protected
+
+**Final Cumulative Stats**:
+- **Total Development Time**: ~27.75 hours
+- **Estimated Manual Time**: 81-101 hours
+- **Time Saved with Kiro**: ~66-73%
+- **Features Built**: 25+ major features
+- **Bugs Fixed**: 27+
+- **Git Commits**: 54+
+- **Marketing**: Complete launch materials
+- **Cost Control**: Rate limiting implemented
+
+
+---
+
+## January 7, 2026 (Late Morning) - Menu Scanner Feature Planning
+
+### 📋 **Feature Planning Session**
+
+**Time**: 9:24 AM - 10:28 AM  
+**Focus**: Comprehensive implementation plan for menu/bottle scanner feature
+
+#### **✅ Problem Identification**
+
+**User Need Identified**:
+> "Most of the texts I get from friends asking me about sake are 'I'm at this restaurant what's good?' and a picture of the menu."
+
+**Problem Statement**:
+- 80M+ Americans drink wine regularly, most are terrified of sake menus
+- Wine vocabulary doesn't translate to sake
+- No bridge between curiosity and confident purchase
+- Bottle labels entirely in Japanese characters
+
+#### **✅ Solution Design**
+
+**Feature**: Snap sake menu or bottle label, get personalized recommendations
+
+**Dual Mode Approach**:
+1. **Menu Mode**: Multiple sake extracted, ranked by user taste profile
+2. **Bottle Mode**: Single sake details + 5 similar recommendations
+
+**Technical Stack**:
+- Gemini Vision API (multimodal, handles Japanese text)
+- Existing Tippsy database (104 products)
+- Fuzzy matching + Perplexity enrichment
+- Vector search for similar sake
+- Convex file storage
+
+#### **✅ Kiro CLI Workflow: @plan-feature**
+
+**Custom Prompt Used**: `@plan-feature`
+
+**Prompt Effectiveness**: ⭐⭐⭐⭐⭐ (5/5)
+
+**What It Did**:
+1. **Deep Codebase Analysis**:
+   - Analyzed 15+ existing files for patterns
+   - Identified `convex/geminiRAG.ts` for API integration pattern
+   - Found `convex/embeddings.ts` for vector search pattern
+   - Located `convex/podcastTTS.ts` for file storage pattern
+
+2. **External Research**:
+   - Gemini Vision API documentation
+   - Convex file storage docs
+   - Fuzzy matching libraries (fuse.js)
+
+3. **Comprehensive Plan Generation**:
+   - 4 implementation phases
+   - 20+ atomic tasks with validation commands
+   - Complete code examples for each task
+   - Testing strategy and edge cases
+   - Cost analysis ($0.03/scan, $60/month for 1000 users)
+
+**Plan Output**: `.agents/plans/menu-scanner-feature.md` (14,000+ words)
+
+#### **✅ Plan Structure**
+
+**Phase 1: Database Schema & Backend Foundation**
+- Add `menuScans` table with `scanType: "menu" | "bottle"`
+- Gemini Vision API integration for OCR
+- Fuzzy matching against Tippsy database
+- Scoring algorithm using existing recommendation logic
+
+**Phase 2: Frontend Camera/Upload Interface**
+- Mobile-first camera capture (`facingMode: "environment"`)
+- Photo upload fallback
+- Image preview and cropping
+- Upload to Convex file storage
+
+**Phase 3: Results Display & Recommendations**
+- Menu mode: Top 3 picks + full ranked menu
+- Bottle mode: Sake details + 5 similar recommendations
+- "Ask Kiki" integration with scan context
+- Scan history
+
+**Phase 4: Enrichment & Polish**
+- Perplexity enrichment for unknown sake
+- Rate limiting (5 scans/day)
+- Error handling and edge cases
+- Mobile optimization
+
+#### **✅ Technical Decisions**
+
+| Decision | Rationale | Steering Reference |
+|----------|-----------|-------------------|
+| Gemini Vision | Already in stack, handles Japanese text | `tech.md` - Gemini integration |
+| Dual mode (menu + bottle) | Covers restaurants and retail stores | `product.md` - User needs |
+| Fuzzy matching first | Faster, more accurate for known sake | `tech.md` - Performance |
+| Perplexity fallback | Enriches unknown sake | `tech.md` - Multi-layer RAG |
+| 5 scans/day limit | Cost control (~$0.03/scan) | `tech.md` - Rate limiting |
+| Mobile-first | Primary use case at restaurants | `product.md` - Target users |
+
+#### **✅ Code Patterns Documented**
+
+**1. Gemini Vision API Integration**:
+```typescript
+// Pattern from convex/geminiRAG.ts
+const response = await fetch(
+  `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`,
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents: [{
+        parts: [
+          { text: "Extract sake from this image..." },
+          { inlineData: { mimeType: "image/jpeg", data: base64 } }
+        ]
+      }],
+      generationConfig: {
+        temperature: 0.1,
+        responseMimeType: "application/json"
+      }
+    })
+  }
+)
+```
+
+**2. Convex File Storage**:
+```typescript
+// Pattern from convex/podcastTTS.ts
+const storageId = await ctx.storage.store(blob)
+await ctx.db.insert("menuScans", {
+  imageStorageId: storageId,
+  // ... other fields
+})
+```
+
+**3. Mobile Camera API**:
+```typescript
+// Mobile-optimized camera access
+const stream = await navigator.mediaDevices.getUserMedia({
+  video: { facingMode: "environment" } // Back camera
+})
+```
+
+#### **✅ Validation Strategy**
+
+**Level 1: Build & Deploy**
+```bash
+npx tsc --noEmit
+npm run build
+npx convex dev --once
+```
+
+**Level 2: Manual Testing**
+- Upload clear menu → Extracts sake correctly
+- Upload bottle label → Single sake + similar recommendations
+- Upload blurry photo → Error handling
+- Rate limit test → 6th scan fails
+
+**Level 3: Performance**
+- Image upload: < 2 seconds
+- OCR extraction: < 5 seconds
+- Full scan processing: < 10 seconds total
+
+#### **✅ Cost Analysis**
+
+**Per Scan**:
+- Gemini Vision: ~$0.02
+- Perplexity (3-5 unknown sake): ~$0.01
+- Convex storage: ~$0.001
+- **Total: ~$0.03/scan**
+
+**Monthly (1000 users, 2 scans/month)**:
+- 2000 scans × $0.03 = **$60/month**
+
+**Mitigation**:
+- Cache common restaurant menus
+- Rate limit: 5 scans/day per user
+- Premium feature after free tier
+
+#### **✅ Risk Mitigation**
+
+| Risk | Mitigation |
+|------|------------|
+| OCR accuracy varies | Manual correction + Perplexity fallback |
+| Camera permissions denied | File upload fallback |
+| Rate limits hit quickly | Clear messaging, upgrade path |
+| Fuzzy matching fails | Perplexity enrichment |
+
+#### **✅ Iterative Refinement**
+
+**Initial Request**: Menu scanning only
+
+**User Feedback**: "This will work with smartphone cameras too"
+- **Response**: Confirmed mobile camera support with `facingMode: "environment"`
+- **Browser compatibility**: iOS Safari 11+, Android Chrome, Samsung Internet
+
+**User Enhancement**: "Can you update the plan to include taking pictures of sake bottles too"
+- **Response**: Added bottle mode with similar sake recommendations
+- **Updated**: 12 sections of the plan
+- **New features**: Bottle details extraction, similar sake finder, dual UI modes
+
+#### **✅ Kiro CLI Acceleration**
+
+| Task | Manual Estimate | Kiro Time | Savings |
+|------|----------------|-----------|---------|
+| Codebase analysis | 2 hours | 5 min | 96% |
+| API research | 1 hour | 3 min | 95% |
+| Plan writing | 4 hours | 30 min | 87% |
+| Code examples | 3 hours | 15 min | 92% |
+| Testing strategy | 1 hour | 5 min | 92% |
+| **Total** | **11 hours** | **~1 hour** | **~91%** |
+
+### 📊 **Plan Quality Metrics**
+
+**Completeness**: ✅ 10/10
+- Database schema with all fields
+- Complete API integration code
+- Full UI components
+- Testing strategy
+- Cost analysis
+- Risk mitigation
+
+**Implementation Readiness**: ✅ 9/10
+- Copy-paste code examples
+- Validation commands for each task
+- Pattern references with line numbers
+- Clear dependency order
+
+**Confidence Score**: 8/10
+- Technically feasible
+- Aligns with existing patterns
+- Main risk: OCR accuracy (mitigated)
+
+### 💡 **Key Insights**
+
+**1. Custom Prompt Power**:
+- `@plan-feature` generated 14,000+ word implementation plan
+- Included codebase analysis, external research, and complete examples
+- Would take 11 hours manually, completed in ~1 hour with Kiro
+
+**2. Iterative Planning**:
+- Started with menu scanning
+- User feedback → Added bottle mode
+- Plan updated in real-time with 12 section modifications
+- Maintained consistency throughout
+
+**3. Pattern Reuse**:
+- Identified 5+ existing patterns to follow
+- Gemini API from `geminiRAG.ts`
+- File storage from `podcastTTS.ts`
+- Vector search from `embeddings.ts`
+- Recommendation logic from `recommendations.ts`
+
+**4. Cost-Conscious Design**:
+- Calculated per-scan costs upfront
+- Designed rate limiting before implementation
+- Identified cost mitigation strategies
+- Aligned with `tech.md` cost control principles
+
+**5. Mobile-First Approach**:
+- Camera API with back camera targeting
+- File upload fallback
+- Touch target sizing (44x44px)
+- Responsive design considerations
+
+### 📦 **Deliverables**
+
+**Files Created**:
+- `.agents/plans/menu-scanner-feature.md` - Complete implementation plan
+
+**Plan Sections**:
+1. Feature Description & User Story
+2. Problem & Solution Statements
+3. Context References (15+ files)
+4. Implementation Phases (4 phases)
+5. Step-by-Step Tasks (20+ tasks)
+6. Testing Strategy
+7. Validation Commands
+8. Acceptance Criteria (17 items)
+9. Completion Checklist
+10. Technical Notes & Design Decisions
+
+**Ready for Execution**: ✅ Yes
+- All patterns documented
+- Code examples complete
+- Validation strategy defined
+- Risks identified and mitigated
+
+---
+
+**Last Updated**: January 7, 2026 - 10:28 AM  
+**Session Status**: ✅ Planning complete, ready for implementation
+
+**Cumulative Stats**:
+- **Total Development Time**: ~28.75 hours
+- **Estimated Manual Time**: 92-112 hours
+- **Time Saved with Kiro**: ~69-74%
+- **Features Built**: 25+ major features
+- **Features Planned**: 1 (menu/bottle scanner)
+- **Git Commits**: 54+
+- **Implementation Plans**: 11 total

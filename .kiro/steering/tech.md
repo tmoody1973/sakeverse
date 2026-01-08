@@ -103,6 +103,15 @@ User Interface
 
 ## Key Technical Learnings
 
+### Menu Scanner (Planned)
+- **Gemini Vision API**: Multimodal image analysis for OCR
+- **Dual mode detection**: Auto-detect menu vs bottle label
+- **Japanese text handling**: Gemini Vision handles kanji, hiragana, katakana
+- **Fuzzy matching**: Match extracted names to database with confidence scores
+- **Similar sake finder**: Vector search for bottle mode recommendations
+- **Mobile camera API**: `facingMode: "environment"` for back camera
+- **Rate limiting**: 5 scans/day to control costs (~$0.03/scan)
+
 ### Convex Limitations
 - **No nested actions**: Cannot call `ctx.runAction()` from within an action - causes cryptic "performAsyncSyscall" errors
 - **Solution**: Separate into distinct user-triggered steps (e.g., generate script, then generate audio)
@@ -135,6 +144,18 @@ User Interface
 - **Target Keywords**: 15+ sake-related keywords
 - **robots.txt**: Crawler rules with sitemap reference
 - **Search Integration**: Header search connects to /discover with query params
+
+### Cost Control & Rate Limiting
+- **Rate Limiting System**: Prevents API cost overruns
+  - Voice chat: 20 requests/hour per user (~$0.50/hour max)
+  - Text chat: 50 messages/hour per user
+  - Sliding 1-hour windows from first request
+  - Per-user tracking prevents global impact
+  - Color-coded UI feedback (green/orange/red)
+  - Admin override via `resetRateLimit` mutation
+- **Implementation**: `convex/rateLimit.ts` with `checkRateLimit`, `getRateLimitStatus`, `resetRateLimit`
+- **React Hook**: `useRateLimit("voice" | "text")` for easy integration
+- **UI Component**: `RateLimitDisplay` shows remaining requests and reset time
 
 ## Environment Variables
 **Convex**: OPENAI_API_KEY, GEMINI_API_KEY, PERPLEXITY_API_KEY, GEMINI_FILE_URI

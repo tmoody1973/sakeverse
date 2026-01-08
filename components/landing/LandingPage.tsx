@@ -19,7 +19,7 @@ export function LandingPage() {
             <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl">
               Meet Kiki (利き酒) — your personal sake guide. Get recommendations based on your wine preferences, food pairings, and taste profile.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-6">
               <Button variant="primary" size="lg" asChild>
                 <Link href="/sign-up">
                   Get Started Free
@@ -31,6 +31,22 @@ export function LandingPage() {
                   Try Voice Demo
                 </Link>
               </Button>
+            </div>
+            {/* Product Hunt Badge */}
+            <div className="flex justify-center lg:justify-start">
+              <a 
+                href="https://www.producthunt.com/products/sakecosm?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-sakecosm" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block hover:opacity-80 transition-opacity"
+              >
+                <img 
+                  alt="Sakécosm - Your personal sake guide, powered by AI | Product Hunt" 
+                  width="250" 
+                  height="54" 
+                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1059717&theme=light&t=1767875665538"
+                />
+              </a>
             </div>
           </div>
           
