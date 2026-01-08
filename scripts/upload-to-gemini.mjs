@@ -110,40 +110,57 @@ async function main() {
   console.log('🍶 Sakécosm Gemini RAG Setup')
   console.log('============================\n')
   
-  const breweryHistoriesPath = path.join(__dirname, '../podcasts/brewery_histories_only.md')
+  const filesToUpload = [
+    {
+      path: path.join(__dirname, '../podcasts/brewery_histories_only.md'),
+      displayName: 'sakecosm-brewery-histories'
+    },
+    {
+      path: path.join(__dirname, '../research/wine_to_sake_guide.md'),
+      displayName: 'sakecosm-wine-to-sake-guide'
+    }
+  ]
   
-  if (!fs.existsSync(breweryHistoriesPath)) {
-    console.error(`❌ File not found: ${breweryHistoriesPath}`)
+  const uploadedFiles = []
+  
+  for (const file of filesToUpload) {
+    if (!fs.existsSync(file.path)) {
+      console.error(`❌ File not found: ${file.path}`)
+      continue
+    }
+    
+    const stats = fs.statSync(file.path)
+    console.log(`📄 File: ${path.basename(file.path)}`)
+    console.log(`   Size: ${(stats.size / 1024).toFixed(1)} KB`)
+    
+    try {
+      // Upload the file
+      const uploadedFile = await uploadFile(file.path, file.displayName)
+      
+      // Wait for processing
+      const readyFile = await waitForProcessing(uploadedFile.name)
+      uploadedFiles.push(readyFile)
+      
+    } catch (error) {
+      console.error(`\n❌ Error uploading ${file.displayName}:`, error.message)
+    }
+  }
+  
+  if (uploadedFiles.length === 0) {
+    console.error('\n❌ No files uploaded successfully')
     process.exit(1)
   }
   
-  const stats = fs.statSync(breweryHistoriesPath)
-  console.log(`📄 File: brewery_histories_only.md`)
-  console.log(`   Size: ${(stats.size / 1024).toFixed(1)} KB`)
-  
-  try {
-    // Upload the file
-    const uploadedFile = await uploadFile(
-      breweryHistoriesPath,
-      'sakecosm-brewery-histories'
-    )
-    
-    // Wait for processing
-    const readyFile = await waitForProcessing(uploadedFile.name)
-    
-    console.log('\n============================')
-    console.log('✅ Setup Complete!')
-    console.log('\n📋 Next Steps:')
-    console.log('1. The file is now available for Gemini queries')
-    console.log('2. Use this file URI in your prompts:')
-    console.log(`   ${readyFile.uri}`)
-    console.log('\n3. Add to Convex env vars:')
-    console.log(`   npx convex env set GEMINI_FILE_URI "${readyFile.uri}"`)
-    
-  } catch (error) {
-    console.error('\n❌ Error:', error.message)
-    process.exit(1)
-  }
+  console.log('\n============================')
+  console.log('✅ Setup Complete!')
+  console.log(`\n📋 Uploaded ${uploadedFiles.length} file(s):`)
+  uploadedFiles.forEach((file, i) => {
+    console.log(`\n${i + 1}. ${file.displayName}`)
+    console.log(`   URI: ${file.uri}`)
+  })
+  console.log('\n3. Add to Convex env vars (comma-separated):')
+  const uris = uploadedFiles.map(f => f.uri).join(',')
+  console.log(`   npx convex env set GEMINI_FILE_URIS "${uris}"`)
 }
 
 main()

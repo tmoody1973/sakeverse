@@ -78,14 +78,17 @@ async function gatherResearch(ctx: any, topic: any) {
   }
 
   const geminiApiKey = process.env.GEMINI_API_KEY
-  const fileUri = process.env.GEMINI_FILE_URI
+  const fileUris = process.env.GEMINI_FILE_URIS // Now supports multiple files
+
+  // Determine focus area based on series
+  const focusArea = topic.series === "the-bridge" ? "wine_matching" : "brewery_history"
 
   // 1. Gemini RAG queries (direct API call, not via runAction)
   const ragQueries = topic.researchQueries?.geminiRag || []
   if (geminiApiKey && ragQueries.length > 0) {
     for (const query of ragQueries.slice(0, 2)) {
       try {
-        const ragResult = await queryGeminiRAG(geminiApiKey, fileUri, query)
+        const ragResult = await queryGeminiRAG(geminiApiKey, fileUris, query, focusArea)
         if (ragResult) {
           results.geminiResults.push(ragResult)
         }
@@ -268,13 +271,33 @@ CRITICAL: Include at least 2-3 specific sake recommendations from the products a
 
 
 // Direct Gemini RAG query (avoids runAction from action issue)
-async function queryGeminiRAG(apiKey: string, fileUri: string | undefined, query: string): Promise<string | null> {
+async function queryGeminiRAG(
+  apiKey: string, 
+  fileUris: string | undefined, 
+  query: string,
+  focusArea: "wine_matching" | "brewery_history" = "brewery_history"
+): Promise<string | null> {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`
   
-  const contents = fileUri ? [{
+  // Build system instruction based on focus
+  let systemInstruction = "You are a sake expert. "
+  let queryPrefix = ""
+  
+  if (focusArea === "wine_matching") {
+    systemInstruction += "Focus on wine-to-sake translations using scientific correlations. Provide specific brand recommendations."
+    queryPrefix = "Based on the wine-to-sake guide, "
+  } else {
+    systemInstruction += "Focus on brewery histories and traditional brewing methods."
+    queryPrefix = "Based on the brewery histories, "
+  }
+
+  const contents = fileUris ? [{
     parts: [
-      { fileData: { mimeType: "text/markdown", fileUri } },
-      { text: `Based on the brewery histories document, answer: ${query}\n\nBe specific with brewery names, dates, and details.` }
+      // Add all file URIs
+      ...fileUris.split(',').map((uri: string) => ({
+        fileData: { mimeType: "text/markdown", fileUri: uri.trim() }
+      })),
+      { text: `${queryPrefix}answer: ${query}\n\nBe specific with details from the documents.` }
     ]
   }] : [{
     parts: [{ text: `You are a sake expert. Answer: ${query}` }]
@@ -285,6 +308,7 @@ async function queryGeminiRAG(apiKey: string, fileUri: string | undefined, query
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       contents,
+      systemInstruction: { parts: [{ text: systemInstruction }] },
       generationConfig: { temperature: 0.2, maxOutputTokens: 1000 },
     }),
   })

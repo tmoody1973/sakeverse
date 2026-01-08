@@ -36,24 +36,55 @@ export const uploadBreweryHistories = internalAction({
 export const queryBreweryKnowledge = action({
   args: {
     query: v.string(),
+    focusArea: v.optional(v.union(
+      v.literal("wine_matching"),
+      v.literal("brewery_history"),
+      v.literal("general")
+    )),
     topK: v.optional(v.number()),
   },
-  handler: async (ctx, { query, topK = 5 }) => {
+  handler: async (ctx, { query, focusArea = "general", topK = 5 }) => {
     const geminiApiKey = process.env.GEMINI_API_KEY
-    const fileUri = process.env.GEMINI_FILE_URI
+    const fileUris = process.env.GEMINI_FILE_URIS // Now supports multiple files
     
     if (!geminiApiKey) {
       throw new Error("GEMINI_API_KEY not found")
     }
     
-    // If no file configured, fall back to general Gemini
-    if (!fileUri) {
-      console.log("No GEMINI_FILE_URI configured, using general knowledge")
+    // If no files configured, fall back to general Gemini
+    if (!fileUris) {
+      console.log("No GEMINI_FILE_URIS configured, using general knowledge")
       return await queryGeneralKnowledge(geminiApiKey, query)
     }
 
     try {
-      // Use Gemini with the uploaded file as context
+      // Build system instruction based on focus area
+      let systemInstruction = `You are a sake expert. `
+      let queryPrefix = ""
+      
+      if (focusArea === "wine_matching") {
+        systemInstruction += `Focus on wine-to-sake translations using scientific correlations. Provide specific brand recommendations.`
+        queryPrefix = "Based on the wine-to-sake guide, "
+      } else if (focusArea === "brewery_history") {
+        systemInstruction += `Focus on brewery histories, regional characteristics, and traditional brewing methods.`
+        queryPrefix = "Based on the brewery histories, "
+      } else {
+        systemInstruction += `Use all available knowledge to provide comprehensive sake information.`
+        queryPrefix = "Based on the uploaded documents, "
+      }
+
+      // Parse file URIs
+      const uris = fileUris.split(',').map((uri: string) => uri.trim())
+      
+      // Build file data parts
+      const fileParts = uris.map((uri: string) => ({
+        fileData: {
+          mimeType: "text/markdown",
+          fileUri: uri,
+        }
+      }))
+
+      // Use Gemini with the uploaded files as context
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`,
         {
@@ -62,19 +93,17 @@ export const queryBreweryKnowledge = action({
           body: JSON.stringify({
             contents: [{
               parts: [
+                ...fileParts,
                 {
-                  fileData: {
-                    mimeType: "text/markdown",
-                    fileUri: fileUri,
-                  }
-                },
-                {
-                  text: `Based on the brewery histories document above, answer this question: ${query}
+                  text: `${queryPrefix}answer this question: ${query}
 
-Be specific and cite brewery names, founding dates, and key details from the document. If the information isn't in the document, say so.`
+Be specific and cite details from the documents. If the information isn't in the documents, say so.`
                 }
               ]
             }],
+            systemInstruction: {
+              parts: [{ text: systemInstruction }]
+            },
             generationConfig: {
               temperature: 0.2,
               maxOutputTokens: 1500,
